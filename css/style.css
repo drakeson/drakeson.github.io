@@ -226,6 +226,7 @@ blockquote {
           box-shadow: 0 1px 4px 0 rgba(15, 15, 20, 0.1);
   position: relative;
 }
+
 blockquote:before {
   position: absolute;
   font-family: "Font Awesome 5 Free";
@@ -237,6 +238,7 @@ blockquote:before {
   left: 9px;
   color: #fafafc;
 }
+
 blockquote:after {
   position: absolute;
   font-family: "Font Awesome 5 Free";
