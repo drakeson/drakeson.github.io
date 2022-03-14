@@ -2,7 +2,7 @@
 
 	// site owner
 	$site_name = 'Dr. Drakeson Site';
-	$sender_domain = 'hello@prayista.com';
+	$sender_domain = 'server@your-domain.com';
 	$to = 'ryansmith7119@gmail.com';
 	
 	// contact form fields
