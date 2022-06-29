@@ -1,8 +1,8 @@
 /*
-    Name: ikonik
+    Name: Dr.drakeson
     Description: Responsive AJAX Enabled vCard Template
     Version: 1.0
-    Author: pixelwars
+    Author: Dr.drakeson
 */
 
 (function ($) {
