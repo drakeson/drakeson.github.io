@@ -1,17 +1,17 @@
 .camera, .output {
-  width: 340px;
+  width: 150px;
   position: absolute;
 }
 
 .output {
-  left: 360px;
+  left: 200px;
 }
 
 #video, #photo {
   border: 1px solid black;
   box-shadow: 2px 2px 3px black;
-  width:320px;
-  height:240px;
+  width:150px;
+  height:150px;
 }
 
 #startbutton {
@@ -20,11 +20,10 @@
   margin-left:auto;
   margin-right:auto;
   bottom:32px;
-  background-color: rgb(207, 7, 0);
+  background-color: rgb(10, 79, 1);
   border: 1px solid rgba(255, 255, 255, 0.7);
   box-shadow: 0px 0px 1px 2px rgba(0, 0, 0, 0.2);
   font-size: 14px;
-  font-family: "Lucida Grande", "Arial", sans-serif;
   color: rgba(255, 255, 255, 1.0);
 }
 

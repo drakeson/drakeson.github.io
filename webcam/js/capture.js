@@ -1,7 +1,7 @@
 (function() {
 
-  var width = 100;
-  var height = 100;
+  var width = 150;
+  var height = 150;
 
 
   var streaming = false;

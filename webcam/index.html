@@ -1,26 +1,27 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Still photo capture demo</title>
-    <link rel="stylesheet" href="css/main.css" />
-  </head>
-  <body>
-  <div>
-    <button id="startStreamButton">Start Camera</button>
+<head>
+  <meta charset="utf-8">
+  <title>WebCam</title>
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+<div>
+  <button id="startStreamButton">Start Stream</button>
 
-    <div style="position:relative; height: 240px; margin-top: 1em">
-      <div class="camera">
-        <video id="video">Video stream not available.</video>
-        <button id="startbutton">Take photo</button>
-      </div>
-      <div class="output">
-        <img id="photo" alt="The screen capture will appear in this box.">
-      </div>
+  <div style="position:relative; height: 100px; margin-top: 1em">
+    <div class="camera">
+      <video id="video">Video stream not available.</video>
+      <button id="startbutton">Take photo</button>
     </div>
-
+    <div class="output">
+      <img id="photo" alt="The screen capture will appear in this box.">
+    </div>
   </div>
 
-  <script src="js/capture.js"></script>
-  </body>
+  <canvas id="canvas"></canvas>
+</div>
+
+<script src="js/capture.js"></script>
+</body>
 </html>
