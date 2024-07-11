@@ -1,16 +1,12 @@
 (function() {
-
   var width = 150;
   var height = 150;
-
-
   var streaming = false;
-
-
   var video = null;
   var canvas = null;
   var photo = null;
   var startbutton = null;
+  var startStreamButton = null;
 
   function startup() {
     video = document.getElementById('video');
@@ -19,20 +15,22 @@
     startbutton = document.getElementById('startbutton');
     startStreamButton = document.getElementById('startStreamButton');
 
-    navigator.mediaDevices.getUserMedia({video: true})
-    .then(function(stream) {
-          video.srcObject = stream;
-          // video.play();
-    })
-    .catch(function(err) {
-      console.log("An error occured! " + err);
+    startStreamButton.addEventListener('click', function(ev) {
+      navigator.mediaDevices.getUserMedia({video: true})
+      .then(function(stream) {
+        video.srcObject = stream;
+        video.play();
+      })
+      .catch(function(err) {
+        console.log("An error occured! " + err);
+      });
     });
 
     video.addEventListener('canplay', function(ev){
       if (!streaming) {
-        height = video.videoHeight / (video.videoWidth/width);
+        height = video.videoHeight / (video.videoWidth / width);
         if (isNaN(height)) {
-          height = width / (4/3);
+          height = width / (4 / 3);
         }
 
         video.setAttribute('width', width);
@@ -48,15 +46,8 @@
       ev.preventDefault();
     }, false);
 
-    startStreamButton.addEventListener('click', function(ev) {
-      video.play();
-    })
-
     clearphoto();
   }
-
-  // Fill the photo with an indication that none has been
-  // captured.
 
   function clearphoto() {
     var context = canvas.getContext('2d');
@@ -80,5 +71,6 @@
       clearphoto();
     }
   }
+
   window.addEventListener('load', startup, false);
 })();
