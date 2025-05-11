@@ -1331,6 +1331,9 @@ a.social-link:hover {
 .fa-figma {
 	color: white;
 }
+.fa-tiktok {
+	color: white;
+}
 .social-link.vimeo:before {
 	content: '\e830'
 	}
@@ -1520,6 +1523,9 @@ a.social-link:hover {
 .social-link.email:hover {
 	background-color: #222;
 	}
+.social-link.tiktok:hover {
+	background-color: #6383A8;
+}
 
 /* PORTFOLIO FILTERS */
 .filters {
