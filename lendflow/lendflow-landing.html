@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WeLend — Connect. Borrow. Grow.</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0B1C38;
+  --navy2: #122244;
+  --gold: #C9963A;
+  --gold2: #E8B558;
+  --teal: #0E9F8E;
+  --teal2: #12BCA8;
+  --off: #F6F4EF;
+  --white: #FFFFFF;
+  --text: #1a2540;
+  --muted: #7a8aa8;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--navy);
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 60px;
+  background: rgba(11, 28, 56, 0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; }
+.nav-logomark {
+  width: 38px; height: 38px; border-radius: 10px;
+  background: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fraunces', serif; font-weight: 900; font-size: 20px; color: #fff;
+}
+.nav-name { font-family: 'Fraunces', serif; font-weight: 700; font-size: 18px; color: #fff; }
+.nav-links { display: flex; align-items: center; gap: 32px; }
+.nav-links a {
+  color: rgba(255,255,255,0.6); font-size: 14px; font-weight: 500;
+  text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover { color: #fff; }
+.nav-cta {
+  display: flex; gap: 10px;
+}
+.btn-nav {
+  padding: 9px 20px; border-radius: 8px; font-size: 13px; font-weight: 600;
+  cursor: pointer; border: none; text-decoration: none; transition: all 0.2s;
+}
+.btn-outline-w {
+  background: transparent; border: 1.5px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.75);
+}
+.btn-outline-w:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+.btn-gold { background: var(--gold); color: #fff; }
+.btn-gold:hover { background: var(--gold2); }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  padding: 120px 60px 80px;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 50%, rgba(14,159,142,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 80% 30%, rgba(201,150,58,0.1) 0%, transparent 60%),
+    radial-gradient(ellipse 100% 100% at 50% 100%, rgba(18,34,68,0.8) 0%, transparent 70%);
+}
+.hero-grid-lines {
+  position: absolute; inset: 0; z-index: 0; opacity: 0.04;
+  background-image:
+    linear-gradient(rgba(255,255,255,1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-inner {
+  position: relative; z-index: 1;
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(14,159,142,0.12); border: 1px solid rgba(14,159,142,0.3);
+  border-radius: 20px; padding: 6px 14px;
+  font-size: 12px; font-weight: 600; color: var(--teal2);
+  margin-bottom: 24px; letter-spacing: 0.5px;
+}
+.hero-tag-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--teal2);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+.hero-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(44px, 5vw, 68px);
+  font-weight: 900;
+  line-height: 1.05;
+  color: #fff;
+  margin-bottom: 24px;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--gold2);
+}
+.hero-sub {
+  font-size: 17px; font-weight: 300; color: rgba(255,255,255,0.58);
+  line-height: 1.7; margin-bottom: 36px; max-width: 440px;
+}
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
+.btn-hero-primary {
+  padding: 14px 28px; border-radius: 10px; background: var(--gold);
+  color: #fff; font-size: 15px; font-weight: 700; border: none; cursor: pointer;
+  text-decoration: none; transition: all 0.2s; display: inline-block;
+}
+.btn-hero-primary:hover { background: var(--gold2); transform: translateY(-1px); }
+.btn-hero-secondary {
+  padding: 14px 28px; border-radius: 10px;
+  background: transparent; border: 1.5px solid rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.75); font-size: 15px; font-weight: 600; cursor: pointer;
+  text-decoration: none; transition: all 0.2s; display: inline-block;
+}
+.btn-hero-secondary:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+.hero-stats { display: flex; gap: 32px; }
+.hstat-val {
+  font-family: 'Fraunces', serif; font-weight: 700; font-size: 26px; color: #fff;
+  margin-bottom: 2px;
+}
+.hstat-lbl { font-size: 12px; color: rgba(255,255,255,0.4); font-weight: 400; }
+
+/* HERO RIGHT — floating phone mockup */
+.hero-visual {
+  position: relative; display: flex; justify-content: center; align-items: center;
+}
+.hero-phone {
+  width: 240px; height: 490px;
+  background: #0f1d30;
+  border-radius: 44px;
+  border: 2px solid rgba(255,255,255,0.1);
+  position: relative; overflow: hidden;
+  box-shadow: 0 60px 120px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.04);
+  animation: float 4s ease-in-out infinite;
+  z-index: 2;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(-2deg); }
+  50% { transform: translateY(-16px) rotate(-2deg); }
+}
+.phone-notch {
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 90px; height: 22px; background: #060d18; border-radius: 0 0 14px 14px; z-index: 10;
+}
+.phone-screen-inner {
+  position: absolute; top: 28px; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(160deg, #0e2840 0%, #0d1f38 100%);
+  display: flex; flex-direction: column;
+}
+.psi-header {
+  padding: 10px 14px 8px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.psi-logo {
+  display: flex; align-items: center; gap: 6px;
+}
+.psi-lm {
+  width: 22px; height: 22px; background: var(--gold); border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fraunces', serif; font-weight: 900; font-size: 12px; color: #fff;
+}
+.psi-name { font-family: 'Fraunces', serif; font-weight: 700; font-size: 12px; color: #fff; }
+.psi-banner {
+  background: linear-gradient(135deg, var(--teal), var(--teal2));
+  margin: 0 10px 10px; border-radius: 12px; padding: 12px;
+}
+.psi-banner-label { font-size: 8px; opacity: 0.8; margin-bottom: 3px; }
+.psi-banner-amount { font-family: 'Fraunces', serif; font-weight: 700; font-size: 18px; margin-bottom: 3px; }
+.psi-banner-sub { font-size: 7.5px; opacity: 0.75; }
+.psi-stats {
+  display: flex; gap: 5px; padding: 0 10px; margin-bottom: 10px;
+}
+.psi-stat {
+  flex: 1; background: rgba(255,255,255,0.06); border-radius: 8px;
+  padding: 7px; text-align: center; border-top: 2px solid var(--teal);
+}
+.psi-stat .v { font-family: 'Fraunces', serif; font-size: 11px; font-weight: 700; }
+.psi-stat .l { font-size: 7px; color: rgba(255,255,255,0.4); margin-top: 1px; }
+.psi-section { font-size: 8px; color: rgba(255,255,255,0.35); padding: 0 10px 6px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; }
+.psi-offer {
+  background: rgba(201,150,58,0.1); border-left: 3px solid var(--gold);
+  border-radius: 10px; margin: 0 10px 7px; padding: 9px;
+}
+.psi-offer-amount { font-family: 'Fraunces', serif; font-weight: 700; font-size: 13px; }
+.psi-offer-rate { font-size: 8.5px; color: var(--gold2); font-weight: 600; margin-top: 2px; }
+.psi-offer-meta { font-size: 7.5px; color: rgba(255,255,255,0.35); margin-top: 2px; }
+
+/* floating cards */
+.float-card {
+  position: absolute; z-index: 3;
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px; padding: 12px 16px;
+}
+.fc-left {
+  left: -80px; top: 30%;
+  animation: float2 5s ease-in-out infinite;
+}
+.fc-right {
+  right: -70px; bottom: 25%;
+  animation: float3 4.5s ease-in-out infinite;
+}
+@keyframes float2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+@keyframes float3 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
+.fc-label { font-size: 10px; color: rgba(255,255,255,0.45); margin-bottom: 3px; }
+.fc-value { font-family: 'Fraunces', serif; font-weight: 700; font-size: 16px; color: #fff; }
+.fc-sub { font-size: 10px; color: var(--teal2); margin-top: 2px; }
+.fc-dot {
+  width: 8px; height: 8px; background: var(--ok, #16A34A); border-radius: 50%;
+  display: inline-block; margin-right: 5px;
+}
+
+/* ─── SECTION SHARED ─── */
+section { padding: 100px 60px; }
+.section-tag {
+  font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 14px;
+}
+.section-title {
+  font-family: 'Fraunces', serif; font-weight: 700;
+  font-size: clamp(32px, 3.5vw, 48px);
+  line-height: 1.12; margin-bottom: 16px;
+}
+.section-sub {
+  font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.5);
+  max-width: 520px; line-height: 1.7; margin-bottom: 56px;
+}
+
+/* ─── HOW IT WORKS ─── */
+.how-section { background: var(--navy); }
+.how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; max-width: 1100px; margin: 0 auto; }
+.how-col { padding: 40px; border-right: 1px solid rgba(255,255,255,0.06); position: relative; }
+.how-col:last-child { border-right: none; }
+.how-num {
+  font-family: 'Fraunces', serif; font-size: 80px; font-weight: 900;
+  color: rgba(255,255,255,0.04); line-height: 1;
+  position: absolute; top: 20px; right: 24px;
+}
+.how-icon {
+  width: 48px; height: 48px; border-radius: 12px; margin-bottom: 20px;
+  display: flex; align-items: center; justify-content: center;
+}
+.how-icon svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.how-title { font-family: 'Fraunces', serif; font-weight: 700; font-size: 20px; margin-bottom: 10px; }
+.how-desc { font-size: 14px; color: rgba(255,255,255,0.48); line-height: 1.7; }
+
+/* ─── BORROWERS ─── */
+.borrow-section {
+  background: var(--off); color: var(--text);
+}
+.borrow-section .section-tag { color: var(--teal); }
+.borrow-section .section-title { color: var(--text); }
+.borrow-section .section-sub { color: var(--muted); }
+.profiles-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+  max-width: 1100px; margin: 0 auto 48px;
+}
+.profile-card {
+  background: #fff; border-radius: 18px; padding: 24px;
+  border: 1px solid rgba(0,0,0,0.06);
+  transition: all 0.3s; cursor: pointer; position: relative; overflow: hidden;
+}
+.profile-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+}
+.profile-card.teal::before { background: linear-gradient(90deg, var(--teal), var(--teal2)); }
+.profile-card.gold::before { background: linear-gradient(90deg, var(--gold), var(--gold2)); }
+.profile-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,0,0,0.1); }
+.pc-avatar {
+  width: 52px; height: 52px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fraunces', serif; font-weight: 700; font-size: 18px;
+  color: #fff; margin-bottom: 14px;
+}
+.pc-name { font-family: 'Fraunces', serif; font-weight: 700; font-size: 16px; color: var(--text); margin-bottom: 3px; }
+.pc-role { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
+.pc-amount {
+  font-family: 'Fraunces', serif; font-weight: 700; font-size: 20px;
+  margin-bottom: 3px;
+}
+.pc-amount.teal-c { color: var(--teal); }
+.pc-amount.gold-c { color: var(--gold); }
+.pc-detail { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
+.pc-badge {
+  display: inline-block; padding: 4px 10px; border-radius: 20px;
+  font-size: 11px; font-weight:600;
+}
+.pc-badge.teal { background: #e6f7f5; color: var(--teal); }
+.pc-badge.gold { background: #fff8ed; color: var(--gold); }
+.pc-badge.green { background: #e8f5ee; color: #16A34A; }
+.pc-badge.yellow { background: #fef9e8; color: #D97706; }
+.pc-progress {
+  height: 4px; background: #f0f0f0; border-radius: 2px; margin-top: 12px;
+}
+.pc-progress-fill { height: 100%; border-radius: 2px; }
+
+/* ─── LENDERS ─── */
+.lend-section { background: var(--navy2); }
+.lenders-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+  max-width: 1100px; margin: 0 auto 48px;
+}
+.lender-card {
+  background: rgba(255,255,255,0.04); border-radius: 18px; padding: 24px;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: all 0.3s; cursor: pointer; position: relative; overflow: hidden;
+}
+.lender-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--gold2));
+  transform: scaleX(0); transition: transform 0.3s; transform-origin: left;
+}
+.lender-card:hover::after { transform: scaleX(1); }
+.lender-card:hover { background: rgba(255,255,255,0.07); transform: translateY(-4px); }
+.lc-avatar {
+  width: 52px; height: 52px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fraunces', serif; font-weight: 700; font-size: 18px;
+  color: #fff; margin-bottom: 14px;
+  border: 2px solid rgba(201,150,58,0.3);
+}
+.lc-name { font-family: 'Fraunces', serif; font-weight: 700; font-size: 16px; margin-bottom: 3px; }
+.lc-role { font-size: 12px; color: rgba(255,255,255,0.38); margin-bottom: 14px; }
+.lc-rate { font-family: 'Fraunces', serif; font-weight: 700; font-size: 22px; color: var(--gold2); margin-bottom: 3px; }
+.lc-cap { font-size: 12px; color: rgba(255,255,255,0.45); margin-bottom: 14px; }
+.lc-tags { display: flex; gap: 5px; flex-wrap: wrap; }
+.lc-tag {
+  padding: 3px 9px; border-radius: 10px; font-size: 10px; font-weight: 600;
+  background: rgba(201,150,58,0.1); color: var(--gold2);
+}
+.lc-verified {
+  display: inline-flex; align-items: center; gap: 4px; font-size: 11px;
+  color: #16A34A; background: rgba(22,163,74,0.1); padding: 3px 9px; border-radius: 10px;
+  font-weight: 600; margin-top: 12px;
+}
+.lc-verified svg { width: 11px; height: 11px; stroke: #16A34A; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ─── FEATURES ─── */
+.features-section { background: var(--navy); }
+.features-inner { max-width: 1100px; margin: 0 auto; }
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.feat-item {
+  padding: 40px 36px; border: 1px solid rgba(255,255,255,0.05);
+  transition: background 0.3s;
+}
+.feat-item:hover { background: rgba(255,255,255,0.03); }
+.feat-icon-wrap {
+  width: 44px; height: 44px; border-radius: 10px; margin-bottom: 20px;
+  display: flex; align-items: center; justify-content: center;
+}
+.feat-icon-wrap svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.feat-title { font-family: 'Fraunces', serif; font-weight: 700; font-size: 18px; margin-bottom: 10px; }
+.feat-desc { font-size: 14px; color: rgba(255,255,255,0.45); line-height: 1.7; }
+
+/* ─── APP DOWNLOAD ─── */
+.app-section {
+  background: linear-gradient(135deg, #0a1a34 0%, #0d2244 40%, #0a2020 100%);
+  position: relative; overflow: hidden;
+}
+.app-bg-glow {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 10% 50%, rgba(14,159,142,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 70% at 90% 50%, rgba(201,150,58,0.12) 0%, transparent 60%);
+}
+.app-inner {
+  max-width: 1100px; margin: 0 auto; position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.app-text .section-tag { color: var(--teal2); }
+.app-title {
+  font-family: 'Fraunces', serif; font-weight: 900;
+  font-size: clamp(36px, 3.5vw, 52px); line-height: 1.1; margin-bottom: 16px;
+}
+.app-sub {
+  font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.5);
+  line-height: 1.7; margin-bottom: 36px; max-width: 420px;
+}
+.app-buttons { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
+.store-btn {
+  display: flex; align-items: center; gap: 12px;
+  background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.12);
+  border-radius: 12px; padding: 12px 20px;
+  cursor: pointer; transition: all 0.2s; text-decoration: none; color: #fff;
+  min-width: 160px;
+}
+.store-btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.25); transform: translateY(-2px); }
+.store-btn svg { width: 28px; height: 28px; flex-shrink: 0; }
+.store-btn-text { display: flex; flex-direction: column; }
+.store-btn-sub { font-size: 10px; color: rgba(255,255,255,0.45); }
+.store-btn-name { font-family: 'Fraunces', serif; font-weight: 700; font-size: 16px; }
+.app-perks { display: flex; flex-direction: column; gap: 12px; }
+.app-perk {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 14px; color: rgba(255,255,255,0.6);
+}
+.app-perk-check {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: rgba(14,159,142,0.15); border: 1px solid rgba(14,159,142,0.3);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.app-perk-check svg { width: 10px; height: 10px; stroke: var(--teal2); fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Phone pair visual */
+.app-phones {
+  display: flex; justify-content: center; align-items: flex-end; gap: -20px;
+  position: relative; height: 440px;
+}
+.app-phone {
+  width: 180px; border-radius: 36px; overflow: hidden;
+  border: 2px solid rgba(255,255,255,0.1);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.4);
+  position: absolute;
+}
+.ap-lender {
+  height: 360px; left: 20px; bottom: 0;
+  background: linear-gradient(160deg, #1a2e50, #0d1f38);
+  animation: float2 5s ease-in-out infinite;
+  z-index: 2;
+}
+.ap-borrower {
+  height: 400px; right: 20px; bottom: 0;
+  background: linear-gradient(160deg, #0d2a26, #0a1f1c);
+  animation: float3 4.5s ease-in-out infinite;
+  z-index: 1;
+}
+.ap-notch {
+  width: 60px; height: 16px; background: rgba(0,0,0,0.5);
+  border-radius: 0 0 10px 10px; margin: 0 auto;
+}
+.ap-content { padding: 8px; }
+.ap-header {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;
+}
+.ap-lm { width: 18px; height: 18px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-weight: 900; font-size: 10px; color: #fff; }
+.ap-label { font-size: 8px; color: rgba(255,255,255,0.4); font-weight: 600; letter-spacing: 0.5px; }
+.ap-hero-card { border-radius: 10px; padding: 10px; margin-bottom: 8px; }
+.ap-val { font-family: 'Fraunces', serif; font-weight: 700; font-size: 14px; margin-bottom: 2px; }
+.ap-sub2 { font-size: 7px; opacity: 0.7; }
+.ap-row { background: rgba(255,255,255,0.05); border-radius: 8px; padding: 7px; margin-bottom: 5px; }
+.ap-row-title { font-size: 8px; font-weight: 700; margin-bottom: 1px; }
+.ap-row-sub { font-size: 7px; color: rgba(255,255,255,0.4); }
+
+/* ─── TESTIMONIALS ─── */
+.testimonials-section { background: var(--off); color: var(--text); padding: 100px 60px; }
+.testimonials-section .section-tag { color: var(--teal); }
+.testimonials-section .section-title { color: var(--text); }
+.testimonials-section .section-sub { color: var(--muted); }
+.testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; }
+.testi-card {
+  background: #fff; border-radius: 18px; padding: 28px;
+  border: 1px solid rgba(0,0,0,0.06);
+  transition: all 0.3s;
+}
+.testi-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,0,0,0.08); }
+.testi-quote {
+  font-size: 15px; font-weight: 400; color: #444; line-height: 1.7;
+  margin-bottom: 20px; font-style: italic;
+}
+.testi-author { display: flex; align-items: center; gap: 10px; }
+.testi-ava {
+  width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fraunces', serif; font-weight: 700; font-size: 14px; color: #fff;
+}
+.testi-name { font-weight: 700; font-size: 14px; color: var(--text); }
+.testi-role { font-size: 12px; color: var(--muted); }
+.testi-stars { color: var(--gold); font-size: 13px; margin-bottom: 14px; }
+
+/* ─── CTA ─── */
+.cta-section {
+  background: var(--navy);
+  padding: 100px 60px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(201,150,58,0.08) 0%, transparent 70%);
+}
+.cta-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+.cta-title {
+  font-family: 'Fraunces', serif; font-size: clamp(36px, 4vw, 56px);
+  font-weight: 900; line-height: 1.1; margin-bottom: 16px; color: #fff;
+}
+.cta-title em { font-style: italic; color: var(--gold2); }
+.cta-sub { font-size: 16px; color: rgba(255,255,255,0.5); margin-bottom: 36px; line-height: 1.7; }
+.cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+/* ─── FOOTER ─── */
+footer {
+  background: #070f1e; padding: 48px 60px 32px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
+  margin-bottom: 40px;
+}
+.footer-brand p { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.7; margin-top: 12px; max-width: 280px; }
+.footer-col h4 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 14px; margin-bottom: 16px; color: rgba(255,255,255,0.7); }
+.footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,0.38); text-decoration: none; margin-bottom: 10px; transition: color 0.2s; }
+.footer-col a:hover { color: rgba(255,255,255,0.7); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.06); padding-top: 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  max-width: 1100px; margin: 0 auto;
+}
+.footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.28); }
+.footer-badges { display: flex; gap: 8px; }
+.footer-badge {
+  padding: 4px 12px; border-radius: 20px; font-size: 10px; font-weight: 600;
+  border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.38);
+}
+
+/* ─── ANIMATIONS ─── */
+.fade-up {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  section { padding: 80px 24px; }
+  .hero { padding: 100px 24px 60px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+  .hero-visual { order: -1; }
+  .how-grid, .profiles-grid, .lenders-grid, .features-grid, .testi-grid { grid-template-columns: 1fr 1fr; }
+  .app-inner { grid-template-columns: 1fr; gap: 48px; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .how-grid, .profiles-grid, .lenders-grid, .features-grid, .testi-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logomark">L</div>
+    <div class="nav-name">WeLend</div>
+  </div>
+  <div class="nav-links">
+    <a href="#how">How It Works</a>
+    <a href="#borrowers">Borrowers</a>
+    <a href="#lenders">Lenders</a>
+    <a href="#app">Get the App</a>
+  </div>
+  <div class="nav-cta">
+    <a href="#" class="btn-nav btn-outline-w">Sign In</a>
+    <a href="#" class="btn-nav btn-gold">Get Started</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-tag"><div class="hero-tag-dot"></div> Uganda's #1 Loan Marketplace</div>
+      <h1 class="hero-title">Where <em>lenders</em> meet the right <em>borrowers</em></h1>
+      <p class="hero-sub">WeLend connects licensed lenders with qualified borrowers across Uganda and East Africa. Post offers, apply for funding, close deals — fast.</p>
+      <div class="hero-actions">
+        <a href="#borrowers" class="btn-hero-primary">I Need a Loan</a>
+        <a href="#lenders" class="btn-hero-secondary">I Want to Lend</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="hstat-val">2,400+</div><div class="hstat-lbl">Loans Funded</div></div>
+        <div><div class="hstat-val">UGX 12B+</div><div class="hstat-lbl">Disbursed</div></div>
+        <div><div class="hstat-val">340+</div><div class="hstat-lbl">Active Lenders</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <!-- Floating badge left -->
+      <div class="float-card fc-left">
+        <div class="fc-label">Latest Funded</div>
+        <div class="fc-value">UGX 8,000,000</div>
+        <div class="fc-sub"><span class="fc-dot" style="background:#16A34A"></span>Just disbursed</div>
+      </div>
+      <!-- Phone -->
+      <div class="hero-phone">
+        <div class="phone-notch"></div>
+        <div class="phone-screen-inner">
+          <div class="psi-header">
+            <div class="psi-logo">
+              <div class="psi-lm">L</div>
+              <div class="psi-name">WeLend</div>
+            </div>
+            <div style="width:22px;height:22px;border-radius:50%;background:#0E9F8E;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:9px;color:#fff">AK</div>
+          </div>
+          <div class="psi-banner">
+            <div class="psi-banner-label">ACTIVE LOAN</div>
+            <div class="psi-banner-amount">UGX 8,000,000</div>
+            <div class="psi-banner-sub">Next payment due 15 Jun 2024</div>
+          </div>
+          <div class="psi-stats">
+            <div class="psi-stat"><div class="v">47</div><div class="l">Offers Live</div></div>
+            <div class="psi-stat"><div class="v">50%</div><div class="l">Repaid</div></div>
+            <div class="psi-stat"><div class="v">4.9★</div><div class="l">Rating</div></div>
+          </div>
+          <div class="psi-section">Active Offers</div>
+          <div class="psi-offer">
+            <div class="psi-offer-amount">UGX 50M available</div>
+            <div class="psi-offer-rate">5%/mo · Max 6 months</div>
+            <div class="psi-offer-meta">Business · Personal · Emergency</div>
+          </div>
+          <div class="psi-offer" style="border-left-color: #0E9F8E; background: rgba(14,159,142,0.08)">
+            <div class="psi-offer-amount">UGX 30M available</div>
+            <div class="psi-offer-rate" style="color:#12BCA8">6%/mo · Max 12 months</div>
+            <div class="psi-offer-meta">Agricultural · Business</div>
+          </div>
+        </div>
+      </div>
+      <!-- Floating badge right -->
+      <div class="float-card fc-right">
+        <div class="fc-label">Active Lenders</div>
+        <div class="fc-value">340+</div>
+        <div class="fc-sub" style="color:var(--gold2)">UGX 12B+ disbursed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="how-section" style="padding-top:100px;padding-bottom:100px">
+  <div style="max-width:1100px;margin:0 auto;padding:0 0 56px">
+    <div class="section-tag">How it Works</div>
+    <div class="section-title" style="color:#fff">Simple for both sides</div>
+    <div class="section-sub">Whether you're lending or borrowing, WeLend makes the process transparent, fast, and secure.</div>
+  </div>
+  <div class="how-grid" style="max-width:1100px;margin:0 auto">
+    <div class="how-col fade-up">
+      <div class="how-num">01</div>
+      <div class="how-icon" style="background:rgba(201,150,58,0.12);color:var(--gold2)">
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <div class="how-title">Create Your Profile</div>
+      <div class="how-desc">Register with your NIN and verify your phone number. Lenders get licensed under WeLend's Bank of Uganda framework.</div>
+    </div>
+    <div class="how-col fade-up" style="transition-delay:0.1s">
+      <div class="how-num">02</div>
+      <div class="how-icon" style="background:rgba(14,159,142,0.12);color:var(--teal2)">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </div>
+      <div class="how-title">Post or Browse</div>
+      <div class="how-desc">Lenders post standing offers with their rate and terms. Borrowers browse offers or post their own funding request to the marketplace.</div>
+    </div>
+    <div class="how-col fade-up" style="transition-delay:0.2s">
+      <div class="how-num">03</div>
+      <div class="how-icon" style="background:rgba(201,150,58,0.12);color:var(--gold2)">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="how-title">Match, Approve &amp; Fund</div>
+      <div class="how-desc">Lenders review applicants and approve with one tap. Funds disburse via MTN MoMo or Airtel Money within 24 hours.</div>
+    </div>
+  </div>
+</section>
+
+<!-- BORROWERS -->
+<section id="borrowers" class="borrow-section">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="section-tag">Borrowers</div>
+    <div class="section-title" style="color:var(--text)">People getting funded today</div>
+    <div class="section-sub">Browse active and recently funded borrowers across Uganda. Every applicant is verified.</div>
+    <div class="profiles-grid">
+
+      <div class="profile-card teal fade-up">
+        <div class="pc-avatar" style="background:#163256">AK</div>
+        <div class="pc-name">Agnes Kyomuhendo</div>
+        <div class="pc-role">Business Owner · Kampala</div>
+        <div class="pc-amount teal-c">UGX 8,000,000</div>
+        <div class="pc-detail">Stock financing · 4 months</div>
+        <span class="pc-badge green">Funded</span>
+        <div class="pc-progress"><div class="pc-progress-fill" style="width:50%;background:var(--teal)"></div></div>
+      </div>
+
+      <div class="profile-card teal fade-up" style="transition-delay:0.08s">
+        <div class="pc-avatar" style="background:#1a6e4e">RO</div>
+        <div class="pc-name">Ronald Okot</div>
+        <div class="pc-role">Farmer · Gulu</div>
+        <div class="pc-amount teal-c">UGX 12,000,000</div>
+        <div class="pc-detail">Agricultural inputs · 6 months</div>
+        <span class="pc-badge green">Funded</span>
+        <div class="pc-progress"><div class="pc-progress-fill" style="width:83%;background:var(--teal)"></div></div>
+      </div>
+
+      <div class="profile-card teal fade-up" style="transition-delay:0.16s">
+        <div class="pc-avatar" style="background:#4e1a6e">PN</div>
+        <div class="pc-name">Patience Nakato</div>
+        <div class="pc-role">Nurse · Entebbe</div>
+        <div class="pc-amount teal-c">UGX 5,000,000</div>
+        <div class="pc-detail">Emergency medical · 3 months</div>
+        <span class="pc-badge teal">Under Review</span>
+        <div class="pc-progress"><div class="pc-progress-fill" style="width:0%;background:var(--teal)"></div></div>
+      </div>
+
+      <div class="profile-card teal fade-up" style="transition-delay:0.24s">
+        <div class="pc-avatar" style="background:#6e3a1a">BK</div>
+        <div class="pc-name">Brian Kayiwa</div>
+        <div class="pc-role">Trader · Jinja</div>
+        <div class="pc-amount teal-c">UGX 3,500,000</div>
+        <div class="pc-detail">Salary advance · 2 months</div>
+        <span class="pc-badge yellow">Seeking Offers</span>
+        <div class="pc-progress"><div class="pc-progress-fill" style="width:0%;background:#D97706"></div></div>
+      </div>
+
+    </div>
+    <div style="text-align:center">
+      <a href="#" class="btn-hero-primary" style="display:inline-block;background:var(--teal);font-size:14px;padding:12px 28px">Browse All Borrowers →</a>
+    </div>
+  </div>
+</section>
+
+<!-- LENDERS -->
+<section id="lenders" class="lend-section">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="section-tag" style="color:var(--gold)">Lenders</div>
+    <div class="section-title" style="color:#fff">Licensed lenders on the platform</div>
+    <div class="section-sub">All lenders operate under WeLend's Bank of Uganda licensed umbrella. Competitive rates, transparent terms.</div>
+    <div class="lenders-grid">
+
+      <div class="lender-card fade-up">
+        <div class="lc-avatar" style="background:#163256">JM</div>
+        <div class="lc-name">James Mugisha</div>
+        <div class="lc-role">Individual Lender · Kampala</div>
+        <div class="lc-rate">5%/mo</div>
+        <div class="lc-cap">Up to UGX 50M · Max 6 months</div>
+        <div class="lc-tags"><span class="lc-tag">Business</span><span class="lc-tag">Personal</span><span class="lc-tag">Emergency</span></div>
+        <div class="lc-verified"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Verified</div>
+      </div>
+
+      <div class="lender-card fade-up" style="transition-delay:0.08s">
+        <div class="lc-avatar" style="background:#1a6e4e">RK</div>
+        <div class="lc-name">Robert Kiggundu</div>
+        <div class="lc-role">Individual Lender · Mbarara</div>
+        <div class="lc-rate">6%/mo</div>
+        <div class="lc-cap">Up to UGX 30M · Max 12 months</div>
+        <div class="lc-tags"><span class="lc-tag">Agricultural</span><span class="lc-tag">Business</span></div>
+        <div class="lc-verified"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Verified</div>
+      </div>
+
+      <div class="lender-card fade-up" style="transition-delay:0.16s">
+        <div class="lc-avatar" style="background:#6e1a1a">SN</div>
+        <div class="lc-name">Sarah Nakimuli</div>
+        <div class="lc-role">Individual Lender · Entebbe</div>
+        <div class="lc-rate">7%/mo</div>
+        <div class="lc-cap">Up to UGX 20M · Max 3 months</div>
+        <div class="lc-tags"><span class="lc-tag">Personal</span><span class="lc-tag">Emergency</span></div>
+        <div class="lc-verified"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Verified</div>
+      </div>
+
+      <div class="lender-card fade-up" style="transition-delay:0.24s">
+        <div class="lc-avatar" style="background:#3e1a6e">PM</div>
+        <div class="lc-name">Peter Muwanga</div>
+        <div class="lc-role">Company Lender · Kampala</div>
+        <div class="lc-rate">4.5%/mo</div>
+        <div class="lc-cap">Up to UGX 100M · Max 24 months</div>
+        <div class="lc-tags"><span class="lc-tag">All Types</span><span class="lc-tag">Education</span></div>
+        <div class="lc-verified"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Verified</div>
+      </div>
+
+    </div>
+    <div style="text-align:center">
+      <a href="#" class="btn-hero-primary" style="display:inline-block;font-size:14px;padding:12px 28px">View All Lenders →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-section">
+  <div class="features-inner">
+    <div style="margin-bottom:56px">
+      <div class="section-tag">Why WeLend</div>
+      <div class="section-title" style="color:#fff">Built for East Africa</div>
+      <div class="section-sub">Everything designed for how money moves in Uganda — MoMo, Airtel, local ID, local rates.</div>
+    </div>
+    <div class="features-grid">
+      <div class="feat-item fade-up">
+        <div class="feat-icon-wrap" style="background:rgba(201,150,58,0.1);color:var(--gold2)">
+          <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        </div>
+        <div class="feat-title">MoMo &amp; Airtel Disbursement</div>
+        <div class="feat-desc">Approved loans land in your MTN or Airtel wallet within 24 hours. No bank account required.</div>
+      </div>
+      <div class="feat-item fade-up" style="transition-delay:0.07s">
+        <div class="feat-icon-wrap" style="background:rgba(14,159,142,0.1);color:var(--teal2)">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="feat-title">Bank of Uganda Licensed</div>
+        <div class="feat-desc">All lending happens under WeLend's regulated umbrella licence. Borrowers and lenders are fully protected.</div>
+      </div>
+      <div class="feat-item fade-up" style="transition-delay:0.14s">
+        <div class="feat-icon-wrap" style="background:rgba(201,150,58,0.1);color:var(--gold2)">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="feat-title">Live Loan Calculator</div>
+        <div class="feat-desc">See your exact monthly repayment before you apply. No hidden fees, no surprises at disbursement.</div>
+      </div>
+      <div class="feat-item fade-up" style="transition-delay:0.21s">
+        <div class="feat-icon-wrap" style="background:rgba(14,159,142,0.1);color:var(--teal2)">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="feat-title">Dual Marketplace</div>
+        <div class="feat-desc">Lenders post standing offers. Borrowers post requests. Both sides can initiate — the market is truly open.</div>
+      </div>
+      <div class="feat-item fade-up" style="transition-delay:0.28s">
+        <div class="feat-icon-wrap" style="background:rgba(201,150,58,0.1);color:var(--gold2)">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16h16V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <div class="feat-title">Digital Document Upload</div>
+        <div class="feat-desc">Upload your NIN, bank statements, and business documents from your phone. Verified in minutes.</div>
+      </div>
+      <div class="feat-item fade-up" style="transition-delay:0.35s">
+        <div class="feat-icon-wrap" style="background:rgba(14,159,142,0.1);color:var(--teal2)">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="feat-title">24-Hour Disbursement</div>
+        <div class="feat-desc">From approval to funds in your wallet — we process within 24 hours, every day of the week.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APP DOWNLOAD -->
+<section id="app" class="app-section">
+  <div class="app-bg-glow"></div>
+  <div class="app-inner">
+    <div class="app-text">
+      <div class="section-tag">Get the App</div>
+      <h2 class="app-title">Your loans, right in your pocket</h2>
+      <p class="app-sub">Browse offers, apply for funding, track repayments, and manage your wallet — all from the WeLend mobile app.</p>
+      <div class="app-buttons">
+        <!-- iOS -->
+        <a href="#" class="store-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <div class="store-btn-text">
+            <span class="store-btn-sub">Download on the</span>
+            <span class="store-btn-name">App Store</span>
+          </div>
+        </a>
+        <!-- Android -->
+        <a href="#" class="store-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.523 15.341l-4.5-2.6-4.5 2.6L3 8l2.386-.002L5.37 7.97l5.26 9.1 1.37-.79 1.37.79 5.26-9.1-.016.028L21 8l-3.477 7.341zM8.192 3.192L5.955 4.32l3.5 6.063 2.545-1.47-3.808-5.721zm7.616 0l-3.808 5.721 2.545 1.47 3.5-6.063-2.237-1.128z"/></svg>
+          <div class="store-btn-text">
+            <span class="store-btn-sub">Get it on</span>
+            <span class="store-btn-name">Google Play</span>
+          </div>
+        </a>
+      </div>
+      <div class="app-perks">
+        <div class="app-perk"><div class="app-perk-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Free to download &amp; create account</div>
+        <div class="app-perk"><div class="app-perk-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Available for iOS 14+ and Android 8+</div>
+        <div class="app-perk"><div class="app-perk-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Works on all MTN &amp; Airtel networks</div>
+        <div class="app-perk"><div class="app-perk-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>256-bit encrypted &amp; secure</div>
+      </div>
+    </div>
+
+    <!-- Phone pair -->
+    <div class="app-phones">
+      <!-- Lender phone -->
+      <div class="app-phone ap-lender">
+        <div class="ap-notch"></div>
+        <div class="ap-content">
+          <div class="ap-header">
+            <div style="display:flex;align-items:center;gap:5px"><div class="ap-lm" style="background:var(--gold)">L</div><div style="font-size:9px;font-weight:700">WeLend</div></div>
+            <div class="ap-label">LENDER</div>
+          </div>
+          <div class="ap-hero-card" style="background:linear-gradient(135deg,#163256,#1e3a6e)">
+            <div style="font-size:7px;opacity:0.6;margin-bottom:3px">TOTAL DEPLOYED</div>
+            <div class="ap-val">UGX 48,000,000</div>
+            <div class="ap-sub2">↑ 12% this month</div>
+          </div>
+          <div style="display:flex;gap:4px;margin-bottom:6px">
+            <div style="flex:1;background:rgba(201,150,58,0.1);border-radius:7px;padding:6px;text-align:center;border-top:2px solid var(--gold)"><div style="font-family:'Fraunces',serif;font-weight:700;font-size:10px">3</div><div style="font-size:6.5px;color:rgba(255,255,255,0.35)">Offers</div></div>
+            <div style="flex:1;background:rgba(255,255,255,0.05);border-radius:7px;padding:6px;text-align:center"><div style="font-family:'Fraunces',serif;font-weight:700;font-size:10px">7</div><div style="font-size:6.5px;color:rgba(255,255,255,0.35)">Apps</div></div>
+            <div style="flex:1;background:rgba(255,255,255,0.05);border-radius:7px;padding:6px;text-align:center"><div style="font-family:'Fraunces',serif;font-weight:700;font-size:10px;color:#16A34A">6.2M</div><div style="font-size:6.5px;color:rgba(255,255,255,0.35)">Earned</div></div>
+          </div>
+          <div class="ap-row">
+            <div class="ap-row-title">UGX 50M · 5%/mo</div>
+            <div class="ap-row-sub">Business · Personal · 12 applicants</div>
+          </div>
+          <div class="ap-row">
+            <div class="ap-row-title">UGX 20M · 7%/mo</div>
+            <div class="ap-row-sub">Personal · Emergency · 9 applicants</div>
+          </div>
+        </div>
+      </div>
+      <!-- Borrower phone -->
+      <div class="app-phone ap-borrower">
+        <div class="ap-notch"></div>
+        <div class="ap-content">
+          <div class="ap-header">
+            <div style="display:flex;align-items:center;gap:5px"><div class="ap-lm" style="background:var(--teal)">L</div><div style="font-size:9px;font-weight:700">WeLend</div></div>
+            <div class="ap-label">BORROWER</div>
+          </div>
+          <div class="ap-hero-card" style="background:linear-gradient(135deg,var(--teal),var(--teal2))">
+            <div style="font-size:7px;opacity:0.75;margin-bottom:3px">ACTIVE LOAN</div>
+            <div class="ap-val">UGX 8,000,000</div>
+            <div class="ap-sub2">Next: UGX 2.4M due 15 Jun</div>
+          </div>
+          <div style="display:flex;gap:4px;margin-bottom:6px">
+            <div style="flex:1;background:rgba(14,159,142,0.12);border-radius:7px;padding:6px;text-align:center;border-top:2px solid var(--teal)"><div style="font-family:'Fraunces',serif;font-weight:700;font-size:10px">47</div><div style="font-size:6.5px;color:rgba(255,255,255,0.35)">Offers</div></div>
+            <div style="flex:1;background:rgba(255,255,255,0.05);border-radius:7px;padding:6px;text-align:center"><div style="font-family:'Fraunces',serif;font-weight:700;font-size:10px">50%</div><div style="font-size:6.5px;color:rgba(255,255,255,0.35)">Repaid</div></div>
+            <div style="flex:1;background:rgba(255,255,255,0.05);border-radius:7px;padding:6px;text-align:center"><div style="font-family:'Fraunces',serif;font-weight:700;font-size:10px;color:#C9963A">2</div><div style="font-size:6.5px;color:rgba(255,255,255,0.35)">Pending</div></div>
+          </div>
+          <div class="ap-row">
+            <div class="ap-row-title" style="color:var(--teal2)">Browse Lender Offers</div>
+            <div class="ap-row-sub">47 offers available now</div>
+          </div>
+          <div class="ap-row">
+            <div class="ap-row-title">Post a Borrowing Request</div>
+            <div class="ap-row-sub">Lenders will send you offers</div>
+          </div>
+          <div class="ap-row" style="background:rgba(14,159,142,0.08);border:none">
+            <div class="ap-row-title" style="color:#16A34A">Payment Confirmed ✓</div>
+            <div class="ap-row-sub">UGX 2,400,000 received</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="section-tag">Testimonials</div>
+    <div class="section-title">Trusted across Uganda</div>
+    <div class="section-sub">From farmers in Gulu to traders in Kampala — real people, real funding.</div>
+    <div class="testi-grid">
+      <div class="testi-card fade-up">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"I posted my request on a Friday and had three lender offers by Saturday morning. The whole process — documents, guarantors, approval — was done on my phone."</div>
+        <div class="testi-author">
+          <div class="testi-ava" style="background:var(--teal)">AK</div>
+          <div><div class="testi-name">Agnes Kyomuhendo</div><div class="testi-role">Business Owner, Kampala</div></div>
+        </div>
+      </div>
+      <div class="testi-card fade-up" style="transition-delay:0.1s">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"As a lender, I just posted my offer once and applicants started coming in. I approve from my phone, funds leave my wallet automatically. It's genuinely passive."</div>
+        <div class="testi-author">
+          <div class="testi-ava" style="background:var(--gold)">JM</div>
+          <div><div class="testi-name">James Mugisha</div><div class="testi-role">Licensed Lender, Kampala</div></div>
+        </div>
+      </div>
+      <div class="testi-card fade-up" style="transition-delay:0.2s">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"I'm a farmer and I needed money for seeds before the rains. WeLend matched me with a lender who does agricultural loans. Money was in my Airtel wallet the next day."</div>
+        <div class="testi-author">
+          <div class="testi-ava" style="background:#1a6e4e">RO</div>
+          <div><div class="testi-name">Ronald Okot</div><div class="testi-role">Farmer, Gulu</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-bg"></div>
+  <div class="cta-inner">
+    <h2 class="cta-title">Ready to <em>connect</em>, borrow, and <em>grow</em>?</h2>
+    <p class="cta-sub">Join thousands of Ugandans already using WeLend to access fair, fast, licensed lending.</p>
+    <div class="cta-btns">
+      <a href="#" class="btn-hero-primary">Start Borrowing</a>
+      <a href="#" class="btn-hero-secondary">Become a Lender</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="nav-logo" style="margin-bottom:8px">
+        <div class="nav-logomark">L</div>
+        <div class="nav-name">WeLend</div>
+      </div>
+      <p>Uganda's licensed peer-to-peer lending marketplace. Connecting borrowers and lenders across East Africa under a regulated framework.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="#">Browse Offers</a>
+      <a href="#">Post a Request</a>
+      <a href="#">Become a Lender</a>
+      <a href="#">How It Works</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#">About Us</a>
+      <a href="#">Careers</a>
+      <a href="#">Blog</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="#">Terms of Service</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Lending Framework</a>
+      <a href="#">BoU Licence</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 WeLend Ltd. Licensed under Bank of Uganda Framework. All rights reserved.</p>
+    <div class="footer-badges">
+      <div class="footer-badge">Bank of Uganda</div>
+      <div class="footer-badge">SSL Secured</div>
+      <div class="footer-badge">MoMo Certified</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+// Nav scroll tint
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  if (window.scrollY > 60) { nav.style.background = 'rgba(11,28,56,0.97)'; }
+  else { nav.style.background = 'rgba(11,28,56,0.85)'; }
+});
+</script>
+</body>
+</html>

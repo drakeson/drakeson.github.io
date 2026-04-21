@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LendFlow — Borrower Portal</title>
+<title>WeLend — Borrower Portal</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--navy:#0D1F3C;--nm:#163256;--nc:#1a3260;--teal:#0E9F8E;--tl:#12BCA8;--tg:#E6F7F5;--tb:#0e9f8e33;--off:#F7F8FA;--tx:#1a2540;--mu:#6b7a99;--ok:#16A34A;--er:#E03E3E;--wa:#D97706;--sw:240px;--th:60px}
@@ -115,7 +115,7 @@ tr:hover td{background:#fafbfd}
 </head>
 <body>
 <aside class="sidebar">
-  <div class="slog"><div class="lm">L</div><div><div class="lt">LendFlow</div><div class="ls">BORROWER PORTAL</div></div></div>
+  <div class="slog"><div class="lm">L</div><div><div class="lt">WeLend</div><div class="ls">BORROWER PORTAL</div></div></div>
   <nav class="snav">
     <div class="ns">Overview</div>
     <div class="ni" onclick="show('dashboard')"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>Dashboard</div>
@@ -152,7 +152,7 @@ tr:hover td{background:#fafbfd}
   <div class="screen on" id="s-login">
     <div class="auth-wrap">
       <div class="acard">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:24px"><div class="lm" style="width:42px;height:42px;font-size:22px">L</div><div><div style="font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:var(--navy)">LendFlow</div><div style="font-size:11px;color:var(--mu)">Borrower Portal</div></div></div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:24px"><div class="lm" style="width:42px;height:42px;font-size:22px">L</div><div><div style="font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:var(--navy)">WeLend</div><div style="font-size:11px;color:var(--mu)">Borrower Portal</div></div></div>
         <div class="atitle">Welcome back</div>
         <div class="asub">Sign in to borrow from Uganda's loan marketplace</div>
         <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:20px">
@@ -172,7 +172,7 @@ tr:hover td{background:#fafbfd}
   <div class="screen" id="s-register">
     <div class="auth-wrap" style="align-items:flex-start;padding-top:40px">
       <div class="acard" style="width:560px">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:24px"><div class="lm" style="width:42px;height:42px;font-size:22px">L</div><div><div style="font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:var(--navy)">LendFlow</div><div style="font-size:11px;color:var(--mu)">Borrower Portal</div></div></div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:24px"><div class="lm" style="width:42px;height:42px;font-size:22px">L</div><div><div style="font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:var(--navy)">WeLend</div><div style="font-size:11px;color:var(--mu)">Borrower Portal</div></div></div>
         <div class="atitle">Start Borrowing</div>
         <div class="asub">Apply to licensed lenders. Get funded fast. Connect. Borrow. Grow.</div>
         <div class="atabs"><div class="atab on" onclick="stab(this)">Individual</div><div class="atab" onclick="stab(this)">Business</div></div>
@@ -186,7 +186,7 @@ tr:hover td{background:#fafbfd}
           <div class="fg"><label>Password</label><input type="password" placeholder="••••••••"></div>
           <div class="fg"><label>Confirm Password</label><input type="password" placeholder="••••••••"></div>
         </div>
-        <div style="background:var(--tg);border:1px solid var(--tb);border-radius:10px;padding:12px;font-size:12px;color:#0a6b5e;margin-bottom:20px;line-height:1.5">By registering you agree to LendFlow's Terms of Service. Loans are facilitated under the Bank of Uganda licensed framework.</div>
+        <div style="background:var(--tg);border:1px solid var(--tb);border-radius:10px;padding:12px;font-size:12px;color:#0a6b5e;margin-bottom:20px;line-height:1.5">By registering you agree to WeLend's Terms of Service. Loans are facilitated under the Bank of Uganda licensed framework.</div>
         <button class="btn bt" style="width:100%;padding:12px;font-size:15px" onclick="show('dashboard')">Create Borrower Account</button>
         <div style="text-align:center;margin-top:14px;font-size:13px;color:var(--mu)">Already registered? <span style="color:var(--teal);font-weight:600;cursor:pointer" onclick="show('login')">Sign In</span></div>
       </div>
@@ -381,7 +381,7 @@ tr:hover td{background:#fafbfd}
         <div style="padding:12px 16px;border-bottom:1px solid #f0f3f8;display:flex;justify-content:space-between;font-size:13px"><span style="color:var(--mu)">Total Repayable</span><span style="font-weight:700;color:var(--teal)">UGX 9,200,000</span></div>
         <div style="padding:12px 16px;display:flex;justify-content:space-between;font-size:13px"><span style="color:var(--mu)">Guarantors</span><span style="font-weight:600">Sarah Mirembe · (Pending 1)</span></div>
       </div>
-      <div style="background:#fef9e8;border:1px solid #f0c050;border-radius:10px;padding:12px 16px;font-size:12px;color:#92650a;margin-bottom:16px">By submitting, you agree to LendFlow's Terms and confirm the information above is accurate.</div>
+      <div style="background:#fef9e8;border:1px solid #f0c050;border-radius:10px;padding:12px 16px;font-size:12px;color:#92650a;margin-bottom:16px">By submitting, you agree to WeLend's Terms and confirm the information above is accurate.</div>
       <div style="display:flex;justify-content:flex-end;gap:10px"><button class="btn bo" onclick="show('apply-3')">Back</button><button class="btn bt" style="padding:10px 28px" onclick="show('app-submitted')">Submit Application</button></div>
     </div>
   </div>
