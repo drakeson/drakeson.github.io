@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LendFlow — Lender Mobile App</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:#060d18;color:#fff;min-height:100vh;padding:40px 24px 80px}
+.page-header{text-align:center;margin-bottom:44px}
+.brand{display:inline-flex;align-items:center;gap:10px;margin-bottom:14px}
+.bmark{width:38px;height:38px;background:#C9963A;border-radius:11px;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:900;font-size:20px;color:#fff}
+.bname{font-family:'Fraunces',serif;font-weight:700;font-size:21px;color:#fff}
+.ptitle{font-family:'Fraunces',serif;font-weight:700;font-size:32px;color:#fff;margin-bottom:6px}
+.psub{font-size:13px;color:rgba(255,255,255,0.35);max-width:440px;margin:0 auto}
+.filter-bar{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin-bottom:36px}
+.ftag{padding:6px 15px;border-radius:18px;border:1.5px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.38);font-size:12px;font-weight:500;cursor:pointer;transition:all 0.2s}
+.ftag:hover{border-color:rgba(201,150,58,0.4);color:rgba(201,150,58,0.6)}
+.ftag.on{background:rgba(201,150,58,0.1);border-color:#C9963A;color:#C9963A}
+.phone-grid{display:flex;flex-wrap:wrap;gap:26px;justify-content:center;max-width:1400px;margin:0 auto}
+.pw{display:flex;flex-direction:column;align-items:center;gap:9px;cursor:pointer}
+.pw:hover .pf{border-color:rgba(201,150,58,0.5)}
+.plbl{font-size:10px;font-weight:600;color:rgba(255,255,255,0.25);letter-spacing:0.8px;text-transform:uppercase;text-align:center}
+.pf{width:194px;height:420px;background:#101c2e;border-radius:34px;border:2px solid rgba(255,255,255,0.07);position:relative;overflow:hidden;transition:border-color 0.2s;box-shadow:0 5px 24px rgba(0,0,0,0.5)}
+.notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:70px;height:20px;background:#060d18;border-radius:0 0 12px 12px;z-index:10}
+.status{position:absolute;top:0;left:0;right:0;height:33px;display:flex;align-items:center;justify-content:space-between;padding:6px 13px 0;z-index:9;font-size:8.5px;font-weight:600;color:rgba(255,255,255,0.45)}
+.scr{position:absolute;top:33px;left:0;right:0;bottom:20px;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;background:#101c2e}
+.scr::-webkit-scrollbar{display:none}
+.home{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);width:54px;height:3px;background:rgba(255,255,255,0.16);border-radius:2px}
+/* TOP NAV */
+.tnav{display:flex;align-items:center;justify-content:space-between;padding:9px 11px 8px;border-bottom:1px solid rgba(255,255,255,0.05)}
+.tl{display:flex;align-items:center;gap:6px}
+.tlogo{width:21px;height:21px;background:#C9963A;border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:900;font-size:11px;color:#fff;flex-shrink:0}
+.ttitle{font-family:'Fraunces',serif;font-weight:700;font-size:11.5px;color:#fff}
+.tback{width:24px;height:24px;border-radius:7px;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center}
+.tr{display:flex;align-items:center;gap:7px}
+.tic{width:24px;height:24px;border-radius:7px;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;position:relative}
+.tav{width:24px;height:24px;border-radius:50%;background:#C9963A;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:9px;color:#fff}
+.tdot{width:5px;height:5px;background:#E03E3E;border-radius:50%;position:absolute;top:3px;right:3px;border:1px solid #101c2e}
+/* MICRO COMPONENTS */
+.mc{background:#172438;border-radius:11px;padding:11px;margin:0 9px 8px}
+.ml{font-size:8px;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.7px;margin-bottom:3px}
+.mv{font-family:'Fraunces',serif;font-weight:700;font-size:17px;color:#fff}
+.mb{display:inline-block;padding:2px 7px;border-radius:8px;font-size:8px;font-weight:700}
+.mbg{background:rgba(74,222,128,0.12);color:#4ade80}
+.mby{background:rgba(251,191,36,0.12);color:#fbbf24}
+.mbau{background:rgba(201,150,58,0.12);color:#C9963A}
+.mbgr{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.35)}
+.mbr{background:rgba(248,113,113,0.12);color:#f87171}
+.mbtn{display:block;width:calc(100% - 18px);margin:0 9px 7px;padding:10px;border-radius:9px;border:none;font-size:11.5px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;text-align:center}
+.mbg2{background:#C9963A;color:#fff}
+.mbo{background:transparent;border:1.5px solid rgba(255,255,255,0.11);color:rgba(255,255,255,0.55)}
+.mrow{display:flex;align-items:center;gap:8px;padding:8px 9px;border-bottom:1px solid rgba(255,255,255,0.045)}
+.mrow:last-child{border-bottom:none}
+.mstat-row{display:flex;gap:5px;padding:0 9px;margin-bottom:8px}
+.mst{flex:1;background:#172438;border-radius:8px;padding:8px 6px;text-align:center;border-top:2px solid #C9963A}
+.mst .sv{font-family:'Fraunces',serif;font-weight:700;font-size:11.5px;color:#fff}
+.mst .sl{font-size:7px;color:rgba(255,255,255,0.32);margin-top:1px}
+.mav{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:10px;color:#fff;flex-shrink:0}
+.mpb{height:3px;background:rgba(255,255,255,0.07);border-radius:2px}
+.mpf{height:100%;border-radius:2px;background:#C9963A}
+.msb{height:3px;background:rgba(255,255,255,0.07);border-radius:2px;margin-top:2px;width:52px}
+.msf{height:100%;border-radius:2px;background:#C9963A}
+.mchips{display:flex;gap:5px;flex-wrap:wrap;padding:0 9px;margin-bottom:8px}
+.mchip{padding:4px 9px;border-radius:11px;border:1.5px solid rgba(255,255,255,0.09);font-size:8.5px;font-weight:600;color:rgba(255,255,255,0.4)}
+.mchip.on{background:rgba(201,150,58,0.11);border-color:#C9963A;color:#C9963A}
+.minput{height:33px;border:1.5px solid rgba(255,255,255,0.09);border-radius:8px;padding:0 9px;font-size:10.5px;color:#fff;background:rgba(255,255,255,0.04);outline:none;width:100%;font-family:'DM Sans',sans-serif;display:block;margin-bottom:8px}
+.minput:focus{border-color:#C9963A}
+.msel{height:33px;border:1.5px solid rgba(255,255,255,0.09);border-radius:8px;padding:0 9px;font-size:10.5px;color:#fff;background:#182d46;outline:none;width:100%;font-family:'DM Sans',sans-serif;display:block;margin-bottom:8px}
+.mtrow{display:flex;align-items:center;justify-content:space-between;padding:8px 9px;border-bottom:1px solid rgba(255,255,255,0.045)}
+.mtrow:last-child{border-bottom:none}
+.mtgl{width:32px;height:17px;background:rgba(255,255,255,0.1);border-radius:9px;position:relative;flex-shrink:0}
+.mtgl.on{background:#C9963A}
+.mtgl::after{content:'';width:12px;height:12px;background:#fff;border-radius:50%;position:absolute;top:2.5px;left:2.5px;transition:left 0.2s}
+.mtgl.on::after{left:17.5px}
+.mbar-chart{display:flex;align-items:flex-end;gap:4px;height:52px;padding:0 9px;margin-bottom:5px}
+.mbc-w{display:flex;flex-direction:column;align-items:center;gap:2px;flex:1}
+.mbc{width:100%;background:#C9963A;border-radius:2px 2px 0 0;min-height:2px}
+.mbc-l{font-size:6.5px;color:rgba(255,255,255,0.28)}
+.moc{background:#1e3154;border-radius:9px;margin:0 9px 7px;padding:9px;border-left:3px solid #C9963A}
+.mwh{background:linear-gradient(135deg,#0D1F3C,#1a3260);margin:0 9px 9px;border-radius:11px;padding:13px}
+.mlc{background:linear-gradient(135deg,#0D1F3C,#1a3260);border-radius:11px;margin:0 9px 8px;padding:11px;border:1.5px solid rgba(201,150,58,0.45)}
+.mstep{display:flex;gap:3px;padding:0 9px;margin-bottom:9px}
+.msd{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,0.07)}
+.msd.done{background:#4ade80}
+.msd.act{background:#C9963A}
+.mtl-item{display:flex;gap:8px;padding-bottom:11px;position:relative}
+.mtl-dot{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:7.5px;font-weight:700;flex-shrink:0}
+.mtl-done{background:#4ade80;color:#0a1a0a}
+.mtl-pend{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.28)}
+.mtl-line{position:absolute;left:9px;top:18px;bottom:0;width:1px;background:rgba(255,255,255,0.05)}
+.mtl-item:last-child .mtl-line{display:none}
+/* MODAL */
+.modal-bg{display:none;position:fixed;inset:0;background:#000;z-index:1000;align-items:center;justify-content:center}
+.modal-bg.open{display:flex}
+.modal-phone{width:318px;height:88vh;max-height:688px;background:#101c2e;border-radius:38px;border:2px solid rgba(255,255,255,0.1);overflow:hidden;position:relative}
+.modal-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:88px;height:24px;background:#000;border-radius:0 0 14px 14px;z-index:10}
+.modal-status{position:absolute;top:0;left:0;right:0;height:38px;display:flex;align-items:center;justify-content:space-between;padding:8px 15px 0;z-index:9;font-size:10px;font-weight:600;color:rgba(255,255,255,0.45)}
+.modal-inner{position:absolute;top:38px;left:0;right:0;bottom:20px;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;background:#101c2e}
+.modal-inner::-webkit-scrollbar{display:none}
+.modal-home{position:absolute;bottom:7px;left:50%;transform:translateX(-50%);width:70px;height:4px;background:rgba(255,255,255,0.16);border-radius:2px}
+.mclose{position:fixed;top:22px;right:22px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.8);font-size:16px;cursor:pointer;z-index:1001;display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif}
+.mnav{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:10px;z-index:1001}
+.mnbtn{padding:8px 20px;border-radius:18px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.75);font-size:11.5px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif}
+.mnbtn:hover{background:rgba(201,150,58,0.18);border-color:rgba(201,150,58,0.45)}
+.mctr{padding:7px 16px;border-radius:18px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.09);color:rgba(255,255,255,0.5);font-size:10.5px;font-family:'DM Sans',sans-serif;white-space:nowrap}
+/* IC SVG */
+.ic{display:inline-flex;align-items:center;justify-content:center}
+</style>
+</head>
+<body>
+<div class="page-header">
+  <div class="brand"><div class="bmark">L</div><div class="bname">LendFlow</div></div>
+  <div class="ptitle">Lender Mobile App</div>
+  <div class="psub">14 screens &nbsp;·&nbsp; Gold theme &nbsp;·&nbsp; Click any screen to expand</div>
+</div>
+<div class="filter-bar">
+  <div class="ftag on" onclick="doFilter('all',this)">All</div>
+  <div class="ftag" onclick="doFilter('lending',this)">My Lending</div>
+  <div class="ftag" onclick="doFilter('apps',this)">Applications</div>
+  <div class="ftag" onclick="doFilter('portfolio',this)">Portfolio</div>
+  <div class="ftag" onclick="doFilter('finance',this)">Finance</div>
+  <div class="ftag" onclick="doFilter('account',this)">Account</div>
+</div>
+<div class="phone-grid" id="grid">
+
+<!-- ────────────────────────────────────────────── -->
+<!-- 1  DASHBOARD -->
+<!-- ────────────────────────────────────────────── -->
+<div class="pw" data-tag="lending" onclick="openModal(0)">
+ <div class="pf"><div class="notch"></div><div class="status"><span>9:41</span><span>LTE ▌</span></div>
+ <div class="scr">
+  <div class="tnav">
+   <div class="tl"><div class="tlogo">L</div><div class="ttitle">LendFlow</div></div>
+   <div class="tr">
+    <div class="tic" style="position:relative">
+     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+     <div class="tdot"></div>
+    </div>
+    <div class="tav">JM</div>
+   </div>
+  </div>
+  <div style="padding:10px 9px 7px"><div style="font-size:9px;color:rgba(255,255,255,0.38)">Good morning,</div><div style="font-family:'Fraunces',serif;font-weight:700;font-size:16px;color:#C9963A">James Mugisha</div></div>
+  <div class="mc" style="background:linear-gradient(135deg,#163256,#1a3260);border:1px solid rgba(201,150,58,0.16)">
+   <div class="ml">Total Deployed Capital</div>
+   <div class="mv" style="font-size:20px">UGX 48,000,000</div>
+   <div style="font-size:8.5px;color:#C9963A;margin-top:3px">+12% this month</div>
+   <div style="display:flex;gap:5px;margin-top:9px">
+    <div style="flex:1;background:rgba(255,255,255,0.06);border-radius:6px;padding:6px;text-align:center"><div style="font-size:7.5px;color:rgba(255,255,255,0.32)">Offers</div><div style="font-family:'Fraunces',serif;font-weight:700;font-size:12px;color:#C9963A">3</div></div>
+    <div style="flex:1;background:rgba(255,255,255,0.06);border-radius:6px;padding:6px;text-align:center"><div style="font-size:7.5px;color:rgba(255,255,255,0.32)">Applications</div><div style="font-family:'Fraunces',serif;font-weight:700;font-size:12px;color:#fff">7</div></div>
+    <div style="flex:1;background:rgba(255,255,255,0.06);border-radius:6px;padding:6px;text-align:center"><div style="font-size:7.5px;color:rgba(255,255,255,0.32)">Earned</div><div style="font-family:'Fraunces',serif;font-weight:700;font-size:12px;color:#4ade80">6.2M</div></div>
+   </div>
+  </div>
+  <div style="padding:0 9px 6px;font-size:9.5px;font-weight:700;color:#fff">My Active Offers</div>
+  <div class="moc"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:3px"><div style="font-family:'Fraunces',serif;font-weight:700;font-size:12.5px;color:#fff">UGX 50,000,000</div><span class="mb mbg">Active</span></div><div style="font-size:8.5px;color:#C9963A;font-weight:600">5%/mo · Max 6 months</div><div style="font-size:8px;color:rgba(255,255,255,0.28);margin-top:2px">12 applicants · 3 approved</div></div>
+  <div class="moc"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:3px"><div style="font-family:'Fraunces',serif;font-weight:700;font-size:12.5px;color:#fff">UGX 20,000,000</div><span class="mb mbg">Active</span></div><div style="font-size:8.5px;color:#C9963A;font-weight:600">7%/mo · Max 3 months</div><div style="font-size:8px;color:rgba(255,255,255,0.28);margin-top:2px">9 applicants · 2 approved</div></div>
+ </div><div class="home"></div></div>
+ <div class="plbl">01 · Dashboard</div>
+</div>
+
+<!-- 2  POST AN OFFER -->
+<div class="pw" data-tag="lending" onclick="openModal(1)">
+ <div class="pf"><div class="notch"></div><div class="status"><span>9:41</span><span>LTE ▌</span></div>
+ <div class="scr">
+  <div class="tnav">
+   <div class="tl"><div class="tback"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></div><div class="ttitle">Post an Offer</div></div>
+   <div class="tr"><div class="tav">JM</div></div>
+  </div>
+  <div style="padding:4px 9px 9px;font-size:9px;color:rgba(255,255,255,0.32)">Set your terms once — borrowers apply to you.</div>
+  <div class="mc">
+   <div class="ml" style="margin-bottom:4px">Max Loan Amount (UGX)</div><input class="minput" value="50,000,000">
+   <div class="ml" style="margin-bottom:4px">Interest Rate (% / month)</div><input class="minput" value="5">
+   <div class="ml" style="margin-bottom:4px">Maximum Duration</div>
+   <select class="msel"><option selected>6 months</option><option>3 months</option><option>12 months</option></select>
+   <div class="ml" style="margin-bottom:4px">Min Loan Amount (UGX)</div><input class="minput" value="1,000,000" style="margin-bottom:0">
+  </div>
+  <div style="padding:0 9px;margin-bottom:8px"><div class="ml" style="margin-bottom:5px">Accepted Loan Types</div>
+   <div class="mchips" style="padding:0"><div class="mchip on">Business</div><div class="mchip on">Personal</div><div class="mchip">Agricultural</div><div class="mchip on">Emergency</div><div class="mchip">Education</div></div>
+  </div>
+  <button class="mbtn mbg2">Post Offer</button>
+  <button class="mbtn mbo">Save as Draft</button>
+ </div><div class="home"></div></div>
+ <div class="plbl">02 · Post an Offer</div>
+</div>
+
+<!-- 3  OFFER POSTED SUCCESS -->
+<div class="pw" data-tag="lending" onclick="openModal(2)">
+ <div class="pf"><div class="notch"></div><div class="status"><span>9:41</span><span>LTE ▌</span></div>
+ <div class="scr">
+  <div class="tnav">
+   <div class="tl"><div class="tlogo">L</div><div class="ttitle">LendFlow</div></div>
+   <div class="tr"><div class="tav">JM</div></div>
+  </div>
+  <div style="text-align:center;padding:22px 12px 14px">
+   <div style="width:50px;height:50px;background:rgba(201,150,58,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C9963A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+   </div>
+   <div style="font-family:'Fraunces',serif;font-weight:700;font-size:16px;color:#fff;margin-bottom:4px">Offer Posted!</div>
+   <div style="font-size:9px;color:rgba(255,255,255,0.32);line-height:1.5;margin-bottom:13px">Your offer is live on the marketplace.</div>
+   <div style="background:#172438;border-radius:9px;padding:10px;text-align:left;margin-bottom:13px">
+    <div style="display:flex;justify-content:space-between;font-size:9px;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:rgba(255,255,255,0.35)">Offer ID</span><span style="font-weight:600;color:#fff">#LF-2024-007</span></div>
+    <div style="display:flex;justify-content:space-between;font-size:9px;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:rgba(255,255,255,0.35)">Amount Range</span><span style="font-weight:600;color:#fff">UGX 1M – 50M</span></div>
+    <div style="display:flex;justify-content:space-between;font-size:9px;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.05)"><span style="color:rgba(255,255,255,0.35)">Rate</span><span style="font-weight:600;color:#C9963A">5%/month</span></div>
+    <div style="display:flex;justify-content:space-between;font-size:9px;padding:4px 0"><span style="color:rgba(255,255,255,0.35)">Duration</span><span style="font-weight:600;color:#fff">Max 6 months</span></div>
+   </div>
+  </div>
+  <button class="mbtn mbg2">View My Offers</button>
+  <button class="mbtn mbo">Post Another</button>
+ </div><div class="home"></div></div>
+ <div class="plbl">03 · Offer Posted</div>
+</div>
+
+<!-- 4  MY OFFERS -->
+<div class="pw" data-tag="lending" onclick="openModal(3)">
+ <div class="pf"><div class="notch"></div><div class="status"><span>9:41</span><span>LTE ▌</span></div>
+ <div class="scr">
+  <div class="tnav">
+   <div class="tl"><div class="tlogo">L</div><div class="ttitle">My Offers</div></div>
+   <div class="tr"><div class="tic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+  </div>
+  <div class="mchips" style="margin-top:7px"><div class="mchip on">All</div><div class="mchip">Active</div><div class="mchip">Draft</div><div class="mchip">Closed</div></div>
+  <div class="moc">
+   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px"><div style="font-family:'Fraunces',serif;font-weight:700;font-size:13px;color:#fff">UGX 50,000,000</div><span class="mb mbg">Active</span></div>
+   <div style="font-size:8.5px;color:#C9963A;font-weight:600;margin-bottom:1px">5%/mo · Max 6 months</div>
+   <div style="font-size:7.5px;color:rgba(255,255,255,0.28);margin-bottom:7px">#LF-2024-001 · Business · Personal · Emergency</div>
+   <div style="display:flex;gap:6px;margin-bottom:7px;text-align:center">
+    <div style="flex:1"><div style="font-family:'Fraunces',serif;font-weight:700;font-size:12px;color:#fff">12</div><div style="font-size:7px;color:rgba(255,255,255,0.32)">Applied</div></div>
+    <div style="flex:1"><div style="font-family:'Fraunces',serif;font-weight:700;font-size:12px;color:#fff">3</div><div style="font-size:7px;color:rgba(255,255,255,0.32)">Approved</div></div>
+    <div style="flex:1"><div style="font-family:'Fraunces',serif;font-weight:700;font-size:12px;color:#C9963A">18M</div><div style="font-size:7px;color:rgba(255,255,255,0.32)">Deployed</div></div>
+   </div>
+   <div style="display:flex;gap:5px"><div style="flex:1;padding:5px;border:1px solid rgba(255,255,255,0.1);border-radius:6px;text-align:center;font-size:8.5px;font-weight:600;color:rgba(255,255,255,0.45)">Edit</div><div style="flex:2;padding:5px;background:#C9963A;border-radius:6px;text-align:center;font-size:8.5px;font-weight:700;color:#fff">View Apps (12)</div></div>
+  </div>
+  <div class="moc"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:3px"><div style="font-family:'Fraunces',serif;font-weight:700;font-size:13px;color:#fff">UGX 20,000,000</div><span class="mb mbg">Active</span></div><div style="font-size:8.5px;color:#C9963A;font-weight:600;margin-bottom:1px">7%/mo · Max 3 months</div><div style="font-size:7.5px;color:rgba(255,255,255,0.28)">9 applied · 2 approved</div></div>
+  <div class="moc" style="border-left-color:rgba(255,255,255,0.12)"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:3px"><div style="font-family:'Fraunces',serif;font-weight:700;font-size:13px;color:rgba(255,255,255,0.4)">UGX 10,000,000</div><span class="mb mbgr">Closed</span></div><div style="font-size:8.5px;color:rgba(255,255,255,0.28)">6%/mo · Max 12 months</div></div>
+ </div><div class="home"></div></div>
+ <div class="plbl">04 · My Offers</div>
+</div>
+
+<!-- 5  APPLICATIONS INBOX -->
+<div class="pw" data-tag="apps" onclick="openModal(4)">
+ <div class="pf"><div class="notch"></div><div class="status"><span>9:41</span><span>LTE ▌</span></div>
+ <div class="scr">
+  <div class="tnav">
+   <div class="tl"><div class="tback"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></div><div><div class="ttitle">Applications</div><div style="font-size:7.5px;color:rgba(255,255,255,0.32)">Offer #LF-2024-001 · 5%/mo</div></div></div>
+   <div class="tr"><div class="tav">JM</div></div>
+  </div>
+  <div class="mchips" style="margin-top:7px"><div class="mchip on">All (12)</div><div class="mchip">Pending (7)</div><div class="mchip">Done (5)</div></div>
+  <div class="mc" style="padding:0;overflow:hidden">
+   <div class="mrow">
+    <div class="mav" style="background:#163256">AK</div>
+    <div style="flex:1"><div style="font-size:10px;font-weight:700;color:#fff">Agnes Kyomuhendo</div><div style="font-size:8px;color:rgba(255,255,255,0.32)">Business · Score 78/100</div><div class="msb"><div class="msf" style="width:78%"></div></div></div>
+    <div style="text-align:right"><div style="font-family:'Fraunces',serif;font-weight:700;font-size:10.5px;color:#fff">UGX 8M</div><div style="font-size:7.5px;color:rgba(255,255,255,0.28)">4 months</div></div>
+   </div>
+   <div style="display:flex;gap:4px;padding:6px 9px;border-bottom:1px solid rgba(255,255,255,0.045)">
+    <div style="flex:1;padding:5px;background:rgba(74,222,128,0.1);border-radius:5px;text-align:center;font-size:8.5px;font-weight:700;color:#4ade80">Approve</div>
+    <div style="flex:1;padding:5px;border:1px solid rgba(255,255,255,0.09);border-radius:5px;text-align:center;font-size:8.5px;font-weight:600;color:rgba(255,255,255,0.32)">Decline</div>
+    <div style="flex:1;padding:5px;background:rgba(201,150,58,0.1);border-radius:5px;text-align:center;font-size:8.5px;font-weight:700;color:#C9963A">View</div>
+   </div>
+   <div class="mrow">
+    <div class="mav" style="background:#6e1a1a">BT</div>
+    <div style="flex:1"><div style="font-size:10px;font-weight:700;color:#fff">Brian Tumwine</div><div style="font-size:8px;color:rgba(255,255,255,0.32)">Personal · Score 62/100</div><div class="msb"><div class="msf" style="width:62%"></div></div></div>
+    <div style="text-align:right"><div style="font-family:'Fraunces',serif;font-weight:700;font-size:10.5px;color:#fff">UGX 3M</div><div style="font-size:7.5px;color:rgba(255,255,255,0.28)">2 months</div></div>
+   </div>
+   <div style="display:flex;gap:4px;padding:6px 9px;border-bottom:1px solid rgba(255,255,255,0.045)">
+    <div style="flex:1;padding:5px;background:rgba(74,222,128,0.1);border-radius:5px;text-align:center;font-size:8.5px;font-weight:700;color:#4ade80">Approve</div>
+    <div style="flex:1;padding:5px;border:1px solid rgba(255,255,255,0.09);border-radius:5px;text-align:center;font-size:8.5px;font-weight:600;color:rgba(255,255,255,0.32)">Decline</div>
+    <div style="flex:1;padding:5px;background:rgba(201,150,58,0.1);border-radius:5px;text-align:center;font-size:8.5px;font-weight:700;color:#C9963A">View</div>
+   </div>
+   <div class="mrow" style="border-bottom:none">
+    <div class="mav" style="background:#1a6e4e">PN</div>
+    <div style="flex:1"><div style="font-size:10px;font-weight:700;color:#fff">Patience Nakato</div><div style="font-size:8px;color:rgba(255,255,255,0.32)">Emergency · Score 85/100</div><div class="msb"><div class="msf" style="width:85%"></div></div></div>
+    <div style="text-align:right"><div style="font-family:'Fraunces',serif;font-weight:700;font-size:10.5px;color:#fff">UGX 5M</div><div style="font-size:7.5px;color:rgba(255,255,255,0.28)">3 months</div></div>
+   </div>
+  </div>
+ </div><div class="home"></div></div>
+ <div class="plbl">05 · Applications Inbox</div>
+</div>
+
+<!-- 6  APPLICANT PROFILE -->
+<div class="pw" data-tag="apps" onclick="openModal(5)">
+ <div class="pf"><div class="notch"></div><div class="status"><span>9:41</span><span>LTE ▌</span></div>
+ <div class="scr">
+  <div class="tnav">
+   <div class="tl"><div class="tback"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></div><div class="ttitle">Applicant Profile</div></div>
+   <div class="tr"><div class="tav">JM</div></div>
+  </div>
+  <div style="text-align:center;padding:9px 12px 9px">
+   <div style="width:44px;height:44px;border-radius:50%;background:#163256;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;font-size:17px;color:#fff;margin:0 auto 6px">AK</div>
+   <div style="font-family:'Fraunces',serif;font-weight:700;font-size:14px;color:#fff">Agnes Kyomuhendo</div>
+   <div style="font-size:8.5px;color:rgba(255,255,255,0.32);margin-bottom:6px">#APP-20240078 · Business Loan</div>
+   <div style="display:flex;gap:5px;justify-content:center"><span class="mb mby">Pending</span><span class="mb mbau">Score 78/100</span></div>
+  </div>
+  <div class="mc"><div style="display:flex;gap:5px">
+   <div style="flex:1;text-align:center"><div class="ml">Amount</div><div style="font-family:'Fraunces',serif;font-weight:700;font-size:11.5px;color:#fff">UGX 8M</div></div>
+   <div style="flex:1;text-align:center"><div class="ml">Duration</div><div style="font-family:'Fraunces',serif;font-weight:700;font-size:11.5px;color:#fff">4 months</div></div>
+   <div style="flex:1;text-align:center"><div class="ml">Purpose</div><div style="font-size:9.5px;font-weight:600;color:#fff">Stock</div></div>
+  </div></div>
+  <div style="padding:0 9px;margin-bottom:7px"><div class="ml" style="margin-bottom:5px">Documents</div>
+   <div class="mc" style="padding:0;overflow:hidden;margin:0">
+    <div class="mrow">
+     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C9963A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+     <div style="flex:1;font-size:9.5px;font-weight:600;color:#fff;padding-left:5px">National ID</div><span class="mb mbg">Verified</span>
+    </div>
+    <div class="mrow">
+     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C9963A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+     <div style="flex:1;font-size:9.5px;font-weight:600;color:#fff;padding-left:5px">Bank Statement</div><span class="mb mbg">Uploaded</span>
+    </div>
+    <div class="mrow" style="border-bottom:none">
+     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C9963A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+     <div style="flex:1;font-size:9.5px;font-weight:600;color:#fff;padding-left:5px">Business Reg.</div><span class="mb mbg">Uploaded</span>
+    </div>
+   </div>
+  </div>
+  <div style="display:flex;gap:6px;padding:0 9px">
+   <div style="flex:1;padding:8px;border:1px solid rgba(255,255,255,0.09);border-radius:8px;text-align:center;font-size:9.5px;font-weight:600;color:rgba(255,255,255,0.42)">Decline</div>
+   <div style="flex:2;padding:8px;background:#4ade80;border-radius:8px;text-align:center;font-size:9.5px;font-weight:700;color:#021a0a">Approve Loan</div>
+  </div>
+ </div><div class="home"></div></div>
+ <div class="plbl">06 · Applicant Profile</div>
+</div>
+
+<!-- 7  APPROVE CONFIRM -->
+<div class="pw" data-tag="apps" onclick="openModal(6)">
+ <div class="pf"><div class="notch"></div><div class="status"><span>9:41</span><span>LTE ▌</span></div>
+ <div class="scr">
+  <div class="tnav">
+   <div class="tl"><div class="tback"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></div><div class="ttitle">Confirm Approval</div></div>
+   <div class="tr"><div class="tav">JM</div></div>
+  </div>
+  <div style="padding:5px 9px 9px;font-size:8.5px;color:rgba(255,255,255,0.32)">Review terms before disbursing.</div>
+  <div class="mc" style="padding:0;overflow:hidden">
+   <div class="mrow"><span style="flex:1;font-size:9px;color:rgba(255,255,255,0.35)">Borrower</span><span style="font-size:9px;font-weight:600;color:#fff">Agnes Kyomuhendo</span></div>
+   <div class="mrow"><span style="flex:1;font-size:9px;color:rgba(255,255,255,0.35)">Amount</span><span style="font-size:9px;font-weight:600;color:#fff">UGX 8,000,000</span></div>
+   <div class="mrow"><span style="flex:1;font-size:9px;color:rgba(255,255,255,0.35)">Duration</span><span style="font-size:9px;font-weight:600;color:#fff">4 months</span></div>
+   <div class="mrow"><span style="flex:1;font-size:9px;color:rgba(255,255,255,0.35)">Rate</span><span style="font-size:9px;font-weight:600;color:#C9963A">5% / month</span></div>
+   <div class="mrow"><span style="flex:1;font-size:9px;color:rgba(255,255,255,0.35)">Total Interest</span><span style="font-size:9px;font-weight:600;color:#fff">UGX 1,600,000</span></div>
+   <div class="mrow" style="border-bottom:none"><span style="flex:1;font-size:10px;font-weight:700;color:rgba(255,255,255,0.45)">Total Repayable</span><span style="font-size:11px;font-weight:900;color:#C9963A">UGX 9,600,000</span></div>
+  </div>
+  <div style="background:rgba(201,150,58,0.07);border-radius:8px;margin:0 9px 9px;padding:8px;font-size:8.5px;color:rgba(201,150,58,0.7);line-height:1.5">Disbursement within 24hrs from your wallet balance.</div>
+  <button class="mbtn mbg2">Confirm &amp; Approve</button>
+  <button class="mbtn mbo">Cancel</button>
+ </div><div class="home"></div></div>
+ <div class="plbl">07 · Confirm Approval</div>
+</div>
+
+<!-- 8  PORTFOLIO -->
+<div class="pw" data-tag="portfolio" onclick="openModal(7)">
+ <div class="pf"><div class="notch"></div><div class="status"><span>9:41</span><span>LTE ▌</span></div>
+ <div class="scr">
+  <div class="tnav">
+   <div class="tl"><div class="tlogo">L</div><div class="ttitle">My Portfolio</div></div>
+   <div class="tr"><div class="tav">JM</div></div>
+  </div>
+  <div class="mstat-row" style="margin-top:7px">
+   <div class="mst"><div class="sv">8</div><div class="sl">Active</div></div>
+   <div class="mst"><div class="sv">UGX 42M</div><div class="sl">Outstanding</div></div>
+   <div class="mst" style="border-top-color:#f87171"><div class="sv" style="color:#f87171">2</div><div class="sl">Overdue</div></div>
+  </div>
+  <div class="mchips"><div class="mchip on">All</div><div class="mchip">On Track</div><div class="mchip">Overdue</div></div>
+  <div class="mc" style="padding:0;overflow:hidden">
+   <div class="mrow"><div class="mav" style="background:#1a6e4e;width:28px;height:28px;font-size:9.5px">AK</div><div style="flex:1"><div style="font-size:9.5px;font-weight:700;color:#fff">Agnes Kyomuhendo</div><div style="font-size:7.5px;color:rgba(255,255,255,0.32);margin-bottom:2px">UGX 8M · 5%/mo · 2/4 paid</div><div class="mpb"><div class="mpf" style="width:50%"></div></div></div><span class="mb mbg" style="margin-left:5px">On Track</span></div>
+   <div class="mrow"><div class="mav" style="background:#6e1a1a;width:28px;height:28px;font-size:9.5px">BT</div><div style="flex:1"><div style="font-size:9.5px;font-weight:700;color:#fff">Brian Tumwine</div><div style="font-size:7.5px;color:#f87171;font-weight:600;margin-bottom:2px">UGX 3M · Overdue 5 days</div><div class="mpb"><div class="mpf" style="width:0%;background:#f87171"></div></div></div><span class="mb mbr" style="margin-left:5px">Overdue</span></div>
+   <div class="mrow" style="border-bottom:none"><div class="mav" style="background:#3e1a6e;width:28px;height:28px;font-size:9.5px">RO</div><div style="flex:1"><div style="font-size:9.5px;font-weight:700;color:#fff">Ronald Okot</div><div style="font-size:7.5px;color:rgba(255,255,255,0.32);margin-bottom:2px">UGX 12M · 5%/mo · 5/6 paid</div><div class="mpb"><div class="mpf" style="width:83%"></div></div></div><span class="mb mbg" style="margin-left:5px">On Track</span></div>
+  </div>
+ </div><div class="home"></div></div>
+ <div class="plbl">08 · My Portfolio</div>
+</div>
+
+<!-- 9  LOAN DETAIL -->
+<div class="pw" data-tag="portfolio" onclick="openModal(8)">
+ <div class="pf"><div class="notch"></div><div class="status"><span>9:41</span><span>LTE ▌</span></div>
+ <div class="scr">
+  <div class="tnav">
+   <div class="tl"><div class="tback"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></div><div class="ttitle">Loan Detail</div></div>
+   <div class="tr"><div class="tav">JM</div></div>
+  </div>
+  <div class="mc" style="background:linear-gradient(135deg,#163256,#1a3260);border:1px solid rgba(201,150,58,0.15)"><div class="ml">Borrower</div><div style="font-family:'Fraunces',serif;font-weight:700;font-size:13px;color:#fff;margin-bottom:7px">Agnes Kyomuhendo <span class="mb mbg" style="margin-left:4px">On Track</span></div><div style="display:flex;gap:5px"><div style="flex:1"><div class="ml">Principal</div><div style="font-family:'Fraunces',serif;font-weight:700;font-size:11px;color:#fff">UGX 8M</div></div><div style="flex:1"><div class="ml">Rate</div><div style="font-family:'Fraunces',serif;font-weight:700;font-size:11px;color:#fff">5%/mo</div></div><div style="flex:1"><div class="ml">Interest</div><div style="font-family:'Fraunces',serif;font-weight:700;font-size:11px;color:#C9963A">1.6M</div></div></div></div>
+  <div style="padding:0 9px;margin-bottom:6px"><div class="ml" style="margin-bottom:5px">Repayment Schedule</div></div>
+  <div class="mc" style="padding:0;overflow:hidden">
+   <div class="mrow"><div style="width:13px;font-size:8.5px;color:rgba(255,255,255,0.28)">#1</div><div style="flex:1;font-size:9px;color:#fff">15 Mar 2024</div><div style="font-size:9px;font-weight:600;color:#fff">UGX 2.4M</div><span class="mb mbg" style="margin-left:4px">Paid</span></div>
+   <div class="mrow"><div style="width:13px;font-size:8.5px;color:rgba(255,255,255,0.28)">#2</div><div style="flex:1;font-size:9px;color:#fff">15 Apr 2024</div><div style="font-size:9px;font-weight:600;color:#fff">UGX 2.4M</div><span class="mb mbg" style="margin-left:4px">Paid</span></div>
+   <div class="mrow"><div style="width:13px;font-size:8.5px;color:rgba(255,255,255,0.28)">#3</div><div style="flex:1;font-size:9px;color:#fff">15 May 2024</div><div style="font-size:9px;font-weight:600;color:#fff">UGX 2.4M</div><span class="mb mby" style="margin-left:4px">Due Soon</span></div>
+   <div class="mrow" style="border-bottom:none"><div style="width:13px;font-size:8.5px;color:rgba(255,255,255,0.28)">#4</div><div style="flex:1;font-size:9px;color:#fff">15 Jun 2024</div><div style="font-size:9px;font-weight:600;color:#fff">UGX 2.4M</div><span class="mb mbgr" style="margin-left:4px">Upcoming</span></div>
+  </div>
+ </div><div class="home"></div></div>
+ <div class="plbl">09 · Loan Detail</div>
+</div>
+
+<!-- 10  WALLET -->
+<div class="pw" data-tag="finance" onclick="openModal(9)">
+ <div class="pf"><div class="notch"></div><div class="status"><span>9:41</span><span>LTE ▌</span></div>
+ <div class="scr">
+  <div class="tnav">
+   <div class="tl"><div class="tlogo">L</div><div class="ttitle">My Wallet</div></div>
+   <div class="tr"><div class="tav">JM</div></div>
+  </div>
+  <div class="mwh" style="margin-top:7px">
+   <div class="ml" style="margin-bottom:3px">Available Balance</div>
+   <div style="font-family:'Fraunces',serif;font-weight:900;font-size:21px;color:#fff;margin-bottom:3px">UGX 14,800,000</div>
+   <div style="font-size:7.5px;color:rgba(255,255,255,0.32);margin-bottom:9px">Deployed: UGX 48M &nbsp;·&nbsp; Pending: UGX 6M</div>
+   <div style="display:flex;gap:5px">
+    <div style="flex:1;padding:7px;background:#C9963A;border-radius:7px;text-align:center;font-size:9px;font-weight:700;color:#fff">Deposit</div>
+    <div style="flex:1;padding:7px;background:rgba(255,255,255,0.08);border-radius:7px;text-align:center;font-size:9px;font-weight:700;color:#fff">Withdraw</div>
+    <div style="flex:1;padding:7px;background:rgba(255,255,255,0.08);border-radius:7px;text-align:center;font-size:9px;font-weight:700;color:#fff">Fund</div>
+   </div>
+  </div>
+  <div style="padding:0 9px 6px;font-size:9.5px;font-weight:700;color:#fff">Recent Transactions</div>
+  <div class="mc" style="padding:0;overflow:hidden">
+   <div class="mrow">
+    <div style="width:28px;height:28px;border-radius:6px;background:rgba(74,222,128,0.09);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+    </div>
+    <div style="flex:1;padding-left:7px"><div style="font-size:9px;font-weight:600;color:#fff">Repayment — Agnes K.</div><div style="font-size:7.5px;color:rgba(255,255,255,0.28)">07 May 2024</div></div>
+    <div style="color:#4ade80;font-weight:700;font-size:9.5px">+UGX 2.4M</div>
+   </div>
+   <div class="mrow">
+    <div style="width:28px;height:28px;border-radius:6px;background:rgba(248,113,113,0.09);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+    </div>
+    <div style="flex:1;padding-left:7px"><div style="font-size:9px;font-weight:600;color:#fff">Disbursed — Patience N.</div><div style="font-size:7.5px;color:rgba(255,255,255,0.28)">04 May 2024</div></div>
+    <div style="color:#f87171;font-weight:700;font-size:9.5px">-UGX 5M</div>
+   </div>
+   <div class="mrow" style="border-bottom:none">
+    <div style="width:28px;height:28px;border-radius:6px;background:rgba(74,222,128,0.09);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+    </div>
+    <div style="flex:1;padding-left:7px"><div style="font-size:9px;font-weight:600;color:#fff">MTN MoMo Deposit</div><div style="font-size:7.5px;color:rgba(255,255,255,0.28)">01 May 2024</div></div>
+    <div style="color:#4ade80;font-weight:700;font-size:9.5px">+UGX 20M</div>
+   </div>
+  </div>
+ </div><div class="home"></div></div>
+ <div class="plbl">10 · Wallet</div>
+</div>
+
+<!-- 11  EARNINGS -->
+<div class="pw" data-tag="finance" onclick="openModal(10)">
+ <div class="pf"><div class="notch"></div><div class="status"><span>9:41</span><span>LTE ▌</span></div>
+ <div class="scr">
+  <div class="tnav">
+   <div class="tl"><div class="tlogo">L</div><div class="ttitle">Earnings</div></div>
+   <div class="tr"><div class="tav">JM</div></div>
+  </div>
+  <div class="mstat-row" style="margin-top:7px">
+   <div class="mst"><div class="sv">6.2M</div><div class="sl">Total Earned</div></div>
+   <div class="mst"><div class="sv">1.4M</div><div class="sl">This Month</div></div>
+   <div class="mst"><div class="sv">5.8%</div><div class="sl">Avg Return</div></div>
+  </div>
+  <div class="mc"><div class="ml" style="margin-bottom:7px">Monthly Earnings (2024)</div>
+   <div class="mbar-chart">
+    <div class="mbc-w"><div class="mbc" style="height:22px"></div><div class="mbc-l">Jan</div></div>
+    <div class="mbc-w"><div class="mbc" style="height:30px"></div><div class="mbc-l">Feb</div></div>
+    <div class="mbc-w"><div class="mbc" style="height:26px"></div><div class="mbc-l">Mar</div></div>
+    <div class="mbc-w"><div class="mbc" style="height:40px"></div><div class="mbc-l">Apr</div></div>
+    <div class="mbc-w"><div class="mbc" style="height:50px"></div><div class="mbc-l">May</div></div>
+    <div class="mbc-w"><div class="mbc" style="height:16px;opacity:0.32"></div><div class="mbc-l">Jun</div></div>
+   </div>
+  </div>
+  <div class="mc"><div class="ml" style="margin-bottom:7px">By Loan Type</div>
+   <div style="display:flex;flex-direction:column;gap:7px">
+    <div><div style="display:flex;justify-content:space-between;font-size:9px;margin-bottom:2px"><span style="color:rgba(255,255,255,0.5)">Business</span><span style="font-weight:700;color:#fff">UGX 3.1M</span></div><div class="mpb"><div class="mpf" style="width:50%"></div></div></div>
+    <div><div style="display:flex;justify-content:space-between;font-size:9px;margin-bottom:2px"><span style="color:rgba(255,255,255,0.5)">Personal</span><span style="font-weight:700;color:#fff">UGX 1.8M</span></div><div class="mpb"><div class="mpf" style="width:29%"></div></div></div>
+    <div><div style="display:flex;justify-content:space-between;font-size:9px;margin-bottom:2px"><span style="color:rgba(255,255,255,0.5)">Emergency</span><span style="font-weight:700;color:#fff">UGX 0.8M</span></div><div class="mpb"><div class="mpf" style="width:13%"></div></div></div>
+   </div>
+  </div>
+ </div><div class="home"></div></div>
+ <div class="plbl">11 · Earnings</div>
+</div>
+
+<!-- 12  ACCOUNT -->
+<div class="pw" data-tag="account" onclick="openModal(11)">
+ <div class="pf"><div class="notch"></div><div class="status"><span>9:41</span><span>LTE ▌</span></div>
+ <div class="scr">
+  <div class="tnav">
+   <div class="tl"><div class="tlogo">L</div><div class="ttitle">Account</div></div>
+   <div class="tr">
+    <div class="tic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
+   </div>
+  </div>
+  <div style="text-align:center;padding:9px 9px 11px">
+   <div style="width:48px;height:48px;border-radius:50%;background:#C9963A;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;font-size:19px;color:#fff;margin:0 auto 6px">JM</div>
+   <div style="font-family:'Fraunces',serif;font-weight:700;font-size:13.5px;color:#fff">James Mugisha</div>
+   <div style="font-size:8.5px;color:rgba(255,255,255,0.32)">james@example.com</div>
+  </div>
+  <div class="mlc">
+   <div style="display:flex;align-items:center;gap:7px;margin-bottom:8px">
+    <div style="width:28px;height:28px;border-radius:50%;background:#C9963A;display:flex;align-items:center;justify-content:center">
+     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+    </div>
+    <div><div style="font-size:9.5px;font-weight:700;color:#fff">LendFlow Lender Licence</div><div style="font-size:7.5px;color:rgba(255,255,255,0.32)">Bank of Uganda Framework</div></div>
+   </div>
+   <div style="display:flex;gap:7px">
+    <div style="flex:1"><div class="ml">Licence No.</div><div style="font-size:9px;font-weight:600;color:#fff">LF-LND-2023-0041</div></div>
+    <div style="flex:1"><div class="ml">Valid Until</div><div style="font-size:9px;font-weight:600;color:#C9963A">31 Dec 2024</div></div>
+   </div>
+  </div>
+  <div class="mc" style="padding:0;overflow:hidden">
+   <div class="mtrow"><div><div style="font-size:9.5px;font-weight:600;color:#fff">Application Alerts</div><div style="font-size:7.5px;color:rgba(255,255,255,0.32)">When borrowers apply</div></div><div class="mtgl on"></div></div>
+   <div class="mtrow"><div><div style="font-size:9.5px;font-weight:600;color:#fff">Repayment Notifications</div></div><div class="mtgl on"></div></div>
+   <div class="mtrow"><div><div style="font-size:9.5px;font-weight:600;color:#fff">Two-Factor Auth</div></div><div class="mtgl on"></div></div>
+  </div>
+  <button class="mbtn" style="background:rgba(248,113,113,0.1);color:#f87171;border:1.5px solid rgba(248,113,113,0.18);margin-top:3px">Sign Out</button>
+ </div><div class="home"></div></div>
+ <div class="plbl">12 · Account</div>
+</div>
+
+<!-- 13  SETTINGS -->
+<div class="pw" data-tag="account" onclick="openModal(12)">
+ <div class="pf"><div class="notch"></div><div class="status"><span>9:41</span><span>LTE ▌</span></div>
+ <div class="scr">
+  <div class="tnav">
+   <div class="tl"><div class="tback"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></div><div class="ttitle">Settings</div></div>
+   <div class="tr"><div class="tav">JM</div></div>
+  </div>
+  <div class="mc" style="padding:0;overflow:hidden">
+   <div style="padding:6px 9px;background:rgba(201,150,58,0.07);font-size:8px;font-weight:700;color:#C9963A;letter-spacing:0.8px;text-transform:uppercase">Notifications</div>
+   <div class="mtrow"><div><div style="font-size:9.5px;font-weight:600;color:#fff">New Application Alert</div><div style="font-size:7.5px;color:rgba(255,255,255,0.32)">When borrowers apply</div></div><div class="mtgl on"></div></div>
+   <div class="mtrow"><div><div style="font-size:9.5px;font-weight:600;color:#fff">Repayment Received</div></div><div class="mtgl on"></div></div>
+   <div class="mtrow"><div><div style="font-size:9.5px;font-weight:600;color:#fff">Overdue Loan Alerts</div></div><div class="mtgl on"></div></div>
+   <div class="mtrow"><div><div style="font-size:9.5px;font-weight:600;color:#fff">Marketing Emails</div></div><div class="mtgl"></div></div>
+   <div style="padding:6px 9px;background:rgba(201,150,58,0.07);font-size:8px;font-weight:700;color:#C9963A;letter-spacing:0.8px;text-transform:uppercase">Security</div>
+   <div class="mtrow"><div><div style="font-size:9.5px;font-weight:600;color:#fff">Two-Factor Authentication</div></div><div class="mtgl on"></div></div>
+   <div class="mtrow"><div><div style="font-size:9.5px;font-weight:600;color:#fff">Login Notifications</div></div><div class="mtgl on"></div></div>
+   <div style="padding:6px 9px;background:rgba(248,113,113,0.07);font-size:8px;font-weight:700;color:#f87171;letter-spacing:0.8px;text-transform:uppercase">Danger Zone</div>
+   <div style="padding:9px;display:flex;gap:5px">
+    <div style="flex:1;padding:7px;border:1px solid rgba(248,113,113,0.2);border-radius:7px;text-align:center;font-size:8.5px;font-weight:600;color:#f87171">Deactivate</div>
+    <div style="flex:1;padding:7px;border:1px solid rgba(255,255,255,0.09);border-radius:7px;text-align:center;font-size:8.5px;font-weight:600;color:rgba(255,255,255,0.38)">Export Data</div>
+   </div>
+  </div>
+ </div><div class="home"></div></div>
+ <div class="plbl">13 · Settings</div>
+</div>
+
+<!-- 14  PROFILE EDIT -->
+<div class="pw" data-tag="account" onclick="openModal(13)">
+ <div class="pf"><div class="notch"></div><div class="status"><span>9:41</span><span>LTE ▌</span></div>
+ <div class="scr">
+  <div class="tnav">
+   <div class="tl"><div class="tback"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></div><div class="ttitle">Edit Profile</div></div>
+   <div class="tr"><div style="padding:4px 9px;background:#C9963A;border-radius:6px;font-size:9px;font-weight:700;color:#fff">Save</div></div>
+  </div>
+  <div style="text-align:center;padding:11px 9px 9px">
+   <div style="width:48px;height:48px;border-radius:50%;background:#C9963A;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;font-size:19px;color:#fff;margin:0 auto 4px">JM</div>
+   <div style="font-size:8.5px;color:#C9963A;font-weight:600">Change Photo</div>
+  </div>
+  <div class="mc">
+   <div class="ml" style="margin-bottom:4px">Full Name</div><input class="minput" value="James Mugisha">
+   <div class="ml" style="margin-bottom:4px">Phone Number</div><input class="minput" value="+256 772 000 001">
+   <div class="ml" style="margin-bottom:4px">Email</div><input class="minput" value="james@example.com">
+   <div class="ml" style="margin-bottom:4px">NIN (locked)</div><input class="minput" value="CF12345678" disabled style="opacity:0.4;margin-bottom:0">
+  </div>
+ </div><div class="home"></div></div>
+ <div class="plbl">14 · Profile Edit</div>
+</div>
+
+</div><!-- /grid -->
+
+<!-- MODAL -->
+<div class="modal-bg" id="modal">
+ <button class="mclose" onclick="closeModal()">&#x2715;</button>
+ <div class="modal-phone">
+  <div class="modal-notch"></div>
+  <div class="modal-status"><span>9:41</span><span>LTE ▌</span></div>
+  <div class="modal-inner" id="modal-inner"></div>
+  <div class="modal-home"></div>
+ </div>
+ <div class="mnav">
+  <button class="mnbtn" onclick="nav(-1)">&#8592; Prev</button>
+  <div class="mctr" id="mctr">01 · Dashboard</div>
+  <button class="mnbtn" onclick="nav(1)">Next &#8594;</button>
+ </div>
+</div>
+
+<script>
+let cur=0;
+const wraps=document.querySelectorAll('.pw');
+const total=wraps.length;
+function openModal(i){cur=i;render();document.getElementById('modal').classList.add('open')}
+function closeModal(){document.getElementById('modal').classList.remove('open')}
+function nav(d){cur=(cur+d+total)%total;render()}
+function render(){
+  const scr=wraps[cur].querySelector('.scr').cloneNode(true);
+  scr.style.cssText='background:#101c2e;height:100%;overflow-y:auto;overflow-x:hidden;scrollbar-width:none';
+  document.getElementById('modal-inner').innerHTML='';
+  document.getElementById('modal-inner').appendChild(scr);
+  document.getElementById('mctr').textContent=wraps[cur].querySelector('.plbl').textContent;
+}
+document.getElementById('modal').addEventListener('click',function(e){if(e.target===this)closeModal()});
+document.addEventListener('keydown',function(e){
+  if(!document.getElementById('modal').classList.contains('open'))return;
+  if(e.key==='ArrowRight')nav(1);
+  if(e.key==='ArrowLeft')nav(-1);
+  if(e.key==='Escape')closeModal();
+});
+function doFilter(tag,el){
+  document.querySelectorAll('.ftag').forEach(t=>t.classList.remove('on'));
+  el.classList.add('on');
+  wraps.forEach(p=>{p.style.display=(tag==='all'||p.dataset.tag===tag)?'flex':'none'});
+}
+</script>
+</body>
+</html>

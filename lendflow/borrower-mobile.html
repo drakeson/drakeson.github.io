@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LendFlow — Borrower Mobile</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:#060f0e;color:#fff;min-height:100vh;padding:40px 20px 80px}
+.ph{text-align:center;margin-bottom:40px}
+.brand{display:inline-flex;align-items:center;gap:10px;margin-bottom:16px}
+.bm{width:40px;height:40px;background:#0E9F8E;border-radius:11px;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:900;font-size:21px;color:#fff}
+.bn{font-family:'Fraunces',serif;font-weight:700;font-size:22px;color:#fff}
+.ptitle{font-family:'Fraunces',serif;font-weight:700;font-size:32px;color:#fff;margin-bottom:6px}
+.psub{font-size:14px;color:rgba(255,255,255,0.35);max-width:480px;margin:0 auto}
+.fb{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:36px}
+.ft{padding:7px 16px;border-radius:20px;border:1.5px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.4);font-size:12.5px;font-weight:500;cursor:pointer;background:transparent}
+.ft:hover{border-color:rgba(14,159,142,0.45);color:rgba(14,159,142,0.75)}
+.ft.on{background:rgba(14,159,142,0.12);border-color:#0E9F8E;color:#12BCA8}
+.grid{display:flex;flex-wrap:wrap;gap:28px;justify-content:center;max-width:1400px;margin:0 auto}
+.pw{display:flex;flex-direction:column;align-items:center;gap:10px;cursor:pointer}
+.plbl{font-size:10.5px;font-weight:600;color:rgba(255,255,255,0.28);letter-spacing:0.8px;text-transform:uppercase;text-align:center}
+.pf{width:198px;height:428px;background:#0e1f1c;border-radius:38px;border:2px solid rgba(255,255,255,0.07);position:relative;overflow:hidden;transition:border-color 0.25s;box-shadow:none}
+.pw:hover .pf{border-color:rgba(14,159,142,0.4)}
+.notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:76px;height:20px;background:#060f0e;border-radius:0 0 13px 13px;z-index:20}
+.stat{position:absolute;top:0;left:0;right:0;height:34px;display:flex;align-items:center;justify-content:space-between;padding:7px 14px 0;z-index:19;font-size:9px;font-weight:700;color:rgba(255,255,255,0.5)}
+.tnav{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;background:#0e1f1c;border-bottom:1px solid rgba(255,255,255,0.06);position:sticky;top:0;z-index:15}
+.tl{display:flex;align-items:center;gap:6px}
+.tlm{width:22px;height:22px;background:#0E9F8E;border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:900;font-size:12px;color:#fff}
+.tlt{font-family:'Fraunces',serif;font-weight:700;font-size:13px;color:#fff}
+.ta{display:flex;align-items:center;gap:6px}
+.ib{width:28px;height:28px;border-radius:8px;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ava{width:26px;height:26px;border-radius:50%;background:#0E9F8E;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:10px;color:#fff}
+.nw{position:relative}
+.nd{width:6px;height:6px;background:#E03E3E;border-radius:50%;position:absolute;top:4px;right:4px;border:1.5px solid #0e1f1c}
+.ps{position:absolute;top:34px;left:0;right:0;bottom:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;background:#0e1f1c}
+.ps::-webkit-scrollbar{display:none}
+.mc{background:#142420;border-radius:12px;padding:12px;margin:0 10px 10px}
+.mct{background:rgba(14,159,142,0.08);border:1px solid rgba(14,159,142,0.2);border-radius:12px;padding:12px;margin:0 10px 10px}
+.ml{font-size:8.5px;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.7px;margin-bottom:3px}
+.msec{font-size:9px;font-weight:700;color:rgba(255,255,255,0.32);text-transform:uppercase;letter-spacing:0.9px;padding:10px 10px 5px}
+.mbg{display:inline-flex;align-items:center;padding:2px 8px;border-radius:10px;font-size:8.5px;font-weight:700}
+.mbg.g{background:#e8f5ee;color:#16A34A}.mbg.y{background:#fef9e8;color:#D97706}.mbg.t{background:rgba(14,159,142,0.15);color:#0E9F8E}.mbg.gr{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.38)}.mbg.r{background:rgba(224,62,62,0.14);color:#E03E3E}
+.mb{display:block;width:calc(100% - 20px);margin:0 10px 8px;padding:10px;border-radius:10px;border:none;font-size:12.5px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;text-align:center}
+.mb.t{background:#0E9F8E;color:#fff}
+.mb.o{background:transparent;border:1.5px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.6)}
+.mr{display:flex;align-items:center;gap:8px;padding:9px 10px;border-bottom:1px solid rgba(255,255,255,0.05)}
+.mr:last-child{border-bottom:none}
+.mav{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#fff;flex-shrink:0}
+.min{height:37px;border:1.5px solid rgba(255,255,255,0.1);border-radius:9px;padding:0 11px;font-size:11px;font-family:'DM Sans',sans-serif;color:#fff;background:rgba(255,255,255,0.05);outline:none;width:100%;display:block}
+.min.t{border-color:rgba(14,159,142,0.35)}
+.mse{height:37px;border:1.5px solid rgba(255,255,255,0.1);border-radius:9px;padding:0 11px;font-size:11px;font-family:'DM Sans',sans-serif;color:#fff;background:#142420;outline:none;width:100%;display:block}
+.mch{display:flex;gap:5px;flex-wrap:wrap}
+.chip{padding:4px 10px;border-radius:12px;border:1.5px solid rgba(255,255,255,0.1);font-size:9.5px;font-weight:600;color:rgba(255,255,255,0.42)}
+.chip.on{background:rgba(14,159,142,0.12);border-color:#0E9F8E;color:#12BCA8}
+.mst{flex:1;background:#142420;border-radius:10px;padding:9px;text-align:center;border-top:2px solid #0E9F8E}
+.mst .sv{font-family:'Fraunces',serif;font-weight:700;font-size:12px;color:#fff}
+.mst .sl{font-size:7.5px;color:rgba(255,255,255,0.32);margin-top:2px}
+.pb{height:4px;background:rgba(255,255,255,0.07);border-radius:2px}
+.pf2{height:100%;border-radius:2px;background:#0E9F8E}
+.sb{display:flex;gap:3px;padding:0 10px;margin-bottom:10px}
+.sd{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,0.08)}
+.sd.done{background:#0E9F8E}.sd.act{background:#12BCA8}
+.ti{display:flex;gap:9px;padding-bottom:11px;position:relative}
+.td{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;flex-shrink:0}
+.td.done{background:#0E9F8E;color:#fff}.td.pend{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.28)}
+.tline{position:absolute;left:10px;top:20px;bottom:0;width:1.5px;background:rgba(255,255,255,0.05);transform:translateX(-50%)}
+.ti:last-child .tline{display:none}
+.wh{background:linear-gradient(135deg,#0D1F3C,#1a3260);margin:0 10px 10px;border-radius:12px;padding:14px}
+.mtog{width:34px;height:18px;background:rgba(255,255,255,0.1);border-radius:9px;position:relative;flex-shrink:0}
+.mtog.on{background:#0E9F8E}
+.mtog::after{content:'';width:13px;height:13px;background:#fff;border-radius:50%;position:absolute;top:2.5px;left:2.5px;transition:left 0.2s}
+.mtog.on::after{left:18.5px}
+.obc{background:#142420;border-radius:11px;margin:0 10px 8px;padding:11px;border-left:3px solid #0E9F8E}
+.obc.best{background:rgba(14,159,142,0.08);border:1.5px solid rgba(14,159,142,0.3)}
+/* MODAL */
+.mov{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:1000;align-items:center;justify-content:center}
+.mov.open{display:flex}
+.mp{width:316px;max-height:92vh;background:#0e1f1c;border-radius:42px;border:2px solid rgba(255,255,255,0.08);overflow:hidden;position:relative;box-shadow:none}
+.mno{position:absolute;top:0;left:50%;transform:translateX(-50%);width:92px;height:24px;background:#060f0e;border-radius:0 0 15px 15px;z-index:20}
+.mst2{position:absolute;top:0;left:0;right:0;height:38px;display:flex;align-items:center;justify-content:space-between;padding:9px 18px 0;z-index:19;font-size:10px;font-weight:700;color:rgba(255,255,255,0.5)}
+.mb2{margin-top:38px;height:calc(92vh - 62px);overflow-y:auto;scrollbar-width:none}
+.mb2::-webkit-scrollbar{display:none}
+.mcl{position:fixed;top:18px;right:18px;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,0.09);border:none;color:#fff;font-size:18px;cursor:pointer;z-index:1001;display:flex;align-items:center;justify-content:center}
+.mnav{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:1001}
+.mnb{padding:9px 20px;border-radius:20px;background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.14);color:#fff;font-size:12.5px;font-weight:600;cursor:pointer}
+.mnb:hover{background:rgba(14,159,142,0.2);border-color:#0E9F8E}
+.mcnt{position:fixed;top:18px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.7);border-radius:20px;padding:5px 14px;font-size:11.5px;color:rgba(255,255,255,0.6);z-index:1001;white-space:nowrap}
+.ic{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</head>
+<body>
+<div class="ph">
+  <div class="brand"><div class="bm">L</div><div class="bn">LendFlow</div></div>
+  <div class="ptitle">Borrower Mobile App</div>
+  <div class="psub">19 screens · Teal theme · Tap any screen to expand</div>
+</div>
+<div class="fb">
+  <div class="ft on" onclick="fil('all',this)">All</div>
+  <div class="ft" onclick="fil('auth',this)">Auth</div>
+  <div class="ft" onclick="fil('browse',this)">Browse</div>
+  <div class="ft" onclick="fil('apply',this)">Apply Flow</div>
+  <div class="ft" onclick="fil('request',this)">Post Request</div>
+  <div class="ft" onclick="fil('loans',this)">My Loans</div>
+  <div class="ft" onclick="fil('finance',this)">Finance</div>
+  <div class="ft" onclick="fil('account',this)">Account</div>
+</div>
+<div class="grid" id="grid">
+
+<!-- 01 LOGIN -->
+<div class="pw" data-tag="auth" onclick="open(0)">
+  <div class="pf"><div class="notch"></div><div class="stat"><span>9:41</span><span>100%</span></div>
+    <div class="ps">
+      <div class="tnav"><div class="tl"><div class="tlm">L</div><div class="tlt">LendFlow</div></div><div style="font-size:10px;color:rgba(255,255,255,0.35)">Borrower</div></div>
+      <div style="padding:24px 14px 14px;text-align:center"><div style="font-family:'Fraunces',serif;font-weight:700;font-size:20px;margin-bottom:4px">Welcome back</div><div style="font-size:10px;color:rgba(255,255,255,0.35);margin-bottom:20px">Sign in to borrow</div></div>
+      <div style="padding:0 10px 8px"><div class="ml" style="margin-bottom:5px">Phone Number</div>
+        <div style="display:flex;gap:5px"><div style="height:37px;background:#142420;border:1.5px solid rgba(255,255,255,0.1);border-radius:9px;padding:0 9px;display:flex;align-items:center;font-size:10px;font-weight:700;color:#0E9F8E">+256</div><input class="min" placeholder="700 000 000" style="flex:1"></div>
+      </div>
+      <div style="padding:0 10px 14px"><div class="ml" style="margin-bottom:5px">Password</div><input class="min" type="password" placeholder="••••••••"></div>
+      <div style="text-align:right;padding:0 10px;margin-bottom:14px;font-size:10px;color:#0E9F8E;font-weight:600">Forgot password?</div>
+      <button class="mb t">Sign In</button>
+      <div style="text-align:center;padding:10px;font-size:10px;color:rgba(255,255,255,0.35)">No account? <span style="color:#0E9F8E;font-weight:600">Register</span></div>
+    </div>
+  </div>
+  <div class="plbl">01 · Login</div>
+</div>
+
+<!-- 02 REGISTER -->
+<div class="pw" data-tag="auth" onclick="open(1)">
+  <div class="pf"><div class="notch"></div><div class="stat"><span>9:41</span><span>100%</span></div>
+    <div class="ps">
+      <div class="tnav"><div class="tl"><div class="tlm">L</div><div class="tlt">LendFlow</div></div><div style="font-size:10px;color:rgba(255,255,255,0.35)">Register</div></div>
+      <div style="padding:14px 14px 8px;text-align:center"><div style="font-family:'Fraunces',serif;font-weight:700;font-size:17px;margin-bottom:2px">Start Borrowing</div><div style="font-size:10px;color:rgba(255,255,255,0.35);margin-bottom:10px">Apply to lenders. Get funded fast.</div></div>
+      <div style="display:flex;margin:0 10px 10px;background:rgba(255,255,255,0.05);border-radius:9px;padding:3px"><div style="flex:1;text-align:center;padding:6px;background:#0E9F8E;border-radius:7px;font-size:9.5px;font-weight:700">Individual</div><div style="flex:1;text-align:center;padding:6px;font-size:9.5px;font-weight:600;color:rgba(255,255,255,0.38)">Business</div></div>
+      <div style="padding:0 10px 7px"><div class="ml" style="margin-bottom:4px">Full Name</div><input class="min" placeholder="Agnes Kyomuhendo"></div>
+      <div style="padding:0 10px 7px"><div class="ml" style="margin-bottom:4px">National ID (NIN)</div><input class="min" placeholder="CF12345678"></div>
+      <div style="padding:0 10px 7px"><div class="ml" style="margin-bottom:4px">Phone</div>
+        <div style="display:flex;gap:5px"><div style="height:37px;background:#142420;border:1.5px solid rgba(255,255,255,0.1);border-radius:9px;padding:0 9px;display:flex;align-items:center;font-size:10px;font-weight:700;color:#0E9F8E">+256</div><input class="min" style="flex:1" placeholder="700 000 000"></div>
+      </div>
+      <div style="padding:0 10px 12px"><div class="ml" style="margin-bottom:4px">Password</div><input class="min" type="password" placeholder="••••••••"></div>
+      <button class="mb t">Create Account</button>
+      <div style="text-align:center;padding:8px;font-size:10px;color:rgba(255,255,255,0.35)">Already registered? <span style="color:#0E9F8E;font-weight:600">Sign In</span></div>
+    </div>
+  </div>
+  <div class="plbl">02 · Register</div>
+</div>
+
+<!-- 03 DASHBOARD -->
+<div class="pw" data-tag="auth" onclick="open(2)">
+  <div class="pf"><div class="notch"></div><div class="stat"><span>9:41</span><span>100%</span></div>
+    <div class="ps">
+      <div class="tnav">
+        <div class="tl"><div class="tlm">L</div><div style="font-size:11.5px;font-weight:600;color:#fff">Hi, <span style="color:#0E9F8E">Agnes</span></div></div>
+        <div class="ta"><div class="ib nw"><svg class="ic" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><div class="nd"></div></div><div class="ava">AK</div></div>
+      </div>
+      <div style="background:linear-gradient(135deg,#0E9F8E,#12BCA8);border-radius:12px;margin:8px 10px 10px;padding:12px">
+        <div style="font-size:8.5px;color:rgba(255,255,255,0.75);margin-bottom:3px">ACTIVE LOAN</div>
+        <div style="font-family:'Fraunces',serif;font-weight:700;font-size:18px;margin-bottom:3px">UGX 8,000,000</div>
+        <div style="font-size:8.5px;color:rgba(255,255,255,0.8);margin-bottom:9px">Next: UGX 2,400,000 due 15 Jun 2024</div>
+        <div style="padding:7px;background:rgba(255,255,255,0.2);border-radius:7px;text-align:center;font-size:9.5px;font-weight:700">Pay Now</div>
+      </div>
+      <div style="display:flex;gap:6px;padding:0 10px;margin-bottom:10px">
+        <div class="mst"><div class="sv">UGX 4.8M</div><div class="sl">Balance</div></div>
+        <div class="mst"><div class="sv">50%</div><div class="sl">Repaid</div></div>
+        <div class="mst"><div class="sv">47</div><div class="sl">Offers Live</div></div>
+      </div>
+      <div class="msec">Quick Actions</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:0 10px">
+        <div style="background:#142420;border-radius:9px;padding:9px;text-align:center"><svg style="width:16px;height:16px;stroke:#0E9F8E;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-bottom:4px;display:block;margin-left:auto;margin-right:auto" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><div style="font-size:9.5px;font-weight:600;color:#0E9F8E">Browse Offers</div></div>
+        <div style="background:#142420;border-radius:9px;padding:9px;text-align:center"><svg style="width:16px;height:16px;stroke:rgba(255,255,255,0.5);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-bottom:4px;display:block;margin-left:auto;margin-right:auto" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><div style="font-size:9.5px;font-weight:600;color:rgba(255,255,255,0.5)">Post Request</div></div>
+        <div style="background:#142420;border-radius:9px;padding:9px;text-align:center"><svg style="width:16px;height:16px;stroke:rgba(255,255,255,0.5);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-bottom:4px;display:block;margin-left:auto;margin-right:auto" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg><div style="font-size:9.5px;font-weight:600;color:rgba(255,255,255,0.5)">Repayment</div></div>
+        <div style="background:#142420;border-radius:9px;padding:9px;text-align:center"><svg style="width:16px;height:16px;stroke:rgba(255,255,255,0.5);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-bottom:4px;display:block;margin-left:auto;margin-right:auto" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg><div style="font-size:9.5px;font-weight:600;color:rgba(255,255,255,0.5)">Wallet</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="plbl">03 · Dashboard</div>
+</div>
+
+<!-- 04 BROWSE OFFERS -->
+<div class="pw" data-tag="browse" onclick="open(3)">
+  <div class="pf"><div class="notch"></div><div class="stat"><span>9:41</span><span>100%</span></div>
+    <div class="ps">
+      <div class="tnav"><div class="tl"><div class="tlm">L</div><div class="tlt">Browse Offers</div></div><div style="font-size:10px;color:#0E9F8E;font-weight:600">47 live</div></div>
+      <div style="padding:7px 10px 6px"><input class="min" placeholder="Search by amount, type..."></div>
+      <div style="padding:0 10px 7px"><div class="mch"><div class="chip on">All</div><div class="chip">Under 5%</div><div class="chip">Business</div><div class="chip">Emergency</div></div></div>
+      <div class="obc best">
+        <div style="margin-bottom:5px"><span class="mbg t">Best Rate</span></div>
+        <div style="display:flex;align-items:center;gap:7px;margin-bottom:5px"><div class="mav" style="background:#163256;width:30px;height:30px;font-size:10px">JM</div><div style="flex:1"><div style="font-size:11px;font-weight:700">James Mugisha</div><div style="font-size:8.5px;color:rgba(255,255,255,0.35)">Verified · 14 loans</div></div><div style="font-family:'Fraunces',serif;font-weight:700;font-size:15px;color:#0E9F8E">5%/mo</div></div>
+        <div style="font-size:8.5px;color:rgba(255,255,255,0.38);margin-bottom:7px">UGX 1M–50M · Max 6 months · Business · Personal</div>
+        <div style="padding:7px;background:#0E9F8E;border-radius:7px;text-align:center;font-size:9.5px;font-weight:700">Apply Now</div>
+      </div>
+      <div class="obc">
+        <div style="display:flex;align-items:center;gap:7px;margin-bottom:5px"><div class="mav" style="background:#1a6e4e;width:30px;height:30px;font-size:10px">RK</div><div style="flex:1"><div style="font-size:11px;font-weight:700">Robert Kiggundu</div><div style="font-size:8.5px;color:rgba(255,255,255,0.35)">Verified · 8 loans</div></div><div style="font-family:'Fraunces',serif;font-weight:700;font-size:15px;color:rgba(255,255,255,0.65)">6%/mo</div></div>
+        <div style="font-size:8.5px;color:rgba(255,255,255,0.38);margin-bottom:7px">UGX 2M–30M · Max 12 months · Agricultural</div>
+        <div style="padding:7px;border:1.5px solid rgba(14,159,142,0.35);border-radius:7px;text-align:center;font-size:9.5px;font-weight:700;color:#0E9F8E">Apply Now</div>
+      </div>
+      <div class="obc">
+        <div style="display:flex;align-items:center;gap:7px;margin-bottom:5px"><div class="mav" style="background:#6e1a1a;width:30px;height:30px;font-size:10px">SN</div><div style="flex:1"><div style="font-size:11px;font-weight:700">Sarah Nakimuli</div><div style="font-size:8.5px;color:rgba(255,255,255,0.35)">Verified</div></div><div style="font-family:'Fraunces',serif;font-weight:700;font-size:15px;color:rgba(255,255,255,0.65)">7%/mo</div></div>
+        <div style="font-size:8.5px;color:rgba(255,255,255,0.38);margin-bottom:7px">UGX 500K–20M · Max 3 months · Personal</div>
+        <div style="padding:7px;border:1.5px solid rgba(14,159,142,0.35);border-radius:7px;text-align:center;font-size:9.5px;font-weight:700;color:#0E9F8E">Apply Now</div>
+      </div>
+    </div>
+  </div>
+  <div class="plbl">04 · Browse Offers</div>
+</div>
+
+<!-- 05 OFFER DETAIL -->
+<div class="pw" data-tag="browse" onclick="open(4)">
+  <div class="pf"><div class="notch"></div><div class="stat"><span>9:41</span><span>100%</span></div>
+    <div class="ps">
+      <div class="tnav"><div class="tl"><div class="ib"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div class="tlt">Offer Detail</div></div></div>
+      <div style="text-align:center;padding:10px 14px 12px">
+        <div style="width:46px;height:46px;border-radius:50%;background:#163256;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;font-size:17px;margin:0 auto 7px">JM</div>
+        <div style="font-family:'Fraunces',serif;font-weight:700;font-size:15px;margin-bottom:2px">James Mugisha</div>
+        <div style="font-size:9px;color:rgba(255,255,255,0.35);margin-bottom:7px">Licensed Lender · 14 loans issued</div>
+        <div style="display:flex;gap:5px;justify-content:center"><span class="mbg g">Verified</span><span class="mbg t">Best Rate</span></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:0 10px;margin-bottom:10px">
+        <div style="background:rgba(14,159,142,0.1);border-radius:9px;padding:9px;text-align:center"><div style="font-size:7.5px;color:rgba(255,255,255,0.38);margin-bottom:2px">INTEREST RATE</div><div style="font-family:'Fraunces',serif;font-weight:700;font-size:14px;color:#0E9F8E">5%/mo</div></div>
+        <div style="background:#142420;border-radius:9px;padding:9px;text-align:center"><div style="font-size:7.5px;color:rgba(255,255,255,0.38);margin-bottom:2px">MAX AMOUNT</div><div style="font-family:'Fraunces',serif;font-weight:700;font-size:14px">UGX 50M</div></div>
+        <div style="background:#142420;border-radius:9px;padding:9px;text-align:center"><div style="font-size:7.5px;color:rgba(255,255,255,0.38);margin-bottom:2px">MIN AMOUNT</div><div style="font-family:'Fraunces',serif;font-weight:700;font-size:14px">UGX 1M</div></div>
+        <div style="background:#142420;border-radius:9px;padding:9px;text-align:center"><div style="font-size:7.5px;color:rgba(255,255,255,0.38);margin-bottom:2px">MAX DURATION</div><div style="font-family:'Fraunces',serif;font-weight:700;font-size:14px">6 months</div></div>
+      </div>
+      <div class="mc"><div class="ml" style="margin-bottom:6px">Required Documents</div><div class="mch"><div class="chip on">National ID</div><div class="chip on">Bank Statement</div><div class="chip on">Business Proof</div></div></div>
+      <button class="mb t">Apply to This Offer</button>
+    </div>
+  </div>
+  <div class="plbl">05 · Offer Detail</div>
+</div>
+
+<!-- 06 APPLY STEP 1 -->
+<div class="pw" data-tag="apply" onclick="open(5)">
+  <div class="pf"><div class="notch"></div><div class="stat"><span>9:41</span><span>100%</span></div>
+    <div class="ps">
+      <div class="tnav"><div class="tl"><div class="ib"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div class="tlt">Loan Details</div></div><div style="font-size:10px;color:#0E9F8E">1/4</div></div>
+      <div class="sb"><div class="sd act"></div><div class="sd"></div><div class="sd"></div><div class="sd"></div></div>
+      <div class="mc">
+        <div class="ml" style="margin-bottom:4px">How Much Do You Need?</div>
+        <input class="min t" value="UGX 8,000,000" style="font-weight:700;font-size:13px;margin-bottom:9px">
+        <div class="ml" style="margin-bottom:5px">Duration</div>
+        <div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:9px">
+          <div style="padding:4px 9px;border-radius:10px;border:1.5px solid rgba(255,255,255,0.1);font-size:9.5px;color:rgba(255,255,255,0.38)">1 mo</div>
+          <div style="padding:4px 9px;border-radius:10px;background:rgba(14,159,142,0.12);border:1.5px solid #0E9F8E;font-size:9.5px;color:#0E9F8E;font-weight:700">3 mo</div>
+          <div style="padding:4px 9px;border-radius:10px;border:1.5px solid rgba(255,255,255,0.1);font-size:9.5px;color:rgba(255,255,255,0.38)">6 mo</div>
+        </div>
+        <div class="ml" style="margin-bottom:5px">Loan Type</div>
+        <div class="mch"><div class="chip on">Business</div><div class="chip">Personal</div><div class="chip">Agricultural</div><div class="chip">Emergency</div></div>
+      </div>
+      <div class="mct">
+        <div style="font-size:9px;font-weight:700;color:#0E9F8E;margin-bottom:7px">LIVE CALCULATOR · 5%/mo</div>
+        <div style="display:flex;justify-content:space-between;font-size:9.5px;padding:3px 0;border-bottom:1px solid rgba(14,159,142,0.12)"><span style="color:rgba(255,255,255,0.38)">Principal</span><span style="font-weight:600">UGX 8,000,000</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:9.5px;padding:3px 0;border-bottom:1px solid rgba(14,159,142,0.12)"><span style="color:rgba(255,255,255,0.38)">Interest (3mo)</span><span style="font-weight:600;color:#0E9F8E">UGX 1,200,000</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:11px;padding:4px 0;font-weight:900"><span style="color:rgba(255,255,255,0.55)">Total</span><span style="color:#0E9F8E">UGX 9,200,000</span></div>
+      </div>
+      <button class="mb t">Next: Documents</button>
+    </div>
+  </div>
+  <div class="plbl">06 · Apply · Loan Details</div>
+</div>
+
+<!-- 07 APPLY STEP 2 -->
+<div class="pw" data-tag="apply" onclick="open(6)">
+  <div class="pf"><div class="notch"></div><div class="stat"><span>9:41</span><span>100%</span></div>
+    <div class="ps">
+      <div class="tnav"><div class="tl"><div class="ib"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div class="tlt">Documents</div></div><div style="font-size:10px;color:#0E9F8E">2/4</div></div>
+      <div class="sb"><div class="sd done"></div><div class="sd act"></div><div class="sd"></div><div class="sd"></div></div>
+      <div class="mc">
+        <div class="ml" style="margin-bottom:8px">Required Documents</div>
+        <div style="background:rgba(14,159,142,0.08);border:1.5px solid #0E9F8E;border-radius:9px;padding:9px;margin-bottom:7px;display:flex;align-items:center;gap:7px">
+          <svg class="ic" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16h16V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <div style="flex:1"><div style="font-size:10px;font-weight:700">National ID</div><div style="font-size:8.5px;color:rgba(255,255,255,0.35)">NIN-CF12345678.pdf</div></div>
+          <span class="mbg g">Done</span>
+        </div>
+        <div style="border:1.5px dashed rgba(255,255,255,0.1);border-radius:9px;padding:14px;text-align:center;margin-bottom:7px">
+          <svg style="width:20px;height:20px;stroke:rgba(255,255,255,0.3);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;margin-bottom:5px;display:block;margin-left:auto;margin-right:auto" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <div style="font-size:9.5px;font-weight:700;margin-bottom:2px">Bank Statement (3 months)</div>
+          <div style="font-size:8.5px;color:rgba(255,255,255,0.3)">Tap to upload · PDF/JPG</div>
+        </div>
+        <div style="border:1.5px dashed rgba(255,255,255,0.1);border-radius:9px;padding:14px;text-align:center">
+          <svg style="width:20px;height:20px;stroke:rgba(255,255,255,0.3);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;margin-bottom:5px;display:block;margin-left:auto;margin-right:auto" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <div style="font-size:9.5px;font-weight:700;margin-bottom:2px">Business Registration / Payslip</div>
+          <div style="font-size:8.5px;color:rgba(255,255,255,0.3)">Tap to upload · PDF/JPG</div>
+        </div>
+      </div>
+      <button class="mb t">Next: Guarantors</button>
+      <button class="mb o">Back</button>
+    </div>
+  </div>
+  <div class="plbl">07 · Apply · Documents</div>
+</div>
+
+<!-- 08 APPLY STEP 3 -->
+<div class="pw" data-tag="apply" onclick="open(7)">
+  <div class="pf"><div class="notch"></div><div class="stat"><span>9:41</span><span>100%</span></div>
+    <div class="ps">
+      <div class="tnav"><div class="tl"><div class="ib"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div class="tlt">Guarantors</div></div><div style="font-size:10px;color:#0E9F8E">3/4</div></div>
+      <div class="sb"><div class="sd done"></div><div class="sd done"></div><div class="sd act"></div><div class="sd"></div></div>
+      <div style="padding:6px 14px 8px;font-size:9.5px;color:rgba(255,255,255,0.35)">Add 2 guarantors. They confirm via SMS.</div>
+      <div class="mc" style="background:rgba(14,159,142,0.07);border:1.5px solid rgba(14,159,142,0.25)">
+        <div style="display:flex;align-items:center;gap:8px"><div class="mav" style="background:#0E9F8E;width:28px;height:28px;font-size:10px">SM</div><div style="flex:1"><div style="font-size:10.5px;font-weight:700">Sarah Mirembe</div><div style="font-size:8.5px;color:rgba(255,255,255,0.35)">Colleague</div></div><span class="mbg g">Confirmed</span></div>
+      </div>
+      <div class="mc">
+        <div class="ml" style="margin-bottom:7px">Guarantor 2</div>
+        <input class="min" placeholder="Full Name" style="margin-bottom:6px">
+        <div style="display:flex;gap:5px;margin-bottom:6px"><div style="height:37px;background:#0e1f1c;border:1.5px solid rgba(255,255,255,0.1);border-radius:9px;padding:0 9px;display:flex;align-items:center;font-size:10px;font-weight:700;color:#0E9F8E">+256</div><input class="min" style="flex:1" placeholder="Phone number"></div>
+        <select class="mse"><option>Relationship</option><option>Colleague</option><option>Spouse</option><option>Parent</option></select>
+      </div>
+      <button class="mb" style="background:rgba(14,159,142,0.12);color:#0E9F8E;border:1.5px solid rgba(14,159,142,0.3);margin-bottom:6px">Send Invite SMS</button>
+      <button class="mb t">Next: Review</button>
+    </div>
+  </div>
+  <div class="plbl">08 · Apply · Guarantors</div>
+</div>
+
+<!-- 09 APPLY STEP 4 REVIEW -->
+<div class="pw" data-tag="apply" onclick="open(8)">
+  <div class="pf"><div class="notch"></div><div class="stat"><span>9:41</span><span>100%</span></div>
+    <div class="ps">
+      <div class="tnav"><div class="tl"><div class="ib"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div class="tlt">Review & Submit</div></div><div style="font-size:10px;color:#0E9F8E">4/4</div></div>
+      <div class="sb"><div class="sd done"></div><div class="sd done"></div><div class="sd done"></div><div class="sd act"></div></div>
+      <div class="mc" style="padding:0;overflow:hidden">
+        <div style="padding:7px 10px;background:rgba(14,159,142,0.1);font-size:8.5px;font-weight:700;color:#0E9F8E">LENDER</div>
+        <div class="mr"><span style="font-size:9.5px;color:rgba(255,255,255,0.38);flex:1">Lender</span><span style="font-size:9.5px;font-weight:700">James Mugisha</span></div>
+        <div style="padding:7px 10px;background:rgba(14,159,142,0.1);font-size:8.5px;font-weight:700;color:#0E9F8E">TERMS</div>
+        <div class="mr"><span style="font-size:9.5px;color:rgba(255,255,255,0.38);flex:1">Amount</span><span style="font-size:9.5px;font-weight:700">UGX 8,000,000</span></div>
+        <div class="mr"><span style="font-size:9.5px;color:rgba(255,255,255,0.38);flex:1">Duration</span><span style="font-size:9.5px;font-weight:700">3 months</span></div>
+        <div class="mr"><span style="font-size:9.5px;color:rgba(255,255,255,0.38);flex:1">Rate</span><span style="font-size:9.5px;font-weight:700;color:#0E9F8E">5%/month</span></div>
+        <div class="mr" style="border-bottom:none"><span style="font-size:10px;font-weight:900;color:rgba(255,255,255,0.5);flex:1">Total Repayable</span><span style="font-size:12px;font-weight:900;color:#0E9F8E">UGX 9,200,000</span></div>
+      </div>
+      <div style="background:rgba(217,119,6,0.07);border-radius:9px;margin:0 10px 8px;padding:9px;font-size:9px;color:rgba(217,119,6,0.8);line-height:1.5">By submitting you confirm the information is accurate.</div>
+      <button class="mb t">Submit Application</button>
+    </div>
+  </div>
+  <div class="plbl">09 · Apply · Review</div>
+</div>
+
+<!-- 10 APP SUBMITTED -->
+<div class="pw" data-tag="apply" onclick="open(9)">
+  <div class="pf"><div class="notch"></div><div class="stat"><span>9:41</span><span>100%</span></div>
+    <div class="ps">
+      <div class="tnav"><div class="tl"><div class="tlm">L</div><div class="tlt">LendFlow</div></div></div>
+      <div style="text-align:center;padding:18px 14px 14px">
+        <div style="width:52px;height:52px;background:rgba(14,159,142,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px"><svg style="width:24px;height:24px;stroke:#0E9F8E;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div style="font-family:'Fraunces',serif;font-weight:700;font-size:17px;margin-bottom:5px">Application Submitted!</div>
+        <div style="font-size:9.5px;color:rgba(255,255,255,0.38);line-height:1.5;margin-bottom:12px">Sent to James Mugisha. You'll be notified once reviewed.</div>
+        <div class="mc" style="text-align:left;margin-bottom:12px">
+          <div style="display:flex;justify-content:space-between;font-size:9.5px;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.06)"><span style="color:rgba(255,255,255,0.38)">Ref No.</span><span style="font-weight:700">#APP-20240091</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:9.5px;padding:4px 0"><span style="color:rgba(255,255,255,0.38)">Status</span><span class="mbg y">Under Review</span></div>
+        </div>
+        <div style="text-align:left">
+          <div class="ti"><div class="td done">&#10003;</div><div class="tline"></div><div><div style="font-size:9.5px;font-weight:700">Application Submitted</div></div></div>
+          <div class="ti"><div class="td pend">2</div><div class="tline"></div><div style="padding-top:2px"><div style="font-size:9.5px;color:rgba(255,255,255,0.4)">Lender Review</div></div></div>
+          <div class="ti"><div class="td pend">3</div><div class="tline"></div><div style="padding-top:2px"><div style="font-size:9.5px;color:rgba(255,255,255,0.4)">Approval</div></div></div>
+          <div class="ti"><div class="td pend">4</div><div class="tline"></div><div style="padding-top:2px"><div style="font-size:9.5px;color:rgba(255,255,255,0.4)">Disbursement</div></div></div>
+          <div class="ti"><div class="td pend">5</div><div style="padding-top:2px"><div style="font-size:9.5px;color:rgba(255,255,255,0.4)">Repayment Begins</div></div></div>
+        </div>
+      </div>
+      <button class="mb t">Back to Dashboard</button>
+    </div>
+  </div>
+  <div class="plbl">10 · Application Submitted</div>
+</div>
+
+<!-- 11 POST A REQUEST -->
+<div class="pw" data-tag="request" onclick="open(10)">
+  <div class="pf"><div class="notch"></div><div class="stat"><span>9:41</span><span>100%</span></div>
+    <div class="ps">
+      <div class="tnav"><div class="tl"><div class="ib"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div class="tlt">Post a Request</div></div></div>
+      <div style="padding:7px 14px 8px;font-size:9.5px;color:rgba(255,255,255,0.35)">Describe what you need. Lenders will send you offers.</div>
+      <div class="mc">
+        <div class="ml" style="margin-bottom:4px">Amount Needed (UGX)</div>
+        <input class="min t" value="8,000,000" style="font-weight:700;margin-bottom:9px">
+        <div class="ml" style="margin-bottom:4px">Duration</div>
+        <select class="mse" style="margin-bottom:9px"><option>3 months</option><option>1 month</option><option>6 months</option></select>
+        <div class="ml" style="margin-bottom:5px">Loan Purpose</div>
+        <div class="mch" style="margin-bottom:9px"><div class="chip on">Business</div><div class="chip">Personal</div><div class="chip">Agricultural</div><div class="chip">Emergency</div></div>
+        <div class="ml" style="margin-bottom:4px">Max Interest Rate (%/mo)</div>
+        <input class="min" placeholder="8">
+      </div>
+      <button class="mb t">Post Request</button>
+      <button class="mb o">Save Draft</button>
+    </div>
+  </div>
+  <div class="plbl">11 · Post a Request</div>
+</div>
+
+<!-- 12 MY REQUESTS -->
+<div class="pw" data-tag="request" onclick="open(11)">
+  <div class="pf"><div class="notch"></div><div class="stat"><span>9:41</span><span>100%</span></div>
+    <div class="ps">
+      <div class="tnav"><div class="tl"><div class="tlm">L</div><div class="tlt">My Requests</div></div><div style="background:#0E9F8E;border-radius:7px;padding:4px 10px;font-size:9.5px;font-weight:700">+ New</div></div>
+      <div style="padding:7px 10px 5px"><div class="mch"><div class="chip on">All</div><div class="chip">Active</div><div class="chip">With Offers</div></div></div>
+      <div class="mc">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:3px"><div style="font-family:'Fraunces',serif;font-weight:700;font-size:14px">UGX 8,000,000</div><span class="mbg g">Active</span></div>
+        <div style="font-size:8.5px;color:rgba(255,255,255,0.35);margin-bottom:7px">Business · 3 months · Max 8%/mo · #REQ-047</div>
+        <div style="display:flex;align-items:center;justify-content:space-between"><div style="text-align:center"><div style="font-family:'Fraunces',serif;font-weight:700;font-size:16px;color:#0E9F8E">3</div><div style="font-size:8px;color:rgba(255,255,255,0.35)">Offers</div></div><div style="padding:6px 14px;background:#0E9F8E;border-radius:7px;font-size:9.5px;font-weight:700">View Offers</div></div>
+      </div>
+      <div class="mc">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:3px"><div style="font-family:'Fraunces',serif;font-weight:700;font-size:14px">UGX 3,000,000</div><span class="mbg g">Active</span></div>
+        <div style="font-size:8.5px;color:rgba(255,255,255,0.35);margin-bottom:7px">Personal · 2 months · Max 10%/mo · #REQ-039</div>
+        <div style="display:flex;align-items:center;justify-content:space-between"><div style="text-align:center"><div style="font-family:'Fraunces',serif;font-weight:700;font-size:16px;color:#0E9F8E">1</div><div style="font-size:8px;color:rgba(255,255,255,0.35)">Offer</div></div><div style="padding:6px 14px;border:1.5px solid rgba(14,159,142,0.35);border-radius:7px;font-size:9.5px;font-weight:700;color:#0E9F8E">View Offer</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="plbl">12 · My Requests</div>
+</div>
+
+<!-- 13 OFFERS RECEIVED -->
+<div class="pw" data-tag="request" onclick="open(12)">
+  <div class="pf"><div class="notch"></div><div class="stat"><span>9:41</span><span>100%</span></div>
+    <div class="ps">
+      <div class="tnav"><div class="tl"><div class="ib"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div class="tlt">Offers Received</div></div></div>
+      <div style="padding:6px 10px 7px;font-size:9px;color:rgba(255,255,255,0.32)">For #REQ-047 · UGX 8M · Business</div>
+      <div class="mc" style="background:rgba(14,159,142,0.07);border:1.5px solid rgba(14,159,142,0.25)">
+        <span class="mbg t" style="margin-bottom:7px;display:inline-flex">Best Offer</span>
+        <div style="display:flex;align-items:center;gap:7px;margin-bottom:6px"><div class="mav" style="background:#163256;width:30px;height:30px;font-size:10px">JM</div><div style="flex:1"><div style="font-size:10.5px;font-weight:700">James Mugisha</div><div style="font-size:8.5px;color:rgba(255,255,255,0.35)">Licensed · Verified · 14 loans</div></div></div>
+        <div style="font-family:'Fraunces',serif;font-weight:700;font-size:14px;color:#0E9F8E;margin-bottom:2px">5%/mo · 3 months · UGX 8,000,000</div>
+        <div style="font-size:8.5px;color:rgba(255,255,255,0.35);margin-bottom:9px">Total repayable: UGX 9,200,000</div>
+        <div style="display:flex;gap:5px"><div style="flex:1;padding:7px;border:1.5px solid rgba(255,255,255,0.09);border-radius:7px;text-align:center;font-size:9.5px;color:rgba(255,255,255,0.45)">Decline</div><div style="flex:2;padding:7px;background:#0E9F8E;border-radius:7px;text-align:center;font-size:9.5px;font-weight:700">Accept Offer</div></div>
+      </div>
+      <div class="mc">
+        <div style="display:flex;align-items:center;gap:7px;margin-bottom:6px"><div class="mav" style="background:#1a6e4e;width:30px;height:30px;font-size:10px">RK</div><div style="flex:1"><div style="font-size:10.5px;font-weight:700">Robert Kiggundu</div><div style="font-size:8.5px;color:rgba(255,255,255,0.35)">Licensed · Verified</div></div></div>
+        <div style="font-family:'Fraunces',serif;font-weight:700;font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:2px">6%/mo · 3 months · UGX 8M</div>
+        <div style="font-size:8.5px;color:rgba(255,255,255,0.35);margin-bottom:7px">Total: UGX 9,440,000</div>
+        <div style="display:flex;gap:5px"><div style="flex:1;padding:6px;border:1.5px solid rgba(255,255,255,0.09);border-radius:7px;text-align:center;font-size:9.5px;color:rgba(255,255,255,0.45)">Decline</div><div style="flex:2;padding:6px;border:1.5px solid rgba(14,159,142,0.35);border-radius:7px;text-align:center;font-size:9.5px;font-weight:700;color:#0E9F8E">Accept</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="plbl">13 · Offers Received</div>
+</div>
+
+<!-- 14 OFFER ACCEPTED -->
+<div class="pw" data-tag="loans" onclick="open(13)">
+  <div class="pf"><div class="notch"></div><div class="stat"><span>9:41</span><span>100%</span></div>
+    <div class="ps">
+      <div class="tnav"><div class="tl"><div class="tlm">L</div><div class="tlt">LendFlow</div></div></div>
+      <div style="text-align:center;padding:22px 14px 14px">
+        <div style="width:52px;height:52px;background:rgba(14,159,142,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px"><svg style="width:24px;height:24px;stroke:#0E9F8E;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div style="font-family:'Fraunces',serif;font-weight:700;font-size:17px;margin-bottom:5px">Offer Accepted!</div>
+        <div style="font-size:9.5px;color:rgba(255,255,255,0.38);line-height:1.5;margin-bottom:12px">James Mugisha will disburse within 24 hours.</div>
+        <div class="mc" style="text-align:left">
+          <div style="display:flex;justify-content:space-between;font-size:9.5px;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.06)"><span style="color:rgba(255,255,255,0.38)">Lender</span><span style="font-weight:700">James Mugisha</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:9.5px;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.06)"><span style="color:rgba(255,255,255,0.38)">Amount</span><span style="font-weight:700">UGX 8,000,000</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:9.5px;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.06)"><span style="color:rgba(255,255,255,0.38)">Rate</span><span style="font-weight:700;color:#0E9F8E">5%/month</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:11px;padding:4px 0;font-weight:900"><span style="color:rgba(255,255,255,0.38)">Total</span><span style="color:#0E9F8E">UGX 9,200,000</span></div>
+        </div>
+      </div>
+      <button class="mb t">View Repayment Schedule</button>
+      <button class="mb o">Back to Dashboard</button>
+    </div>
+  </div>
+  <div class="plbl">14 · Offer Accepted</div>
+</div>
+
+<!-- 15 REPAYMENT SCHEDULE -->
+<div class="pw" data-tag="loans" onclick="open(14)">
+  <div class="pf"><div class="notch"></div><div class="stat"><span>9:41</span><span>100%</span></div>
+    <div class="ps">
+      <div class="tnav"><div class="tl"><div class="tlm">L</div><div class="tlt">Repayment</div></div><div class="ava">AK</div></div>
+      <div style="background:linear-gradient(135deg,#0E9F8E,#12BCA8);border-radius:12px;margin:8px 10px 10px;padding:13px">
+        <div style="font-size:8.5px;color:rgba(255,255,255,0.75);margin-bottom:3px">OUTSTANDING BALANCE</div>
+        <div style="font-family:'Fraunces',serif;font-weight:700;font-size:20px;margin-bottom:7px">UGX 4,800,000</div>
+        <div style="height:4px;background:rgba(255,255,255,0.25);border-radius:2px;margin-bottom:4px"><div style="height:100%;background:#fff;border-radius:2px;width:50%"></div></div>
+        <div style="font-size:8.5px;color:rgba(255,255,255,0.75)">50% repaid · 2 payments remaining</div>
+      </div>
+      <div class="mc" style="padding:0;overflow:hidden">
+        <div class="mr"><div style="width:14px;font-size:9px;color:rgba(255,255,255,0.32)">#1</div><div style="flex:1;font-size:9.5px">15 Mar 2024</div><div style="font-size:9.5px;font-weight:600">UGX 2.4M</div><span class="mbg g" style="margin-left:4px">Paid</span></div>
+        <div class="mr"><div style="width:14px;font-size:9px;color:rgba(255,255,255,0.32)">#2</div><div style="flex:1;font-size:9.5px">15 Apr 2024</div><div style="font-size:9.5px;font-weight:600">UGX 2.4M</div><span class="mbg g" style="margin-left:4px">Paid</span></div>
+        <div class="mr"><div style="width:14px;font-size:9px;color:rgba(255,255,255,0.32)">#3</div><div style="flex:1;font-size:9.5px">15 May 2024</div><div style="font-size:9.5px;font-weight:600">UGX 2.4M</div><div style="display:flex;align-items:center;gap:4px;margin-left:4px"><span class="mbg y">Due 8d</span><div style="padding:3px 7px;background:#0E9F8E;border-radius:5px;font-size:8.5px;font-weight:700">Pay</div></div></div>
+        <div class="mr" style="border-bottom:none"><div style="width:14px;font-size:9px;color:rgba(255,255,255,0.32)">#4</div><div style="flex:1;font-size:9.5px">15 Jun 2024</div><div style="font-size:9.5px;font-weight:600">UGX 2.4M</div><span class="mbg gr" style="margin-left:4px">Upcoming</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="plbl">15 · Repayment Schedule</div>
+</div>
+
+<!-- 16 MAKE PAYMENT -->
+<div class="pw" data-tag="loans" onclick="open(15)">
+  <div class="pf"><div class="notch"></div><div class="stat"><span>9:41</span><span>100%</span></div>
+    <div class="ps">
+      <div class="tnav"><div class="tl"><div class="ib"><svg class="ic" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></div><div class="tlt">Make a Payment</div></div></div>
+      <div class="mct" style="text-align:center;margin-top:8px">
+        <div style="font-size:8.5px;color:rgba(255,255,255,0.38);margin-bottom:3px">Instalment #3 · Due 15 May 2024</div>
+        <div style="font-family:'Fraunces',serif;font-weight:700;font-size:20px;margin-bottom:5px">UGX 2,400,000</div>
+        <span class="mbg y">Due in 8 days</span>
+      </div>
+      <div style="display:flex;margin:0 10px 10px;background:rgba(255,255,255,0.05);border-radius:9px;padding:3px">
+        <div style="flex:1;text-align:center;padding:6px;background:#0E9F8E;border-radius:7px;font-size:9px;font-weight:700">MTN MoMo</div>
+        <div style="flex:1;text-align:center;padding:6px;font-size:9px;font-weight:600;color:rgba(255,255,255,0.38)">Airtel Money</div>
+        <div style="flex:1;text-align:center;padding:6px;font-size:9px;font-weight:600;color:rgba(255,255,255,0.38)">Wallet</div>
+      </div>
+      <div class="mc">
+        <div class="ml" style="margin-bottom:5px">MTN MoMo Number</div>
+        <div style="display:flex;gap:5px"><div style="height:37px;background:#0e1f1c;border:1.5px solid rgba(14,159,142,0.3);border-radius:9px;padding:0 9px;display:flex;align-items:center;font-size:10px;font-weight:700;color:#0E9F8E">+256</div><input class="min t" style="flex:1" value="700 123 456"></div>
+      </div>
+      <button class="mb t" style="font-size:13px;padding:12px">Pay UGX 2,400,000</button>
+    </div>
+  </div>
+  <div class="plbl">16 · Make a Payment</div>
+</div>
+
+<!-- 17 PAYMENT RECEIPT -->
+<div class="pw" data-tag="loans" onclick="open(16)">
+  <div class="pf"><div class="notch"></div><div class="stat"><span>9:41</span><span>100%</span></div>
+    <div class="ps">
+      <div class="tnav"><div class="tl"><div class="tlm">L</div><div class="tlt">Receipt</div></div></div>
+      <div style="text-align:center;padding:20px 14px 12px">
+        <div style="width:48px;height:48px;background:rgba(22,163,74,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px"><svg style="width:22px;height:22px;stroke:#16A34A;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div style="font-family:'Fraunces',serif;font-weight:700;font-size:16px;margin-bottom:3px">Payment Successful</div>
+        <div style="font-size:9.5px;color:rgba(255,255,255,0.35);margin-bottom:12px">Transaction confirmed</div>
+        <div class="mc" style="text-align:left;border:1.5px solid rgba(14,159,142,0.25)">
+          <div style="display:flex;justify-content:space-between;font-size:9.5px;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.06)"><span style="color:rgba(255,255,255,0.38)">Transaction ID</span><span style="font-weight:700">#TXN-0091</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:9.5px;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.06)"><span style="color:rgba(255,255,255,0.38)">Date</span><span style="font-weight:700">07 May 2024</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:9.5px;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.06)"><span style="color:rgba(255,255,255,0.38)">Method</span><span style="font-weight:700">MTN MoMo</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:9.5px;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.06)"><span style="color:rgba(255,255,255,0.38)">Loan Ref</span><span style="font-weight:700">#LN-2024-031</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;padding:5px 0;font-weight:900"><span style="color:rgba(255,255,255,0.38)">Amount Paid</span><span style="color:#0E9F8E">UGX 2,400,000</span></div>
+        </div>
+      </div>
+      <button class="mb o" style="margin-bottom:5px">Download Receipt</button>
+      <button class="mb t">View Schedule</button>
+    </div>
+  </div>
+  <div class="plbl">17 · Payment Receipt</div>
+</div>
+
+<!-- 18 WALLET -->
+<div class="pw" data-tag="finance" onclick="open(17)">
+  <div class="pf"><div class="notch"></div><div class="stat"><span>9:41</span><span>100%</span></div>
+    <div class="ps">
+      <div class="tnav"><div class="tl"><div class="tlm">L</div><div class="tlt">Wallet</div></div><div class="ava">AK</div></div>
+      <div class="wh" style="margin-top:8px">
+        <div style="font-size:8.5px;color:rgba(255,255,255,0.42);margin-bottom:3px">Wallet Balance</div>
+        <div style="font-family:'Fraunces',serif;font-weight:900;font-size:21px;margin-bottom:3px">UGX 1,240,000</div>
+        <div style="font-size:8.5px;color:rgba(255,255,255,0.35);margin-bottom:10px">Pending: UGX 8,000,000</div>
+        <div style="display:flex;gap:6px"><div style="flex:1;padding:7px;background:#0E9F8E;border-radius:7px;text-align:center;font-size:9.5px;font-weight:700">+ Deposit</div><div style="flex:1;padding:7px;background:rgba(255,255,255,0.1);border-radius:7px;text-align:center;font-size:9.5px;font-weight:700">Withdraw</div></div>
+      </div>
+      <div class="msec">Transaction History</div>
+      <div class="mc" style="padding:0;overflow:hidden">
+        <div class="mr">
+          <div style="width:28px;height:28px;border-radius:7px;background:rgba(224,62,62,0.1);display:flex;align-items:center;justify-content:center"><svg style="width:12px;height:12px;stroke:#E03E3E;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg></div>
+          <div style="flex:1;padding-left:7px"><div style="font-size:9.5px;font-weight:600">Repayment Instalment #3</div><div style="font-size:8px;color:rgba(255,255,255,0.32)">07 May 2024</div></div>
+          <div style="color:#E03E3E;font-weight:700;font-size:10px">-UGX 2.4M</div>
+        </div>
+        <div class="mr" style="border-bottom:none">
+          <div style="width:28px;height:28px;border-radius:7px;background:rgba(22,163,74,0.1);display:flex;align-items:center;justify-content:center"><svg style="width:12px;height:12px;stroke:#16A34A;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></div>
+          <div style="flex:1;padding-left:7px"><div style="font-size:9.5px;font-weight:600">Loan Disbursed — James M.</div><div style="font-size:8px;color:rgba(255,255,255,0.32)">01 Mar 2024</div></div>
+          <div style="color:#16A34A;font-weight:700;font-size:10px">+UGX 8M</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="plbl">18 · Wallet</div>
+</div>
+
+<!-- 19 PROFILE & SETTINGS -->
+<div class="pw" data-tag="account" onclick="open(18)">
+  <div class="pf"><div class="notch"></div><div class="stat"><span>9:41</span><span>100%</span></div>
+    <div class="ps">
+      <div class="tnav"><div class="tl"><div class="tlm">L</div><div class="tlt">Account</div></div><div class="ava">AK</div></div>
+      <div style="text-align:center;padding:12px 10px 10px">
+        <div style="width:50px;height:50px;border-radius:50%;background:#0E9F8E;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;font-size:19px;margin:0 auto 7px">AK</div>
+        <div style="font-family:'Fraunces',serif;font-weight:700;font-size:13.5px;margin-bottom:2px">Agnes Kyomuhendo</div>
+        <div style="font-size:9px;color:rgba(255,255,255,0.32);margin-bottom:6px">Borrower since Feb 2024</div>
+      </div>
+      <div class="msec">KYC Status</div>
+      <div class="mc" style="padding:0;overflow:hidden">
+        <div class="mr"><svg class="ic" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16h16V8z"/><polyline points="14 2 14 8 20 8"/></svg><div style="flex:1;font-size:10px;font-weight:600;padding-left:7px">National ID</div><span class="mbg g">Verified</span></div>
+        <div class="mr"><svg class="ic" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg><div style="flex:1;font-size:10px;font-weight:600;padding-left:7px">Phone Number</div><span class="mbg g">Verified</span></div>
+        <div class="mr" style="border-bottom:none"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><div style="flex:1;font-size:10px;font-weight:600;padding-left:7px">Bank Statement</div><span class="mbg y">Pending</span></div>
+      </div>
+      <div class="msec">Notifications</div>
+      <div class="mc" style="padding:0;overflow:hidden">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 10px;border-bottom:1px solid rgba(255,255,255,0.05)"><div><div style="font-size:10.5px;font-weight:600">New Lender Offers</div><div style="font-size:8.5px;color:rgba(255,255,255,0.32)">When lenders respond</div></div><div class="mtog on"></div></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 10px;border-bottom:1px solid rgba(255,255,255,0.05)"><div><div style="font-size:10.5px;font-weight:600">Payment Reminders</div><div style="font-size:8.5px;color:rgba(255,255,255,0.32)">3 days before due date</div></div><div class="mtog on"></div></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 10px"><div><div style="font-size:10.5px;font-weight:600">Two-Factor Auth</div><div style="font-size:8.5px;color:rgba(255,255,255,0.32)">SMS code on login</div></div><div class="mtog on"></div></div>
+      </div>
+      <button class="mb" style="margin-top:8px;background:rgba(224,62,62,0.1);color:#E03E3E;border:1.5px solid rgba(224,62,62,0.18)">Sign Out</button>
+    </div>
+  </div>
+  <div class="plbl">19 · Profile & Settings</div>
+</div>
+
+</div>
+
+<!-- MODAL — dark overlay, no shadow -->
+<div class="mov" id="modal">
+  <button class="mcl" onclick="cls()">&#x2715;</button>
+  <div class="mcnt" id="mcnt"></div>
+  <div class="mp">
+    <div class="mno"></div>
+    <div class="mst2"><span>9:41</span><span>100%</span></div>
+    <div class="mb2" id="mbody"></div>
+  </div>
+  <div class="mnav">
+    <button class="mnb" onclick="nav(-1)">&#8592; Prev</button>
+    <button class="mnb" onclick="nav(1)">Next &#8594;</button>
+  </div>
+</div>
+
+<script>
+let cur=0;
+const ws=document.querySelectorAll('.pw');
+const tot=ws.length;
+function open(i){cur=i;ren();document.getElementById('modal').classList.add('open')}
+function cls(){document.getElementById('modal').classList.remove('open')}
+function nav(d){cur=(cur+d+tot)%tot;ren()}
+function ren(){
+  const s=ws[cur].querySelector('.ps').cloneNode(true);
+  s.style.cssText='display:block;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;';
+  document.getElementById('mbody').innerHTML='';
+  document.getElementById('mbody').appendChild(s);
+  document.getElementById('mcnt').textContent=ws[cur].querySelector('.plbl').textContent;
+}
+document.getElementById('modal').addEventListener('click',function(e){if(e.target===this)cls()});
+document.addEventListener('keydown',function(e){
+  if(!document.getElementById('modal').classList.contains('open'))return;
+  if(e.key==='ArrowRight')nav(1);
+  if(e.key==='ArrowLeft')nav(-1);
+  if(e.key==='Escape')cls();
+});
+function fil(tag,el){
+  document.querySelectorAll('.ft').forEach(t=>t.classList.remove('on'));
+  el.classList.add('on');
+  ws.forEach(w=>{w.style.display=(tag==='all'||w.dataset.tag===tag)?'flex':'none'});
+}
+</script>
+</body>
+</html>
