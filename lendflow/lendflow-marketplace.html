@@ -1,325 +1,318 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LendFlow Marketplace</title>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-:root{
-  --navy:#0D1F3C;--gold:#C9963A;--gold2:#E8B558;
-  --teal:#0E9F8E;--teal2:#12BCA8;--teal-bg:#E6F7F5;
-  --gold-bg:#FFF8ED;--green:#16A34A;--green-bg:#E8F5EE;
-  --red:#E03E3E;--warn:#D97706;--warn-bg:#FEF9E8;
-  --bg:#F2F1EC;--white:#fff;--text:#111827;
-  --muted:#6B7280;--border:#E5E7EB;--border2:#D1D5DB;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WeLend Marketplace</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --navy:#0D1F3C;--gold:#C9963A;--gold2:#E8B558;
+      --teal:#0E9F8E;--teal2:#12BCA8;--teal-bg:#E6F7F5;
+      --gold-bg:#FFF8ED;--green:#16A34A;--green-bg:#E8F5EE;
+      --red:#E03E3E;--warn:#D97706;--warn-bg:#FEF9E8;
+      --bg:#F2F1EC;--white:#fff;--text:#111827;
+      --muted:#6B7280;--border:#E5E7EB;--border2:#D1D5DB;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
 
-/* NAV */
-.nav{
-  background:#fff;border-bottom:1px solid var(--border);
-  position:sticky;top:0;z-index:100;
-  display:flex;align-items:center;padding:0 32px;height:60px;gap:24px;
-}
-.logo{display:flex;align-items:center;gap:8px;text-decoration:none;flex-shrink:0}
-.logo-mark{width:32px;height:32px;background:var(--navy);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',serif;font-size:18px;color:#fff}
-.logo-name{font-weight:800;font-size:16px;color:var(--navy)}
-.nav-search{
-  flex:1;max-width:480px;
-  display:flex;align-items:center;gap:8px;
-  background:var(--bg);border:1px solid var(--border2);border-radius:8px;
-  padding:7px 12px;
-}
-.nav-search svg{width:14px;height:14px;stroke:var(--muted);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
-.nav-search input{border:none;background:transparent;font-family:'Outfit',sans-serif;font-size:13.5px;color:var(--text);outline:none;width:100%}
-.nav-search input::placeholder{color:var(--muted)}
-.nav-right{margin-left:auto;display:flex;align-items:center;gap:8px}
-.nbtn{padding:7px 16px;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer;border:none;font-family:'Outfit',sans-serif;text-decoration:none;display:inline-block;transition:all .15s}
-.nbtn-out{border:1.5px solid var(--border2);color:var(--text);background:#fff}
-.nbtn-out:hover{border-color:#9ca3af}
-.nbtn-navy{background:var(--navy);color:#fff}
-.nbtn-navy:hover{background:#162e55}
-.live-pill{display:flex;align-items:center;gap:6px;background:var(--green-bg);border:1px solid rgba(22,163,74,0.2);border-radius:20px;padding:5px 12px;font-size:12px;font-weight:600;color:var(--green);flex-shrink:0}
-.live-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:blink 1.5s ease-in-out infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+    /* ── NAV ── */
+    .nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;display:flex;align-items:center;padding:0 32px;height:60px;gap:20px}
+    .logo{display:flex;align-items:center;gap:8px;text-decoration:none;flex-shrink:0}
+    .logo-mark{width:32px;height:32px;background:var(--navy);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',serif;font-size:18px;color:#fff}
+    .logo-name{font-weight:800;font-size:16px;color:var(--navy)}
+    .nav-search{flex:1;max-width:440px;display:flex;align-items:center;gap:8px;background:var(--bg);border:1px solid var(--border2);border-radius:8px;padding:7px 12px}
+    .nav-search svg{width:14px;height:14px;stroke:var(--muted);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+    .nav-search input{border:none;background:transparent;font-family:'Outfit',sans-serif;font-size:13.5px;color:var(--text);outline:none;width:100%}
+    .nav-search input::placeholder{color:var(--muted)}
+    .live-pill{display:flex;align-items:center;gap:6px;background:var(--green-bg);border:1px solid rgba(22,163,74,.2);border-radius:20px;padding:5px 12px;font-size:12px;font-weight:600;color:var(--green);flex-shrink:0}
+    .live-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:blink 1.5s ease-in-out infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+    .nav-right{margin-left:auto;display:flex;align-items:center;gap:8px}
+    .nbtn{padding:7px 16px;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer;border:none;font-family:'Outfit',sans-serif;text-decoration:none;display:inline-block;transition:all .15s}
+    .nbtn-out{border:1.5px solid var(--border2);color:var(--text);background:#fff}
+    .nbtn-navy{background:var(--navy);color:#fff}
 
-/* HERO */
-.hero{
-  background:#fff;border-bottom:1px solid var(--border);
-  padding:56px 32px 48px;text-align:center;
-}
-.hero-title{font-family:'Instrument Serif',serif;font-size:clamp(34px,4.5vw,56px);color:var(--navy);line-height:1.1;margin-bottom:12px}
-.hero-title em{font-style:italic;color:var(--teal)}
-.hero-sub{font-size:16px;color:var(--muted);line-height:1.65;max-width:520px;margin:0 auto 32px}
-.hero-search-bar{
-  display:flex;align-items:center;background:#fff;
-  border:1.5px solid var(--border2);border-radius:10px;
-  max-width:640px;margin:0 auto 20px;
-  box-shadow:0 2px 12px rgba(0,0,0,0.05);
-  overflow:hidden;
-}
-.hsb-input{flex:1;border:none;outline:none;font-family:'Outfit',sans-serif;font-size:15px;color:var(--text);padding:13px 16px;background:transparent}
-.hsb-input::placeholder{color:var(--muted)}
-.hsb-sep{width:1px;height:30px;background:var(--border);flex-shrink:0}
-.hsb-sel{border:none;outline:none;font-family:'Outfit',sans-serif;font-size:13.5px;color:var(--text);padding:0 14px;background:transparent;cursor:pointer;font-weight:500;height:50px}
-.hsb-btn{background:var(--navy);color:#fff;border:none;padding:0 24px;height:50px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Outfit',sans-serif;display:flex;align-items:center;gap:7px;transition:background .2s}
-.hsb-btn:hover{background:#162e55}
-.hsb-btn svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.hero-tags{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;font-size:13px;color:var(--muted)}
-.hero-tags span{font-weight:600;color:var(--text)}
-.htag{padding:4px 12px;border:1px solid var(--border2);border-radius:20px;background:#fff;cursor:pointer;transition:all .15s}
-.htag:hover{border-color:var(--navy);color:var(--navy)}
+    /* ── HERO ── */
+    .hero{background:#fff;border-bottom:1px solid var(--border);padding:44px 32px 36px;text-align:center}
+    .hero-title{font-family:'Instrument Serif',serif;font-size:clamp(30px,4vw,50px);color:var(--navy);line-height:1.1;margin-bottom:10px}
+    .hero-title em{font-style:italic;color:var(--teal)}
+    .hero-sub{font-size:15px;color:var(--muted);line-height:1.65;max-width:480px;margin:0 auto 24px}
+    .hero-search-bar{display:flex;align-items:center;background:#fff;border:1.5px solid var(--border2);border-radius:10px;max-width:600px;margin:0 auto 16px;box-shadow:0 2px 12px rgba(0,0,0,.05);overflow:hidden}
+    .hsb-input{flex:1;border:none;outline:none;font-family:'Outfit',sans-serif;font-size:14px;color:var(--text);padding:12px 14px;background:transparent}
+    .hsb-input::placeholder{color:var(--muted)}
+    .hsb-sep{width:1px;height:26px;background:var(--border);flex-shrink:0}
+    .hsb-sel{border:none;outline:none;font-family:'Outfit',sans-serif;font-size:13px;color:var(--text);padding:0 12px;background:transparent;cursor:pointer;font-weight:500;height:46px}
+    .hsb-btn{background:var(--navy);color:#fff;border:none;padding:0 22px;height:46px;font-size:13.5px;font-weight:700;cursor:pointer;font-family:'Outfit',sans-serif;transition:background .2s}
+    .hsb-btn:hover{background:#162e55}
+    .hero-tags{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
+    .hero-tags span{font-weight:600;color:var(--text)}
+    .htag{padding:3px 11px;border:1px solid var(--border2);border-radius:20px;background:#fff;cursor:pointer;transition:all .15s}
+    .htag:hover{border-color:var(--navy);color:var(--navy)}
 
-/* TRUST STRIP */
-.trust-strip{
-  background:var(--navy);padding:14px 32px;
-  display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;
-}
-.ts-item{display:flex;align-items:center;gap:7px;font-size:12.5px;color:rgba(255,255,255,0.6)}
-.ts-item strong{color:#fff}
-.ts-sep{width:1px;height:16px;background:rgba(255,255,255,0.12)}
+    /* ── TRUST STRIP ── */
+    .trust-strip{background:var(--navy);padding:11px 32px;display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap}
+    .ts-item{display:flex;align-items:center;gap:6px;font-size:12px;color:rgba(255,255,255,.55)}
+    .ts-item strong{color:#fff}
+    .ts-sep{width:1px;height:14px;background:rgba(255,255,255,.12)}
 
-/* MARKETPLACE WRAPPER */
-.mkt-wrap{max-width:1360px;margin:0 auto;padding:28px 32px;display:grid;grid-template-columns:260px 1fr;gap:24px;align-items:start}
+    /* ── LAYOUT ── */
+    .mkt-wrap{max-width:1320px;margin:0 auto;padding:24px 32px;display:grid;grid-template-columns:240px 1fr;gap:20px;align-items:start}
 
-/* SIDEBAR */
-.sidebar{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;position:sticky;top:72px}
-.sb-header{padding:16px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
-.sb-header h3{font-size:14px;font-weight:700}
-.sb-clear{font-size:12px;color:var(--teal);font-weight:600;cursor:pointer}
-.sb-section{padding:16px 18px;border-bottom:1px solid var(--border)}
-.sb-section:last-child{border-bottom:none}
-.sb-label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px}
-.sb-opt{display:flex;align-items:center;gap:8px;margin-bottom:7px;cursor:pointer}
-.sb-opt input{width:14px;height:14px;accent-color:var(--navy);cursor:pointer}
-.sb-opt label{font-size:13px;color:var(--text);cursor:pointer;flex:1}
-.sb-opt .cnt{font-size:11.5px;color:var(--muted)}
-.sb-range{width:100%;height:4px;accent-color:var(--navy);margin-top:4px}
-.sb-range-labels{display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);margin-top:5px}
+    /* ── SIDEBAR ── */
+    .sidebar{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;position:sticky;top:72px}
+    .sb-header{padding:14px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+    .sb-header h3{font-size:13.5px;font-weight:700}
+    .sb-clear{font-size:12px;color:var(--teal);font-weight:600;cursor:pointer}
+    .sb-section{padding:14px 16px;border-bottom:1px solid var(--border)}
+    .sb-section:last-child{border-bottom:none}
+    .sb-label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;margin-bottom:9px}
+    .sb-opt{display:flex;align-items:center;gap:7px;margin-bottom:6px;cursor:pointer}
+    .sb-opt input{width:13px;height:13px;accent-color:var(--navy);cursor:pointer}
+    .sb-opt label{font-size:13px;color:var(--text);cursor:pointer;flex:1}
+    .sb-opt .cnt{font-size:11px;color:var(--muted)}
+    .sb-range{width:100%;height:4px;accent-color:var(--navy);margin-top:4px}
+    .sb-range-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:4px}
 
-/* MAIN */
-.mkt-main{}
+    /* ── MAIN ── */
+    .mkt-main{}
 
-/* TABS */
-.mkt-tabs{display:flex;align-items:center;gap:0;margin-bottom:20px;background:#fff;border:1px solid var(--border);border-radius:10px;padding:4px;overflow-x:auto}
-.mkt-tab{
-  flex:1;text-align:center;padding:9px 16px;border-radius:8px;
-  font-size:13.5px;font-weight:600;cursor:pointer;color:var(--muted);
-  transition:all .15s;white-space:nowrap;border:none;background:transparent;
-  font-family:'Outfit',sans-serif;display:flex;align-items:center;justify-content:center;gap:7px;
-}
-.mkt-tab.active{background:var(--navy);color:#fff}
-.tab-count{padding:2px 8px;border-radius:10px;font-size:11.5px;font-weight:700}
-.mkt-tab.active .tab-count{background:rgba(255,255,255,0.2);color:#fff}
-.mkt-tab:not(.active) .tab-count{background:var(--bg);color:var(--muted)}
+    /* ── TABS ── */
+    .mkt-tabs{display:flex;background:#fff;border:1px solid var(--border);border-radius:9px;padding:3px;margin-bottom:16px;gap:2px}
+    .mkt-tab{flex:1;text-align:center;padding:8px 12px;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer;color:var(--muted);transition:all .15s;white-space:nowrap;border:none;background:transparent;font-family:'Outfit',sans-serif;display:flex;align-items:center;justify-content:center;gap:6px}
+    .mkt-tab.active{background:var(--navy);color:#fff}
+    .tab-count{padding:1px 7px;border-radius:10px;font-size:11px;font-weight:700}
+    .mkt-tab.active .tab-count{background:rgba(255,255,255,.2);color:#fff}
+    .mkt-tab:not(.active) .tab-count{background:var(--bg);color:var(--muted)}
 
-/* RESULTS BAR */
-.res-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px}
-.res-count{font-size:13.5px;color:var(--muted)}
-.res-count strong{color:var(--text);font-weight:700}
-.sort-row{display:flex;align-items:center;gap:8px}
-.sort-lbl{font-size:13px;color:var(--muted)}
-.sort-sel{border:1px solid var(--border);border-radius:7px;padding:6px 10px;font-size:13px;color:var(--text);outline:none;background:#fff;cursor:pointer;font-family:'Outfit',sans-serif}
+    /* ── TOP BAR ── */
+    .top-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+    .res-count{font-size:13px;color:var(--muted)}
+    .res-count strong{color:var(--text);font-weight:700}
+    .top-bar-right{display:flex;align-items:center;gap:10px}
+    .sort-sel{border:1px solid var(--border);border-radius:7px;padding:5px 10px;font-size:13px;color:var(--text);outline:none;background:#fff;cursor:pointer;font-family:'Outfit',sans-serif}
+    .view-toggle{display:flex;align-items:center;gap:4px;background:#fff;border:1px solid var(--border);border-radius:7px;padding:4px}
+    .vt{width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:5px;cursor:pointer;transition:background .15s;border:none;background:transparent}
+    .vt svg{width:13px;height:13px;stroke:var(--muted);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+    .vt.active{background:var(--bg)}
+    .vt.active svg{stroke:var(--text)}
+    .expand-all-btn{padding:5px 12px;border:1px solid var(--border2);border-radius:7px;font-size:12.5px;font-weight:600;cursor:pointer;background:#fff;font-family:'Outfit',sans-serif;color:var(--muted);transition:all .15s;white-space:nowrap}
+    .expand-all-btn:hover{color:var(--text);border-color:#9ca3af}
 
-/* CARDS GRID */
-.cards{display:flex;flex-direction:column;gap:14px}
+    /* ── POST CTA ── */
+    .post-cta{background:var(--navy);border-radius:10px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px;flex-wrap:wrap}
+    .post-cta h3{font-family:'Instrument Serif',serif;font-size:17px;color:#fff;margin-bottom:2px}
+    .post-cta p{font-size:12.5px;color:rgba(255,255,255,.5)}
+    .post-cta-btns{display:flex;gap:8px;flex-wrap:wrap;flex-shrink:0}
+    .pcb-l{background:var(--gold);color:#fff;border:none;padding:8px 16px;border-radius:7px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:'Outfit',sans-serif;white-space:nowrap}
+    .pcb-b{background:var(--teal);color:#fff;border:none;padding:8px 16px;border-radius:7px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:'Outfit',sans-serif;white-space:nowrap}
 
-/* ─── LENDER OFFER CARD ─── */
-.offer-card{
-  background:#fff;border:1px solid var(--border);border-radius:12px;
-  padding:0;overflow:hidden;transition:all .2s;cursor:pointer;
-  display:flex;
-}
-.offer-card:hover{border-color:#9ca3af;box-shadow:0 4px 18px rgba(0,0,0,0.07)}
-.offer-card.pinned{border-color:var(--gold);border-width:1.5px}
+    /* ── CARDS ── */
+    .cards{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#fff}
 
-/* left color bar */
-.oc-bar{width:4px;flex-shrink:0;background:var(--gold)}
-.oc-bar.teal{background:var(--teal)}
+    /* ── COMPACT ROW (default view) ── */
+    .listing{border-bottom:1px solid var(--border);transition:background .15s;cursor:pointer;position:relative}
+    .listing:last-child{border-bottom:none}
+    .listing:hover .listing-compact{background:#fafafa}
+    .listing.expanded .listing-compact{background:#fafafa;border-bottom:1px solid var(--border)}
 
-.oc-body{flex:1;padding:20px 22px;display:flex;gap:18px;align-items:flex-start}
-.oc-avatar-wrap{flex-shrink:0;position:relative}
-.oc-avatar{width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',serif;font-size:22px;color:#fff}
-.oc-online{position:absolute;bottom:-2px;right:-2px;width:12px;height:12px;border-radius:50%;background:var(--green);border:2px solid #fff}
+    .listing-compact{display:flex;align-items:center;gap:14px;padding:13px 18px;transition:background .15s}
 
-.oc-content{flex:1;min-width:0}
-.oc-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:3px}
-.oc-name{font-size:15.5px;font-weight:700;color:var(--navy)}
-.oc-type-badge{padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;flex-shrink:0}
-.badge-lender{background:var(--gold-bg);color:var(--gold)}
-.badge-borrower{background:var(--teal-bg);color:var(--teal)}
-.oc-subtitle{font-size:13px;color:var(--muted);margin-bottom:10px}
+    /* type indicator strip */
+    .type-strip{width:3px;height:36px;border-radius:2px;flex-shrink:0}
+    .type-strip.lender{background:var(--gold)}
+    .type-strip.borrower{background:var(--teal)}
 
-/* The actual offer/request headline */
-.oc-headline{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px;line-height:1.35}
-.oc-desc{font-size:13.5px;color:var(--muted);line-height:1.65;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .lc-ava{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',serif;font-size:14px;color:#fff;flex-shrink:0}
+    .lc-badge{padding:2px 8px;border-radius:10px;font-size:10.5px;font-weight:700;flex-shrink:0}
+    .badge-lender{background:var(--gold-bg);color:var(--gold)}
+    .badge-borrower{background:var(--teal-bg);color:var(--teal)}
+    .lc-title{font-size:13.5px;font-weight:600;color:var(--navy);flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.3}
+    .lc-sub{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .lc-name-line{display:flex;flex-direction:column;flex:1;min-width:0}
 
-.oc-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
-.oc-tag{padding:3px 10px;border-radius:20px;background:var(--bg);font-size:12px;font-weight:500;color:var(--muted);border:1px solid var(--border)}
+    .lc-amount{font-family:'Instrument Serif',serif;font-size:17px;font-weight:400;white-space:nowrap;flex-shrink:0}
+    .lc-amount.lender{color:var(--gold)}
+    .lc-amount.borrower{color:var(--teal)}
 
-.oc-meta{display:flex;align-items:center;gap:16px;font-size:12.5px;color:var(--muted);flex-wrap:wrap}
-.oc-meta-item{display:flex;align-items:center;gap:4px}
-.oc-meta-item svg{width:12px;height:12px;stroke:var(--muted);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.oc-verified{color:var(--green);font-weight:600;display:flex;align-items:center;gap:4px}
-.oc-verified svg{stroke:var(--green)}
-.oc-rating{display:flex;align-items:center;gap:4px;color:var(--text)}
-.oc-stars{color:#F59E0B}
+    .lc-rate{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap;flex-shrink:0;text-align:right}
+    .lc-status{flex-shrink:0}
+    .sp{display:inline-flex;align-items:center;padding:2px 8px;border-radius:10px;font-size:10.5px;font-weight:700}
+    .sp-open{background:var(--green-bg);color:var(--green)}
+    .sp-urgent{background:#fde8e8;color:var(--red)}
+    .sp-funded{background:var(--green-bg);color:var(--green);opacity:.7}
+    .sp-new{background:#eef2ff;color:#4f46e5}
+    .sp-active{background:var(--gold-bg);color:var(--gold)}
+    .lc-responses{font-size:11.5px;color:var(--muted);white-space:nowrap;flex-shrink:0;text-align:right;min-width:72px}
+    .lc-responses strong{color:var(--text);font-weight:700}
+    .lc-time{font-size:11px;color:var(--muted);white-space:nowrap;flex-shrink:0;min-width:72px;text-align:right}
 
-/* RIGHT PANEL */
-.oc-right{
-  border-left:1px solid var(--border);padding:20px 22px;
-  display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;
-  min-width:200px;flex-shrink:0;
-}
-.oc-rate-block{text-align:right;margin-bottom:12px}
-.oc-rate-lbl{font-size:10.5px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
-.oc-rate-val{font-family:'Instrument Serif',serif;font-size:32px;line-height:1;color:var(--gold)}
-.oc-rate-unit{font-size:13px;color:var(--muted)}
-.oc-capacity{font-size:13px;color:var(--text);text-align:right;margin-bottom:4px}
-.oc-capacity strong{font-weight:700;color:var(--navy);display:block;font-size:15px}
-.oc-duration{font-size:12px;color:var(--muted);text-align:right;margin-bottom:14px}
-.oc-actions{display:flex;flex-direction:column;gap:7px;width:100%}
-.btn{padding:8px 16px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;border:none;font-family:'Outfit',sans-serif;text-align:center;text-decoration:none;display:block;transition:all .15s}
-.btn-navy{background:var(--navy);color:#fff}.btn-navy:hover{background:#162e55}
-.btn-teal{background:var(--teal);color:#fff}.btn-teal:hover{background:var(--teal2)}
-.btn-gold{background:var(--gold);color:#fff}.btn-gold:hover{background:var(--gold2)}
-.btn-out{border:1.5px solid var(--border2);color:var(--muted);background:#fff}.btn-out:hover{border-color:#9ca3af;color:var(--text)}
+    /* chevron */
+    .lc-chevron{flex-shrink:0;display:flex;align-items:center;justify-content:center;width:24px;height:24px}
+    .lc-chevron svg{width:14px;height:14px;stroke:var(--muted);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s}
+    .listing.expanded .lc-chevron svg{transform:rotate(180deg)}
 
-/* posted time & response count */
-.oc-footer{display:flex;align-items:center;justify-content:space-between;padding:10px 22px;border-top:1px solid var(--border);background:var(--bg)}
-.oc-posted{font-size:12px;color:var(--muted)}
-.oc-responses{font-size:12px;color:var(--muted)}
-.oc-responses strong{color:var(--text);font-weight:700}
+    /* ── EXPANDED BODY ── */
+    .listing-expanded{display:none;padding:20px 24px 22px;border-top:0;animation:slideDown .2s ease}
+    .listing.expanded .listing-expanded{display:block}
+    @keyframes slideDown{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
 
-/* borrower request: rate block shows "Max Rate" instead */
-.oc-rate-val.teal-c{color:var(--teal)}
+    .ex-grid{display:grid;grid-template-columns:1fr 220px;gap:20px;align-items:start}
+    .ex-left{}
+    .ex-headline{font-family:'Instrument Serif',serif;font-size:18px;color:var(--navy);margin-bottom:4px;line-height:1.3}
+    .ex-poster{font-size:13px;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    .ex-verified{color:var(--green);font-weight:600;font-size:12px;display:flex;align-items:center;gap:3px}
+    .ex-verified svg{width:11px;height:11px;stroke:var(--green);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+    .ex-desc{font-size:13.5px;color:var(--muted);line-height:1.7;margin-bottom:14px}
+    .ex-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+    .ex-tag{padding:3px 10px;border-radius:20px;background:var(--bg);font-size:12px;color:var(--muted);border:1px solid var(--border)}
+    .ex-meta{display:flex;align-items:center;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
+    .ex-meta-item{display:flex;align-items:center;gap:4px}
+    .ex-meta-item svg{width:12px;height:12px;stroke:var(--muted);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .ex-rating{display:flex;align-items:center;gap:3px;color:var(--text)}
+    .ex-stars{color:#F59E0B;font-size:12px}
+    .score-wrap{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--muted)}
+    .score-bar{width:48px;height:3px;background:var(--border);border-radius:2px}
+    .score-fill{height:100%;border-radius:2px;background:var(--green)}
 
-/* Score bar */
-.score-wrap{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
-.score-bar{width:52px;height:3px;background:var(--border);border-radius:2px}
-.score-fill{height:100%;border-radius:2px;background:var(--green)}
+    .ex-right{background:var(--bg);border-radius:10px;padding:18px;border:1px solid var(--border)}
+    .ex-rate-label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:3px}
+    .ex-rate-val{font-family:'Instrument Serif',serif;font-size:34px;line-height:1;margin-bottom:2px}
+    .ex-rate-val.lender{color:var(--gold)}
+    .ex-rate-val.borrower{color:var(--teal)}
+    .ex-rate-unit{font-size:13px;color:var(--muted);margin-bottom:14px}
+    .ex-capacity{margin-bottom:14px}
+    .ex-cap-val{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:2px}
+    .ex-cap-sub{font-size:12px;color:var(--muted)}
+    .ex-actions{display:flex;flex-direction:column;gap:7px}
+    .btn{padding:9px 16px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;border:none;font-family:'Outfit',sans-serif;text-align:center;text-decoration:none;display:block;transition:all .15s}
+    .btn-navy{background:var(--navy);color:#fff}.btn-navy:hover{background:#162e55}
+    .btn-teal{background:var(--teal);color:#fff}.btn-teal:hover{background:var(--teal2)}
+    .btn-out{border:1.5px solid var(--border2);color:var(--muted);background:#fff}.btn-out:hover{border-color:#9ca3af;color:var(--text)}
 
-/* STATUS BADGES */
-.status-pill{padding:3px 9px;border-radius:20px;font-size:11px;font-weight:700}
-.sp-open{background:var(--green-bg);color:var(--green)}
-.sp-urgent{background:#fde8e8;color:var(--red)}
-.sp-funded{background:#e8f5ee;color:var(--green)}
-.sp-new{background:#eef2ff;color:#4f46e5}
-.sp-active{background:var(--gold-bg);color:var(--gold)}
+    .ex-footer-row{display:flex;align-items:center;justify-content:space-between;margin-top:14px;padding-top:12px;border-top:1px solid var(--border);font-size:12px;color:var(--muted)}
+    .ex-footer-row strong{color:var(--text)}
 
-/* PAGINATION */
-.load-more{text-align:center;padding:28px 0}
-.load-more-btn{padding:11px 32px;border:1.5px solid var(--border2);border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;background:#fff;font-family:'Outfit',sans-serif;color:var(--text);transition:all .2s}
-.load-more-btn:hover{border-color:var(--navy);color:var(--navy)}
+    /* ── FULL PAGE MODAL ── */
+    .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:500;align-items:flex-start;justify-content:center;padding:40px 20px;overflow-y:auto}
+    .modal-overlay.open{display:flex}
+    .modal-box{background:#fff;border-radius:16px;width:100%;max-width:820px;overflow:hidden;position:relative;margin:auto}
+    .modal-close{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:50%;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;transition:background .15s}
+    .modal-close:hover{background:var(--border)}
+    .modal-close svg{width:14px;height:14px;stroke:var(--muted);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+    .modal-header{padding:28px 32px 20px;border-bottom:1px solid var(--border)}
+    .modal-eyebrow{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+    .modal-title{font-family:'Instrument Serif',serif;font-size:24px;color:var(--navy);line-height:1.2;margin-bottom:6px}
+    .modal-poster{font-size:14px;color:var(--muted);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    .modal-body{padding:24px 32px;display:grid;grid-template-columns:1fr 240px;gap:24px;align-items:start}
+    .modal-desc{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:16px}
+    .modal-tags{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px}
+    .modal-tag{padding:4px 12px;border-radius:20px;background:var(--bg);font-size:12.5px;color:var(--muted);border:1px solid var(--border)}
+    .modal-section-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin-bottom:10px;margin-top:16px}
+    .modal-detail-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:13.5px}
+    .modal-detail-row:last-child{border-bottom:none}
+    .modal-detail-row span:first-child{color:var(--muted)}
+    .modal-detail-row span:last-child{font-weight:600;color:var(--text)}
+    .modal-right{background:var(--bg);border-radius:12px;padding:20px;border:1px solid var(--border)}
+    .modal-rate-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:4px}
+    .modal-rate-val{font-family:'Instrument Serif',serif;font-size:42px;line-height:1;margin-bottom:4px}
+    .modal-rate-val.lender{color:var(--gold)}
+    .modal-rate-val.borrower{color:var(--teal)}
+    .modal-rate-unit{font-size:13px;color:var(--muted);margin-bottom:16px}
+    .modal-cap{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:4px}
+    .modal-cap-sub{font-size:13px;color:var(--muted);margin-bottom:16px}
+    .modal-actions{display:flex;flex-direction:column;gap:8px}
+    .modal-btn{padding:11px;border-radius:9px;font-size:14px;font-weight:700;cursor:pointer;border:none;font-family:'Outfit',sans-serif;text-align:center;text-decoration:none;display:block;transition:all .15s}
+    .modal-btn-navy{background:var(--navy);color:#fff}
+    .modal-btn-teal{background:var(--teal);color:#fff}
+    .modal-btn-out{border:1.5px solid var(--border2);color:var(--muted);background:#fff}
+    .modal-meta{display:flex;align-items:center;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-top:16px;padding-top:14px;border-top:1px solid var(--border)}
+    .modal-meta-item{display:flex;align-items:center;gap:4px}
+    .modal-meta-item svg{width:13px;height:13px;stroke:var(--muted);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .modal-verified{color:var(--green);font-weight:600;display:flex;align-items:center;gap:4px}
+    .modal-verified svg{stroke:var(--green)}
+    .modal-footer{padding:16px 32px;border-top:1px solid var(--border);background:var(--bg);display:flex;align-items:center;justify-content:space-between;font-size:13px;color:var(--muted);flex-wrap:wrap;gap:8px}
 
-/* POST CTA BANNER */
-.post-cta{
-  background:var(--navy);border-radius:12px;padding:24px 28px;
-  display:flex;align-items:center;justify-content:space-between;gap:20px;
-  margin-bottom:16px;flex-wrap:wrap;
-}
-.post-cta-text h3{font-family:'Instrument Serif',serif;font-size:20px;color:#fff;margin-bottom:4px}
-.post-cta-text p{font-size:13.5px;color:rgba(255,255,255,0.55)}
-.post-cta-btns{display:flex;gap:10px;flex-shrink:0;flex-wrap:wrap}
-.btn-cta-lender{background:var(--gold);color:#fff;border:none;padding:10px 20px;border-radius:8px;font-size:13.5px;font-weight:700;cursor:pointer;font-family:'Outfit',sans-serif;white-space:nowrap}
-.btn-cta-borrower{background:var(--teal);color:#fff;border:none;padding:10px 20px;border-radius:8px;font-size:13.5px;font-weight:700;cursor:pointer;font-family:'Outfit',sans-serif;white-space:nowrap}
+    /* ── LOAD MORE ── */
+    .load-more{text-align:center;padding:24px 0}
+    .load-btn{padding:10px 28px;border:1.5px solid var(--border2);border-radius:8px;font-size:13.5px;font-weight:600;cursor:pointer;background:#fff;font-family:'Outfit',sans-serif;color:var(--text);transition:all .2s}
+    .load-btn:hover{border-color:var(--navy);color:var(--navy)}
 
-/* HOW IT WORKS - compact inline */
-.hiw-strip{
-  background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
-  padding:40px 32px;margin-bottom:0;
-}
-.hiw-inner{max-width:1360px;margin:0 auto}
-.hiw-title{font-family:'Instrument Serif',serif;font-size:28px;color:var(--navy);text-align:center;margin-bottom:32px}
-.hiw-cols{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:900px;margin:0 auto}
-.hiw-col{padding:0 40px}
-.hiw-col:first-child{border-right:1px solid var(--border)}
-.hiw-col-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;display:flex;align-items:center;gap:8px}
-.hiw-step-row{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
-.hiw-num{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;margin-top:1px}
-.hiw-step-text{font-size:13.5px;color:var(--muted);line-height:1.6}
-.hiw-step-text strong{color:var(--text);font-weight:600}
+    /* ── BOTTOM SECTIONS ── */
+    .dual-bottom{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .db-side{padding:40px 48px;background:#fff}
+    .db-side:first-child{border-right:1px solid var(--border);background:var(--gold-bg)}
+    .db-side:last-child{background:var(--teal-bg)}
+    .db-eye{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px}
+    .db-title{font-family:'Instrument Serif',serif;font-size:26px;color:var(--navy);margin-bottom:8px;line-height:1.2}
+    .db-sub{font-size:13.5px;color:var(--muted);line-height:1.65;margin-bottom:18px;max-width:340px}
+    .db-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:20px}
+    .db-list li{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--text)}
+    .db-check{width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .db-check svg{width:8px;height:8px;stroke:#fff;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+    .db-btn{padding:11px 24px;border-radius:9px;font-size:14px;font-weight:700;cursor:pointer;border:none;font-family:'Outfit',sans-serif;text-decoration:none;display:inline-block;transition:all .2s}
 
-/* FOOTER */
-footer{background:#fff;border-top:1px solid var(--border);padding:32px;margin-top:0}
-.footer-inner{max-width:1360px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
-.footer-links{display:flex;gap:20px;flex-wrap:wrap}
-.footer-links a{font-size:13px;color:var(--muted);text-decoration:none}
-.footer-links a:hover{color:var(--text)}
-.footer-badges{display:flex;gap:8px}
-.fb{padding:4px 12px;border:1px solid var(--border);border-radius:20px;font-size:11px;color:var(--muted)}
-.footer-copy{font-size:12.5px;color:var(--muted);width:100%;text-align:center;border-top:1px solid var(--border);padding-top:20px;margin-top:4px}
+    .hiw-strip{background:#fff;border-top:1px solid var(--border);padding:48px 32px}
+    .hiw-inner{max-width:1320px;margin:0 auto}
+    .hiw-title{font-family:'Instrument Serif',serif;font-size:26px;color:var(--navy);text-align:center;margin-bottom:28px}
+    .hiw-cols{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:860px;margin:0 auto}
+    .hiw-col{padding:0 36px}
+    .hiw-col:first-child{border-right:1px solid var(--border)}
+    .hiw-col-title{font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-bottom:14px;display:flex;align-items:center;gap:7px}
+    .hiw-step-row{display:flex;gap:10px;margin-bottom:12px;align-items:flex-start}
+    .hiw-num{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:800;flex-shrink:0;margin-top:1px}
+    .hiw-step-text{font-size:13px;color:var(--muted);line-height:1.6}
+    .hiw-step-text strong{color:var(--text);font-weight:600}
 
-/* DUAL CTA BOTTOM */
-.dual-bottom{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.db-side{padding:48px 56px;background:#fff}
-.db-side:first-child{border-right:1px solid var(--border);background:var(--gold-bg)}
-.db-side:last-child{background:var(--teal-bg)}
-.db-eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px}
-.db-title{font-family:'Instrument Serif',serif;font-size:28px;color:var(--navy);margin-bottom:10px;line-height:1.2}
-.db-sub{font-size:14px;color:var(--muted);line-height:1.65;margin-bottom:22px;max-width:380px}
-.db-list{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
-.db-list li{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--text)}
-.db-check{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.db-check svg{width:9px;height:9px;stroke:#fff;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
-.btn-lg{padding:13px 28px;border-radius:9px;font-size:14.5px;font-weight:700;cursor:pointer;border:none;font-family:'Outfit',sans-serif;text-decoration:none;display:inline-block;transition:all .2s}
+    .app-section{background:var(--navy);padding:48px 32px;text-align:center}
+    .app-inner{max-width:560px;margin:0 auto}
+    .app-eye{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal2);margin-bottom:10px}
+    .app-title{font-family:'Instrument Serif',serif;font-size:clamp(26px,3.5vw,38px);color:#fff;margin-bottom:10px;line-height:1.15}
+    .app-sub{font-size:14px;color:rgba(255,255,255,.5);margin-bottom:28px;line-height:1.65}
+    .app-btns{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+    .store-btn{display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.14);border-radius:9px;padding:10px 18px;color:#fff;text-decoration:none;transition:all .2s;min-width:150px}
+    .store-btn:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.3)}
+    .store-btn svg{width:22px;height:22px;flex-shrink:0}
+    .sb-sub{font-size:9.5px;color:rgba(255,255,255,.4);display:block}
+    .sb-name{font-size:14px;font-weight:700;display:block}
+    .app-note{font-size:12px;color:rgba(255,255,255,.28)}
 
-/* FADE */
-.fu{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
-.fu.show{opacity:1;transform:translateY(0)}
+    footer{background:#fff;border-top:1px solid var(--border);padding:24px 32px}
+    .footer-inner{max-width:1320px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+    .footer-links{display:flex;gap:16px;flex-wrap:wrap}
+    .footer-links a{font-size:13px;color:var(--muted);text-decoration:none}
+    .footer-links a:hover{color:var(--text)}
+    .footer-badges{display:flex;gap:6px}
+    .fb{padding:3px 10px;border:1px solid var(--border);border-radius:20px;font-size:11px;color:var(--muted)}
+    .footer-copy{width:100%;text-align:center;font-size:12px;color:var(--muted);margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
 
-/* APP SECTION */
-.app-section{background:var(--navy);padding:56px 32px;text-align:center}
-.app-inner{max-width:600px;margin:0 auto}
-.app-eye{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal2);margin-bottom:12px}
-.app-title{font-family:'Instrument Serif',serif;font-size:clamp(28px,3.5vw,42px);color:#fff;margin-bottom:12px;line-height:1.15}
-.app-sub{font-size:15px;color:rgba(255,255,255,0.5);margin-bottom:32px;line-height:1.65}
-.app-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:20px}
-.store-btn{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.14);border-radius:10px;padding:11px 20px;color:#fff;text-decoration:none;transition:all .2s}
-.store-btn:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.3)}
-.store-btn svg{width:24px;height:24px;flex-shrink:0}
-.sb-sub{font-size:10px;color:rgba(255,255,255,0.4);display:block}
-.sb-name{font-size:15px;font-weight:700;display:block}
-.app-note{font-size:12.5px;color:rgba(255,255,255,0.3)}
+    .fu{opacity:0;transform:translateY(12px);transition:opacity .45s ease,transform .45s ease}
+    .fu.show{opacity:1;transform:translateY(0)}
 
-/* RESPONSIVE */
-@media(max-width:1024px){.mkt-wrap{grid-template-columns:1fr;padding:20px}.sidebar{display:none}}
-@media(max-width:768px){
-  .nav{padding:0 16px;gap:12px}.nav-search{display:none}
-  .hero,.trust-strip,.hiw-strip,.app-section,footer{padding-left:20px;padding-right:20px}
-  .hero-search-bar{flex-direction:column;border-radius:10px;padding:12px;gap:10px}
-  .hsb-input{padding:8px 0;width:100%}
-  .hsb-sep,.hsb-sel{display:none}
-  .hsb-btn{width:100%;justify-content:center;border-radius:8px;height:44px}
-  .offer-card{flex-direction:column}
-  .oc-right{border-left:none;border-top:1px solid var(--border);flex-direction:row;flex-wrap:wrap;gap:12px;align-items:center}
-  .oc-actions{flex-direction:row;width:auto}
-  .dual-bottom{grid-template-columns:1fr}
-  .db-side:first-child{border-right:none;border-bottom:1px solid var(--border)}
-  .hiw-cols{grid-template-columns:1fr}
-  .hiw-col:first-child{border-right:none;border-bottom:1px solid var(--border);padding-bottom:24px;margin-bottom:24px}
-}
-</style>
+    @media(max-width:1024px){.mkt-wrap{grid-template-columns:1fr;padding:16px 20px}.sidebar{display:none}}
+    @media(max-width:768px){
+      .nav{padding:0 16px}.nav-search{display:none}
+      .hero,.trust-strip,.hiw-strip,.app-section,footer{padding-left:20px;padding-right:20px}
+      .dual-bottom{grid-template-columns:1fr}.db-side:first-child{border-right:none;border-bottom:1px solid var(--border)}
+      .hiw-cols{grid-template-columns:1fr}.hiw-col:first-child{border-right:none;border-bottom:1px solid var(--border);padding-bottom:20px;margin-bottom:20px}
+      .ex-grid,.modal-body{grid-template-columns:1fr}
+      .hero-search-bar{flex-direction:column;padding:10px;gap:8px}.hsb-sep,.hsb-sel{display:none}.hsb-btn{width:100%}
+    }
+  </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav class="nav">
-  <a href="#" class="logo">
-    <div class="logo-mark">L</div>
-    <div class="logo-name">LendFlow</div>
-  </a>
+  <a href="#" class="logo"><div class="logo-mark">L</div><div class="logo-name">WeLend</div></a>
   <div class="nav-search">
     <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
     <input type="text" placeholder="Search offers, requests, loan types...">
   </div>
-  <div class="live-pill">
-    <div class="live-dot"></div>
-    258 listings live
-  </div>
+  <div class="live-pill"><div class="live-dot"></div>258 listings live</div>
   <div class="nav-right">
     <a href="#" class="nbtn nbtn-out">Sign In</a>
     <a href="#" class="nbtn nbtn-navy">Join Free</a>
@@ -328,32 +321,15 @@ footer{background:#fff;border-top:1px solid var(--border);padding:32px;margin-to
 
 <!-- HERO -->
 <div class="hero">
-  <h1 class="hero-title">Uganda's public lending<br><em>marketplace</em></h1>
-  <p class="hero-sub">Lenders post their offers. Borrowers post their needs. Everyone can see both — connect directly, no middleman.</p>
+  <h1 class="hero-title">Uganda's public lending <em>marketplace</em></h1>
+  <p class="hero-sub">Lenders post their offers publicly. Borrowers post their needs publicly. Connect directly — no middleman.</p>
   <div class="hero-search-bar">
-    <svg style="width:18px;height:18px;stroke:var(--muted);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;padding-left:4px;flex-shrink:0" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
     <input class="hsb-input" type="text" placeholder="Search by amount, type, location, rate...">
     <div class="hsb-sep"></div>
-    <select class="hsb-sel">
-      <option>All Types</option>
-      <option>Business</option>
-      <option>Personal</option>
-      <option>Agricultural</option>
-      <option>Emergency</option>
-      <option>Education</option>
-    </select>
+    <select class="hsb-sel"><option>All Types</option><option>Business</option><option>Personal</option><option>Agricultural</option><option>Emergency</option><option>Education</option></select>
     <div class="hsb-sep"></div>
-    <select class="hsb-sel">
-      <option>All Amounts</option>
-      <option>Under UGX 5M</option>
-      <option>UGX 5M–20M</option>
-      <option>UGX 20M–50M</option>
-      <option>Above UGX 50M</option>
-    </select>
-    <button class="hsb-btn">
-      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      Search
-    </button>
+    <select class="hsb-sel"><option>All Amounts</option><option>Under UGX 5M</option><option>UGX 5M–20M</option><option>UGX 20M–50M</option><option>Above UGX 50M</option></select>
+    <button class="hsb-btn">Search</button>
   </div>
   <div class="hero-tags">
     <span>Browse:</span>
@@ -368,17 +344,17 @@ footer{background:#fff;border-top:1px solid var(--border);padding:32px;margin-to
 
 <!-- TRUST STRIP -->
 <div class="trust-strip">
-  <div class="ts-item"><svg style="width:13px;height:13px;stroke:var(--teal2);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><strong>Bank of Uganda</strong> Licensed</div>
+  <div class="ts-item"><strong>Bank of Uganda</strong> Licensed</div>
   <div class="ts-sep"></div>
-  <div class="ts-item"><svg style="width:13px;height:13px;stroke:var(--teal2);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>NIN-verified users only</div>
+  <div class="ts-item">NIN-verified users only</div>
   <div class="ts-sep"></div>
-  <div class="ts-item"><strong>UGX 12B+</strong> total disbursed</div>
+  <div class="ts-item"><strong>UGX 12B+</strong> disbursed</div>
   <div class="ts-sep"></div>
   <div class="ts-item"><strong>340+</strong> active lenders</div>
   <div class="ts-sep"></div>
   <div class="ts-item"><strong>2,400+</strong> loans funded</div>
   <div class="ts-sep"></div>
-  <div class="ts-item"><svg style="width:13px;height:13px;stroke:var(--teal2);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>24-hour disbursement</div>
+  <div class="ts-item"><strong>24-hour</strong> disbursement</div>
 </div>
 
 <!-- MARKETPLACE -->
@@ -386,10 +362,7 @@ footer{background:#fff;border-top:1px solid var(--border);padding:32px;margin-to
 
   <!-- SIDEBAR -->
   <aside class="sidebar">
-    <div class="sb-header">
-      <h3>Filters</h3>
-      <span class="sb-clear">Clear all</span>
-    </div>
+    <div class="sb-header"><h3>Filters</h3><span class="sb-clear">Clear all</span></div>
     <div class="sb-section">
       <div class="sb-label">Listing Type</div>
       <div class="sb-opt"><input type="checkbox" id="lt1" checked><label for="lt1">Lender Offers</label><span class="cnt">185</span></div>
@@ -403,7 +376,7 @@ footer{background:#fff;border-top:1px solid var(--border);padding:32px;margin-to
       <div class="sb-opt"><input type="checkbox" id="r4"><label for="r4">Above 10%/mo</label><span class="cnt">12</span></div>
     </div>
     <div class="sb-section">
-      <div class="sb-label">Loan Amount Range</div>
+      <div class="sb-label">Loan Amount</div>
       <input type="range" class="sb-range" min="0" max="100" value="70">
       <div class="sb-range-labels"><span>UGX 500K</span><span>UGX 100M</span></div>
     </div>
@@ -435,531 +408,468 @@ footer{background:#fff;border-top:1px solid var(--border);padding:32px;margin-to
   <!-- MAIN FEED -->
   <div class="mkt-main">
 
-    <!-- TABS -->
     <div class="mkt-tabs">
       <button class="mkt-tab active" onclick="setTab('all',this)">All Listings <span class="tab-count">258</span></button>
-      <button class="mkt-tab" onclick="setTab('lenders',this)">
-        <svg style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        Lender Offers <span class="tab-count">185</span>
-      </button>
-      <button class="mkt-tab" onclick="setTab('borrowers',this)">
-        <svg style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        Borrower Requests <span class="tab-count">73</span>
-      </button>
+      <button class="mkt-tab" onclick="setTab('lender',this)">Lender Offers <span class="tab-count">185</span></button>
+      <button class="mkt-tab" onclick="setTab('borrower',this)">Borrower Requests <span class="tab-count">73</span></button>
     </div>
 
-    <!-- POST CTA BANNER -->
     <div class="post-cta">
-      <div class="post-cta-text">
-        <h3>Post your listing to the marketplace</h3>
-        <p>Lenders: post your offer once and receive applications. Borrowers: post your need and receive competing offers.</p>
-      </div>
+      <div><h3>Post your listing to the marketplace</h3><p>Lenders: post your offer. Borrowers: post your need. Both are public.</p></div>
       <div class="post-cta-btns">
-        <button class="btn-cta-lender">+ Post a Lending Offer</button>
-        <button class="btn-cta-borrower">+ Post a Borrowing Request</button>
+        <button class="pcb-l">+ Post a Lending Offer</button>
+        <button class="pcb-b">+ Post a Borrowing Request</button>
       </div>
     </div>
 
-    <!-- RESULTS BAR -->
-    <div class="res-bar">
+    <div class="top-bar">
       <div class="res-count" id="res-count"><strong>258 listings</strong> — lender offers &amp; borrower requests</div>
-      <div class="sort-row">
-        <span class="sort-lbl">Sort by:</span>
-        <select class="sort-sel">
-          <option>Newest First</option>
-          <option>Lowest Rate</option>
-          <option>Highest Amount</option>
-          <option>Most Responses</option>
-        </select>
+      <div class="top-bar-right">
+        <button class="expand-all-btn" onclick="toggleAll()">Expand All</button>
+        <select class="sort-sel"><option>Newest First</option><option>Lowest Rate</option><option>Highest Amount</option><option>Most Responses</option></select>
       </div>
     </div>
 
-    <!-- CARDS FEED -->
+    <!-- FEED: compact rows, each expandable -->
     <div class="cards" id="feed">
 
-<!-- ═══════ LENDER OFFER 1 (Featured) ═══════ -->
-<div class="offer-card pinned fu" data-type="lender">
-  <div class="oc-bar"></div>
-  <div class="oc-body">
-    <div class="oc-avatar-wrap">
-      <div class="oc-avatar" style="background:#163256">JM</div>
-      <div class="oc-online"></div>
-    </div>
-    <div class="oc-content">
-      <div class="oc-top">
-        <div>
-          <div class="oc-name">James Mugisha</div>
-          <div class="oc-subtitle">Licensed Individual Lender · Kampala</div>
+      <!-- ═══ LISTING 1: LENDER — James Mugisha ═══ -->
+      <div class="listing" data-type="lender" data-id="1">
+        <div class="listing-compact" onclick="toggleListing(1)">
+          <div class="type-strip lender"></div>
+          <div class="lc-ava" style="background:#163256">JM</div>
+          <span class="lc-badge badge-lender">Offer</span>
+          <div class="lc-name-line">
+            <div class="lc-title">UGX 1M–50M at 5%/mo — Business, Personal &amp; Emergency loans</div>
+            <div class="lc-sub">James Mugisha · Licensed Lender · Kampala</div>
+          </div>
+          <div class="lc-amount lender">5%<span style="font-size:12px;color:var(--muted)">/mo</span></div>
+          <div class="lc-rate">UGX 1M–50M<br>Max 6 months</div>
+          <span class="sp sp-active">Active</span>
+          <div class="lc-responses"><strong>12</strong> apps</div>
+          <div class="lc-time">3 hr ago</div>
+          <div class="lc-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
         </div>
-        <span class="oc-type-badge badge-lender">Lender Offer</span>
+        <div class="listing-expanded">
+          <div class="ex-grid">
+            <div class="ex-left">
+              <div class="ex-headline">UGX 1M–50M available at 5%/mo — Business, Personal &amp; Emergency loans</div>
+              <div class="ex-poster">
+                James Mugisha · Kampala
+                <span class="ex-verified"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>BoU Verified</span>
+                <span style="color:#F59E0B;font-size:12px">★ 5.0</span> <span style="font-size:12px;color:var(--muted)">(148 reviews)</span>
+                · Responds &lt;2hr
+              </div>
+              <div class="ex-desc">Offering flexible loans to qualified borrowers across Uganda. Fast approval — all documents reviewed within 24 hours, disbursement via MTN MoMo or Airtel. 148 loans given with 100% borrower satisfaction. Apply directly and I will respond within 2 hours.</div>
+              <div class="ex-tags">
+                <span class="ex-tag">Business</span><span class="ex-tag">Personal</span><span class="ex-tag">Emergency</span>
+                <span class="ex-tag">MTN MoMo</span><span class="ex-tag">Airtel</span><span class="ex-tag">Up to 6 months</span>
+              </div>
+              <div class="ex-meta">
+                <div class="ex-meta-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Kampala</div>
+                <div class="ex-meta-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Responds &lt;2hr</div>
+                <div class="ex-verified"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>BoU Verified</div>
+              </div>
+              <div class="ex-footer-row"><span>Posted 3 hours ago</span><span><strong>12</strong> applications received</span></div>
+            </div>
+            <div class="ex-right">
+              <div class="ex-rate-label">Interest Rate</div>
+              <div class="ex-rate-val lender">5%</div>
+              <div class="ex-rate-unit">per month</div>
+              <div class="ex-capacity"><div class="ex-cap-val">UGX 1M – 50M</div><div class="ex-cap-sub">Max 6 months</div></div>
+              <div class="ex-actions">
+                <a href="#" class="btn btn-navy">Apply Now</a>
+                <button class="btn btn-out" onclick="openModal(1);event.stopPropagation()">Full Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="oc-headline">UGX 1M–50M available at 5%/mo — Business, Personal &amp; Emergency loans</div>
-      <div class="oc-desc">Offering flexible loans to qualified borrowers across Uganda. Fast approval, all documents reviewed within 24 hours, disbursement via MTN MoMo or Airtel. 148 loans given with 100% borrower satisfaction. Apply directly — I respond within 2 hours.</div>
-      <div class="oc-tags">
-        <span class="oc-tag">Business</span>
-        <span class="oc-tag">Personal</span>
-        <span class="oc-tag">Emergency</span>
-        <span class="oc-tag">MTN MoMo</span>
-        <span class="oc-tag">Airtel</span>
-        <span class="oc-tag">Up to 6 months</span>
-      </div>
-      <div class="oc-meta">
-        <div class="oc-rating"><span class="oc-stars">★</span><strong>5.0</strong><span style="color:var(--muted)">(148)</span></div>
-        <div class="oc-meta-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Kampala</div>
-        <div class="oc-meta-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Responds &lt;2hr</div>
-        <div class="oc-verified"><svg viewBox="0 0 24 24" width="12" height="12"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>BoU Verified</div>
-        <span class="status-pill sp-active">Active</span>
-      </div>
-    </div>
-  </div>
-  <div class="oc-right">
-    <div class="oc-rate-block">
-      <div class="oc-rate-lbl">Interest Rate</div>
-      <div class="oc-rate-val">5%</div>
-      <div class="oc-rate-unit">per month</div>
-    </div>
-    <div class="oc-capacity"><strong>UGX 1M – 50M</strong>Max 6 months</div>
-    <div class="oc-actions">
-      <a href="#" class="btn btn-navy">Apply Now</a>
-      <a href="#" class="btn btn-out">View Profile</a>
-    </div>
-  </div>
-</div>
-<div class="oc-footer" style="border:1px solid var(--border);border-top:none;border-radius:0 0 12px 12px;margin-top:-14px;background:var(--bg)">
-  <span class="oc-posted">Posted 3 hours ago</span>
-  <span class="oc-responses"><strong>12</strong> applications received</span>
-</div>
 
-<!-- ═══════ BORROWER REQUEST 1 ═══════ -->
-<div class="offer-card fu" data-type="borrower" style="transition-delay:.06s">
-  <div class="oc-bar teal"></div>
-  <div class="oc-body">
-    <div class="oc-avatar-wrap">
-      <div class="oc-avatar" style="background:#1a3260;font-size:18px">AK</div>
-    </div>
-    <div class="oc-content">
-      <div class="oc-top">
-        <div>
-          <div class="oc-name">Agnes Kyomuhendo</div>
-          <div class="oc-subtitle">Business Owner · Kampala, Uganda</div>
+      <!-- ═══ LISTING 2: BORROWER — Agnes Kyomuhendo ═══ -->
+      <div class="listing" data-type="borrower" data-id="2">
+        <div class="listing-compact" onclick="toggleListing(2)">
+          <div class="type-strip borrower"></div>
+          <div class="lc-ava" style="background:#1a3260">AK</div>
+          <span class="lc-badge badge-borrower">Request</span>
+          <div class="lc-name-line">
+            <div class="lc-title">Need UGX 8M for stock financing — retail electronics shop, Kisekka Market</div>
+            <div class="lc-sub">Agnes Kyomuhendo · Business Owner · Kampala</div>
+          </div>
+          <div class="lc-amount borrower">8M<span style="font-size:12px;color:var(--muted)"> UGX</span></div>
+          <div class="lc-rate">Max 8%/mo<br>4 months</div>
+          <span class="sp sp-new">New</span>
+          <div class="lc-responses"><strong>3</strong> offers</div>
+          <div class="lc-time">2 hr ago</div>
+          <div class="lc-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
         </div>
-        <span class="oc-type-badge badge-borrower">Borrower Request</span>
+        <div class="listing-expanded">
+          <div class="ex-grid">
+            <div class="ex-left">
+              <div class="ex-headline">Need UGX 8M for stock financing — retail electronics shop, Kisekka Market</div>
+              <div class="ex-poster">
+                Agnes Kyomuhendo · Kampala
+                <span class="ex-verified"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>NIN Verified</span>
+                <span class="score-wrap"><div class="score-bar"><div class="score-fill" style="width:78%"></div></div>Score 78/100</span>
+              </div>
+              <div class="ex-desc">Running a retail electronics shop for 3 years with monthly revenue of ~UGX 12M. Need to restock before December season. All documents ready: NIN, 6-month bank statement, business registration, 2 confirmed guarantors. Willing to provide collateral. Prefer lenders who can disburse within 48 hours.</div>
+              <div class="ex-tags">
+                <span class="ex-tag">Business</span><span class="ex-tag">Stock Financing</span><span class="ex-tag">4 months</span>
+                <span class="ex-tag">Max 8%/mo</span><span class="ex-tag">Docs Ready</span><span class="ex-tag">Guarantors Confirmed</span>
+              </div>
+              <div class="ex-meta">
+                <div class="ex-meta-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Kampala</div>
+                <div class="ex-verified"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>NIN Verified</div>
+                <span class="sp sp-new">New</span>
+                <span class="sp sp-open">Accepting Offers</span>
+              </div>
+              <div class="ex-footer-row"><span>Posted 2 hours ago</span><span><strong>3</strong> lender offers received</span></div>
+            </div>
+            <div class="ex-right">
+              <div class="ex-rate-label">Amount Needed</div>
+              <div class="ex-rate-val borrower">8M</div>
+              <div class="ex-rate-unit">UGX</div>
+              <div class="ex-capacity"><div class="ex-cap-val">Max 8%/mo</div><div class="ex-cap-sub">4 months</div></div>
+              <div class="ex-actions">
+                <a href="#" class="btn btn-teal">Make an Offer</a>
+                <button class="btn btn-out" onclick="openModal(2);event.stopPropagation()">Full Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="oc-headline">Need UGX 8M for stock financing — retail electronics shop, Kisekka Market</div>
-      <div class="oc-desc">Running a retail electronics shop for 3 years with monthly revenue of ~UGX 12M. Need to restock before December season. All documents ready: NIN, 6-month bank statement, business registration, 2 confirmed guarantors. Willing to provide collateral. Prefer lenders who can disburse within 48 hours.</div>
-      <div class="oc-tags">
-        <span class="oc-tag">Business</span>
-        <span class="oc-tag">Stock Financing</span>
-        <span class="oc-tag">4 months</span>
-        <span class="oc-tag">Max 8%/mo</span>
-        <span class="oc-tag">Docs Ready</span>
-        <span class="oc-tag">Guarantors Confirmed</span>
-      </div>
-      <div class="oc-meta">
-        <div class="score-wrap"><div class="score-bar"><div class="score-fill" style="width:78%"></div></div>Credit Score: 78/100</div>
-        <div class="oc-meta-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Kampala</div>
-        <div class="oc-verified"><svg viewBox="0 0 24 24" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>NIN Verified</div>
-        <span class="status-pill sp-new">New</span>
-        <span class="status-pill sp-open">Accepting Offers</span>
-      </div>
-    </div>
-  </div>
-  <div class="oc-right">
-    <div class="oc-rate-block">
-      <div class="oc-rate-lbl">Amount Needed</div>
-      <div class="oc-rate-val teal-c" style="font-size:26px">8M</div>
-      <div class="oc-rate-unit">UGX</div>
-    </div>
-    <div class="oc-capacity"><strong>Max 8%/mo</strong>4 months max</div>
-    <div class="oc-actions">
-      <a href="#" class="btn btn-teal">Make an Offer</a>
-      <a href="#" class="btn btn-out">View Request</a>
-    </div>
-  </div>
-</div>
-<div class="oc-footer" style="border:1px solid var(--border);border-top:none;border-radius:0 0 12px 12px;margin-top:-14px;background:var(--bg)">
-  <span class="oc-posted">Posted 2 hours ago</span>
-  <span class="oc-responses"><strong>3</strong> lender offers received</span>
-</div>
 
-<!-- ═══════ LENDER OFFER 2 ═══════ -->
-<div class="offer-card fu" data-type="lender" style="transition-delay:.12s">
-  <div class="oc-bar"></div>
-  <div class="oc-body">
-    <div class="oc-avatar-wrap">
-      <div class="oc-avatar" style="background:#1a5e42">RK</div>
-      <div class="oc-online"></div>
-    </div>
-    <div class="oc-content">
-      <div class="oc-top">
-        <div>
-          <div class="oc-name">Robert Kiggundu</div>
-          <div class="oc-subtitle">Agricultural &amp; Business Lender · Mbarara</div>
+      <!-- ═══ LISTING 3: LENDER — Robert Kiggundu ═══ -->
+      <div class="listing" data-type="lender" data-id="3">
+        <div class="listing-compact" onclick="toggleListing(3)">
+          <div class="type-strip lender"></div>
+          <div class="lc-ava" style="background:#1a5e42">RK</div>
+          <span class="lc-badge badge-lender">Offer</span>
+          <div class="lc-name-line">
+            <div class="lc-title">UGX 2M–30M for agricultural &amp; business loans — up to 12 months repayment</div>
+            <div class="lc-sub">Robert Kiggundu · Agricultural &amp; Business Lender · Mbarara</div>
+          </div>
+          <div class="lc-amount lender">6%<span style="font-size:12px;color:var(--muted)">/mo</span></div>
+          <div class="lc-rate">UGX 2M–30M<br>Max 12 months</div>
+          <span class="sp sp-active">Active</span>
+          <div class="lc-responses"><strong>7</strong> apps</div>
+          <div class="lc-time">1 day ago</div>
+          <div class="lc-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
         </div>
-        <span class="oc-type-badge badge-lender">Lender Offer</span>
+        <div class="listing-expanded">
+          <div class="ex-grid">
+            <div class="ex-left">
+              <div class="ex-headline">UGX 2M–30M for agricultural &amp; business loans — up to 12 months</div>
+              <div class="ex-poster">Robert Kiggundu · Mbarara <span class="ex-verified"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>BoU Verified</span> <span style="color:#F59E0B;font-size:12px">★ 4.9</span> <span style="font-size:12px;color:var(--muted)">(96)</span></div>
+              <div class="ex-desc">Specialising in agricultural and SME loans across western Uganda. Flexible repayment aligned to harvest or business seasons. 96 loans issued, 98% satisfaction. Land title accepted as collateral. Apply via WeLend — I review all applications within 4 hours.</div>
+              <div class="ex-tags"><span class="ex-tag">Agricultural</span><span class="ex-tag">Business / SME</span><span class="ex-tag">Long-term</span><span class="ex-tag">Land Title OK</span><span class="ex-tag">Up to 12 months</span></div>
+              <div class="ex-meta">
+                <div class="ex-meta-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Mbarara</div>
+                <div class="ex-meta-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Responds &lt;4hr</div>
+                <div class="ex-verified"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>BoU Verified</div>
+              </div>
+              <div class="ex-footer-row"><span>Posted 1 day ago</span><span><strong>7</strong> applications received</span></div>
+            </div>
+            <div class="ex-right">
+              <div class="ex-rate-label">Interest Rate</div>
+              <div class="ex-rate-val lender">6%</div>
+              <div class="ex-rate-unit">per month</div>
+              <div class="ex-capacity"><div class="ex-cap-val">UGX 2M – 30M</div><div class="ex-cap-sub">Max 12 months</div></div>
+              <div class="ex-actions">
+                <a href="#" class="btn btn-navy">Apply Now</a>
+                <button class="btn btn-out" onclick="openModal(3);event.stopPropagation()">Full Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="oc-headline">UGX 2M–30M for agricultural &amp; business loans — up to 12 months repayment</div>
-      <div class="oc-desc">Specialising in agricultural and SME loans across western Uganda. I understand seasonal income cycles and offer flexible repayment aligned to harvest or business seasons. 96 loans issued with 98% satisfaction. Land title accepted as collateral. Apply via LendFlow — I review all applications within 4 hours.</div>
-      <div class="oc-tags">
-        <span class="oc-tag">Agricultural</span>
-        <span class="oc-tag">Business / SME</span>
-        <span class="oc-tag">Long-term</span>
-        <span class="oc-tag">Land Title OK</span>
-        <span class="oc-tag">Up to 12 months</span>
-      </div>
-      <div class="oc-meta">
-        <div class="oc-rating"><span class="oc-stars">★</span><strong>4.9</strong><span style="color:var(--muted)">(96)</span></div>
-        <div class="oc-meta-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Mbarara</div>
-        <div class="oc-meta-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Responds &lt;4hr</div>
-        <div class="oc-verified"><svg viewBox="0 0 24 24" width="12" height="12"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>BoU Verified</div>
-        <span class="status-pill sp-active">Active</span>
-      </div>
-    </div>
-  </div>
-  <div class="oc-right">
-    <div class="oc-rate-block">
-      <div class="oc-rate-lbl">Interest Rate</div>
-      <div class="oc-rate-val">6%</div>
-      <div class="oc-rate-unit">per month</div>
-    </div>
-    <div class="oc-capacity"><strong>UGX 2M – 30M</strong>Max 12 months</div>
-    <div class="oc-actions">
-      <a href="#" class="btn btn-navy">Apply Now</a>
-      <a href="#" class="btn btn-out">View Profile</a>
-    </div>
-  </div>
-</div>
-<div class="oc-footer" style="border:1px solid var(--border);border-top:none;border-radius:0 0 12px 12px;margin-top:-14px;background:var(--bg)">
-  <span class="oc-posted">Posted 1 day ago</span>
-  <span class="oc-responses"><strong>7</strong> applications received</span>
-</div>
 
-<!-- ═══════ BORROWER REQUEST 2 — Urgent ═══════ -->
-<div class="offer-card fu" data-type="borrower" style="transition-delay:.18s">
-  <div class="oc-bar teal"></div>
-  <div class="oc-body">
-    <div class="oc-avatar-wrap">
-      <div class="oc-avatar" style="background:#4e1a6e;font-size:18px">PN</div>
-    </div>
-    <div class="oc-content">
-      <div class="oc-top">
-        <div>
-          <div class="oc-name">Patience Nakato</div>
-          <div class="oc-subtitle">Nurse · Entebbe Hospital, Uganda</div>
+      <!-- ═══ LISTING 4: BORROWER — Patience Nakato (URGENT) ═══ -->
+      <div class="listing" data-type="borrower" data-id="4">
+        <div class="listing-compact" onclick="toggleListing(4)">
+          <div class="type-strip borrower"></div>
+          <div class="lc-ava" style="background:#4e1a6e">PN</div>
+          <span class="lc-badge badge-borrower">Request</span>
+          <div class="lc-name-line">
+            <div class="lc-title">URGENT — Need UGX 5M for family surgery at Mulago Hospital</div>
+            <div class="lc-sub">Patience Nakato · Nurse · Entebbe</div>
+          </div>
+          <div class="lc-amount borrower">5M<span style="font-size:12px;color:var(--muted)"> UGX</span></div>
+          <div class="lc-rate">Max 9%/mo<br>3 months</div>
+          <span class="sp sp-urgent">Urgent</span>
+          <div class="lc-responses"><strong>7</strong> offers</div>
+          <div class="lc-time">5 hr ago</div>
+          <div class="lc-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
         </div>
-        <span class="oc-type-badge badge-borrower">Borrower Request</span>
+        <div class="listing-expanded">
+          <div class="ex-grid">
+            <div class="ex-left">
+              <div class="ex-headline">URGENT — Need UGX 5M for family surgery at Mulago Hospital</div>
+              <div class="ex-poster">Patience Nakato · Entebbe <span class="ex-verified"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>NIN Verified</span> <span class="score-wrap"><div class="score-bar"><div class="score-fill" style="width:85%"></div></div>Score 85/100</span></div>
+              <div class="ex-desc">My mother requires urgent surgery. I am a salaried nurse with stable monthly income of UGX 3.2M. Loan repayable over 3 months via Airtel salary deduction. Six months of payslips ready to share immediately. Two guarantors already confirmed. Need disbursement within 24 hours.</div>
+              <div class="ex-tags"><span class="ex-tag">Emergency</span><span class="ex-tag">Medical</span><span class="ex-tag">3 months</span><span class="ex-tag">Salaried</span><span class="ex-tag">Payslips Ready</span><span class="ex-tag">Airtel Money</span></div>
+              <div class="ex-meta">
+                <div class="ex-meta-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Entebbe</div>
+                <div class="ex-verified"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>NIN Verified</div>
+                <span class="sp sp-urgent">Urgent</span><span class="sp sp-open">Accepting Offers</span>
+              </div>
+              <div class="ex-footer-row"><span>Posted 5 hours ago</span><span><strong>7</strong> lender offers received</span></div>
+            </div>
+            <div class="ex-right">
+              <div class="ex-rate-label">Amount Needed</div>
+              <div class="ex-rate-val borrower">5M</div>
+              <div class="ex-rate-unit">UGX</div>
+              <div class="ex-capacity"><div class="ex-cap-val">Max 9%/mo</div><div class="ex-cap-sub">3 months</div></div>
+              <div class="ex-actions">
+                <a href="#" class="btn btn-teal">Make an Offer</a>
+                <button class="btn btn-out" onclick="openModal(4);event.stopPropagation()">Full Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="oc-headline">URGENT — Need UGX 5M for family surgery at Mulago Hospital</div>
-      <div class="oc-desc">My mother requires urgent surgery. I am a salaried nurse with a stable monthly income of UGX 3.2M. Loan repayable over 3 months via Airtel salary deduction. Six months of payslips ready to share immediately. Two guarantors already confirmed. Please lenders — need disbursement within 24 hours.</div>
-      <div class="oc-tags">
-        <span class="oc-tag">Emergency</span>
-        <span class="oc-tag">Medical</span>
-        <span class="oc-tag">3 months</span>
-        <span class="oc-tag">Salaried</span>
-        <span class="oc-tag">Payslips Ready</span>
-        <span class="oc-tag">Airtel Money</span>
-      </div>
-      <div class="oc-meta">
-        <div class="score-wrap"><div class="score-bar"><div class="score-fill" style="width:85%"></div></div>Credit Score: 85/100</div>
-        <div class="oc-meta-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Entebbe</div>
-        <div class="oc-verified"><svg viewBox="0 0 24 24" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>NIN Verified</div>
-        <span class="status-pill sp-urgent">Urgent</span>
-        <span class="status-pill sp-open">Accepting Offers</span>
-      </div>
-    </div>
-  </div>
-  <div class="oc-right">
-    <div class="oc-rate-block">
-      <div class="oc-rate-lbl">Amount Needed</div>
-      <div class="oc-rate-val teal-c" style="font-size:26px">5M</div>
-      <div class="oc-rate-unit">UGX</div>
-    </div>
-    <div class="oc-capacity"><strong>Max 9%/mo</strong>3 months</div>
-    <div class="oc-actions">
-      <a href="#" class="btn btn-teal">Make an Offer</a>
-      <a href="#" class="btn btn-out">View Request</a>
-    </div>
-  </div>
-</div>
-<div class="oc-footer" style="border:1px solid var(--border);border-top:none;border-radius:0 0 12px 12px;margin-top:-14px;background:var(--bg)">
-  <span class="oc-posted">Posted 5 hours ago</span>
-  <span class="oc-responses"><strong>7</strong> lender offers received</span>
-</div>
 
-<!-- ═══════ LENDER OFFER 3 — Company ═══════ -->
-<div class="offer-card pinned fu" data-type="lender" style="transition-delay:.24s">
-  <div class="oc-bar"></div>
-  <div class="oc-body">
-    <div class="oc-avatar-wrap">
-      <div class="oc-avatar" style="background:var(--navy);font-size:14px;font-family:'Outfit',sans-serif;font-weight:800">PM</div>
-      <div class="oc-online"></div>
-    </div>
-    <div class="oc-content">
-      <div class="oc-top">
-        <div>
-          <div class="oc-name">Peter Muwanga Capital Ltd.</div>
-          <div class="oc-subtitle">Registered Lending Company · Kampala (All regions)</div>
+      <!-- ═══ LISTING 5: LENDER — Peter Muwanga (Company) ═══ -->
+      <div class="listing" data-type="lender" data-id="5">
+        <div class="listing-compact" onclick="toggleListing(5)">
+          <div class="type-strip lender"></div>
+          <div class="lc-ava" style="background:var(--navy);font-size:13px;font-family:'Outfit',sans-serif;font-weight:800">PM</div>
+          <span class="lc-badge badge-lender">Offer</span>
+          <div class="lc-name-line">
+            <div class="lc-title">UGX 1M–100M for all loan types — lowest rates from 4.5%/mo, up to 24 months</div>
+            <div class="lc-sub">Peter Muwanga Capital Ltd. · Registered Company · Kampala</div>
+          </div>
+          <div class="lc-amount lender">4.5%<span style="font-size:12px;color:var(--muted)">/mo</span></div>
+          <div class="lc-rate">UGX 1M–100M<br>Up to 24 months</div>
+          <span class="sp sp-active">Active</span>
+          <div class="lc-responses"><strong>31</strong> apps</div>
+          <div class="lc-time">2 days ago</div>
+          <div class="lc-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
         </div>
-        <span class="oc-type-badge badge-lender">Lender Offer</span>
+        <div class="listing-expanded">
+          <div class="ex-grid">
+            <div class="ex-left">
+              <div class="ex-headline">UGX 1M–100M for all loan types — from 4.5%/mo, up to 24 months</div>
+              <div class="ex-poster">Peter Muwanga Capital Ltd. · Kampala <span class="ex-verified"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>BoU Verified · Company</span> <span style="color:#F59E0B;font-size:12px">★ 4.9</span> <span style="font-size:12px;color:var(--muted)">(214)</span></div>
+              <div class="ex-desc">Uganda's most comprehensive lending offer on WeLend. We fund business, personal, agricultural, education, asset finance, and salary advance loans. 214 loans, 99% satisfaction. Funds disbursed in under 12 hours after approval. Apply now — we review daily.</div>
+              <div class="ex-tags"><span class="ex-tag">All Loan Types</span><span class="ex-tag">Education</span><span class="ex-tag">Asset Finance</span><span class="ex-tag">Up to 24 months</span><span class="ex-tag">&lt;12hr Disbursement</span></div>
+              <div class="ex-meta">
+                <div class="ex-meta-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Kampala HQ</div>
+                <div class="ex-meta-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Responds &lt;3hr</div>
+                <div class="ex-verified"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>BoU Verified</div>
+              </div>
+              <div class="ex-footer-row"><span>Posted 2 days ago · Renewed daily</span><span><strong>31</strong> applications received</span></div>
+            </div>
+            <div class="ex-right">
+              <div class="ex-rate-label">From as low as</div>
+              <div class="ex-rate-val lender">4.5%</div>
+              <div class="ex-rate-unit">per month</div>
+              <div class="ex-capacity"><div class="ex-cap-val">UGX 1M – 100M</div><div class="ex-cap-sub">Up to 24 months</div></div>
+              <div class="ex-actions">
+                <a href="#" class="btn btn-navy">Apply Now</a>
+                <button class="btn btn-out" onclick="openModal(5);event.stopPropagation()">Full Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="oc-headline">UGX 1M–100M for all loan types — lowest rates from 4.5%/mo, up to 24 months</div>
-      <div class="oc-desc">Uganda's most comprehensive lending offer on LendFlow. We fund business, personal, agricultural, education, asset finance, and salary advance loans. Company-grade due diligence with personal service. 214 loans, 99% borrower satisfaction. Funds disbursed in under 12 hours after approval. Apply now — we review daily.</div>
-      <div class="oc-tags">
-        <span class="oc-tag">All Loan Types</span>
-        <span class="oc-tag">Education</span>
-        <span class="oc-tag">Asset Finance</span>
-        <span class="oc-tag">Up to 24 months</span>
-        <span class="oc-tag">High Volume</span>
-        <span class="oc-tag">&lt;12hr Disbursement</span>
-      </div>
-      <div class="oc-meta">
-        <div class="oc-rating"><span class="oc-stars">★</span><strong>4.9</strong><span style="color:var(--muted)">(214)</span></div>
-        <div class="oc-meta-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Kampala HQ</div>
-        <div class="oc-meta-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Responds &lt;3hr</div>
-        <div class="oc-verified"><svg viewBox="0 0 24 24" width="12" height="12"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>BoU Verified · Company</div>
-        <span class="status-pill sp-active">Active</span>
-      </div>
-    </div>
-  </div>
-  <div class="oc-right">
-    <div class="oc-rate-block">
-      <div class="oc-rate-lbl">From as low as</div>
-      <div class="oc-rate-val">4.5%</div>
-      <div class="oc-rate-unit">per month</div>
-    </div>
-    <div class="oc-capacity"><strong>UGX 1M – 100M</strong>Up to 24 months</div>
-    <div class="oc-actions">
-      <a href="#" class="btn btn-navy">Apply Now</a>
-      <a href="#" class="btn btn-out">View Profile</a>
-    </div>
-  </div>
-</div>
-<div class="oc-footer" style="border:1px solid var(--border);border-top:none;border-radius:0 0 12px 12px;margin-top:-14px;background:var(--bg)">
-  <span class="oc-posted">Posted 2 days ago · Renewed daily</span>
-  <span class="oc-responses"><strong>31</strong> applications received</span>
-</div>
 
-<!-- ═══════ BORROWER REQUEST 3 ═══════ -->
-<div class="offer-card fu" data-type="borrower" style="transition-delay:.30s">
-  <div class="oc-bar teal"></div>
-  <div class="oc-body">
-    <div class="oc-avatar-wrap">
-      <div class="oc-avatar" style="background:#1a5e42;font-size:18px">RO</div>
-    </div>
-    <div class="oc-content">
-      <div class="oc-top">
-        <div>
-          <div class="oc-name">Ronald Okot</div>
-          <div class="oc-subtitle">Maize Farmer · Gulu, Uganda</div>
+      <!-- ═══ LISTING 6: BORROWER — Ronald Okot ═══ -->
+      <div class="listing" data-type="borrower" data-id="6">
+        <div class="listing-compact" onclick="toggleListing(6)">
+          <div class="type-strip borrower"></div>
+          <div class="lc-ava" style="background:#1a5e42">RO</div>
+          <span class="lc-badge badge-borrower">Request</span>
+          <div class="lc-name-line">
+            <div class="lc-title">UGX 12M for maize inputs — 8 acres in Gulu, repay after harvest in 6 months</div>
+            <div class="lc-sub">Ronald Okot · Maize Farmer · Gulu</div>
+          </div>
+          <div class="lc-amount borrower">12M<span style="font-size:12px;color:var(--muted)"> UGX</span></div>
+          <div class="lc-rate">Max 7%/mo<br>6 months</div>
+          <span class="sp sp-open">Open</span>
+          <div class="lc-responses"><strong>2</strong> offers</div>
+          <div class="lc-time">1 day ago</div>
+          <div class="lc-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
         </div>
-        <span class="oc-type-badge badge-borrower">Borrower Request</span>
+        <div class="listing-expanded">
+          <div class="ex-grid">
+            <div class="ex-left">
+              <div class="ex-headline">UGX 12M for maize inputs — 8 acres in Gulu, repay after harvest in 6 months</div>
+              <div class="ex-poster">Ronald Okot · Gulu <span class="ex-verified"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>NIN Verified</span> <span class="score-wrap"><div class="score-bar"><div class="score-fill" style="width:71%"></div></div>Score 71/100</span></div>
+              <div class="ex-desc">This is my 4th season farming maize. Previous harvest revenue was UGX 18M. Need funds for seeds, fertiliser, and transport for 8 acres. Land title available as collateral. Repayment in 6 months after harvest sale. Looking for a lender who understands agricultural income cycles.</div>
+              <div class="ex-tags"><span class="ex-tag">Agricultural</span><span class="ex-tag">Maize Farming</span><span class="ex-tag">6 months</span><span class="ex-tag">Land Title</span><span class="ex-tag">Collateral Available</span><span class="ex-tag">Max 7%/mo</span></div>
+              <div class="ex-meta">
+                <div class="ex-meta-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Gulu</div>
+                <div class="ex-verified"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>NIN Verified</div>
+                <span class="sp sp-open">Accepting Offers</span>
+              </div>
+              <div class="ex-footer-row"><span>Posted 1 day ago</span><span><strong>2</strong> lender offers received</span></div>
+            </div>
+            <div class="ex-right">
+              <div class="ex-rate-label">Amount Needed</div>
+              <div class="ex-rate-val borrower">12M</div>
+              <div class="ex-rate-unit">UGX</div>
+              <div class="ex-capacity"><div class="ex-cap-val">Max 7%/mo</div><div class="ex-cap-sub">6 months</div></div>
+              <div class="ex-actions">
+                <a href="#" class="btn btn-teal">Make an Offer</a>
+                <button class="btn btn-out" onclick="openModal(6);event.stopPropagation()">Full Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="oc-headline">UGX 12M needed for maize inputs — 8 acres in Gulu, repay after harvest in 6 months</div>
-      <div class="oc-desc">This is my 4th season farming maize. Previous harvest revenue was UGX 18M. I need funds for seeds, fertiliser, and transport to cover 8 acres. Land title available as collateral. Repayment in 6 months after harvest sale. I am looking for a lender who understands agricultural income cycles. Gulu-based or remote application both welcome.</div>
-      <div class="oc-tags">
-        <span class="oc-tag">Agricultural</span>
-        <span class="oc-tag">Maize Farming</span>
-        <span class="oc-tag">6 months</span>
-        <span class="oc-tag">Land Title</span>
-        <span class="oc-tag">Collateral Available</span>
-        <span class="oc-tag">Max 7%/mo</span>
-      </div>
-      <div class="oc-meta">
-        <div class="score-wrap"><div class="score-bar"><div class="score-fill" style="width:71%"></div></div>Credit Score: 71/100</div>
-        <div class="oc-meta-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Gulu</div>
-        <div class="oc-verified"><svg viewBox="0 0 24 24" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>NIN Verified</div>
-        <span class="status-pill sp-open">Accepting Offers</span>
-      </div>
-    </div>
-  </div>
-  <div class="oc-right">
-    <div class="oc-rate-block">
-      <div class="oc-rate-lbl">Amount Needed</div>
-      <div class="oc-rate-val teal-c" style="font-size:24px">12M</div>
-      <div class="oc-rate-unit">UGX</div>
-    </div>
-    <div class="oc-capacity"><strong>Max 7%/mo</strong>6 months</div>
-    <div class="oc-actions">
-      <a href="#" class="btn btn-teal">Make an Offer</a>
-      <a href="#" class="btn btn-out">View Request</a>
-    </div>
-  </div>
-</div>
-<div class="oc-footer" style="border:1px solid var(--border);border-top:none;border-radius:0 0 12px 12px;margin-top:-14px;background:var(--bg)">
-  <span class="oc-posted">Posted 1 day ago</span>
-  <span class="oc-responses"><strong>2</strong> lender offers received</span>
-</div>
 
-<!-- ═══════ LENDER OFFER 4 ═══════ -->
-<div class="offer-card fu" data-type="lender" style="transition-delay:.36s">
-  <div class="oc-bar"></div>
-  <div class="oc-body">
-    <div class="oc-avatar-wrap">
-      <div class="oc-avatar" style="background:#5b1a6e">SN</div>
-    </div>
-    <div class="oc-content">
-      <div class="oc-top">
-        <div>
-          <div class="oc-name">Sarah Nakimuli</div>
-          <div class="oc-subtitle">Personal &amp; Emergency Lender · Entebbe</div>
+      <!-- ═══ LISTING 7: LENDER — Sarah Nakimuli ═══ -->
+      <div class="listing" data-type="lender" data-id="7">
+        <div class="listing-compact" onclick="toggleListing(7)">
+          <div class="type-strip lender"></div>
+          <div class="lc-ava" style="background:#5b1a6e">SN</div>
+          <span class="lc-badge badge-lender">Offer</span>
+          <div class="lc-name-line">
+            <div class="lc-title">UGX 500K–20M for personal &amp; emergency needs — responds in under 1 hour</div>
+            <div class="lc-sub">Sarah Nakimuli · Personal &amp; Emergency Lender · Entebbe</div>
+          </div>
+          <div class="lc-amount lender">7%<span style="font-size:12px;color:var(--muted)">/mo</span></div>
+          <div class="lc-rate">UGX 500K–20M<br>Max 3 months</div>
+          <span class="sp sp-active">Active</span>
+          <div class="lc-responses"><strong>9</strong> apps</div>
+          <div class="lc-time">4 hr ago</div>
+          <div class="lc-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
         </div>
-        <span class="oc-type-badge badge-lender">Lender Offer</span>
+        <div class="listing-expanded">
+          <div class="ex-grid">
+            <div class="ex-left">
+              <div class="ex-headline">UGX 500K–20M for personal &amp; emergency needs — responds in under 1 hour</div>
+              <div class="ex-poster">Sarah Nakimuli · Entebbe <span class="ex-verified"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>BoU Verified</span> <span style="color:#F59E0B;font-size:12px">★ 4.8</span> <span style="font-size:12px;color:var(--muted)">(72)</span></div>
+              <div class="ex-desc">Fast personal and emergency loans for salaried workers. Minimal paperwork — I focus on income stability, not collateral. Ideal for medical bills, school fees, or short-term cash gaps. 72 loans, responds within 1 hour, disbursement same day on approval.</div>
+              <div class="ex-tags"><span class="ex-tag">Personal</span><span class="ex-tag">Emergency</span><span class="ex-tag">Salary Advance</span><span class="ex-tag">Fast Approval</span><span class="ex-tag">Max 3 months</span></div>
+              <div class="ex-meta">
+                <div class="ex-meta-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Entebbe</div>
+                <div class="ex-meta-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Responds &lt;1hr</div>
+                <div class="ex-verified"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>BoU Verified</div>
+              </div>
+              <div class="ex-footer-row"><span>Posted 4 hours ago</span><span><strong>9</strong> applications received</span></div>
+            </div>
+            <div class="ex-right">
+              <div class="ex-rate-label">Interest Rate</div>
+              <div class="ex-rate-val lender">7%</div>
+              <div class="ex-rate-unit">per month</div>
+              <div class="ex-capacity"><div class="ex-cap-val">UGX 500K – 20M</div><div class="ex-cap-sub">Max 3 months</div></div>
+              <div class="ex-actions">
+                <a href="#" class="btn btn-navy">Apply Now</a>
+                <button class="btn btn-out" onclick="openModal(7);event.stopPropagation()">Full Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="oc-headline">UGX 500K–20M for personal &amp; emergency needs — fast approval, responds in under 1 hour</div>
-      <div class="oc-desc">Specialising in fast personal and emergency loans for salaried workers. Minimal paperwork, I focus on income stability not collateral. Ideal for urgent needs, medical bills, school fees, or short-term cash gaps. 72 loans, responds to all applications within 1 hour. Disbursement same day on approval.</div>
-      <div class="oc-tags">
-        <span class="oc-tag">Personal</span>
-        <span class="oc-tag">Emergency</span>
-        <span class="oc-tag">Salary Advance</span>
-        <span class="oc-tag">Fast Approval</span>
-        <span class="oc-tag">Max 3 months</span>
-      </div>
-      <div class="oc-meta">
-        <div class="oc-rating"><span class="oc-stars">★</span><strong>4.8</strong><span style="color:var(--muted)">(72)</span></div>
-        <div class="oc-meta-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Entebbe</div>
-        <div class="oc-meta-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Responds &lt;1hr</div>
-        <div class="oc-verified"><svg viewBox="0 0 24 24" width="12" height="12"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>BoU Verified</div>
-        <span class="status-pill sp-active">Active</span>
-      </div>
-    </div>
-  </div>
-  <div class="oc-right">
-    <div class="oc-rate-block">
-      <div class="oc-rate-lbl">Interest Rate</div>
-      <div class="oc-rate-val">7%</div>
-      <div class="oc-rate-unit">per month</div>
-    </div>
-    <div class="oc-capacity"><strong>UGX 500K – 20M</strong>Max 3 months</div>
-    <div class="oc-actions">
-      <a href="#" class="btn btn-navy">Apply Now</a>
-      <a href="#" class="btn btn-out">View Profile</a>
-    </div>
-  </div>
-</div>
-<div class="oc-footer" style="border:1px solid var(--border);border-top:none;border-radius:0 0 12px 12px;margin-top:-14px;background:var(--bg)">
-  <span class="oc-posted">Posted 4 hours ago</span>
-  <span class="oc-responses"><strong>9</strong> applications received</span>
-</div>
 
-<!-- ═══════ BORROWER REQUEST 4 — Funded ═══════ -->
-<div class="offer-card fu" data-type="borrower" style="transition-delay:.42s;opacity:.75">
-  <div class="oc-bar teal"></div>
-  <div class="oc-body">
-    <div class="oc-avatar-wrap">
-      <div class="oc-avatar" style="background:#6e3a1a;font-size:18px">BK</div>
-    </div>
-    <div class="oc-content">
-      <div class="oc-top">
-        <div>
-          <div class="oc-name">Brian Kayiwa</div>
-          <div class="oc-subtitle">Trader · Jinja, Uganda</div>
+      <!-- ═══ LISTING 8: BORROWER — Brian Kayiwa (FUNDED) ═══ -->
+      <div class="listing" data-type="borrower" data-id="8" style="opacity:.65">
+        <div class="listing-compact" onclick="toggleListing(8)">
+          <div class="type-strip borrower"></div>
+          <div class="lc-ava" style="background:#6e3a1a">BK</div>
+          <span class="lc-badge badge-borrower">Request</span>
+          <div class="lc-name-line">
+            <div class="lc-title">UGX 3.5M salary advance for school fees — 2 months [FUNDED]</div>
+            <div class="lc-sub">Brian Kayiwa · Trader · Jinja</div>
+          </div>
+          <div class="lc-amount borrower">3.5M<span style="font-size:12px;color:var(--muted)"> UGX</span></div>
+          <div class="lc-rate">Closed<br>2 months</div>
+          <span class="sp sp-funded">Funded ✓</span>
+          <div class="lc-responses"><strong>5</strong> offers</div>
+          <div class="lc-time">3 days ago</div>
+          <div class="lc-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
         </div>
-        <span class="oc-type-badge badge-borrower">Borrower Request</span>
+        <div class="listing-expanded">
+          <div class="ex-grid">
+            <div class="ex-left">
+              <div class="ex-headline">UGX 3.5M salary advance for children's school fees — 2 months [FUNDED]</div>
+              <div class="ex-poster">Brian Kayiwa · Jinja <span class="ex-verified"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>NIN Verified</span></div>
+              <div class="ex-desc">Salary advance to cover Term 3 school fees for three children. Monthly salary of UGX 4.8M at Uganda Breweries. This request is now closed — successfully funded by Sarah Nakimuli on WeLend. Disbursed via MTN MoMo within 18 hours of accepting the offer.</div>
+              <div class="ex-tags"><span class="ex-tag">Personal</span><span class="ex-tag">Salary Advance</span><span class="ex-tag">Education</span><span class="ex-tag">2 months</span></div>
+              <div class="ex-meta">
+                <div class="ex-meta-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Jinja</div>
+                <div class="ex-verified"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>NIN Verified</div>
+                <span class="sp sp-funded">Funded ✓</span>
+              </div>
+              <div class="ex-footer-row"><span>Posted 3 days ago · Closed</span><span style="color:var(--green);font-weight:600">✓ Funded by Sarah Nakimuli</span></div>
+            </div>
+            <div class="ex-right">
+              <div class="ex-rate-label">Amount Funded</div>
+              <div class="ex-rate-val" style="color:var(--green)">3.5M</div>
+              <div class="ex-rate-unit">UGX</div>
+              <div class="ex-capacity"><div class="ex-cap-val">Closed</div><div class="ex-cap-sub">2 months</div></div>
+              <div class="ex-actions">
+                <button class="btn btn-out" style="opacity:.5;cursor:not-allowed">Request Closed</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="oc-headline">UGX 3.5M salary advance needed for children's school fees — 2 months</div>
-      <div class="oc-desc">Salary advance needed to cover Term 3 school fees for three children before the deadline. Monthly salary of UGX 4.8M, employed at Uganda Breweries. Payslips available. Simple 2-month repayment. This request is now closed — successfully funded by Sarah Nakimuli on LendFlow.</div>
-      <div class="oc-tags">
-        <span class="oc-tag">Personal</span>
-        <span class="oc-tag">Salary Advance</span>
-        <span class="oc-tag">Education</span>
-        <span class="oc-tag">2 months</span>
-      </div>
-      <div class="oc-meta">
-        <div class="oc-meta-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Jinja</div>
-        <div class="oc-verified"><svg viewBox="0 0 24 24" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>NIN Verified</div>
-        <span class="status-pill sp-funded">Funded ✓</span>
-      </div>
-    </div>
-  </div>
-  <div class="oc-right">
-    <div class="oc-rate-block">
-      <div class="oc-rate-lbl">Amount Funded</div>
-      <div class="oc-rate-val" style="color:var(--green);font-size:26px">3.5M</div>
-      <div class="oc-rate-unit">UGX</div>
-    </div>
-    <div class="oc-capacity"><strong>Closed</strong>2 months</div>
-    <div class="oc-actions">
-      <a href="#" class="btn btn-out" style="cursor:default;opacity:.5">Request Closed</a>
-    </div>
-  </div>
-</div>
-<div class="oc-footer" style="border:1px solid var(--border);border-top:none;border-radius:0 0 12px 12px;margin-top:-14px;background:var(--bg)">
-  <span class="oc-posted">Posted 3 days ago · Closed</span>
-  <span class="oc-responses" style="color:var(--green);font-weight:600">✓ Funded by Sarah Nakimuli</span>
-</div>
 
     </div><!-- /cards -->
+    <div class="load-more"><button class="load-btn">Load 20 more listings →</button></div>
+  </div>
+</div>
 
-    <div class="load-more">
-      <button class="load-more-btn">Load 20 more listings →</button>
-    </div>
-
-  </div><!-- /mkt-main -->
-</div><!-- /mkt-wrap -->
+<!-- ── DUAL CTA ── -->
+<div class="dual-bottom">
+  <div class="db-side">
+    <div class="db-eye" style="color:var(--gold)">For Lenders</div>
+    <h2 class="db-title">Post your offer. Let borrowers apply to you.</h2>
+    <p class="db-sub">Set your terms once. Your offer lives publicly on the marketplace and borrowers apply directly.</p>
+    <ul class="db-list">
+      <li><div class="db-check" style="background:var(--gold)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>BoU-licensed — no separate licence needed</li>
+      <li><div class="db-check" style="background:var(--gold)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Public offer — any borrower can apply</li>
+      <li><div class="db-check" style="background:var(--gold)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Review credit scores &amp; docs before approving</li>
+      <li><div class="db-check" style="background:var(--gold)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Earn interest. Track repayments in your portfolio.</li>
+    </ul>
+    <a href="#" class="db-btn" style="background:var(--gold);color:#fff">Post a Lending Offer →</a>
+  </div>
+  <div class="db-side">
+    <div class="db-eye" style="color:var(--teal)">For Borrowers</div>
+    <h2 class="db-title">Post your request. Let lenders send you offers.</h2>
+    <p class="db-sub">Browse public lender offers and apply, or post your need and get competing offers from licensed lenders.</p>
+    <ul class="db-list">
+      <li><div class="db-check" style="background:var(--teal)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Browse 185+ licensed lenders and their live rates</li>
+      <li><div class="db-check" style="background:var(--teal)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Post your need publicly — lenders compete for you</li>
+      <li><div class="db-check" style="background:var(--teal)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Compare rates &amp; lender ratings before accepting</li>
+      <li><div class="db-check" style="background:var(--teal)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Money in MoMo or Airtel within 24 hours</li>
+    </ul>
+    <a href="#" class="db-btn" style="background:var(--teal);color:#fff">Post a Borrowing Request →</a>
+  </div>
+</div>
 
 <!-- HOW IT WORKS -->
-<div class="hiw-strip" id="hiw">
+<div class="hiw-strip">
   <div class="hiw-inner">
     <div class="hiw-title">How the marketplace works</div>
     <div class="hiw-cols">
       <div class="hiw-col">
-        <div class="hiw-col-title" style="color:var(--gold)">
-          <svg style="width:16px;height:16px;stroke:var(--gold);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-          I am a Lender
-        </div>
-        <div class="hiw-step-row"><div class="hiw-num" style="background:var(--gold-bg);color:var(--gold)">1</div><div class="hiw-step-text"><strong>Register &amp; get licensed</strong> under LendFlow's Bank of Uganda framework. Takes one day.</div></div>
-        <div class="hiw-step-row"><div class="hiw-num" style="background:var(--gold-bg);color:var(--gold)">2</div><div class="hiw-step-text"><strong>Post your lending offer</strong> — set your rate, amount range, accepted loan types, and duration. Goes live immediately.</div></div>
-        <div class="hiw-step-row"><div class="hiw-num" style="background:var(--gold-bg);color:var(--gold)">3</div><div class="hiw-step-text"><strong>Review applications</strong> from borrowers. See their credit score, documents, and guarantors. Approve in one tap.</div></div>
-        <div class="hiw-step-row"><div class="hiw-num" style="background:var(--gold-bg);color:var(--gold)">4</div><div class="hiw-step-text"><strong>Funds disburse, interest accrues.</strong> Track repayments from your portfolio dashboard.</div></div>
+        <div class="hiw-col-title" style="color:var(--gold)">I am a Lender</div>
+        <div class="hiw-step-row"><div class="hiw-num" style="background:var(--gold-bg);color:var(--gold)">1</div><div class="hiw-step-text"><strong>Register &amp; get licensed</strong> under WeLend's Bank of Uganda framework.</div></div>
+        <div class="hiw-step-row"><div class="hiw-num" style="background:var(--gold-bg);color:var(--gold)">2</div><div class="hiw-step-text"><strong>Post your lending offer</strong> with your rate, amount range, and accepted types. Goes live immediately.</div></div>
+        <div class="hiw-step-row"><div class="hiw-num" style="background:var(--gold-bg);color:var(--gold)">3</div><div class="hiw-step-text"><strong>Review applications</strong> — see credit scores, docs, guarantors. Approve in one tap.</div></div>
+        <div class="hiw-step-row"><div class="hiw-num" style="background:var(--gold-bg);color:var(--gold)">4</div><div class="hiw-step-text"><strong>Earn interest.</strong> Track repayments from your portfolio dashboard.</div></div>
       </div>
       <div class="hiw-col">
-        <div class="hiw-col-title" style="color:var(--teal)">
-          <svg style="width:16px;height:16px;stroke:var(--teal);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          I am a Borrower
-        </div>
-        <div class="hiw-step-row"><div class="hiw-num" style="background:var(--teal-bg);color:var(--teal)">1</div><div class="hiw-step-text"><strong>Create your profile</strong> with your NIN and phone number. Verification takes under 5 minutes.</div></div>
-        <div class="hiw-step-row"><div class="hiw-num" style="background:var(--teal-bg);color:var(--teal)">2</div><div class="hiw-step-text"><strong>Browse lender offers</strong> publicly on the marketplace, or <strong>post your own request</strong> and let lenders come to you.</div></div>
-        <div class="hiw-step-row"><div class="hiw-num" style="background:var(--teal-bg);color:var(--teal)">3</div><div class="hiw-step-text"><strong>Apply or receive offers.</strong> Upload documents, add guarantors, and submit — all on your phone.</div></div>
-        <div class="hiw-step-row"><div class="hiw-num" style="background:var(--teal-bg);color:var(--teal)">4</div><div class="hiw-step-text"><strong>Get funded in 24 hours.</strong> Money lands in your MTN MoMo or Airtel wallet after approval.</div></div>
+        <div class="hiw-col-title" style="color:var(--teal)">I am a Borrower</div>
+        <div class="hiw-step-row"><div class="hiw-num" style="background:var(--teal-bg);color:var(--teal)">1</div><div class="hiw-step-text"><strong>Create your profile</strong> with your NIN and phone. Done in under 5 minutes.</div></div>
+        <div class="hiw-step-row"><div class="hiw-num" style="background:var(--teal-bg);color:var(--teal)">2</div><div class="hiw-step-text"><strong>Browse public offers</strong> or <strong>post your own request</strong> and let lenders come to you.</div></div>
+        <div class="hiw-step-row"><div class="hiw-num" style="background:var(--teal-bg);color:var(--teal)">3</div><div class="hiw-step-text"><strong>Apply or accept an offer.</strong> Upload docs, add guarantors — all on your phone.</div></div>
+        <div class="hiw-step-row"><div class="hiw-num" style="background:var(--teal-bg);color:var(--teal)">4</div><div class="hiw-step-text"><strong>Get funded in 24 hours.</strong> Money in your MoMo or Airtel wallet.</div></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- DUAL CTA -->
-<div class="dual-bottom">
-  <div class="db-side">
-    <div class="db-eyebrow" style="color:var(--gold)">For Lenders</div>
-    <h2 class="db-title">Post your offer. Let borrowers apply to you.</h2>
-    <p class="db-sub">Set your terms once. Your profile lives on the public marketplace and qualified borrowers apply directly. Approve from your phone.</p>
-    <ul class="db-list">
-      <li><div class="db-check" style="background:var(--gold)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>BoU-licensed umbrella — no separate licence needed</li>
-      <li><div class="db-check" style="background:var(--gold)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Your offer is public — any borrower can apply</li>
-      <li><div class="db-check" style="background:var(--gold)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Review credit scores, docs &amp; guarantors before deciding</li>
-      <li><div class="db-check" style="background:var(--gold)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Earn interest. Track repayments in your portfolio.</li>
-    </ul>
-    <a href="#" class="btn-lg btn-gold" style="background:var(--gold);color:#fff;font-size:14.5px">Post a Lending Offer →</a>
-  </div>
-  <div class="db-side">
-    <div class="db-eyebrow" style="color:var(--teal)">For Borrowers</div>
-    <h2 class="db-title">Post your request. Let lenders send you offers.</h2>
-    <p class="db-sub">Browse public lender offers and apply directly, or post your funding need publicly and receive competing offers from licensed lenders.</p>
-    <ul class="db-list">
-      <li><div class="db-check" style="background:var(--teal)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Browse 185+ licensed lenders and their live offers</li>
-      <li><div class="db-check" style="background:var(--teal)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Post your need publicly — lenders compete for you</li>
-      <li><div class="db-check" style="background:var(--teal)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Compare rates, see lender ratings before accepting</li>
-      <li><div class="db-check" style="background:var(--teal)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Money in MoMo or Airtel within 24 hours of approval</li>
-    </ul>
-    <a href="#" class="btn-lg" style="background:var(--teal);color:#fff;font-size:14.5px;padding:13px 28px;border-radius:9px;font-weight:700;font-family:'Outfit',sans-serif;text-decoration:none;display:inline-block;transition:all .2s">Post a Borrowing Request →</a>
-  </div>
-</div>
-
-<!-- APP SECTION -->
-<div class="app-section" id="app">
+<!-- APP -->
+<div class="app-section">
   <div class="app-inner">
     <div class="app-eye">Mobile App</div>
     <h2 class="app-title">The full marketplace on your phone</h2>
-    <p class="app-sub">Browse listings, post offers or requests, manage applications, and track repayments — all from the LendFlow app.</p>
+    <p class="app-sub">Browse listings, post offers or requests, manage applications, and track repayments — all from the WeLend app.</p>
     <div class="app-btns">
       <a href="#" class="store-btn">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
@@ -977,78 +887,135 @@ footer{background:#fff;border-top:1px solid var(--border);padding:32px;margin-to
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <a href="#" class="logo" style="text-decoration:none">
-      <div class="logo-mark">L</div>
-      <div class="logo-name">LendFlow</div>
-    </a>
+    <a href="#" class="logo" style="text-decoration:none"><div class="logo-mark">L</div><div class="logo-name">WeLend</div></a>
     <div class="footer-links">
-      <a href="#">Marketplace</a>
-      <a href="#">Post a Listing</a>
-      <a href="#">How It Works</a>
-      <a href="#">About</a>
-      <a href="#">Help</a>
-      <a href="#">Terms</a>
-      <a href="#">Privacy</a>
+      <a href="#">Marketplace</a><a href="#">Post a Listing</a><a href="#">How It Works</a>
+      <a href="#">About</a><a href="#">Help</a><a href="#">Terms</a><a href="#">Privacy</a>
     </div>
-    <div class="footer-badges">
-      <span class="fb">Bank of Uganda</span>
-      <span class="fb">MoMo</span>
-      <span class="fb">Airtel</span>
-    </div>
+    <div class="footer-badges"><span class="fb">Bank of Uganda</span><span class="fb">MoMo</span><span class="fb">Airtel</span></div>
   </div>
-  <div class="footer-inner" style="padding-top:0">
-    <p class="footer-copy">© 2024 LendFlow Ltd. Licensed under Bank of Uganda Framework. All rights reserved.</p>
-  </div>
+  <p class="footer-copy">© 2024 WeLend Ltd. Licensed under Bank of Uganda Framework. All rights reserved.</p>
 </footer>
 
+<!-- FULL DETAILS MODAL -->
+<div class="modal-overlay" id="modal" onclick="closeModal(event)">
+  <div class="modal-box" id="modal-box">
+    <div class="modal-close" onclick="closeModal()"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
 <script>
-// Tab filtering
-function setTab(type, el) {
-  document.querySelectorAll('.mkt-tab').forEach(t => t.classList.remove('active'));
-  el.classList.add('active');
-  const cards = document.querySelectorAll('#feed > div[data-type]');
-  const footers = document.querySelectorAll('#feed > div:not([data-type])');
-  
-  // Show/hide cards and their accompanying footer divs
-  let shown = 0;
-  const allItems = document.querySelectorAll('#feed > *');
-  allItems.forEach((item, i) => {
-    if (item.dataset.type) {
-      const visible = type === 'all' || item.dataset.type === type;
-      item.style.display = visible ? 'flex' : 'none';
-      // footer is next sibling
-      const next = item.nextElementSibling;
-      if (next && !next.dataset.type) next.style.display = visible ? 'flex' : 'none';
-      if (visible) shown++;
-    }
-  });
-  
-  const rc = document.getElementById('res-count');
-  if (type === 'all') rc.innerHTML = '<strong>258 listings</strong> — lender offers &amp; borrower requests';
-  else if (type === 'lender') rc.innerHTML = '<strong>185 lender offers</strong> — publicly posted, open to applications';
-  else rc.innerHTML = '<strong>73 borrower requests</strong> — open to competing lender offers';
-}
+  // ── LISTING DATA ──
+  const listings = {
+    1:{type:'lender',name:'James Mugisha',sub:'Licensed Individual Lender · Kampala',title:'UGX 1M–50M at 5%/mo — Business, Personal & Emergency loans',desc:'Offering flexible loans to qualified borrowers across Uganda. Fast approval — all documents reviewed within 24 hours, disbursement via MTN MoMo or Airtel. I have issued 148 loans with 100% borrower satisfaction. Apply directly and I will respond within 2 hours of submission.',tags:['Business','Personal','Emergency','MTN MoMo','Airtel','Up to 6 months'],rateLabel:'Interest Rate',rateVal:'5%',rateUnit:'per month',capVal:'UGX 1M – 50M',capSub:'Max 6 months',rateClass:'lender',ctaClass:'btn-navy',ctaText:'Apply Now',posted:'3 hours ago',responses:'12 applications received',details:[['Lender','James Mugisha'],['Type','Individual Lender'],['Location','Kampala'],['Rating','★ 5.0 (148 reviews)'],['Response time','Under 2 hours'],['Disbursement','MTN MoMo / Airtel, within 24hr'],['Framework','Bank of Uganda Licensed']]},
+    2:{type:'borrower',name:'Agnes Kyomuhendo',sub:'Business Owner · Kampala',title:'Need UGX 8M for stock financing — retail electronics shop, Kisekka Market',desc:'Running a retail electronics shop for 3 years with monthly revenue of approximately UGX 12M. Need to restock before the December season. All documents are ready including NIN, 6-month bank statement, business registration certificate, and 2 confirmed guarantors. Willing to provide collateral. Prefer lenders who can disburse within 48 hours.',tags:['Business','Stock Financing','4 months','Max 8%/mo','Docs Ready','Guarantors Confirmed'],rateLabel:'Amount Needed',rateVal:'8M',rateUnit:'UGX',capVal:'Max 8%/mo',capSub:'4 months repayment',rateClass:'borrower',ctaClass:'btn-teal',ctaText:'Make an Offer',posted:'2 hours ago',responses:'3 lender offers received',details:[['Borrower','Agnes Kyomuhendo'],['Type','Individual / Business'],['Location','Kampala'],['Credit Score','78 / 100'],['Verification','NIN Verified'],['Documents','Ready to share'],['Guarantors','2 confirmed']]},
+    3:{type:'lender',name:'Robert Kiggundu',sub:'Agricultural & Business Lender · Mbarara',title:'UGX 2M–30M for agricultural & business loans — up to 12 months',desc:'Specialising in agricultural and SME loans across western Uganda. I understand seasonal income cycles and offer flexible repayment aligned to harvest or business seasons. 96 loans issued with 98% satisfaction. Land title accepted as collateral. All applications reviewed within 4 hours.',tags:['Agricultural','Business / SME','Long-term','Land Title OK','Up to 12 months'],rateLabel:'Interest Rate',rateVal:'6%',rateUnit:'per month',capVal:'UGX 2M – 30M',capSub:'Max 12 months',rateClass:'lender',ctaClass:'btn-navy',ctaText:'Apply Now',posted:'1 day ago',responses:'7 applications received',details:[['Lender','Robert Kiggundu'],['Type','Individual Lender'],['Location','Mbarara'],['Rating','★ 4.9 (96 reviews)'],['Response time','Under 4 hours'],['Disbursement','MTN MoMo / Airtel'],['Framework','Bank of Uganda Licensed']]},
+    4:{type:'borrower',name:'Patience Nakato',sub:'Nurse · Entebbe Hospital',title:'URGENT — Need UGX 5M for family surgery at Mulago Hospital',desc:'My mother requires urgent surgery at Mulago Hospital. I am a salaried nurse with a stable monthly income of UGX 3.2M. The loan is repayable over 3 months via Airtel salary deduction. Six months of payslips are ready to share immediately. Two guarantors have already confirmed. I need disbursement within 24 hours.',tags:['Emergency','Medical','3 months','Salaried','Payslips Ready','Airtel Money'],rateLabel:'Amount Needed',rateVal:'5M',rateUnit:'UGX',capVal:'Max 9%/mo',capSub:'3 months',rateClass:'borrower',ctaClass:'btn-teal',ctaText:'Make an Offer',posted:'5 hours ago',responses:'7 lender offers received',details:[['Borrower','Patience Nakato'],['Type','Individual / Salaried'],['Location','Entebbe'],['Credit Score','85 / 100'],['Verification','NIN Verified'],['Monthly Income','UGX 3,200,000'],['Guarantors','2 confirmed']]},
+    5:{type:'lender',name:'Peter Muwanga Capital Ltd.',sub:'Registered Company · Kampala',title:'UGX 1M–100M for all loan types — from 4.5%/mo, up to 24 months',desc:'Uganda\'s most comprehensive lending offer on WeLend. We fund business, personal, agricultural, education, asset finance, and salary advance loans. Company-grade due diligence with personal service. 214 loans issued with 99% borrower satisfaction. Funds disbursed in under 12 hours after approval. We review applications every day.',tags:['All Loan Types','Education','Asset Finance','Up to 24 months','<12hr Disbursement'],rateLabel:'From as low as',rateVal:'4.5%',rateUnit:'per month',capVal:'UGX 1M – 100M',capSub:'Up to 24 months',rateClass:'lender',ctaClass:'btn-navy',ctaText:'Apply Now',posted:'2 days ago · Renewed daily',responses:'31 applications received',details:[['Lender','Peter Muwanga Capital Ltd.'],['Type','Registered Company'],['Location','Kampala HQ'],['Rating','★ 4.9 (214 reviews)'],['Response time','Under 3 hours'],['Disbursement','Under 12 hours after approval'],['Framework','Bank of Uganda Licensed']]},
+    6:{type:'borrower',name:'Ronald Okot',sub:'Maize Farmer · Gulu',title:'UGX 12M for maize inputs — 8 acres in Gulu, repay after harvest in 6 months',desc:'This is my 4th season farming maize. My previous harvest revenue was UGX 18M. I need funds for seeds, fertiliser, and transport to cover 8 acres. Land title is available as collateral. Repayment is in 6 months after the harvest sale. I am looking for a lender who understands agricultural income cycles. Gulu-based or remote application is welcome.',tags:['Agricultural','Maize Farming','6 months','Land Title','Collateral Available','Max 7%/mo'],rateLabel:'Amount Needed',rateVal:'12M',rateUnit:'UGX',capVal:'Max 7%/mo',capSub:'6 months',rateClass:'borrower',ctaClass:'btn-teal',ctaText:'Make an Offer',posted:'1 day ago',responses:'2 lender offers received',details:[['Borrower','Ronald Okot'],['Type','Individual / Farmer'],['Location','Gulu'],['Credit Score','71 / 100'],['Verification','NIN Verified'],['Collateral','Land title available'],['Harvest Revenue','UGX 18M (prior season)']]},
+    7:{type:'lender',name:'Sarah Nakimuli',sub:'Personal & Emergency Lender · Entebbe',title:'UGX 500K–20M for personal & emergency needs — responds in under 1 hour',desc:'Fast personal and emergency loans for salaried workers. Minimal paperwork — I focus on income stability, not collateral. Ideal for medical bills, school fees, or short-term cash gaps. 72 loans issued. I respond to every application within 1 hour and disburse the same day on approval.',tags:['Personal','Emergency','Salary Advance','Fast Approval','Max 3 months'],rateLabel:'Interest Rate',rateVal:'7%',rateUnit:'per month',capVal:'UGX 500K – 20M',capSub:'Max 3 months',rateClass:'lender',ctaClass:'btn-navy',ctaText:'Apply Now',posted:'4 hours ago',responses:'9 applications received',details:[['Lender','Sarah Nakimuli'],['Type','Individual Lender'],['Location','Entebbe'],['Rating','★ 4.8 (72 reviews)'],['Response time','Under 1 hour'],['Disbursement','Same day on approval'],['Framework','Bank of Uganda Licensed']]},
+    8:{type:'borrower',name:'Brian Kayiwa',sub:'Trader · Jinja',title:'UGX 3.5M salary advance for school fees — 2 months [FUNDED]',desc:'Salary advance to cover Term 3 school fees for three children. Monthly salary of UGX 4.8M at Uganda Breweries. This request is now closed — successfully funded by Sarah Nakimuli on WeLend. Disbursed via MTN MoMo within 18 hours of accepting the offer.',tags:['Personal','Salary Advance','Education','2 months','Closed'],rateLabel:'Amount Funded',rateVal:'3.5M',rateUnit:'UGX',capVal:'Closed',capSub:'2 months',rateClass:'borrower',ctaClass:'btn-out',ctaText:'Request Closed',posted:'3 days ago · Closed',responses:'Funded by Sarah Nakimuli ✓',details:[['Borrower','Brian Kayiwa'],['Type','Individual / Salaried'],['Location','Jinja'],['Verification','NIN Verified'],['Status','Funded — Closed'],['Funded By','Sarah Nakimuli'],['Disbursement','MTN MoMo within 18 hours']]}
+  };
 
-// Scroll reveal
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('show');obs.unobserve(e.target)} });
-}, { threshold: 0.06, rootMargin: '0px 0px -20px 0px' });
-document.querySelectorAll('.fu').forEach(el => obs.observe(el));
+  // ── TOGGLE EXPAND/COLLAPSE ──
+  function toggleListing(id) {
+    const el = document.querySelector(`.listing[data-id="${id}"]`);
+    el.classList.toggle('expanded');
+  }
 
-// Hero tag clicks
-document.querySelectorAll('.htag').forEach(t => {
-  t.addEventListener('click', function() {
-    document.querySelector('.hsb-input').value = this.textContent;
-  });
-});
+  // ── EXPAND ALL ──
+  let allExpanded = false;
+  function toggleAll() {
+    const btn = document.querySelector('.expand-all-btn');
+    allExpanded = !allExpanded;
+    document.querySelectorAll('.listing').forEach(el => {
+      if (allExpanded) el.classList.add('expanded');
+      else el.classList.remove('expanded');
+    });
+    btn.textContent = allExpanded ? 'Collapse All' : 'Expand All';
+  }
 
-// Category tabs
-document.querySelectorAll('.mkt-tab').forEach(t => {
-  t.addEventListener('click', function() {
-    document.querySelectorAll('.mkt-tab').forEach(x => x.classList.remove('active'));
-    this.classList.add('active');
+  // ── TAB FILTER ──
+  function setTab(type, el) {
+    document.querySelectorAll('.mkt-tab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    document.querySelectorAll('.listing').forEach(l => {
+      l.style.display = (type === 'all' || l.dataset.type === type) ? 'block' : 'none';
+    });
+    const rc = document.getElementById('res-count');
+    if (type === 'all') rc.innerHTML = '<strong>258 listings</strong> — lender offers &amp; borrower requests';
+    else if (type === 'lender') rc.innerHTML = '<strong>185 lender offers</strong> — publicly posted, open to applications';
+    else rc.innerHTML = '<strong>73 borrower requests</strong> — open to competing lender offers';
+  }
+
+  // ── FULL PAGE MODAL ──
+  function openModal(id) {
+    const d = listings[id];
+    if (!d) return;
+    const isLender = d.type === 'lender';
+    const detailRows = d.details.map(r => `<div class="modal-detail-row"><span>${r[0]}</span><span>${r[1]}</span></div>`).join('');
+    const tags = d.tags.map(t => `<span class="modal-tag">${t}</span>`).join('');
+    document.getElementById('modal-content').innerHTML = `
+    <div class="modal-header">
+      <div class="modal-eyebrow">
+        <span class="lc-badge ${isLender?'badge-lender':'badge-borrower'}">${isLender?'Lender Offer':'Borrower Request'}</span>
+        ${isLender?'<span style="color:var(--green);font-size:12px;font-weight:600">✓ BoU Verified</span>':'<span style="color:var(--green);font-size:12px;font-weight:600">✓ NIN Verified</span>'}
+      </div>
+      <div class="modal-title">${d.title}</div>
+      <div class="modal-poster">${d.name} · ${d.sub}</div>
+    </div>
+    <div class="modal-body">
+      <div>
+        <div class="modal-desc">${d.desc}</div>
+        <div class="modal-tags">${tags}</div>
+        <div class="modal-section-title">Listing Details</div>
+        ${detailRows}
+        <div class="modal-meta">
+          <div class="modal-meta-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Posted ${d.posted}</div>
+          <div class="modal-meta-item"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>${d.responses}</div>
+        </div>
+      </div>
+      <div class="modal-right">
+        <div class="modal-rate-label">${d.rateLabel}</div>
+        <div class="modal-rate-val ${d.rateClass}">${d.rateVal}</div>
+        <div class="modal-rate-unit">${d.rateUnit}</div>
+        <div class="modal-cap">${d.capVal}</div>
+        <div class="modal-cap-sub">${d.capSub}</div>
+        <div class="modal-actions">
+          <a href="#" class="modal-btn ${isLender?'modal-btn-navy':'modal-btn-teal'}">${d.ctaText}</a>
+          <button class="modal-btn modal-btn-out" onclick="closeModal()">Close</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <span>Posted ${d.posted}</span>
+      <span>${d.responses}</span>
+    </div>`;
+    document.getElementById('modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(e) {
+    if (e && e.target !== document.getElementById('modal')) return;
+    document.getElementById('modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // ── SCROLL REVEAL ──
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('show');obs.unobserve(e.target)} });
+  }, {threshold:0.05});
+  document.querySelectorAll('.fu').forEach(el => obs.observe(el));
+
+  // ── HERO TAGS ──
+  document.querySelectorAll('.htag').forEach(t => {
+    t.addEventListener('click', function() {
+      document.querySelector('.hsb-input').value = this.textContent;
+    });
   });
-});
 </script>
 </body>
 </html>
