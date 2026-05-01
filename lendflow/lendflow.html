@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LendFlow — Connect. Borrow. Grow.</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#3a7d44;--green2:#4a9955;--green3:#e8f5ea;
+  --teal:#1a8a7a;--gold:#c9963a;--navy:#1a2a3a;
+  --warm:#f9f6f0;--white:#fff;--text:#2c2c2c;--muted:#666;
+  --border:#e0dbd2;--red:#e03e3e;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Source Sans 3',sans-serif;background:var(--white);color:var(--text)}
+
+/* NAV */
+.nav{background:#fff;border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 40px;height:58px;gap:24px;position:sticky;top:0;z-index:100}
+.nav-logo{display:flex;align-items:center;gap:8px;text-decoration:none}
+.nav-lm{width:30px;height:30px;background:var(--green);border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Lora',serif;font-weight:700;font-size:16px;color:#fff}
+.nav-name{font-family:'Lora',serif;font-weight:700;font-size:17px;color:var(--navy)}
+.nav-links{display:flex;gap:4px;margin-left:8px}
+.nla{padding:5px 12px;font-size:13.5px;color:var(--muted);text-decoration:none;border-radius:5px;transition:all .15s}
+.nla:hover{background:var(--warm);color:var(--text)}
+.nav-right{margin-left:auto;display:flex;gap:8px}
+.nbtn{padding:7px 18px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;border:none;font-family:'Source Sans 3',sans-serif;text-decoration:none;display:inline-block;transition:all .2s}
+.nbtn-out{border:1.5px solid var(--border);color:var(--text);background:#fff}
+.nbtn-green{background:var(--green);color:#fff}
+.nbtn-green:hover{background:var(--green2)}
+
+/* HERO */
+.hero{
+  position:relative;height:520px;overflow:hidden;
+  background:linear-gradient(135deg,#1a3028 0%,#2a4a38 40%,#1a2a1a 100%);
+  display:flex;align-items:center;
+}
+.hero-img{
+  position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1531983412531-1f49a365ffed?w=1400&q=80') center/cover;
+  opacity:0.35;
+}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,30,20,.85) 0%,rgba(10,30,20,.4) 60%,transparent 100%)}
+.hero-content{position:relative;z-index:1;padding:0 60px;max-width:580px}
+.hero-tag{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:4px 14px;font-size:12px;font-weight:600;color:rgba(255,255,255,.85);margin-bottom:18px;letter-spacing:.5px}
+.hero-title{font-family:'Lora',serif;font-size:clamp(36px,4.5vw,58px);font-weight:700;color:#fff;line-height:1.1;margin-bottom:14px}
+.hero-title em{font-style:italic;color:#7ecba0}
+.hero-sub{font-size:17px;font-weight:300;color:rgba(255,255,255,.75);line-height:1.7;margin-bottom:32px;max-width:440px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn-hero{padding:13px 28px;border-radius:24px;font-size:15px;font-weight:700;cursor:pointer;border:none;font-family:'Source Sans 3',sans-serif;text-decoration:none;display:inline-block;transition:all .2s}
+.btn-hero-primary{background:var(--green);color:#fff}
+.btn-hero-primary:hover{background:var(--green2);transform:translateY(-1px)}
+.btn-hero-secondary{background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.3);color:#fff}
+.hero-stats{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);display:flex;justify-content:center;gap:0}
+.hs-item{padding:14px 48px;text-align:center;border-right:1px solid rgba(255,255,255,.12)}
+.hs-item:last-child{border-right:none}
+.hs-val{font-family:'Lora',serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:2px}
+.hs-lbl{font-size:11.5px;color:rgba(255,255,255,.55)}
+
+/* CAT PILLS */
+.cat-bar{background:#fff;border-bottom:1px solid var(--border);padding:16px 40px;display:flex;align-items:center;gap:10px;overflow-x:auto;scrollbar-width:none}
+.cat-bar::-webkit-scrollbar{display:none}
+.cat-pill{display:flex;align-items:center;gap:7px;padding:7px 16px;border:1.5px solid var(--border);border-radius:22px;font-size:13px;font-weight:600;color:var(--text);cursor:pointer;white-space:nowrap;transition:all .2s;background:#fff}
+.cat-pill:hover,.cat-pill.active{border-color:var(--green);background:var(--green3);color:var(--green)}
+.cat-pill svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* URGENT SECTION */
+.urgent-section{background:var(--warm);padding:56px 40px}
+.section-header{display:flex;align-items:baseline;gap:12px;margin-bottom:28px}
+.section-eyebrow{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--green);margin-bottom:8px}
+.section-title{font-family:'Lora',serif;font-size:28px;font-weight:700;color:var(--navy)}
+.section-title em{font-style:italic;color:var(--green)}
+.fund-last{font-size:14px;color:var(--muted);background:var(--white);border:1px solid var(--border);border-radius:20px;padding:4px 14px;margin-left:auto}
+.fund-last strong{color:var(--green)}
+
+/* BORROWER CARDS */
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1200px;margin:0 auto}
+.bcard{background:#fff;border-radius:12px;overflow:hidden;border:1px solid var(--border);transition:all .25s;cursor:pointer}
+.bcard:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.1)}
+.bcard-img{position:relative;height:200px;overflow:hidden}
+.bcard-img img{width:100%;height:100%;object-fit:cover}
+.bcard-flag{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);border-radius:20px;padding:3px 10px;font-size:11px;color:#fff;font-weight:600;display:flex;align-items:center;gap:5px}
+.bcard-types{position:absolute;bottom:10px;left:10px;display:flex;gap:5px}
+.bcard-type{background:rgba(58,125,68,.9);color:#fff;padding:2px 9px;border-radius:10px;font-size:10.5px;font-weight:700}
+.bcard-body{padding:16px 18px}
+.bcard-amount{font-family:'Lora',serif;font-size:13.5px;color:var(--text);line-height:1.5;margin-bottom:12px}
+.bcard-amount strong{color:var(--green);font-size:15px}
+.progress-wrap{margin-bottom:10px}
+.progress-bar{height:6px;background:#e0dbd2;border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:var(--green);border-radius:3px;transition:width .6s ease}
+.progress-meta{display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);margin-top:5px}
+.progress-meta strong{color:var(--green)}
+.bcard-cta{display:block;width:100%;padding:10px;background:var(--green);color:#fff;border:none;border-radius:8px;font-size:13.5px;font-weight:700;cursor:pointer;font-family:'Source Sans 3',sans-serif;transition:background .2s;text-align:center;text-decoration:none;margin-top:10px}
+.bcard-cta:hover{background:var(--green2)}
+.bcard-cta.teal{background:var(--teal)}
+.bcard-cta.teal:hover{background:#15786a}
+.load-more{text-align:center;margin-top:32px}
+.load-more-btn{padding:11px 32px;border:1.5px solid var(--green);border-radius:22px;color:var(--green);font-size:14px;font-weight:700;cursor:pointer;background:#fff;font-family:'Source Sans 3',sans-serif;transition:all .2s}
+.load-more-btn:hover{background:var(--green3)}
+
+/* SUCCESS STORIES */
+.stories-section{padding:72px 40px;background:#fff}
+.stories-inner{max-width:1100px;margin:0 auto}
+.stories-top{text-align:center;margin-bottom:48px}
+.impact-line{font-size:18px;font-weight:300;color:var(--muted);margin-bottom:8px}
+.impact-line strong{color:var(--green);font-weight:700}
+.stories-carousel{display:grid;grid-template-columns:300px 1fr 300px;gap:16px;align-items:center}
+.story-side{border-radius:12px;overflow:hidden;height:300px}
+.story-side img{width:100%;height:100%;object-fit:cover;filter:brightness(.7)}
+.story-center{background:var(--warm);border-radius:12px;padding:40px;text-align:center;position:relative}
+.story-quote{font-family:'Lora',serif;font-size:18px;font-style:italic;line-height:1.7;color:var(--text);margin-bottom:20px}
+.story-quote::before{content:'"';font-size:60px;color:var(--green);opacity:.2;position:absolute;top:16px;left:24px;font-family:'Lora',serif;line-height:1}
+.story-attr{font-size:13.5px;color:var(--muted);font-weight:600}
+.story-attr strong{color:var(--text)}
+.story-nav{display:flex;gap:8px;justify-content:center;margin-top:16px}
+.snav-btn{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--border);background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.snav-btn:hover{border-color:var(--green);background:var(--green3)}
+.snav-btn svg{width:14px;height:14px;stroke:var(--muted);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* IMPACT */
+.impact-section{background:var(--green);padding:56px 40px;text-align:center}
+.impact-inner{max-width:900px;margin:0 auto}
+.impact-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.6);margin-bottom:12px}
+.impact-title{font-family:'Lora',serif;font-size:28px;color:#fff;margin-bottom:40px}
+.impact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.impact-item{padding:24px;border-right:1px solid rgba(255,255,255,.15);text-align:center}
+.impact-item:last-child{border-right:none}
+.impact-icon{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+.impact-icon svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.impact-val{font-family:'Lora',serif;font-size:36px;font-weight:700;color:#fff;margin-bottom:4px}
+.impact-lbl{font-size:13.5px;color:rgba(255,255,255,.7)}
+
+/* CYCLE */
+.cycle-section{background:var(--warm);padding:64px 40px}
+.cycle-inner{max-width:800px;margin:0 auto;text-align:center}
+.cycle-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--green);margin-bottom:10px}
+.cycle-title{font-family:'Lora',serif;font-size:28px;color:var(--navy);margin-bottom:8px}
+.cycle-sub{font-size:15px;color:var(--muted);margin-bottom:48px}
+.cycle-steps{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap}
+.cycle-step{text-align:center;padding:20px 32px;position:relative}
+.cycle-step::after{content:'→';font-size:22px;color:var(--green);position:absolute;right:-12px;top:50%;transform:translateY(-50%);opacity:.5}
+.cycle-step:last-child::after{display:none}
+.cs-icon{width:60px;height:60px;border-radius:50%;background:var(--green3);border:2px solid var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+.cs-icon svg{width:26px;height:26px;stroke:var(--green);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.cs-title{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.cs-sub{font-size:12.5px;color:var(--muted)}
+
+/* MAKE A LOAN CTA */
+.make-loan{background:var(--navy);padding:80px 40px;text-align:center}
+.make-loan-inner{max-width:520px;margin:0 auto}
+.ml-icon{width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.ml-icon svg{width:30px;height:30px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ml-title{font-family:'Lora',serif;font-size:32px;color:#fff;margin-bottom:10px}
+.ml-sub{font-size:15px;color:rgba(255,255,255,.55);margin-bottom:28px;line-height:1.65}
+.btn-pill-green{background:var(--green);color:#fff;padding:14px 36px;border-radius:28px;font-size:15px;font-weight:700;border:none;cursor:pointer;font-family:'Source Sans 3',sans-serif;transition:all .2s;text-decoration:none;display:inline-block}
+.btn-pill-green:hover{background:var(--green2);transform:translateY(-2px)}
+.ml-small{font-size:13px;color:rgba(255,255,255,.35);margin-top:12px}
+
+/* PARTNERS */
+.partners{padding:40px;background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.partners-inner{max-width:800px;margin:0 auto;text-align:center}
+.partners-lbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:20px;font-weight:600}
+.partners-logos{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap}
+.partner-logo{font-size:16px;font-weight:800;color:#bbb;letter-spacing:-1px;font-family:'Source Sans 3',sans-serif}
+
+/* NEWSLETTER */
+.newsletter{background:var(--warm);padding:56px 40px;text-align:center;border-top:1px solid var(--border)}
+.newsletter-inner{max-width:520px;margin:0 auto}
+.nl-icon{font-size:36px;margin-bottom:12px}
+.nl-title{font-family:'Lora',serif;font-size:24px;color:var(--navy);margin-bottom:8px}
+.nl-sub{font-size:14px;color:var(--muted);margin-bottom:24px;line-height:1.65}
+.nl-form{display:flex;gap:0;border:1.5px solid var(--border);border-radius:8px;overflow:hidden;background:#fff;max-width:440px;margin:0 auto}
+.nl-input{flex:1;border:none;outline:none;padding:11px 16px;font-family:'Source Sans 3',sans-serif;font-size:14px;color:var(--text)}
+.nl-btn{background:var(--green);color:#fff;border:none;padding:11px 20px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Source Sans 3',sans-serif;transition:background .2s}
+.nl-btn:hover{background:var(--green2)}
+
+/* FOOTER */
+footer{background:var(--navy);padding:48px 40px 24px;color:rgba(255,255,255,.55)}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:40px}
+.footer-brand p{font-size:13px;line-height:1.7;margin-top:12px;max-width:260px}
+.footer-col h4{font-size:12px;font-weight:700;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.8px;margin-bottom:14px}
+.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,.45);text-decoration:none;margin-bottom:9px;transition:color .2s}
+.footer-col a:hover{color:rgba(255,255,255,.8)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:12px;flex-wrap:wrap;gap:8px}
+.footer-badges{display:flex;gap:8px}
+.fbadge{padding:3px 10px;border:1px solid rgba(255,255,255,.12);border-radius:20px;font-size:11px}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .cards-grid{grid-template-columns:1fr 1fr}
+  .stories-carousel{grid-template-columns:1fr}.story-side{display:none}
+  .impact-grid{grid-template-columns:1fr}.impact-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.15)}
+  .cycle-steps{flex-direction:column}.cycle-step::after{content:'↓';position:static;display:block;margin-top:8px}
+  .footer-inner{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .cards-grid{grid-template-columns:1fr}
+  .nav{padding:0 16px}.hero{padding:0 24px}.hero-content{padding:0 24px}
+  .urgent-section,.stories-section,.impact-section,.cycle-section,.make-loan,.newsletter,.partners,footer{padding-left:20px;padding-right:20px}
+  .hs-item{padding:12px 20px}
+}
+
+.fade-up{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
+.fade-up.show{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#" class="nav-logo"><div class="nav-lm">L</div><div class="nav-name">LendFlow</div></a>
+  <div class="nav-links">
+    <a class="nla" href="#">Lend</a>
+    <a class="nla" href="#">Borrow</a>
+    <a class="nla" href="#">How It Works</a>
+    <a class="nla" href="#">Impact</a>
+  </div>
+  <div class="nav-right">
+    <a href="#" class="nbtn nbtn-out">Log In</a>
+    <a href="#" class="nbtn nbtn-green">Start Lending</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Uganda &amp; East Africa</div>
+    <h1 class="hero-title">Real people,<br><em>real solutions</em></h1>
+    <p class="hero-sub">Lend as little as UGX 25,000 to a licensed borrower and help build a more equitable East Africa — one loan at a time.</p>
+    <div class="hero-actions">
+      <a href="#" class="btn-hero btn-hero-primary">Start Lending</a>
+      <a href="#" class="btn-hero btn-hero-secondary">Find a Lender</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hs-item"><div class="hs-val">UGX 12B+</div><div class="hs-lbl">Total disbursed</div></div>
+    <div class="hs-item"><div class="hs-val">2,400+</div><div class="hs-lbl">Loans funded</div></div>
+    <div class="hs-item"><div class="hs-val">340+</div><div class="hs-lbl">Licensed lenders</div></div>
+    <div class="hs-item"><div class="hs-val">96%</div><div class="hs-lbl">Repayment rate</div></div>
+  </div>
+</div>
+
+<!-- CATEGORY PILLS -->
+<div class="cat-bar">
+  <div class="cat-pill active"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Featured</div>
+  <div class="cat-pill"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>Women</div>
+  <div class="cat-pill"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19 12h3M2 12h3M12 2v3M12 19v3"/></svg>Business</div>
+  <div class="cat-pill"><svg viewBox="0 0 24 24"><path d="M3 9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"/><path d="M8 9V7a4 4 0 0 1 8 0v2"/></svg>Agricultural</div>
+  <div class="cat-pill"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Education</div>
+  <div class="cat-pill"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Emergency</div>
+  <div class="cat-pill"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Under UGX 5M</div>
+</div>
+
+<!-- URGENT / ALMOST THERE -->
+<section class="urgent-section">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="section-header">
+      <div>
+        <div class="section-eyebrow">Marketplace</div>
+        <div class="section-title"><em>Almost there!</em> Fund the last few shillings they need</div>
+      </div>
+      <div class="fund-last">Fund the last <strong>UGX 50K</strong> they need →</div>
+    </div>
+    <div class="cards-grid">
+
+      <!-- Card 1 — Lender offer -->
+      <div class="bcard fade-up">
+        <div class="bcard-img">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="James" loading="lazy">
+          <div class="bcard-flag">🇺🇬 Kampala</div>
+          <div class="bcard-types"><span class="bcard-type">Lender Offer</span></div>
+        </div>
+        <div class="bcard-body">
+          <div class="bcard-amount"><strong>UGX 50M available at 5%/mo</strong> — James Mugisha offers business, personal, and emergency loans with 24-hour disbursement via MoMo.</div>
+          <div class="progress-wrap">
+            <div class="progress-bar"><div class="progress-fill" style="width:78%"></div></div>
+            <div class="progress-meta"><span><strong>12</strong> applications</span><span>Responds &lt;2hr</span></div>
+          </div>
+          <a href="#" class="bcard-cta">Apply Now →</a>
+        </div>
+      </div>
+
+      <!-- Card 2 — Borrower request -->
+      <div class="bcard fade-up" style="transition-delay:.07s">
+        <div class="bcard-img">
+          <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&q=80" alt="Agnes" loading="lazy">
+          <div class="bcard-flag">🇺🇬 Kampala</div>
+          <div class="bcard-types"><span class="bcard-type" style="background:rgba(14,158,142,.9)">Borrower Request</span></div>
+        </div>
+        <div class="bcard-body">
+          <div class="bcard-amount"><strong>UGX 8,000,000</strong> helps Agnes restock her electronics shop before the December season. Has guarantors &amp; docs ready.</div>
+          <div class="progress-wrap">
+            <div class="progress-bar"><div class="progress-fill" style="width:45%;background:var(--teal)"></div></div>
+            <div class="progress-meta"><span><strong>3</strong> offers received</span><span>Max 8%/mo</span></div>
+          </div>
+          <a href="#" class="bcard-cta teal">Make an Offer →</a>
+        </div>
+      </div>
+
+      <!-- Card 3 — Lender -->
+      <div class="bcard fade-up" style="transition-delay:.14s">
+        <div class="bcard-img">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80" alt="Robert" loading="lazy">
+          <div class="bcard-flag">🇺🇬 Mbarara</div>
+          <div class="bcard-types"><span class="bcard-type">Lender Offer</span></div>
+        </div>
+        <div class="bcard-body">
+          <div class="bcard-amount"><strong>UGX 30M at 6%/mo</strong> — Robert Kiggundu specialises in agricultural loans. Accepts land title as collateral. Up to 12 months.</div>
+          <div class="progress-wrap">
+            <div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div>
+            <div class="progress-meta"><span><strong>7</strong> applications</span><span>Responds &lt;4hr</span></div>
+          </div>
+          <a href="#" class="bcard-cta">Apply Now →</a>
+        </div>
+      </div>
+
+      <!-- Card 4 — Borrower URGENT -->
+      <div class="bcard fade-up" style="transition-delay:.07s">
+        <div class="bcard-img">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80" alt="Patience" loading="lazy">
+          <div class="bcard-flag">🇺🇬 Entebbe</div>
+          <div class="bcard-types"><span class="bcard-type" style="background:rgba(224,62,62,.85)">URGENT</span><span class="bcard-type" style="background:rgba(14,158,142,.9)">Borrower</span></div>
+        </div>
+        <div class="bcard-body">
+          <div class="bcard-amount"><strong>UGX 5,000,000</strong> — Patience needs emergency surgery funding for her mother. Salaried nurse, payslips ready, 2 guarantors confirmed.</div>
+          <div class="progress-wrap">
+            <div class="progress-bar"><div class="progress-fill" style="width:85%;background:var(--teal)"></div></div>
+            <div class="progress-meta"><span><strong>7</strong> offers received</span><span>Max 9%/mo</span></div>
+          </div>
+          <a href="#" class="bcard-cta teal">Make an Offer →</a>
+        </div>
+      </div>
+
+      <!-- Card 5 — Lender Company -->
+      <div class="bcard fade-up" style="transition-delay:.14s">
+        <div class="bcard-img">
+          <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=400&q=80" alt="Company" loading="lazy">
+          <div class="bcard-flag">🇺🇬 Kampala</div>
+          <div class="bcard-types"><span class="bcard-type" style="background:rgba(201,150,58,.9)">Company Lender</span></div>
+        </div>
+        <div class="bcard-body">
+          <div class="bcard-amount"><strong>UGX 100M from 4.5%/mo</strong> — Peter Muwanga Capital funds all loan types. 214 loans, 99% satisfaction. Disbursement in under 12 hours.</div>
+          <div class="progress-wrap">
+            <div class="progress-bar"><div class="progress-fill" style="width:90%;background:var(--gold)"></div></div>
+            <div class="progress-meta"><span><strong>31</strong> applications</span><span>Up to 24 months</span></div>
+          </div>
+          <a href="#" class="bcard-cta" style="background:var(--gold)">Apply Now →</a>
+        </div>
+      </div>
+
+      <!-- Card 6 — Borrower Agricultural -->
+      <div class="bcard fade-up" style="transition-delay:.21s">
+        <div class="bcard-img">
+          <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&q=80" alt="Ronald" loading="lazy">
+          <div class="bcard-flag">🇺🇬 Gulu</div>
+          <div class="bcard-types"><span class="bcard-type" style="background:rgba(14,158,142,.9)">Borrower</span></div>
+        </div>
+        <div class="bcard-body">
+          <div class="bcard-amount"><strong>UGX 12,000,000</strong> — Ronald needs maize farming inputs for 8 acres. Land title available as collateral. Repay after harvest in 6 months.</div>
+          <div class="progress-wrap">
+            <div class="progress-bar"><div class="progress-fill" style="width:20%;background:var(--teal)"></div></div>
+            <div class="progress-meta"><span><strong>2</strong> offers so far</span><span>Max 7%/mo</span></div>
+          </div>
+          <a href="#" class="bcard-cta teal">Make an Offer →</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="load-more"><button class="load-more-btn">Load More Listings</button></div>
+  </div>
+</section>
+
+<!-- SUCCESS STORIES -->
+<section class="stories-section">
+  <div class="stories-inner">
+    <div class="stories-top">
+      <div class="section-eyebrow">Success Stories</div>
+      <p class="impact-line"><strong>100%</strong> of your contribution goes to supporting real people</p>
+    </div>
+    <div class="stories-carousel">
+      <div class="story-side">
+        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&q=80" alt="Story">
+      </div>
+      <div class="story-center">
+        <div class="story-quote" style="position:relative">
+          <span style="position:absolute;top:-10px;left:0;font-size:56px;color:var(--green);opacity:.15;font-family:'Lora',serif;line-height:1">"</span>
+          I used the loan to restock my shop before Christmas. Sales tripled and I repaid in full within 3 months. LendFlow gave me access to real lenders who understood my business.
+        </div>
+        <div class="story-attr"><strong>Agnes Kyomuhendo</strong> — Business Owner, Kampala, Uganda</div>
+        <div class="story-nav">
+          <button class="snav-btn"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+          <button class="snav-btn"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+        </div>
+      </div>
+      <div class="story-side">
+        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&q=80" alt="Story">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY IMPACT -->
+<section class="impact-section">
+  <div class="impact-inner">
+    <div class="impact-label">Our Community Impact</div>
+    <div class="impact-title">LendFlow helps people improve their livelihoods</div>
+    <div class="impact-grid">
+      <div class="impact-item">
+        <div class="impact-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="impact-val">2,400+</div>
+        <div class="impact-lbl">people reached</div>
+      </div>
+      <div class="impact-item">
+        <div class="impact-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <div class="impact-val">UGX 12B</div>
+        <div class="impact-lbl">loans funded</div>
+      </div>
+      <div class="impact-item">
+        <div class="impact-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="impact-val">96%</div>
+        <div class="impact-lbl">loan repayment rate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CYCLE -->
+<section class="cycle-section">
+  <div class="cycle-inner">
+    <div class="cycle-label">Multiply Your Impact</div>
+    <div class="cycle-title">Relend money you get back to help another person</div>
+    <div class="cycle-sub">Just UGX 25K can help many people over time</div>
+    <div class="cycle-steps">
+      <div class="cycle-step">
+        <div class="cs-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <div class="cs-title">Lend</div>
+        <div class="cs-sub">Support a borrower</div>
+      </div>
+      <div class="cycle-step">
+        <div class="cs-icon"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M12 6v6l4 2"/></svg></div>
+        <div class="cs-title">They Thrive</div>
+        <div class="cs-sub">Business grows</div>
+      </div>
+      <div class="cycle-step">
+        <div class="cs-icon"><svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.5"/></svg></div>
+        <div class="cs-title">Get Repaid</div>
+        <div class="cs-sub">With interest earned</div>
+      </div>
+      <div class="cycle-step">
+        <div class="cs-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg></div>
+        <div class="cs-title">Repeat</div>
+        <div class="cs-sub">Lend to another</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAKE A LOAN -->
+<section class="make-loan">
+  <div class="make-loan-inner">
+    <div class="ml-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+    <div class="ml-title">Make a loan</div>
+    <div class="ml-sub">Choose a person or business to support. Lend as little as UGX 25,000 and make a real difference in Uganda.</div>
+    <a href="#" class="btn-pill-green">Choose a person to support</a>
+    <div class="ml-small">Bank of Uganda Licensed · 96% repayment rate</div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<div class="partners">
+  <div class="partners-inner">
+    <div class="partners-lbl">Trusted Partners</div>
+    <div class="partners-logos">
+      <div class="partner-logo">MTN</div>
+      <div class="partner-logo">AIRTEL</div>
+      <div class="partner-logo">STANBIC</div>
+      <div class="partner-logo">DFCU</div>
+      <div class="partner-logo">URA</div>
+      <div class="partner-logo">NSSF</div>
+    </div>
+  </div>
+</div>
+
+<!-- NEWSLETTER -->
+<div class="newsletter">
+  <div class="newsletter-inner">
+    <div class="nl-icon">✉️</div>
+    <div class="nl-title">Don't miss a thing</div>
+    <div class="nl-sub">Get updates about how people use LendFlow to improve their lives, grow businesses, and expand opportunity across Uganda.</div>
+    <div class="nl-form">
+      <input class="nl-input" type="email" placeholder="Enter your email">
+      <button class="nl-btn">Subscribe</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#" style="display:flex;align-items:center;gap:8px;text-decoration:none"><div class="nav-lm">L</div><span style="font-family:'Lora',serif;font-weight:700;font-size:16px;color:#fff">LendFlow</span></a>
+      <p>Uganda's peer-to-peer loan marketplace. Licensed under the Bank of Uganda framework.</p>
+    </div>
+    <div class="footer-col"><h4>Borrow</h4><a href="#">Browse Lenders</a><a href="#">Post a Request</a><a href="#">How to Apply</a><a href="#">Loan Types</a></div>
+    <div class="footer-col"><h4>Lend</h4><a href="#">Post an Offer</a><a href="#">Browse Requests</a><a href="#">Become Licensed</a><a href="#">Portfolio</a></div>
+    <div class="footer-col"><h4>Company</h4><a href="#">About</a><a href="#">Blog</a><a href="#">Careers</a><a href="#">Contact</a><a href="#">Terms</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 LendFlow Ltd. Bank of Uganda Licensed.</span>
+    <div class="footer-badges"><span class="fbadge">BoU Licensed</span><span class="fbadge">MTN MoMo</span><span class="fbadge">Airtel</span></div>
+  </div>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('show');obs.unobserve(x.target)}}),{threshold:.08});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+document.querySelectorAll('.cat-pill').forEach(p=>p.addEventListener('click',function(){document.querySelectorAll('.cat-pill').forEach(x=>x.classList.remove('active'));this.classList.add('active')}));
+</script>
+</body>
+</html>
