@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Alpha Purse — App Prototype</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --blue: #1565C0;
+    --blue-light: #1E88E5;
+    --blue-pale: #E3F0FF;
+    --blue-dark: #0D47A1;
+    --white: #FFFFFF;
+    --off-white: #F7F9FC;
+    --gray-100: #F0F4F8;
+    --gray-200: #DDE4EE;
+    --gray-400: #9AAAC2;
+    --gray-600: #5A6A82;
+    --gray-800: #1E2A3B;
+    --success: #00C853;
+    --warning: #FF8F00;
+    --danger: #D32F2F;
+    --mtn: #FFCB00;
+    --airtel: #E40000;
+    --font-head: 'Sora', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --shadow-sm: 0 1px 4px rgba(21,101,192,0.08);
+    --shadow-md: 0 4px 20px rgba(21,101,192,0.13);
+    --shadow-lg: 0 12px 48px rgba(21,101,192,0.18);
+    --shadow-phone: 0 32px 80px rgba(21,101,192,0.22), 0 8px 24px rgba(0,0,0,0.12);
+    --radius: 12px;
+    --radius-lg: 20px;
+    --radius-xl: 28px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--off-white);
+    color: var(--gray-800);
+    min-height: 100vh;
+  }
+
+  /* ─── TOP NAV ─── */
+  .topnav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gray-200);
+    display: flex; align-items: center; gap: 0;
+    padding: 0 32px;
+    height: 60px;
+  }
+  .topnav-logo {
+    font-family: var(--font-head);
+    font-weight: 800; font-size: 18px;
+    color: var(--blue-dark);
+    margin-right: 32px;
+    letter-spacing: -0.5px;
+  }
+  .topnav-logo span { color: var(--blue-light); }
+  .tab-btn {
+    font-family: var(--font-body);
+    font-size: 13px; font-weight: 500;
+    color: var(--gray-600);
+    border: none; background: none; cursor: pointer;
+    padding: 8px 18px; border-radius: 8px;
+    transition: all 0.18s ease;
+    letter-spacing: 0.2px;
+  }
+  .tab-btn:hover { background: var(--blue-pale); color: var(--blue); }
+  .tab-btn.active {
+    background: var(--blue);
+    color: #fff;
+  }
+
+  /* ─── SECTION HEADER ─── */
+  .section-header {
+    padding: 48px 40px 24px;
+    display: flex; align-items: flex-end; justify-content: space-between;
+  }
+  .section-title {
+    font-family: var(--font-head);
+    font-size: 28px; font-weight: 800;
+    color: var(--gray-800);
+    letter-spacing: -0.8px;
+    line-height: 1.1;
+  }
+  .section-title span { color: var(--blue); }
+  .section-sub {
+    font-size: 14px; color: var(--gray-400);
+    margin-top: 4px;
+  }
+  .role-badge {
+    font-family: var(--font-head);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    background: var(--blue-pale);
+    color: var(--blue);
+    padding: 4px 12px; border-radius: 20px;
+  }
+
+  /* ─── PHONES GRID ─── */
+  .phones-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 36px;
+    padding: 0 40px 60px;
+    justify-content: flex-start;
+  }
+
+  /* ─── PHONE FRAME ─── */
+  .phone-wrap { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .phone-label {
+    font-family: var(--font-head);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 1.2px; text-transform: uppercase;
+    color: var(--gray-400);
+  }
+  .phone {
+    width: 260px; height: 520px;
+    background: #fff;
+    border-radius: 36px;
+    border: 7px solid #1a1a2e;
+    box-shadow: var(--shadow-phone);
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .phone::before {
+    content: '';
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 80px; height: 22px;
+    background: #1a1a2e;
+    border-radius: 0 0 14px 14px;
+    z-index: 10;
+  }
+  .phone-inner {
+    width: 100%; height: 100%;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+
+  /* ─── STATUS BAR ─── */
+  .status-bar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 28px 16px 6px;
+    font-size: 10px; font-weight: 600;
+    color: var(--gray-800);
+    flex-shrink: 0;
+  }
+  .status-bar.light { color: rgba(255,255,255,0.9); }
+  .status-icons { display: flex; gap: 4px; align-items: center; }
+
+  /* ─── SCREEN CONTENT ─── */
+  .screen { flex: 1; overflow: hidden; display: flex; flex-direction: column; }
+
+  /* ════════════════════════════
+     SCREEN: SPLASH
+  ════════════════════════════ */
+  .screen-splash {
+    background: linear-gradient(160deg, var(--blue-dark) 0%, var(--blue) 60%, var(--blue-light) 100%);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 16px; padding: 20px;
+    text-align: center;
+  }
+  .splash-logo-ring {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-head);
+    font-size: 28px; font-weight: 800; color: #fff;
+  }
+  .splash-name {
+    font-family: var(--font-head);
+    font-size: 22px; font-weight: 800; color: #fff;
+    letter-spacing: -0.5px;
+  }
+  .splash-tagline {
+    font-size: 12px; color: rgba(255,255,255,0.7);
+    line-height: 1.5; max-width: 180px;
+  }
+  .splash-dots { display: flex; gap: 6px; margin-top: 8px; }
+  .splash-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(255,255,255,0.35);
+  }
+  .splash-dot.active { background: #fff; width: 18px; border-radius: 3px; }
+  .splash-btn {
+    margin-top: 12px;
+    background: #fff; color: var(--blue-dark);
+    font-family: var(--font-head);
+    font-weight: 700; font-size: 13px;
+    border: none; border-radius: 50px; cursor: pointer;
+    padding: 12px 36px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  }
+
+  /* ════════════════════════════
+     SCREEN: PARENT DASHBOARD
+  ════════════════════════════ */
+  .screen-dashboard { background: var(--off-white); }
+  .dash-header {
+    background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+    padding: 10px 16px 20px;
+    color: #fff;
+  }
+  .dash-greeting { font-size: 11px; opacity: 0.75; margin-bottom: 2px; }
+  .dash-name { font-family: var(--font-head); font-size: 15px; font-weight: 700; }
+  .dash-wallet {
+    background: rgba(255,255,255,0.15);
+    border-radius: 14px;
+    padding: 14px;
+    margin-top: 12px;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .dash-wallet-label { font-size: 10px; opacity: 0.7; }
+  .dash-wallet-amount { font-family: var(--font-head); font-size: 22px; font-weight: 800; margin-top: 2px; }
+  .dash-wallet-sub { font-size: 10px; opacity: 0.65; margin-top: 2px; }
+  .dash-actions { display: flex; gap: 8px; margin-top: 12px; }
+  .dash-action-btn {
+    flex: 1; background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 10px; padding: 8px 4px;
+    text-align: center; cursor: pointer; color: #fff;
+  }
+  .dash-action-icon { font-size: 16px; }
+  .dash-action-label { font-size: 9px; margin-top: 2px; opacity: 0.85; }
+  .dash-section-title {
+    font-family: var(--font-head);
+    font-size: 12px; font-weight: 700;
+    color: var(--gray-600);
+    padding: 12px 16px 6px;
+    letter-spacing: 0.5px;
+  }
+  .child-card {
+    margin: 0 12px 8px;
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 12px;
+    display: flex; align-items: center; gap: 10px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--gray-200);
+  }
+  .child-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--blue-pale);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-head); font-weight: 700;
+    font-size: 13px; color: var(--blue);
+    flex-shrink: 0;
+  }
+  .child-info { flex: 1; }
+  .child-name { font-family: var(--font-head); font-size: 12px; font-weight: 700; }
+  .child-school { font-size: 9px; color: var(--gray-400); }
+  .child-balance { text-align: right; }
+  .child-bal-amount { font-family: var(--font-head); font-size: 13px; font-weight: 700; color: var(--blue-dark); }
+  .child-bal-label { font-size: 9px; color: var(--gray-400); }
+  .send-chip {
+    background: var(--blue); color: #fff;
+    font-size: 9px; font-weight: 600;
+    padding: 3px 8px; border-radius: 20px;
+    margin-top: 4px; cursor: pointer;
+  }
+
+  /* ════════════════════════════
+     SCREEN: SEND MONEY
+  ════════════════════════════ */
+  .screen-send { background: var(--off-white); }
+  .send-header {
+    background: var(--blue-dark);
+    padding: 10px 16px 18px;
+    color: #fff;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .back-btn { font-size: 16px; cursor: pointer; opacity: 0.8; }
+  .send-header-title { font-family: var(--font-head); font-size: 14px; font-weight: 700; }
+  .send-body { padding: 14px; flex: 1; overflow: hidden; }
+  .send-to-label { font-size: 10px; color: var(--gray-400); margin-bottom: 6px; font-weight: 600; letter-spacing: 0.5px; }
+  .send-child-selector {
+    background: #fff; border-radius: var(--radius);
+    padding: 10px 12px;
+    display: flex; align-items: center; gap: 10px;
+    border: 2px solid var(--blue);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 14px;
+  }
+  .send-child-name { font-family: var(--font-head); font-size: 13px; font-weight: 700; flex: 1; }
+  .send-child-chevron { color: var(--gray-400); font-size: 12px; }
+  .amount-label { font-size: 10px; color: var(--gray-400); margin-bottom: 8px; font-weight: 600; letter-spacing: 0.5px; }
+  .amount-display {
+    background: #fff; border-radius: var(--radius);
+    padding: 16px 12px;
+    border: 1px solid var(--gray-200);
+    margin-bottom: 14px;
+  }
+  .amount-currency { font-size: 11px; color: var(--gray-400); }
+  .amount-value {
+    font-family: var(--font-head);
+    font-size: 28px; font-weight: 800;
+    color: var(--gray-800);
+    letter-spacing: -1px;
+  }
+  .numpad { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; margin-bottom: 12px; }
+  .numpad-key {
+    background: #fff; border: 1px solid var(--gray-200);
+    border-radius: 10px; padding: 10px;
+    text-align: center;
+    font-family: var(--font-head); font-size: 15px; font-weight: 600;
+    color: var(--gray-800); cursor: pointer;
+    box-shadow: var(--shadow-sm);
+  }
+  .numpad-key.blue { background: var(--blue); color: #fff; border-color: var(--blue); }
+  .mm-toggle { display: flex; gap: 8px; margin-bottom: 14px; }
+  .mm-btn {
+    flex: 1; border-radius: 10px; padding: 8px;
+    display: flex; align-items: center; gap: 6px;
+    border: 2px solid var(--gray-200);
+    background: #fff; cursor: pointer;
+  }
+  .mm-btn.active-mtn { border-color: var(--mtn); background: #FFFDE7; }
+  .mm-btn.active-airtel { border-color: var(--airtel); background: #FFEBEE; }
+  .mm-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .mm-name { font-size: 10px; font-weight: 700; }
+  .send-confirm-btn {
+    width: 100%; background: var(--blue);
+    color: #fff; border: none; border-radius: var(--radius);
+    padding: 13px; font-family: var(--font-head);
+    font-size: 13px; font-weight: 700; cursor: pointer;
+    letter-spacing: 0.3px;
+  }
+
+  /* ════════════════════════════
+     SCREEN: TRANSACTION HISTORY
+  ════════════════════════════ */
+  .screen-history { background: var(--off-white); }
+  .history-header {
+    background: var(--blue-dark);
+    padding: 10px 16px 18px;
+    color: #fff;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .history-title { font-family: var(--font-head); font-size: 14px; font-weight: 700; }
+  .filter-chips { display: flex; gap: 6px; padding: 12px 14px 6px; overflow-x: auto; }
+  .filter-chip {
+    flex-shrink: 0;
+    font-size: 10px; font-weight: 600;
+    padding: 4px 12px; border-radius: 20px;
+    border: 1px solid var(--gray-200);
+    background: #fff; color: var(--gray-600); cursor: pointer;
+  }
+  .filter-chip.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+  .tx-list { padding: 0 12px; display: flex; flex-direction: column; gap: 8px; overflow: hidden; }
+  .tx-item {
+    background: #fff; border-radius: var(--radius);
+    padding: 10px 12px;
+    display: flex; align-items: center; gap: 10px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--gray-200);
+  }
+  .tx-icon {
+    width: 32px; height: 32px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; flex-shrink: 0;
+  }
+  .tx-icon.out { background: #FFF3E0; }
+  .tx-icon.in { background: #E8F5E9; }
+  .tx-info { flex: 1; }
+  .tx-name { font-family: var(--font-head); font-size: 11px; font-weight: 700; }
+  .tx-meta { font-size: 9px; color: var(--gray-400); margin-top: 1px; }
+  .tx-amount { font-family: var(--font-head); font-size: 12px; font-weight: 700; }
+  .tx-amount.out { color: var(--danger); }
+  .tx-amount.in { color: var(--success); }
+
+  /* ════════════════════════════
+     SCREEN: SPEND LIMITS
+  ════════════════════════════ */
+  .screen-limits { background: var(--off-white); }
+  .limits-header {
+    background: var(--blue-dark);
+    padding: 10px 16px 18px;
+    color: #fff; display: flex; align-items: center; gap: 10px;
+  }
+  .limits-title { font-family: var(--font-head); font-size: 14px; font-weight: 700; }
+  .limits-body { padding: 14px; display: flex; flex-direction: column; gap: 12px; overflow: hidden; }
+  .limit-card {
+    background: #fff; border-radius: var(--radius);
+    padding: 14px; border: 1px solid var(--gray-200);
+    box-shadow: var(--shadow-sm);
+  }
+  .limit-card-head { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+  .limit-avatar {
+    width: 30px; height: 30px; border-radius: 50%;
+    background: var(--blue-pale);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-head); font-weight: 700;
+    font-size: 11px; color: var(--blue);
+  }
+  .limit-name { font-family: var(--font-head); font-size: 12px; font-weight: 700; flex: 1; }
+  .limit-toggle {
+    width: 34px; height: 18px; background: var(--blue);
+    border-radius: 9px; position: relative; cursor: pointer;
+  }
+  .limit-toggle::after {
+    content: ''; position: absolute;
+    right: 3px; top: 3px;
+    width: 12px; height: 12px; border-radius: 50%; background: #fff;
+  }
+  .limit-row { display: flex; flex-direction: column; gap: 8px; }
+  .limit-field { }
+  .limit-field-label { font-size: 9px; color: var(--gray-400); font-weight: 600; letter-spacing: 0.5px; margin-bottom: 4px; }
+  .limit-input-row { display: flex; align-items: center; gap: 8px; }
+  .limit-track {
+    flex: 1; height: 4px; background: var(--gray-200); border-radius: 2px; position: relative;
+  }
+  .limit-fill { height: 100%; border-radius: 2px; background: var(--blue); }
+  .limit-fill.warn { background: var(--warning); }
+  .limit-val { font-family: var(--font-head); font-size: 11px; font-weight: 700; color: var(--gray-800); white-space: nowrap; }
+
+  /* ════════════════════════════
+     SCREEN: NOTIFICATION
+  ════════════════════════════ */
+  .screen-notif { background: var(--off-white); position: relative; }
+  .notif-blur {
+    position: absolute; inset: 0;
+    background: rgba(13,71,161,0.6);
+    backdrop-filter: blur(2px);
+    display: flex; align-items: center; justify-content: center; padding: 16px;
+  }
+  .notif-card {
+    background: #fff;
+    border-radius: 18px;
+    padding: 16px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  }
+  .notif-app-row { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
+  .notif-app-icon {
+    width: 20px; height: 20px; border-radius: 6px;
+    background: var(--blue);
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 10px; font-weight: 800;
+  }
+  .notif-app-name { font-size: 10px; font-weight: 700; color: var(--gray-600); }
+  .notif-time { font-size: 9px; color: var(--gray-400); margin-left: auto; }
+  .notif-title { font-family: var(--font-head); font-size: 13px; font-weight: 800; color: var(--gray-800); margin-bottom: 4px; }
+  .notif-body { font-size: 11px; color: var(--gray-600); line-height: 1.5; }
+  .notif-actions { display: flex; gap: 8px; margin-top: 12px; }
+  .notif-action {
+    flex: 1; padding: 8px; border-radius: 10px;
+    font-size: 11px; font-weight: 700; text-align: center; cursor: pointer;
+  }
+  .notif-action.dismiss { background: var(--gray-100); color: var(--gray-600); }
+  .notif-action.view { background: var(--blue); color: #fff; }
+  .notif-amount-pill {
+    display: inline-block;
+    background: var(--blue-pale); color: var(--blue-dark);
+    font-family: var(--font-head); font-weight: 800; font-size: 13px;
+    padding: 4px 12px; border-radius: 20px; margin: 8px 0;
+  }
+
+  /* ════════════════════════════
+     SCREEN: SMART CARD
+  ════════════════════════════ */
+  .screen-card-view { background: linear-gradient(160deg, #E3F0FF 0%, #F7F9FC 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 16px; gap: 16px; }
+  .smart-card {
+    width: 220px; height: 135px;
+    background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 60%, var(--blue-light) 100%);
+    border-radius: 16px;
+    padding: 14px;
+    position: relative; overflow: hidden;
+    box-shadow: 0 16px 48px rgba(21,101,192,0.4);
+    color: #fff;
+  }
+  .smart-card::before {
+    content: '';
+    position: absolute; top: -30px; right: -30px;
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+  }
+  .smart-card::after {
+    content: '';
+    position: absolute; bottom: -20px; left: -20px;
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+  }
+  .card-top-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .card-logo { font-family: var(--font-head); font-size: 12px; font-weight: 800; letter-spacing: -0.3px; }
+  .card-logo span { opacity: 0.7; }
+  .card-photo-placeholder {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    border: 2px solid rgba(255,255,255,0.4);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+  }
+  .card-number { font-size: 9px; letter-spacing: 2px; opacity: 0.6; margin-bottom: 8px; }
+  .card-bottom-row { display: flex; align-items: flex-end; justify-content: space-between; }
+  .card-holder-label { font-size: 8px; opacity: 0.6; text-transform: uppercase; letter-spacing: 0.5px; }
+  .card-holder-name { font-family: var(--font-head); font-size: 11px; font-weight: 700; margin-top: 1px; }
+  .card-school-name { font-size: 8px; opacity: 0.65; }
+  .card-qr {
+    width: 32px; height: 32px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 6px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 2px;
+  }
+  .qr-row { display: flex; gap: 2px; }
+  .qr-cell {
+    width: 4px; height: 4px;
+    background: rgba(255,255,255,0.8);
+    border-radius: 1px;
+  }
+  .qr-cell.empty { background: transparent; }
+  .card-security-note {
+    background: #fff; border-radius: var(--radius);
+    padding: 10px 14px;
+    width: 100%;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--gray-200);
+  }
+  .security-title { font-family: var(--font-head); font-size: 10px; font-weight: 700; color: var(--gray-800); margin-bottom: 8px; }
+  .security-layers { display: flex; flex-direction: column; gap: 5px; }
+  .security-layer { display: flex; align-items: center; gap: 8px; }
+  .security-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); flex-shrink: 0; }
+  .security-text { font-size: 10px; color: var(--gray-600); }
+
+  /* ════════════════════════════
+     SCREEN: AGENT DASHBOARD
+  ════════════════════════════ */
+  .screen-agent { background: var(--off-white); }
+  .agent-header {
+    background: linear-gradient(135deg, #0D2137, #1565C0);
+    padding: 10px 16px 18px;
+    color: #fff;
+  }
+  .agent-greeting { font-size: 10px; opacity: 0.7; }
+  .agent-name { font-family: var(--font-head); font-size: 14px; font-weight: 700; margin-bottom: 12px; }
+  .agent-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .agent-stat {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px; padding: 10px;
+  }
+  .agent-stat-label { font-size: 9px; opacity: 0.7; }
+  .agent-stat-value { font-family: var(--font-head); font-size: 16px; font-weight: 800; margin-top: 2px; }
+  .agent-stat-sub { font-size: 9px; opacity: 0.55; margin-top: 1px; }
+  .agent-body { padding: 14px; }
+  .scan-cta-btn {
+    width: 100%; background: var(--blue);
+    color: #fff; border: none; border-radius: var(--radius);
+    padding: 16px; font-family: var(--font-head);
+    font-size: 14px; font-weight: 800; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 14px;
+  }
+  .scan-icon { font-size: 18px; }
+  .agent-recent-title { font-family: var(--font-head); font-size: 11px; font-weight: 700; color: var(--gray-600); margin-bottom: 8px; letter-spacing: 0.5px; }
+  .agent-tx { display: flex; flex-direction: column; gap: 6px; }
+  .agent-tx-item {
+    background: #fff; border-radius: 10px;
+    padding: 8px 12px;
+    display: flex; align-items: center; gap: 8px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--gray-200);
+  }
+  .agent-tx-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--success); flex-shrink: 0; }
+  .agent-tx-name { font-family: var(--font-head); font-size: 11px; font-weight: 700; flex: 1; }
+  .agent-tx-time { font-size: 9px; color: var(--gray-400); }
+  .agent-tx-amt { font-family: var(--font-head); font-size: 11px; font-weight: 700; color: var(--gray-800); }
+
+  /* ════════════════════════════
+     SCREEN: AGENT SCAN
+  ════════════════════════════ */
+  .screen-scan { background: #0a0a0a; display: flex; flex-direction: column; }
+  .scan-viewfinder {
+    flex: 1; position: relative;
+    display: flex; align-items: center; justify-content: center;
+    background: #111;
+  }
+  .scan-frame {
+    width: 140px; height: 140px;
+    position: relative;
+  }
+  .scan-corner {
+    position: absolute; width: 20px; height: 20px;
+    border-color: var(--blue-light); border-style: solid;
+  }
+  .scan-corner.tl { top: 0; left: 0; border-width: 3px 0 0 3px; border-radius: 4px 0 0 0; }
+  .scan-corner.tr { top: 0; right: 0; border-width: 3px 3px 0 0; border-radius: 0 4px 0 0; }
+  .scan-corner.bl { bottom: 0; left: 0; border-width: 0 0 3px 3px; border-radius: 0 0 0 4px; }
+  .scan-corner.br { bottom: 0; right: 0; border-width: 0 3px 3px 0; border-radius: 0 0 4px 0; }
+  .scan-line {
+    position: absolute; left: 0; right: 0; top: 50%;
+    height: 2px; background: var(--blue-light);
+    opacity: 0.7;
+    animation: scanline 2s ease-in-out infinite;
+  }
+  @keyframes scanline {
+    0%, 100% { top: 10%; }
+    50% { top: 90%; }
+  }
+  .scan-hint {
+    color: rgba(255,255,255,0.5);
+    font-size: 10px; text-align: center;
+    margin-top: 8px;
+  }
+  .scan-bottom {
+    background: #1a1a2e;
+    padding: 14px;
+  }
+  .pin-label { color: rgba(255,255,255,0.6); font-size: 10px; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 8px; }
+  .pin-dots { display: flex; gap: 10px; justify-content: center; margin-bottom: 12px; }
+  .pin-dot {
+    width: 12px; height: 12px; border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.3);
+  }
+  .pin-dot.filled { background: var(--blue-light); border-color: var(--blue-light); }
+  .pin-pad { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; }
+  .pin-key {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px; padding: 10px;
+    text-align: center;
+    font-family: var(--font-head); font-size: 16px; font-weight: 600;
+    color: #fff; cursor: pointer;
+  }
+  .pin-key.del { font-size: 13px; }
+
+  /* ════════════════════════════
+     SCREEN: SUCCESS
+  ════════════════════════════ */
+  .screen-success {
+    background: #fff;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 20px; text-align: center; gap: 10px;
+  }
+  .success-ring {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: #E8F5E9;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+    border: 3px solid #A5D6A7;
+  }
+  .success-title {
+    font-family: var(--font-head);
+    font-size: 18px; font-weight: 800;
+    color: var(--gray-800);
+    letter-spacing: -0.5px;
+  }
+  .success-sub { font-size: 11px; color: var(--gray-400); line-height: 1.5; }
+  .success-amount {
+    font-family: var(--font-head);
+    font-size: 26px; font-weight: 800;
+    color: var(--blue-dark);
+    letter-spacing: -1px;
+  }
+  .success-detail-card {
+    background: var(--off-white);
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    width: 100%;
+    text-align: left;
+    border: 1px solid var(--gray-200);
+  }
+  .success-detail-row { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; }
+  .success-detail-label { font-size: 10px; color: var(--gray-400); }
+  .success-detail-val { font-family: var(--font-head); font-size: 11px; font-weight: 700; color: var(--gray-800); }
+  .success-btn {
+    width: 100%; background: var(--blue);
+    color: #fff; border: none; border-radius: var(--radius);
+    padding: 12px; font-family: var(--font-head);
+    font-size: 13px; font-weight: 700; cursor: pointer;
+    margin-top: 4px;
+  }
+  .success-btn.outline {
+    background: transparent; color: var(--blue);
+    border: 2px solid var(--blue-pale);
+  }
+
+  /* ─── DIVIDER ─── */
+  .role-divider {
+    display: flex; align-items: center; gap: 16px;
+    padding: 16px 40px;
+    margin: 8px 0;
+  }
+  .role-divider-line { flex: 1; height: 1px; background: var(--gray-200); }
+  .role-divider-label {
+    font-family: var(--font-head);
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray-400);
+  }
+
+  /* ─── BOTTOM NAV (decorative) ─── */
+  .bottom-nav {
+    height: 44px; background: #fff;
+    border-top: 1px solid var(--gray-200);
+    display: flex; align-items: center; justify-content: space-around;
+    flex-shrink: 0;
+  }
+  .bnav-item { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+  .bnav-icon { font-size: 14px; }
+  .bnav-label { font-size: 8px; color: var(--gray-400); }
+  .bnav-item.active .bnav-label { color: var(--blue); }
+  .bnav-item.active .bnav-icon { filter: none; }
+
+  /* ─── SECTION VISIBILITY ─── */
+  .role-section { display: none; }
+  .role-section.visible { display: block; }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%);
+    padding: 60px 40px 48px;
+    color: #fff; text-align: center;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 20px; padding: 4px 16px;
+    font-size: 11px; font-weight: 600; letter-spacing: 1px;
+    text-transform: uppercase; margin-bottom: 16px;
+  }
+  .hero-title {
+    font-family: var(--font-head);
+    font-size: 36px; font-weight: 800;
+    letter-spacing: -1.5px; line-height: 1.05;
+    margin-bottom: 12px;
+  }
+  .hero-title span { opacity: 0.7; }
+  .hero-sub { font-size: 14px; opacity: 0.7; max-width: 400px; margin: 0 auto; line-height: 1.6; }
+
+  /* ─── SECTION: ALL ─── */
+  #section-all .phones-grid { flex-wrap: wrap; }
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="topnav">
+  <div class="topnav-logo">Alpha<span>Purse</span></div>
+  <button class="tab-btn active" onclick="showSection('all')">All Screens</button>
+  <button class="tab-btn" onclick="showSection('parent')">Parent App</button>
+  <button class="tab-btn" onclick="showSection('card')">Smart Card</button>
+  <button class="tab-btn" onclick="showSection('agent')">Agent App</button>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">App Prototype · 2025</div>
+  <div class="hero-title">Alpha Purse<br/><span>Screen Design</span></div>
+  <div class="hero-sub">Interactive mockup of all Parent, Student, and Agent app screens for Uganda's school upkeep platform.</div>
+</div>
+
+<!-- ═══════════════════ PARENT SECTION ═══════════════════ -->
+<div id="section-all" class="role-section visible">
+<div id="section-parent" class="role-section visible">
+
+  <div class="section-header">
+    <div>
+      <div class="section-title"><span>Parent</span> App</div>
+      <div class="section-sub">6 screens — onboarding to spend control</div>
+    </div>
+    <div class="role-badge">Parent</div>
+  </div>
+
+  <div class="phones-grid">
+
+    <!-- 1. SPLASH -->
+    <div class="phone-wrap">
+      <div class="phone-label">01 · Splash</div>
+      <div class="phone">
+        <div class="phone-inner">
+          <div class="status-bar light"><span>9:41</span><div class="status-icons">▲ ◼◼◼</div></div>
+          <div class="screen screen-splash">
+            <div class="splash-logo-ring">α</div>
+            <div class="splash-name">Alpha Purse</div>
+            <div class="splash-tagline">The Safest Way to Send & Manage Student Upkeep</div>
+            <div class="splash-dots">
+              <div class="splash-dot active"></div>
+              <div class="splash-dot"></div>
+              <div class="splash-dot"></div>
+            </div>
+            <button class="splash-btn">Get Started →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. PARENT DASHBOARD -->
+    <div class="phone-wrap">
+      <div class="phone-label">02 · Dashboard</div>
+      <div class="phone">
+        <div class="phone-inner">
+          <div class="status-bar light"><span>9:41</span><div class="status-icons">▲ ◼◼◼</div></div>
+          <div class="screen screen-dashboard">
+            <div class="dash-header">
+              <div class="dash-greeting">Good morning,</div>
+              <div class="dash-name">Sarah Nakato 👋</div>
+              <div class="dash-wallet">
+                <div class="dash-wallet-label">WALLET BALANCE</div>
+                <div class="dash-wallet-amount">UGX 245,000</div>
+                <div class="dash-wallet-sub">Top up via MTN or Airtel</div>
+              </div>
+              <div class="dash-actions">
+                <div class="dash-action-btn"><div class="dash-action-icon">💸</div><div class="dash-action-label">Send</div></div>
+                <div class="dash-action-btn"><div class="dash-action-icon">📊</div><div class="dash-action-label">History</div></div>
+                <div class="dash-action-btn"><div class="dash-action-icon">⚙️</div><div class="dash-action-label">Limits</div></div>
+                <div class="dash-action-btn"><div class="dash-action-icon">➕</div><div class="dash-action-label">Top Up</div></div>
+              </div>
+            </div>
+            <div class="dash-section-title">MY CHILDREN</div>
+            <div class="child-card">
+              <div class="child-avatar">JS</div>
+              <div class="child-info">
+                <div class="child-name">Joshua Ssemakula</div>
+                <div class="child-school">St. Mary's College Kisubi</div>
+              </div>
+              <div class="child-balance">
+                <div class="child-bal-amount">UGX 32,000</div>
+                <div class="child-bal-label">card balance</div>
+                <div class="send-chip">Send</div>
+              </div>
+            </div>
+            <div class="child-card">
+              <div class="child-avatar">AN</div>
+              <div class="child-info">
+                <div class="child-name">Amara Nakato</div>
+                <div class="child-school">Kampala Parents School</div>
+              </div>
+              <div class="child-balance">
+                <div class="child-bal-amount">UGX 18,500</div>
+                <div class="child-bal-label">card balance</div>
+                <div class="send-chip">Send</div>
+              </div>
+            </div>
+          </div>
+          <div class="bottom-nav">
+            <div class="bnav-item active"><div class="bnav-icon">🏠</div><div class="bnav-label">Home</div></div>
+            <div class="bnav-item"><div class="bnav-icon">💳</div><div class="bnav-label">Cards</div></div>
+            <div class="bnav-item"><div class="bnav-icon">📋</div><div class="bnav-label">History</div></div>
+            <div class="bnav-item"><div class="bnav-icon">👤</div><div class="bnav-label">Profile</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. SEND MONEY -->
+    <div class="phone-wrap">
+      <div class="phone-label">03 · Send Money</div>
+      <div class="phone">
+        <div class="phone-inner">
+          <div class="status-bar"><span>9:41</span><div class="status-icons">▲ ◼◼◼</div></div>
+          <div class="screen screen-send">
+            <div class="send-header">
+              <div class="back-btn">←</div>
+              <div class="send-header-title">Send Upkeep</div>
+            </div>
+            <div class="send-body">
+              <div class="send-to-label">SEND TO</div>
+              <div class="send-child-selector">
+                <div class="child-avatar" style="width:28px;height:28px;font-size:10px;">JS</div>
+                <div class="send-child-name">Joshua Ssemakula</div>
+                <div class="send-child-chevron">▾</div>
+              </div>
+              <div class="amount-label">AMOUNT</div>
+              <div class="amount-display">
+                <div class="amount-currency">UGX</div>
+                <div class="amount-value">50,000</div>
+              </div>
+              <div class="mm-toggle">
+                <div class="mm-btn active-mtn">
+                  <div class="mm-dot" style="background:var(--mtn)"></div>
+                  <div class="mm-name" style="color:#B8860B;">MTN MoMo</div>
+                </div>
+                <div class="mm-btn">
+                  <div class="mm-dot" style="background:var(--airtel)"></div>
+                  <div class="mm-name" style="color:#C62828;">Airtel Money</div>
+                </div>
+              </div>
+              <div class="numpad">
+                <div class="numpad-key">1</div><div class="numpad-key">2</div><div class="numpad-key">3</div>
+                <div class="numpad-key">4</div><div class="numpad-key">5</div><div class="numpad-key">6</div>
+                <div class="numpad-key">7</div><div class="numpad-key">8</div><div class="numpad-key">9</div>
+                <div class="numpad-key">+5K</div><div class="numpad-key">0</div><div class="numpad-key blue">⌫</div>
+              </div>
+              <button class="send-confirm-btn">Confirm & Send UGX 50,000</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. TRANSACTION HISTORY -->
+    <div class="phone-wrap">
+      <div class="phone-label">04 · History</div>
+      <div class="phone">
+        <div class="phone-inner">
+          <div class="status-bar"><span>9:41</span><div class="status-icons">▲ ◼◼◼</div></div>
+          <div class="screen screen-history">
+            <div class="history-header">
+              <div class="back-btn" style="color:#fff">←</div>
+              <div class="history-title">Transactions</div>
+            </div>
+            <div class="filter-chips">
+              <div class="filter-chip active">All</div>
+              <div class="filter-chip">Joshua</div>
+              <div class="filter-chip">Amara</div>
+              <div class="filter-chip">This Month</div>
+            </div>
+            <div class="tx-list">
+              <div class="tx-item">
+                <div class="tx-icon out">💸</div>
+                <div class="tx-info">
+                  <div class="tx-name">Sent to Joshua</div>
+                  <div class="tx-meta">St. Mary's Agent · Today 8:32am</div>
+                </div>
+                <div class="tx-amount out">−50,000</div>
+              </div>
+              <div class="tx-item">
+                <div class="tx-icon out">💸</div>
+                <div class="tx-info">
+                  <div class="tx-name">Sent to Amara</div>
+                  <div class="tx-meta">KPS Agent · Yesterday</div>
+                </div>
+                <div class="tx-amount out">−30,000</div>
+              </div>
+              <div class="tx-item">
+                <div class="tx-icon in">➕</div>
+                <div class="tx-info">
+                  <div class="tx-name">MTN Top-up</div>
+                  <div class="tx-meta">Wallet funded · Mon</div>
+                </div>
+                <div class="tx-amount in">+200,000</div>
+              </div>
+              <div class="tx-item">
+                <div class="tx-icon out">💸</div>
+                <div class="tx-info">
+                  <div class="tx-name">Sent to Joshua</div>
+                  <div class="tx-meta">St. Mary's Agent · Sat</div>
+                </div>
+                <div class="tx-amount out">−40,000</div>
+              </div>
+            </div>
+          </div>
+          <div class="bottom-nav">
+            <div class="bnav-item"><div class="bnav-icon">🏠</div><div class="bnav-label">Home</div></div>
+            <div class="bnav-item"><div class="bnav-icon">💳</div><div class="bnav-label">Cards</div></div>
+            <div class="bnav-item active"><div class="bnav-icon">📋</div><div class="bnav-label">History</div></div>
+            <div class="bnav-item"><div class="bnav-icon">👤</div><div class="bnav-label">Profile</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. SPEND LIMITS -->
+    <div class="phone-wrap">
+      <div class="phone-label">05 · Spend Limits</div>
+      <div class="phone">
+        <div class="phone-inner">
+          <div class="status-bar"><span>9:41</span><div class="status-icons">▲ ◼◼◼</div></div>
+          <div class="screen screen-limits">
+            <div class="limits-header">
+              <div class="back-btn" style="color:#fff">←</div>
+              <div class="limits-title">Spend Limits</div>
+            </div>
+            <div class="limits-body">
+              <div class="limit-card">
+                <div class="limit-card-head">
+                  <div class="limit-avatar">JS</div>
+                  <div class="limit-name">Joshua Ssemakula</div>
+                  <div class="limit-toggle"></div>
+                </div>
+                <div class="limit-row">
+                  <div class="limit-field">
+                    <div class="limit-field-label">DAILY LIMIT</div>
+                    <div class="limit-input-row">
+                      <div class="limit-track"><div class="limit-fill" style="width:60%"></div></div>
+                      <div class="limit-val">UGX 15,000</div>
+                    </div>
+                  </div>
+                  <div class="limit-field">
+                    <div class="limit-field-label">WEEKLY LIMIT</div>
+                    <div class="limit-input-row">
+                      <div class="limit-track"><div class="limit-fill" style="width:75%"></div></div>
+                      <div class="limit-val">UGX 75,000</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="limit-card">
+                <div class="limit-card-head">
+                  <div class="limit-avatar">AN</div>
+                  <div class="limit-name">Amara Nakato</div>
+                  <div class="limit-toggle"></div>
+                </div>
+                <div class="limit-row">
+                  <div class="limit-field">
+                    <div class="limit-field-label">DAILY LIMIT</div>
+                    <div class="limit-input-row">
+                      <div class="limit-track"><div class="limit-fill warn" style="width:40%"></div></div>
+                      <div class="limit-val">UGX 10,000</div>
+                    </div>
+                  </div>
+                  <div class="limit-field">
+                    <div class="limit-field-label">WEEKLY LIMIT</div>
+                    <div class="limit-input-row">
+                      <div class="limit-track"><div class="limit-fill warn" style="width:50%"></div></div>
+                      <div class="limit-val">UGX 50,000</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. NOTIFICATION -->
+    <div class="phone-wrap">
+      <div class="phone-label">06 · Alert</div>
+      <div class="phone">
+        <div class="phone-inner">
+          <div class="status-bar"><span>9:41</span><div class="status-icons">▲ ◼◼◼</div></div>
+          <div class="screen screen-notif">
+            <!-- blurred background dashboard -->
+            <div style="padding:12px;opacity:0.3;">
+              <div style="height:60px;background:var(--blue-dark);border-radius:10px;margin-bottom:8px;"></div>
+              <div style="height:40px;background:var(--gray-200);border-radius:8px;margin-bottom:6px;"></div>
+              <div style="height:40px;background:var(--gray-200);border-radius:8px;"></div>
+            </div>
+            <div class="notif-blur">
+              <div class="notif-card">
+                <div class="notif-app-row">
+                  <div class="notif-app-icon">α</div>
+                  <div class="notif-app-name">Alpha Purse</div>
+                  <div class="notif-time">now</div>
+                </div>
+                <div class="notif-title">💳 Withdrawal Alert</div>
+                <div class="notif-body">Joshua Ssemakula just withdrew</div>
+                <div class="notif-amount-pill">UGX 10,000</div>
+                <div class="notif-body">at St. Mary's College Kisubi Agent. Card balance: <strong>UGX 22,000</strong></div>
+                <div class="notif-actions">
+                  <div class="notif-action dismiss">Dismiss</div>
+                  <div class="notif-action view">View Details</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════ SMART CARD SECTION ═══════════════════ -->
+<div class="role-divider">
+  <div class="role-divider-line"></div>
+  <div class="role-divider-label">Smart Card</div>
+  <div class="role-divider-line"></div>
+</div>
+
+<div id="section-card" class="role-section visible">
+  <div class="section-header">
+    <div>
+      <div class="section-title"><span>Student</span> Smart Card</div>
+      <div class="section-sub">Physical card design + security layers</div>
+    </div>
+    <div class="role-badge">Card</div>
+  </div>
+  <div class="phones-grid">
+    <!-- 7. SMART CARD -->
+    <div class="phone-wrap">
+      <div class="phone-label">07 · Smart Card</div>
+      <div class="phone">
+        <div class="phone-inner">
+          <div class="status-bar"><span>9:41</span><div class="status-icons">▲ ◼◼◼</div></div>
+          <div class="screen screen-card-view">
+            <div style="font-family:var(--font-head);font-size:11px;font-weight:700;color:var(--gray-400);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;">Student Card</div>
+            <div class="smart-card">
+              <div class="card-top-row">
+                <div class="card-logo">Alpha<span>Purse</span></div>
+                <div class="card-photo-placeholder">👤</div>
+              </div>
+              <div class="card-number">•••• •••• •••• 7842</div>
+              <div class="card-bottom-row">
+                <div>
+                  <div class="card-holder-label">Student</div>
+                  <div class="card-holder-name">Joshua Ssemakula</div>
+                  <div class="card-school-name">St. Mary's College Kisubi</div>
+                </div>
+                <div class="card-qr">
+                  <div class="qr-row">
+                    <div class="qr-cell"></div><div class="qr-cell empty"></div><div class="qr-cell"></div>
+                  </div>
+                  <div class="qr-row">
+                    <div class="qr-cell empty"></div><div class="qr-cell"></div><div class="qr-cell empty"></div>
+                  </div>
+                  <div class="qr-row">
+                    <div class="qr-cell"></div><div class="qr-cell empty"></div><div class="qr-cell"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-security-note">
+              <div class="security-title">🔒 3-Layer Security</div>
+              <div class="security-layers">
+                <div class="security-layer"><div class="security-dot"></div><div class="security-text">Encrypted QR code (Agent App only)</div></div>
+                <div class="security-layer"><div class="security-dot"></div><div class="security-text">5-digit personal PIN</div></div>
+                <div class="security-layer"><div class="security-dot"></div><div class="security-text">Photo verification by agent</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ AGENT SECTION ═══════════════════ -->
+<div class="role-divider">
+  <div class="role-divider-line"></div>
+  <div class="role-divider-label">Agent App</div>
+  <div class="role-divider-line"></div>
+</div>
+
+<div id="section-agent" class="role-section visible">
+  <div class="section-header">
+    <div>
+      <div class="section-title"><span>Agent</span> App</div>
+      <div class="section-sub">3 screens — dashboard to transaction success</div>
+    </div>
+    <div class="role-badge">Agent</div>
+  </div>
+  <div class="phones-grid">
+
+    <!-- 8. AGENT DASHBOARD -->
+    <div class="phone-wrap">
+      <div class="phone-label">08 · Agent Dashboard</div>
+      <div class="phone">
+        <div class="phone-inner">
+          <div class="status-bar light"><span>9:41</span><div class="status-icons">▲ ◼◼◼</div></div>
+          <div class="screen screen-agent">
+            <div class="agent-header">
+              <div class="agent-greeting">Agent Portal</div>
+              <div class="agent-name">David Kiggundu 🏫</div>
+              <div class="agent-stats">
+                <div class="agent-stat">
+                  <div class="agent-stat-label">TODAY'S TXN</div>
+                  <div class="agent-stat-value">24</div>
+                  <div class="agent-stat-sub">transactions</div>
+                </div>
+                <div class="agent-stat">
+                  <div class="agent-stat-label">COMMISSION</div>
+                  <div class="agent-stat-value">12,400</div>
+                  <div class="agent-stat-sub">UGX earned today</div>
+                </div>
+              </div>
+            </div>
+            <div class="agent-body">
+              <button class="scan-cta-btn"><span class="scan-icon">📷</span> Scan Student Card</button>
+              <div class="agent-recent-title">RECENT TRANSACTIONS</div>
+              <div class="agent-tx">
+                <div class="agent-tx-item">
+                  <div class="agent-tx-dot"></div>
+                  <div class="agent-tx-name">Joshua Ssemakula</div>
+                  <div class="agent-tx-time">8:32am</div>
+                  <div class="agent-tx-amt">10,000</div>
+                </div>
+                <div class="agent-tx-item">
+                  <div class="agent-tx-dot"></div>
+                  <div class="agent-tx-name">Grace Akullo</div>
+                  <div class="agent-tx-time">8:18am</div>
+                  <div class="agent-tx-amt">20,000</div>
+                </div>
+                <div class="agent-tx-item">
+                  <div class="agent-tx-dot"></div>
+                  <div class="agent-tx-name">Brian Mutesasira</div>
+                  <div class="agent-tx-time">8:05am</div>
+                  <div class="agent-tx-amt">15,000</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bottom-nav">
+            <div class="bnav-item active"><div class="bnav-icon">🏠</div><div class="bnav-label">Home</div></div>
+            <div class="bnav-item"><div class="bnav-icon">📷</div><div class="bnav-label">Scan</div></div>
+            <div class="bnav-item"><div class="bnav-icon">💰</div><div class="bnav-label">Earnings</div></div>
+            <div class="bnav-item"><div class="bnav-icon">👤</div><div class="bnav-label">Profile</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. SCAN & VERIFY -->
+    <div class="phone-wrap">
+      <div class="phone-label">09 · Scan & Verify</div>
+      <div class="phone">
+        <div class="phone-inner">
+          <div class="status-bar light"><span>9:41</span><div class="status-icons">▲ ◼◼◼</div></div>
+          <div class="screen screen-scan">
+            <div class="scan-viewfinder">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+                <div class="scan-frame">
+                  <div class="scan-corner tl"></div>
+                  <div class="scan-corner tr"></div>
+                  <div class="scan-corner bl"></div>
+                  <div class="scan-corner br"></div>
+                  <div class="scan-line"></div>
+                </div>
+                <div class="scan-hint">Point camera at student's card QR code</div>
+              </div>
+            </div>
+            <div class="scan-bottom">
+              <div class="pin-label">ENTER STUDENT PIN</div>
+              <div class="pin-dots">
+                <div class="pin-dot filled"></div>
+                <div class="pin-dot filled"></div>
+                <div class="pin-dot filled"></div>
+                <div class="pin-dot"></div>
+                <div class="pin-dot"></div>
+              </div>
+              <div class="pin-pad">
+                <div class="pin-key">1</div><div class="pin-key">2</div><div class="pin-key">3</div>
+                <div class="pin-key">4</div><div class="pin-key">5</div><div class="pin-key">6</div>
+                <div class="pin-key">7</div><div class="pin-key">8</div><div class="pin-key">9</div>
+                <div class="pin-key"></div><div class="pin-key">0</div><div class="pin-key del">⌫</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10. SUCCESS -->
+    <div class="phone-wrap">
+      <div class="phone-label">10 · Transaction Success</div>
+      <div class="phone">
+        <div class="phone-inner">
+          <div class="status-bar"><span>9:41</span><div class="status-icons">▲ ◼◼◼</div></div>
+          <div class="screen screen-success">
+            <div class="success-ring">✓</div>
+            <div class="success-title">Transaction<br/>Complete!</div>
+            <div class="success-amount">UGX 10,000</div>
+            <div class="success-sub">Withdrawal processed successfully</div>
+            <div class="success-detail-card">
+              <div class="success-detail-row">
+                <div class="success-detail-label">Student</div>
+                <div class="success-detail-val">Joshua Ssemakula</div>
+              </div>
+              <div class="success-detail-row">
+                <div class="success-detail-label">School</div>
+                <div class="success-detail-val">St. Mary's Kisubi</div>
+              </div>
+              <div class="success-detail-row">
+                <div class="success-detail-label">Remaining Balance</div>
+                <div class="success-detail-val">UGX 22,000</div>
+              </div>
+              <div class="success-detail-row">
+                <div class="success-detail-label">Your Commission</div>
+                <div class="success-detail-val" style="color:var(--success)">+UGX 500</div>
+              </div>
+              <div class="success-detail-row">
+                <div class="success-detail-label">Time</div>
+                <div class="success-detail-val">Today · 8:32 AM</div>
+              </div>
+            </div>
+            <button class="success-btn">Scan Next Card</button>
+            <button class="success-btn outline">View Receipt</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div><!-- end section-agent -->
+</div><!-- end section-all -->
+
+<div style="height:60px;"></div>
+
+<script>
+function showSection(role) {
+  // Update tab buttons
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+
+  const allSection = document.getElementById('section-all');
+  const parentSection = document.getElementById('section-parent');
+  const cardSection = document.getElementById('section-card');
+  const agentSection = document.getElementById('section-agent');
+  const dividers = document.querySelectorAll('.role-divider');
+
+  if (role === 'all') {
+    allSection.classList.add('visible');
+    parentSection.classList.add('visible');
+    cardSection.classList.add('visible');
+    agentSection.classList.add('visible');
+    dividers.forEach(d => d.style.display = 'flex');
+  } else {
+    allSection.classList.remove('visible');
+    parentSection.classList.remove('visible');
+    cardSection.classList.remove('visible');
+    agentSection.classList.remove('visible');
+    dividers.forEach(d => d.style.display = 'none');
+
+    if (role === 'parent') parentSection.classList.add('visible');
+    if (role === 'card') cardSection.classList.add('visible');
+    if (role === 'agent') agentSection.classList.add('visible');
+  }
+}
+</script>
+</body>
+</html>
