@@ -1,0 +1,8 @@
+https://www.tiktok.com/v2/auth/authorize/?client_key=sbaw30caz6jhyhahc9&scope=user.info.basic,video.list&response_type=code&redirect_uri=https://afrivest.co&state=test123
+
+
+
+
+https://afrivest.co/?code=
+32F7kVKuNK3C1Eg0zKuGEYYroknmWKET41erE6xV_mzsaIjodcvK8Ko5_Cqv-6C0zD8MJdOcnX1vbGLCO30dXdpbCPxJ008ScrqpYQPbeV6E-RGpn5evA6XO42xLJLZsLDOe0J5JrmuDdb4GdtTEO1cw9a1C969UrxZk24AhSRD1oKagAcE5zezmx1w%2Av%216349.s1
+&scopes=user.info.basic%2Cvideo.list&state=test123
