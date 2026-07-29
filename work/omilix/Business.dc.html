@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;-webkit-font-smoothing:antialiased;}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+</style>
+</helmet>
+<div style="display:flex;min-height:100vh;background:#f6f8fa;color:#0f172a;">
+
+  <div style="width:264px;flex-shrink:0;background:linear-gradient(180deg,#0b1424,#0d1a2e);display:flex;flex-direction:column;padding:24px 16px;position:sticky;top:0;height:100vh;">
+    <div style="display:flex;align-items:center;gap:10px;padding:4px 10px 28px;">
+      <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#2dd4bf,#0d9488);display:flex;align-items:center;justify-content:center;font-weight:700;color:#062a26;font-size:15px;">O</div>
+      <div>
+        <div style="font-size:16px;font-weight:700;color:#fff;letter-spacing:.2px;">Omilix</div>
+        <div style="font-size:11px;color:#5eead4;font-weight:600;letter-spacing:.6px;text-transform:uppercase;">Business</div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:2px;flex:1;">
+      <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="8">
+        <div onClick="{{ item.onClick }}" style="{{ item.rowStyle }}">
+          <div style="{{ item.iconWrap }}" dangerouslySetInnerHTML="{{ item.iconSvg }}"></div>
+          <span style="{{ item.labelStyle }}">{{ item.label }}</span>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:10px;padding:12px 10px;border-top:1px solid rgba(255,255,255,.08);margin-top:12px;">
+      <div style="width:34px;height:34px;border-radius:50%;background:#1e293b;color:#5eead4;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;">KA</div>
+      <div style="min-width:0;">
+        <div style="font-size:13px;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Kampala Analytics Ltd</div>
+        <div style="font-size:11px;color:#64748b;">Pro Plan</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="flex:1;min-width:0;">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:22px 36px;background:#fff;border-bottom:1px solid #e7ebf0;position:sticky;top:0;z-index:5;">
+      <div>
+        <div style="font-size:22px;font-weight:700;">{{ pageTitle }}</div>
+        <div style="font-size:13px;color:#64748b;margin-top:2px;">{{ pageSubtitle }}</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;">
+        <div style="display:flex;align-items:center;gap:8px;background:#f0fdfa;border:1px solid #ccfbf1;padding:8px 14px;border-radius:10px;">
+          <span style="font-size:12px;color:#0f766e;font-weight:600;">Wallet</span>
+          <span style="font-size:14px;color:#0f172a;font-weight:700;">UGX 4,820,000</span>
+        </div>
+        <div style="position:relative;width:38px;height:38px;border-radius:10px;background:#f6f8fa;display:flex;align-items:center;justify-content:center;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#334155" stroke-width="2"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+          <div style="position:absolute;top:6px;right:7px;width:8px;height:8px;border-radius:50%;background:#f43f5e;border:2px solid #fff;"></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;padding:6px 10px 6px 6px;border-radius:10px;cursor:pointer;">
+          <div style="width:30px;height:30px;border-radius:50%;background:#0d9488;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;">KA</div>
+          <span style="font-size:14px;font-weight:600;">Kato Amanya</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding:32px 36px;">
+
+      <sc-if value="{{ isOverview }}" hint-placeholder-val="{{ true }}">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:24px;">
+          <sc-for list="{{ kpis }}" as="kpi" hint-placeholder-count="4">
+            <div style="background:#fff;border:1px solid #e7ebf0;border-radius:16px;padding:20px;box-shadow:0 1px 2px rgba(15,23,42,.04);">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">
+                <div style="width:38px;height:38px;border-radius:10px;background:{{ kpi.iconBg }};display:flex;align-items:center;justify-content:center;" dangerouslySetInnerHTML="{{ kpi.iconSvg }}"></div>
+                <span style="{{ kpi.deltaStyle }}">{{ kpi.delta }}</span>
+              </div>
+              <div style="font-size:26px;font-weight:700;">{{ kpi.value }}</div>
+              <div style="font-size:13px;color:#64748b;margin-top:4px;">{{ kpi.label }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="display:grid;grid-template-columns:2.1fr 1fr;gap:20px;">
+          <div style="background:#fff;border:1px solid #e7ebf0;border-radius:16px;padding:22px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+              <div style="font-size:16px;font-weight:700;">Recent Campaigns</div>
+              <span onClick="{{ goToCampaigns }}" style="font-size:13px;color:#0d9488;font-weight:600;cursor:pointer;">View all →</span>
+            </div>
+            <div style="display:flex;flex-direction:column;">
+              <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:10px;padding:10px 4px;font-size:12px;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:.4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border-bottom:1px solid #eef1f4;">
+                <span>Campaign</span><span>Channel</span><span>Reach</span><span>Conversion</span><span>Status</span>
+              </div>
+              <sc-for list="{{ recentCampaigns }}" as="c" hint-placeholder-count="5">
+                <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:10px;align-items:center;padding:14px 4px;border-bottom:1px solid #f4f6f8;">
+                  <div>
+                    <div style="font-size:14px;font-weight:600;">{{ c.name }}</div>
+                    <div style="font-size:12px;color:#94a3b8;">{{ c.date }}</div>
+                  </div>
+                  <span style="font-size:13px;color:#475569;">{{ c.channel }}</span>
+                  <span style="font-size:13px;color:#475569;">{{ c.reach }}</span>
+                  <span style="font-size:13px;color:#475569;">{{ c.conversion }}</span>
+                  <span style="{{ c.statusStyle }}">{{ c.status }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:20px;">
+            <div style="background:#fff;border:1px solid #e7ebf0;border-radius:16px;padding:22px;">
+              <div style="font-size:16px;font-weight:700;margin-bottom:14px;">Quick Actions</div>
+              <div style="display:flex;flex-direction:column;gap:10px;">
+                <div onClick="{{ goToCampaigns }}" style="display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#14b8a6,#0d9488);color:#fff;padding:13px 16px;border-radius:11px;font-weight:600;font-size:14px;cursor:pointer;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+                  New Campaign
+                </div>
+                <div style="display:flex;align-items:center;gap:10px;background:#f6f8fa;padding:13px 16px;border-radius:11px;font-weight:600;font-size:14px;cursor:pointer;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#334155" stroke-width="2"><path d="M12 3v12M7 8l5-5 5 5M5 21h14"/></svg>
+                  Upload Contacts
+                </div>
+                <div style="display:flex;align-items:center;gap:10px;background:#f6f8fa;padding:13px 16px;border-radius:11px;font-weight:600;font-size:14px;cursor:pointer;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#334155" stroke-width="2"><path d="M3 3v18h18M7 15l4-4 3 3 5-6"/></svg>
+                  View Analytics
+                </div>
+              </div>
+            </div>
+
+            <div style="background:#fff;border:1px solid #e7ebf0;border-radius:16px;padding:22px;">
+              <div style="font-size:16px;font-weight:700;margin-bottom:14px;">Channel Mix (30d)</div>
+              <sc-for list="{{ channelMix }}" as="ch" hint-placeholder-count="3">
+                <div style="margin-bottom:14px;">
+                  <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;">
+                    <span style="color:#475569;font-weight:500;">{{ ch.name }}</span>
+                    <span style="color:#0f172a;font-weight:600;">{{ ch.pct }}%</span>
+                  </div>
+                  <div style="height:8px;background:#f0f2f4;border-radius:5px;overflow:hidden;">
+                    <div style="{{ ch.barStyle }}"></div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isCampaigns }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#fff;border:1px solid #e7ebf0;border-radius:16px;padding:22px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">
+            <div style="display:flex;gap:8px;">
+              <sc-for list="{{ statusFilters }}" as="f" hint-placeholder-count="4">
+                <div onClick="{{ f.onClick }}" style="{{ f.style }}">{{ f.label }}</div>
+              </sc-for>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;background:#f6f8fa;color:#334155;padding:11px 16px;border-radius:10px;font-weight:600;font-size:13px;cursor:pointer;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#334155" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+              Export
+            </div>
+            <div onClick="{{ goToCampaigns }}" style="display:flex;align-items:center;gap:8px;background:linear-gradient(135deg,#14b8a6,#0d9488);color:#fff;padding:11px 18px;border-radius:10px;font-weight:600;font-size:13px;cursor:pointer;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+              New Campaign
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr 1fr;gap:10px;padding:10px 4px;font-size:12px;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:.4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border-bottom:1px solid #eef1f4;">
+            <span>Campaign</span><span>Channel</span><span>Reach</span><span>Conversion</span><span>Sent/Total</span><span>Status</span>
+          </div>
+          <sc-for list="{{ allCampaigns }}" as="c" hint-placeholder-count="8">
+            <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr 1fr;gap:10px;align-items:center;padding:15px 4px;border-bottom:1px solid #f4f6f8;">
+              <div>
+                <div style="font-size:14px;font-weight:600;">{{ c.name }}</div>
+                <div style="font-size:12px;color:#94a3b8;">{{ c.date }}</div>
+              </div>
+              <span style="font-size:13px;color:#475569;">{{ c.channel }}</span>
+              <span style="font-size:13px;color:#475569;">{{ c.reach }}</span>
+              <span style="font-size:13px;color:#475569;">{{ c.conversion }}</span>
+              <span style="font-size:13px;color:#475569;">{{ c.progress }}</span>
+              <span style="{{ c.statusStyle }}">{{ c.status }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isReports }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;gap:8px;margin-bottom:18px;">
+          <sc-for list="{{ reportFilters }}" as="f" hint-placeholder-count="2">
+            <div onClick="{{ f.onClick }}" style="{{ f.style }}">{{ f.label }}</div>
+          </sc-for>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:20px;">
+          <sc-for list="{{ reportKpis }}" as="k" hint-placeholder-count="4">
+            <div style="background:#fff;border:1px solid #e7ebf0;border-radius:16px;padding:20px;">
+              <div style="font-size:24px;font-weight:700;">{{ k.value }}</div>
+              <div style="font-size:13px;color:#64748b;margin-top:4px;">{{ k.label }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="background:#fff;border:1px solid #e7ebf0;border-radius:16px;padding:22px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+            <div style="font-size:16px;font-weight:700;">{{ reportCategory }}</div>
+            <div style="display:flex;align-items:center;gap:6px;background:#f6f8fa;color:#334155;padding:9px 14px;border-radius:9px;font-weight:600;font-size:12px;cursor:pointer;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#334155" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+              Export
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:{{ reportColumns }};gap:10px;padding:10px 4px;font-size:12px;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:.4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border-bottom:1px solid #eef1f4;">
+            <sc-for list="{{ reportHeaders }}" as="h" hint-placeholder-count="5"><span>{{ h }}</span></sc-for>
+          </div>
+          <sc-for list="{{ reportRows }}" as="r" hint-placeholder-count="6">
+            <div style="display:grid;grid-template-columns:{{ reportColumns }};gap:10px;align-items:center;padding:14px 4px;border-bottom:1px solid #f4f6f8;">
+              <sc-for list="{{ r.cells }}" as="cell" hint-placeholder-count="5"><span style="font-size:13px;color:#475569;">{{ cell }}</span></sc-for>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isCallHistory }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#fff;border:1px solid #e7ebf0;border-radius:16px;padding:22px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">
+            <div style="display:flex;gap:8px;">
+              <sc-for list="{{ callHistoryFilters }}" as="f" hint-placeholder-count="4">
+                <div onClick="{{ f.onClick }}" style="{{ f.style }}">{{ f.label }}</div>
+              </sc-for>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;background:#f6f8fa;color:#334155;padding:9px 14px;border-radius:9px;font-weight:600;font-size:12px;cursor:pointer;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#334155" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+              Export
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1.6fr 1.6fr 1fr 1fr 1fr 1fr;gap:10px;padding:10px 4px;font-size:12px;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:.4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border-bottom:1px solid #eef1f4;">
+            <span>Contact</span><span>Campaign</span><span>Channel</span><span>Duration</span><span>Outcome</span><span>Actions</span>
+          </div>
+          <sc-for list="{{ callHistoryRows }}" as="c" hint-placeholder-count="7">
+            <div style="display:grid;grid-template-columns:1.6fr 1.6fr 1fr 1fr 1fr 1fr;gap:10px;align-items:center;padding:14px 4px;border-bottom:1px solid #f4f6f8;">
+              <span style="font-size:14px;font-weight:600;">{{ c.contact }}</span>
+              <span style="font-size:13px;color:#475569;">{{ c.campaign }}</span>
+              <span style="{{ c.channelStyle }}">{{ c.channel }}</span>
+              <span style="font-size:13px;color:#475569;">{{ c.duration }}</span>
+              <span style="{{ c.outcomeStyle }}">{{ c.outcome }}</span>
+              <span style="font-size:12px;font-weight:600;color:#0d9488;cursor:pointer;">Transcript</span>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isActionQueue }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#fff;border:1px solid #e7ebf0;border-radius:16px;padding:22px;">
+          <div style="font-size:13px;color:#64748b;margin-bottom:16px;">Complaints and queries from AI calls that need immediate attention.</div>
+          <div style="display:flex;gap:8px;margin-bottom:18px;">
+            <sc-for list="{{ actionQueueFilters }}" as="f" hint-placeholder-count="3">
+              <div onClick="{{ f.onClick }}" style="{{ f.style }}">{{ f.label }}</div>
+            </sc-for>
+          </div>
+          <div style="display:grid;grid-template-columns:1.4fr 1.4fr 1.8fr 1fr 1fr 1fr;gap:10px;padding:10px 4px;font-size:12px;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:.4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border-bottom:1px solid #eef1f4;">
+            <span>Contact</span><span>Campaign</span><span>Issue</span><span>Priority</span><span>Status</span><span>Actions</span>
+          </div>
+          <sc-for list="{{ actionQueueRows }}" as="a" hint-placeholder-count="5">
+            <div style="display:grid;grid-template-columns:1.4fr 1.4fr 1.8fr 1fr 1fr 1fr;gap:10px;align-items:center;padding:14px 4px;border-bottom:1px solid #f4f6f8;">
+              <span style="font-size:14px;font-weight:600;">{{ a.contact }}</span>
+              <span style="font-size:13px;color:#475569;">{{ a.campaign }}</span>
+              <span style="font-size:13px;color:#475569;">{{ a.issue }}</span>
+              <span style="{{ a.priorityStyle }}">{{ a.priority }}</span>
+              <span style="{{ a.statusStyle }}">{{ a.status }}</span>
+              <span onClick="{{ a.onResolve }}" style="font-size:12px;font-weight:600;color:{{ a.resolveColor }};cursor:pointer;">{{ a.resolveLabel }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isDnd }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#fff;border:1px solid #e7ebf0;border-radius:16px;padding:22px;">
+          <div style="font-size:13px;color:#64748b;margin-bottom:16px;">Your suppression list — these numbers are blocked only for your campaigns. Platform-wide admin blocks still apply automatically.</div>
+          <div style="display:flex;align-items:center;justify-content:flex-end;margin-bottom:18px;">
+            <div onClick="{{ addDnd }}" style="display:flex;align-items:center;gap:8px;background:linear-gradient(135deg,#14b8a6,#0d9488);color:#fff;padding:11px 18px;border-radius:10px;font-weight:600;font-size:13px;cursor:pointer;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+              Add Number
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1.6fr 1.8fr 1fr 1fr;gap:10px;padding:10px 4px;font-size:12px;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:.4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border-bottom:1px solid #eef1f4;">
+            <span>Phone</span><span>Reason</span><span>Added</span><span>Actions</span>
+          </div>
+          <sc-for list="{{ dndRows }}" as="d" hint-placeholder-count="5">
+            <div style="display:grid;grid-template-columns:1.6fr 1.8fr 1fr 1fr;gap:10px;align-items:center;padding:14px 4px;border-bottom:1px solid #f4f6f8;">
+              <span style="font-size:14px;font-weight:600;">{{ d.phone }}</span>
+              <span style="font-size:13px;color:#475569;">{{ d.reason }}</span>
+              <span style="font-size:13px;color:#475569;">{{ d.added }}</span>
+              <span onClick="{{ d.onDelete }}" style="font-size:12px;font-weight:600;color:#dc2626;cursor:pointer;">Remove</span>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isEscalation }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#fff;border:1px solid #e7ebf0;border-radius:16px;padding:22px;">
+          <div style="font-size:13px;color:#64748b;margin-bottom:16px;">People the AI can name when a caller needs human help. Set one as the default — they're spoken on complaint / sensitive escalations.</div>
+          <div style="display:flex;align-items:center;justify-content:flex-end;margin-bottom:18px;">
+            <div onClick="{{ addEscalation }}" style="display:flex;align-items:center;gap:8px;background:linear-gradient(135deg,#14b8a6,#0d9488);color:#fff;padding:11px 18px;border-radius:10px;font-weight:600;font-size:13px;cursor:pointer;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+              Add Person
+            </div>
+          </div>
+          <sc-for list="{{ escalationRows }}" as="e" hint-placeholder-count="4">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 18px;background:#f9fafb;border-radius:12px;margin-bottom:10px;">
+              <div style="display:flex;align-items:center;gap:12px;">
+                <div style="width:38px;height:38px;border-radius:50%;background:#e2e8f0;color:#475569;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;">{{ e.initials }}</div>
+                <div>
+                  <div style="font-size:14px;font-weight:600;">{{ e.name }}</div>
+                  <div style="font-size:12px;color:#94a3b8;">{{ e.role }} · {{ e.phone }}</div>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:14px;">
+                <span style="{{ e.defaultStyle }}">{{ e.defaultLabel }}</span>
+                <span onClick="{{ e.onSetDefault }}" style="font-size:12px;font-weight:600;color:#0d9488;cursor:pointer;">{{ e.setDefaultLabel }}</span>
+                <span onClick="{{ e.onDelete }}" style="font-size:12px;font-weight:600;color:#dc2626;cursor:pointer;">Delete</span>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isWallet }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:20px;">
+          <sc-for list="{{ walletKpis }}" as="k" hint-placeholder-count="4">
+            <div style="background:#fff;border:1px solid #e7ebf0;border-radius:16px;padding:20px;">
+              <div style="font-size:24px;font-weight:700;">{{ k.value }}</div>
+              <div style="font-size:13px;color:#64748b;margin-top:4px;">{{ k.label }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="background:#fff;border:1px solid #e7ebf0;border-radius:16px;padding:22px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">
+            <div style="font-size:16px;font-weight:700;">Transaction History</div>
+            <div style="display:flex;gap:10px;align-items:center;">
+              <div style="display:flex;gap:8px;">
+                <sc-for list="{{ txFilters }}" as="f" hint-placeholder-count="4">
+                  <div onClick="{{ f.onClick }}" style="{{ f.style }}">{{ f.label }}</div>
+                </sc-for>
+              </div>
+              <div style="display:flex;align-items:center;gap:6px;background:#f6f8fa;color:#334155;padding:9px 14px;border-radius:9px;font-weight:600;font-size:12px;cursor:pointer;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#334155" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                Export
+              </div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:10px;padding:10px 4px;font-size:12px;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:.4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border-bottom:1px solid #eef1f4;">
+            <span>Description</span><span>Type</span><span>Amount</span><span>Actions</span>
+          </div>
+          <sc-for list="{{ txRows }}" as="t" hint-placeholder-count="6">
+            <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:10px;align-items:center;padding:14px 4px;border-bottom:1px solid #f4f6f8;">
+              <div>
+                <div style="font-size:14px;font-weight:600;">{{ t.label }}</div>
+                <div style="font-size:12px;color:#94a3b8;">{{ t.date }}</div>
+              </div>
+              <span style="{{ t.typeStyle }}">{{ t.type }}</span>
+              <span style="{{ t.amountStyle }}">{{ t.amount }}</span>
+              <span onClick="{{ t.onDelete }}" style="font-size:12px;font-weight:600;color:#dc2626;cursor:pointer;">Remove</span>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isAi }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#f0fdfa;border:1px solid #ccfbf1;border-radius:14px;padding:16px 20px;margin-bottom:18px;font-size:13px;color:#0f766e;">
+          Active voice style: <strong>{{ aiVoiceStyle }}</strong> — applied to every campaign script below. Change it in Tweaks.
+        </div>
+        <div style="background:#fff;border:1px solid #e7ebf0;border-radius:16px;padding:22px;">
+          <div style="font-size:15px;font-weight:700;margin-bottom:16px;">Campaign Scripts</div>
+          <div style="display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:10px;padding:10px 4px;font-size:12px;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:.4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border-bottom:1px solid #eef1f4;">
+            <span>Campaign</span><span>Voice</span><span>Status</span><span>Actions</span>
+          </div>
+          <sc-for list="{{ aiScripts }}" as="s" hint-placeholder-count="5">
+            <div style="display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:10px;align-items:center;padding:14px 4px;border-bottom:1px solid #f4f6f8;">
+              <span style="font-size:14px;font-weight:600;">{{ s.campaign }}</span>
+              <span style="font-size:13px;color:#475569;">{{ s.voice }}</span>
+              <span style="{{ s.statusStyle }}">{{ s.status }}</span>
+              <span style="font-size:12px;font-weight:600;color:#0d9488;cursor:pointer;">Edit Script</span>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isContacts }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#fff;border:1px solid #e7ebf0;border-radius:16px;padding:22px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">
+            <div style="font-size:15px;font-weight:700;">Contact Lists</div>
+            <div style="display:flex;gap:10px;">
+              <div style="display:flex;align-items:center;gap:8px;background:#f6f8fa;color:#334155;padding:11px 18px;border-radius:10px;font-weight:600;font-size:13px;cursor:pointer;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#334155" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                Export
+              </div>
+              <div onClick="{{ addContactList }}" style="display:flex;align-items:center;gap:8px;background:linear-gradient(135deg,#14b8a6,#0d9488);color:#fff;padding:11px 18px;border-radius:10px;font-weight:600;font-size:13px;cursor:pointer;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 3v12M7 8l5-5 5 5M5 21h14"/></svg>
+                Upload Contacts
+              </div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:2fr 1fr 1.4fr 1fr 1fr;gap:10px;padding:10px 4px;font-size:12px;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:.4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border-bottom:1px solid #eef1f4;">
+            <span>List Name</span><span>Contacts</span><span>Tags</span><span>Uploaded</span><span>Actions</span>
+          </div>
+          <sc-for list="{{ contactRows }}" as="c" hint-placeholder-count="5">
+            <div style="display:grid;grid-template-columns:2fr 1fr 1.4fr 1fr 1fr;gap:10px;align-items:center;padding:14px 4px;border-bottom:1px solid #f4f6f8;">
+              <span style="font-size:14px;font-weight:600;">{{ c.name }}</span>
+              <span style="font-size:13px;color:#475569;">{{ c.count }}</span>
+              <span style="font-size:13px;color:#475569;">{{ c.tags }}</span>
+              <span style="font-size:13px;color:#475569;">{{ c.uploaded }}</span>
+              <span onClick="{{ c.onDelete }}" style="font-size:12px;font-weight:600;color:#dc2626;cursor:pointer;">Delete</span>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isTeam }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#fff;border:1px solid #e7ebf0;border-radius:16px;padding:22px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">
+            <div style="font-size:15px;font-weight:700;">Team Members</div>
+            <div onClick="{{ addTeamMember }}" style="display:flex;align-items:center;gap:8px;background:linear-gradient(135deg,#14b8a6,#0d9488);color:#fff;padding:11px 18px;border-radius:10px;font-weight:600;font-size:13px;cursor:pointer;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+              Add Member
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1.8fr 1.2fr 1fr 1fr 1fr 1fr;gap:10px;padding:10px 4px;font-size:12px;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:.4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border-bottom:1px solid #eef1f4;">
+            <span>Name</span><span>Role</span><span>Campaigns</span><span>Conversion</span><span>Status</span><span>Actions</span>
+          </div>
+          <sc-for list="{{ teamRows }}" as="m" hint-placeholder-count="6">
+            <div style="display:grid;grid-template-columns:1.8fr 1.2fr 1fr 1fr 1fr 1fr;gap:10px;align-items:center;padding:14px 4px;border-bottom:1px solid #f4f6f8;">
+              <span style="font-size:14px;font-weight:600;">{{ m.name }}</span>
+              <span style="font-size:13px;color:#475569;">{{ m.role }}</span>
+              <span style="font-size:13px;color:#475569;">{{ m.campaigns }}</span>
+              <span style="font-size:13px;color:#475569;">{{ m.conversion }}</span>
+              <span style="{{ m.statusStyle }}">{{ m.status }}</span>
+              <div style="display:flex;gap:10px;">
+                <span style="font-size:12px;font-weight:600;color:#0d9488;cursor:pointer;">Edit</span>
+                <span onClick="{{ m.onDelete }}" style="font-size:12px;font-weight:600;color:#dc2626;cursor:pointer;">Delete</span>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isSettings }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+          <div style="background:#fff;border:1px solid #e7ebf0;border-radius:16px;padding:22px;">
+            <div style="font-size:15px;font-weight:700;margin-bottom:16px;">Organization</div>
+            <div style="display:flex;flex-direction:column;gap:14px;">
+              <sc-for list="{{ orgFields }}" as="f" hint-placeholder-count="5">
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid #f4f6f8;">
+                  <span style="font-size:13px;color:#64748b;">{{ f.label }}</span>
+                  <span style="font-size:13px;font-weight:600;">{{ f.value }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div style="background:#fff;border:1px solid #e7ebf0;border-radius:16px;padding:22px;">
+            <div style="font-size:15px;font-weight:700;margin-bottom:16px;">Preferences</div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <sc-for list="{{ prefToggles }}" as="p" hint-placeholder-count="4">
+                <div onClick="{{ p.onToggle }}" style="display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid #f4f6f8;cursor:pointer;">
+                  <span style="font-size:13px;font-weight:500;color:#334155;">{{ p.label }}</span>
+                  <div style="{{ p.trackStyle }}"><div style="{{ p.knobStyle }}"></div></div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isStub }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#fff;border:1px solid #e7ebf0;border-radius:16px;padding:60px;text-align:center;">
+          <div style="font-size:17px;font-weight:700;margin-bottom:6px;">{{ pageTitle }}</div>
+          <div style="font-size:14px;color:#64748b;">This section is being designed next. Ask to build it out.</div>
+        </div>
+      </sc-if>
+
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;currency&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;UGX&quot;,&quot;options&quot;:[&quot;UGX&quot;,&quot;KES&quot;,&quot;NGN&quot;,&quot;GHS&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Regional&quot;},&quot;actionQueueDefaultFilter&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Open&quot;,&quot;options&quot;:[&quot;Open&quot;,&quot;Resolved&quot;,&quot;All&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Action Queue&quot;},&quot;aiVoiceStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Professional&quot;,&quot;options&quot;:[&quot;Warm&quot;,&quot;Professional&quot;,&quot;Energetic&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;AI Configuration&quot;}}">
+const ICONS = {
+  grid: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>',
+  megaphone: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11v2a2 2 0 002 2h1l3 5V6L6 11H5a2 2 0 00-2 2z"/><path d="M14 8a4 4 0 010 8M17 5a8 8 0 010 14"/></svg>',
+  users: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>',
+  contacts: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>',
+  chart: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M7 15l4-4 3 3 5-6"/></svg>',
+  wallet: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M17 12h.01M3 9h18"/></svg>',
+  cpu: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg>',
+  settings: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.6V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1-1.6 1.7 1.7 0 00-1.9.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.9 1.7 1.7 0 00-1.6-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.6-1 1.7 1.7 0 00-.3-1.9l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.9.3H9a1.7 1.7 0 001-1.6V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.6 1.7 1.7 0 001.9-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.9V9a1.7 1.7 0 001.6 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.6 1z"/></svg>',
+  clock: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>',
+  alert: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg>',
+  ban: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M4.9 4.9l14.2 14.2"/></svg>',
+  headset: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 14v-2a9 9 0 0118 0v2"/><rect x="3" y="14" width="5" height="7" rx="2"/><rect x="16" y="14" width="5" height="7" rx="2"/></svg>'
+};
+
+const NAV = [
+  {id:'overview', label:'Overview', icon:'grid'},
+  {id:'campaigns', label:'Campaigns', icon:'megaphone'},
+  {id:'contacts', label:'Contacts', icon:'contacts'},
+  {id:'team', label:'Team', icon:'users'},
+  {id:'reports', label:'Reports', icon:'chart'},
+  {id:'callhistory', label:'Call History', icon:'clock'},
+  {id:'actionqueue', label:'Action Queue', icon:'alert'},
+  {id:'dnd', label:'DND Registry', icon:'ban'},
+  {id:'escalation', label:'Escalation Team', icon:'headset'},
+  {id:'wallet', label:'Wallet', icon:'wallet'},
+  {id:'ai', label:'AI Configuration', icon:'cpu'},
+  {id:'settings', label:'Settings', icon:'settings'}
+];
+
+const TITLES = {
+  overview: ['Business Overview', "Here's how your campaigns are performing."],
+  campaigns: ['Campaigns', 'Manage and launch your outbound campaigns.'],
+  contacts: ['Contacts', 'Upload and manage your contact lists.'],
+  team: ['Team', 'Manage agents and team members.'],
+  reports: ['Reports', 'Campaign, call, cost, and profitability analytics for your account.'],
+  callhistory: ['Call History', 'View call outcomes, recordings, and transcripts for your campaigns.'],
+  actionqueue: ['Action Queue', 'Complaints and queries from AI calls that need immediate attention.'],
+  dnd: ['DND Registry', 'Your suppression list for campaign calling.'],
+  escalation: ['Escalation Team', 'People the AI can name when a caller needs human help.'],
+  wallet: ['Wallet', 'Balance, profits, deposits, and withdrawals.'],
+  ai: ['AI Configuration', 'Configure AI agent scripts and voices.'],
+  settings: ['Settings', 'Account and organization preferences.']
+};
+
+let bizUid = 1;
+const ACTION_QUEUE_SEED = [
+  {id:bizUid++, contact:'Nabirye Sarah', campaign:'School Fees Reminder', issue:'Disputes balance amount', priority:'High', status:'Open'},
+  {id:bizUid++, contact:'Okello Peter', campaign:'Payment Collection - July', issue:'Requests payment plan', priority:'Medium', status:'Open'},
+  {id:bizUid++, contact:'Namutebi Grace', campaign:'Product Survey Q3', issue:'Asked to be removed from list', priority:'High', status:'Open'},
+  {id:bizUid++, contact:'Ssekandi Ivan', campaign:'Renewal Reminders', issue:'Billing complaint', priority:'Low', status:'Resolved'},
+  {id:bizUid++, contact:'Achieng Doreen', campaign:'Loan Repayment Follow-up', issue:'Wants human callback', priority:'Medium', status:'Resolved'}
+];
+
+const DND_SEED_BIZ = [
+  {id:1, phone:'+256 700 111 222', reason:'Requested no contact', added:'Jul 14'},
+  {id:2, phone:'+256 772 903 441', reason:'Repeated complaints', added:'Jul 08'},
+  {id:3, phone:'+256 701 556 620', reason:'Wrong number reports', added:'Jun 30'}
+];
+
+const ESCALATION_SEED = [
+  {id:1, name:'Kato Amanya', role:'Owner', phone:'+256 772 481 003', isDefault:true},
+  {id:2, name:'Namuli Joan', role:'Operations Lead', phone:'+256 701 220 884', isDefault:false},
+  {id:3, name:'Ssenyonga Paul', role:'Support Lead', phone:'+256 782 331 007', isDefault:false}
+];
+
+const TX_SEED = [
+  {id:1, label:'Deposit via Mobile Money', date:'Jul 21, 2026', amount:2000000, type:'Deposit'},
+  {id:2, label:'Agent Payout — Drake Student', date:'Jul 20, 2026', amount:-186000, type:'Payout'},
+  {id:3, label:'Agent Payout — Namuli Joan', date:'Jul 20, 2026', amount:-98000, type:'Payout'},
+  {id:4, label:'Withdrawal to Bank', date:'Jul 17, 2026', amount:-1200000, type:'Withdrawal'},
+  {id:5, label:'Deposit via Bank Transfer', date:'Jul 10, 2026', amount:3500000, type:'Deposit'},
+  {id:6, label:'Profit Share — July', date:'Jul 1, 2026', amount:420000, type:'Profit'}
+];
+
+const AI_SCRIPTS = [
+  {campaign:'School Fees Reminder', voice:'Female — Warm', status:'Active'},
+  {campaign:'Loan Repayment Follow-up', voice:'Male — Professional', status:'Active'},
+  {campaign:'Cold Outreach - Kampala', voice:'Female — Energetic', status:'Paused'},
+  {campaign:'Onboarding Welcome Calls', voice:'Female — Warm', status:'Completed'}
+];
+
+const RECENT_CAMPAIGNS = [
+  {name:'School Fees Reminder', date:'Started Jul 20', channel:'Voice + SMS', reach:'12,400', conversion:'34%', status:'Active'},
+  {name:'Loan Repayment Follow-up', date:'Started Jul 18', channel:'AI Voice', reach:'8,120', conversion:'21%', status:'Active'},
+  {name:'Product Survey Q3', date:'Started Jul 15', channel:'SMS', reach:'20,000', conversion:'12%', status:'Active'},
+  {name:'Renewal Reminders', date:'Completed Jul 10', channel:'Human Agent', reach:'5,600', conversion:'41%', status:'Completed'},
+  {name:'Cold Outreach - Kampala', date:'Paused Jul 8', channel:'AI Voice', reach:'3,200', conversion:'9%', status:'Paused'}
+];
+
+const ALL_CAMPAIGNS = [
+  ...RECENT_CAMPAIGNS.map(c => ({...c, progress: '—'})),
+  {name:'Payment Collection - July', date:'Started Jul 22', channel:'Voice + SMS', reach:'15,800', conversion:'28%', progress:'9,200 / 15,800', status:'Active'},
+  {name:'Onboarding Welcome Calls', date:'Started Jul 5', channel:'AI Voice', reach:'2,100', conversion:'55%', progress:'2,100 / 2,100', status:'Completed'},
+  {name:'Debt Recovery Batch 4', date:'Draft', channel:'Human Agent', reach:'—', conversion:'—', progress:'0 / 6,400', status:'Draft'}
+];
+
+function statusStyle(status) {
+  const map = {
+    Active: {bg:'#ecfdf5', color:'#059669'},
+    Completed: {bg:'#eff6ff', color:'#2563eb'},
+    Paused: {bg:'#fffbeb', color:'#b45309'},
+    Draft: {bg:'#f1f5f9', color:'#64748b'}
+  };
+  const s = map[status] || map.Draft;
+  return `font-size:12px;font-weight:600;padding:5px 10px;border-radius:20px;background:${s.bg};color:${s.color};display:inline-block;width:fit-content;`;
+}
+
+function pill(label, active, onClick) {
+  return { label, onClick, style: `font-size:13px;font-weight:600;padding:9px 16px;border-radius:9px;cursor:pointer;background:${active?'#0d9488':'#f6f8fa'};color:${active?'#fff':'#475569'};` };
+}
+function badge(text, bg, color) {
+  return `font-size:12px;font-weight:600;padding:5px 10px;border-radius:20px;background:${bg};color:${color};display:inline-block;width:fit-content;`;
+}
+
+class Component extends DCLogic {
+  state = {
+    activeTab: 'overview', statusFilter: 'All',
+    reportCategory: 'Campaign Performance',
+    callHistoryFilter: 'All',
+    actionQueue: ACTION_QUEUE_SEED, actionQueueFilter: null,
+    dnd: DND_SEED_BIZ,
+    escalation: ESCALATION_SEED,
+    transactions: TX_SEED, txFilter: 'All',
+    contacts: [
+      {id:1, name:'School Parents - Term 2', count:'12,400', tags:'Education', uploaded:'Jul 18'},
+      {id:2, name:'Loan Customers - Active', count:'8,120', tags:'Finance', uploaded:'Jul 14'},
+      {id:3, name:'Q3 Survey Panel', count:'20,000', tags:'Retail, Survey', uploaded:'Jul 10'},
+      {id:4, name:'Renewal Due - August', count:'5,600', tags:'Retention', uploaded:'Jul 05'}
+    ],
+    team: [
+      {id:1, name:'Drake Student', role:'Agent', campaigns:3, conversion:'31%', status:'Active'},
+      {id:2, name:'Namuli Joan', role:'Agent', campaigns:2, conversion:'19%', status:'Active'},
+      {id:3, name:'Ssenyonga Paul', role:'Team Lead', campaigns:5, conversion:'27%', status:'Active'},
+      {id:4, name:'Achen Florence', role:'Agent', campaigns:1, conversion:'14%', status:'Inactive'}
+    ],
+    prefs: { email: true, sms: true, autoAssign: false, weeklyDigest: true }
+  };
+
+  renderVals() {
+    const active = this.state.activeTab;
+    const currency = this.props.currency ?? 'UGX';
+    const aiVoiceStyle = this.props.aiVoiceStyle ?? 'Professional';
+    const actionQueueFilter = this.state.actionQueueFilter ?? (this.props.actionQueueDefaultFilter ?? 'Open');
+    const navItems = NAV.map(n => {
+      const isActive = n.id === active;
+      return {
+        ...n,
+        onClick: () => this.setState({ activeTab: n.id }),
+        rowStyle: `display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:10px;cursor:pointer;margin-bottom:2px;background:${isActive ? 'linear-gradient(135deg,#14b8a6,#0d9488)' : 'transparent'};`,
+        iconWrap: `color:${isActive ? '#fff' : '#94a3b8'};display:flex;`,
+        iconSvg: { __html: ICONS[n.icon] },
+        labelStyle: `font-size:14px;font-weight:${isActive ? 700 : 500};color:${isActive ? '#fff' : '#cbd5e1'};`
+      };
+    });
+
+    const kpis = [
+      {label:'Active Campaigns', value:'6', delta:'+2 this week', iconBg:'#f0fdfa', iconSvg:{__html:ICONS.megaphone.replace(/currentColor/g,'#0d9488')}, deltaStyle:'font-size:12px;font-weight:600;color:#059669;background:#ecfdf5;padding:4px 8px;border-radius:20px;'},
+      {label:'Contacts Reached', value:'49,320', delta:'+18%', iconBg:'#eff6ff', iconSvg:{__html:ICONS.contacts.replace(/currentColor/g,'#2563eb')}, deltaStyle:'font-size:12px;font-weight:600;color:#059669;background:#ecfdf5;padding:4px 8px;border-radius:20px;'},
+      {label:'Conversion Rate', value:'27%', delta:'+3.4%', iconBg:'#fdf4ff', iconSvg:{__html:ICONS.chart.replace(/currentColor/g,'#a21caf')}, deltaStyle:'font-size:12px;font-weight:600;color:#059669;background:#ecfdf5;padding:4px 8px;border-radius:20px;'},
+      {label:'Wallet Balance', value:'UGX 4.82M', delta:'available', iconBg:'#fff7ed', iconSvg:{__html:ICONS.wallet.replace(/currentColor/g,'#c2410c')}, deltaStyle:'font-size:12px;font-weight:600;color:#64748b;background:#f1f5f9;padding:4px 8px;border-radius:20px;'}
+    ];
+
+    const channelMix = [
+      {name:'AI Voice', pct:48, barStyle:'height:100%;width:48%;background:#14b8a6;border-radius:5px;'},
+      {name:'SMS', pct:33, barStyle:'height:100%;width:33%;background:#38bdf8;border-radius:5px;'},
+      {name:'Human Agent', pct:19, barStyle:'height:100%;width:19%;background:#a78bfa;border-radius:5px;'}
+    ];
+
+    const filters = ['All','Active','Completed','Draft'].map(f => ({
+      label: f,
+      onClick: () => this.setState({ statusFilter: f }),
+      style: `font-size:13px;font-weight:600;padding:9px 16px;border-radius:9px;cursor:pointer;background:${this.state.statusFilter===f?'#0d9488':'#f6f8fa'};color:${this.state.statusFilter===f?'#fff':'#475569'};`
+    }));
+
+    const filteredAll = ALL_CAMPAIGNS.filter(c => this.state.statusFilter==='All' || c.status===this.state.statusFilter)
+      .map(c => ({...c, statusStyle: statusStyle(c.status)}));
+
+    const reportFilters = ['Campaign Performance','Call Performance'].map(f => pill(f, this.state.reportCategory===f, () => this.setState({reportCategory:f})));
+    let reportKpis, reportHeaders, reportColumns, reportRows;
+    if (this.state.reportCategory === 'Campaign Performance') {
+      reportKpis = [
+        {label:'Active Campaigns', value:'6'},
+        {label:'Total Cost (MTD)', value:`${currency} 2.1M`},
+        {label:'Total Revenue (MTD)', value:`${currency} 9.8M`},
+        {label:'Profitability', value:'78%'}
+      ];
+      reportHeaders = ['Campaign','Calls','Cost','Revenue','Profitability'];
+      reportColumns = '2fr 1fr 1fr 1fr 1fr';
+      reportRows = [
+        {cells:['School Fees Reminder','12,400',`${currency} 420,000`,`${currency} 2.1M`,'80%']},
+        {cells:['Loan Repayment Follow-up','8,120',`${currency} 310,000`,`${currency} 1.4M`,'72%']},
+        {cells:['Product Survey Q3','20,000',`${currency} 900,000`,`${currency} 3.2M`,'64%']},
+        {cells:['Renewal Reminders','5,600',`${currency} 180,000`,`${currency} 1.9M`,'86%']},
+        {cells:['Payment Collection - July','15,800',`${currency} 290,000`,`${currency} 1.2M`,'76%']}
+      ];
+    } else {
+      reportKpis = [
+        {label:'Call Volume (MTD)', value:'61,920'},
+        {label:'Success Rate', value:'29%'},
+        {label:'Avg Duration', value:'1m 58s'},
+        {label:'Failed / No Answer', value:'18%'}
+      ];
+      reportHeaders = ['Campaign','Channel','Calls','Success Rate','Avg Duration'];
+      reportColumns = '2fr 1fr 1fr 1fr 1fr';
+      reportRows = [
+        {cells:['School Fees Reminder','Voice + SMS','12,400','34%','2m 10s']},
+        {cells:['Loan Repayment Follow-up','AI Voice','8,120','21%','1m 44s']},
+        {cells:['Product Survey Q3','SMS','20,000','12%','—']},
+        {cells:['Renewal Reminders','Human Agent','5,600','41%','3m 02s']},
+        {cells:['Cold Outreach - Kampala','AI Voice','3,200','9%','0m 58s']}
+      ];
+    }
+
+    const channelStyle = (ch) => badge(ch, ch==='Human'?'#eff6ff':ch==='SMS'?'#fdf4ff':'#f0fdfa', ch==='Human'?'#2563eb':ch==='SMS'?'#a21caf':'#0d9488');
+    const outcomeStyle = (o) => badge(o, (o==='Interested'||o==='Completed'||o==='Paid') ? '#ecfdf5' : o==='Callback' ? '#fffbeb' : '#f1f5f9', (o==='Interested'||o==='Completed'||o==='Paid') ? '#059669' : o==='Callback' ? '#b45309' : '#64748b');
+    const CALL_HISTORY_BIZ = [
+      {contact:'Nabirye Sarah', campaign:'School Fees Reminder', channel:'Human', duration:'3m 12s', outcome:'Interested'},
+      {contact:'Okello Peter', campaign:'Payment Collection - July', channel:'AI Voice', duration:'1m 48s', outcome:'Completed'},
+      {contact:'Namutebi Grace', campaign:'Product Survey Q3', channel:'SMS', duration:'—', outcome:'Delivered'},
+      {contact:'Ssekandi Ivan', campaign:'Renewal Reminders', channel:'Human', duration:'4m 05s', outcome:'Callback'},
+      {contact:'Achieng Doreen', campaign:'Loan Repayment Follow-up', channel:'AI Voice', duration:'2m 20s', outcome:'Paid'},
+      {contact:'Mugisha Brian', campaign:'Cold Outreach - Kampala', channel:'AI Voice', duration:'0m 58s', outcome:'Not Interested'}
+    ];
+    const callHistoryFilters = ['All','Human','AI Voice','SMS'].map(f => pill(f, this.state.callHistoryFilter===f, () => this.setState({callHistoryFilter:f})));
+    const callHistoryRows = CALL_HISTORY_BIZ.filter(c => this.state.callHistoryFilter==='All' || c.channel===this.state.callHistoryFilter).map(c => ({ ...c, channelStyle: channelStyle(c.channel), outcomeStyle: outcomeStyle(c.outcome) }));
+
+    const actionQueueFilters = ['Open','Resolved','All'].map(f => pill(f, actionQueueFilter===f, () => this.setState({actionQueueFilter:f})));
+    const priorityStyle = (p) => badge(p, p==='High'?'#fef2f2':p==='Medium'?'#fffbeb':'#f1f5f9', p==='High'?'#dc2626':p==='Medium'?'#b45309':'#64748b');
+    const aqStatusStyle = (s) => badge(s, s==='Open'?'#fef2f2':'#ecfdf5', s==='Open'?'#dc2626':'#059669');
+    const actionQueueRows = this.state.actionQueue.filter(a => actionQueueFilter==='All' || a.status===actionQueueFilter).map(a => ({
+      ...a, priorityStyle: priorityStyle(a.priority), statusStyle: aqStatusStyle(a.status),
+      resolveLabel: a.status==='Open' ? 'Resolve' : 'Reopen', resolveColor: a.status==='Open' ? '#0d9488' : '#64748b',
+      onResolve: () => this.setState({ actionQueue: this.state.actionQueue.map(x => x.id===a.id ? {...x, status: x.status==='Open'?'Resolved':'Open'} : x) })
+    }));
+
+    const dndRows = this.state.dnd.map(d => ({ ...d, onDelete: () => this.setState({ dnd: this.state.dnd.filter(x => x.id !== d.id) }) }));
+
+    const escalationRows = this.state.escalation.map(e => ({
+      ...e,
+      initials: e.name.split(' ').map(w=>w[0]).slice(0,2).join(''),
+      defaultLabel: e.isDefault ? 'Default contact' : '',
+      defaultStyle: e.isDefault ? badge('Default contact','#ecfdf5','#059669') : 'display:none;',
+      setDefaultLabel: e.isDefault ? '' : 'Set Default',
+      onSetDefault: () => this.setState({ escalation: this.state.escalation.map(x => ({...x, isDefault: x.id===e.id})) }),
+      onDelete: () => this.setState({ escalation: this.state.escalation.filter(x => x.id !== e.id) })
+    }));
+
+    const walletKpis = [
+      {label:'Balance', value:`${currency} 4.82M`},
+      {label:'Profits (MTD)', value:`${currency} 420,000`},
+      {label:'Deposits (MTD)', value:`${currency} 5.5M`},
+      {label:'Withdrawals (MTD)', value:`${currency} 1.2M`}
+    ];
+    const txFilters = ['All','Deposit','Withdrawal','Payout','Profit'].map(f => pill(f, this.state.txFilter===f, () => this.setState({txFilter:f})));
+    const typeStyle = (t) => badge(t, t==='Deposit'?'#ecfdf5':t==='Profit'?'#f0fdfa':t==='Payout'?'#eff6ff':'#fef2f2', t==='Deposit'?'#059669':t==='Profit'?'#0d9488':t==='Payout'?'#2563eb':'#dc2626');
+    const txRows = this.state.transactions.filter(t => this.state.txFilter==='All' || t.type===this.state.txFilter).map(t => ({
+      ...t, typeStyle: typeStyle(t.type),
+      amount: `${t.amount<0?'-':'+'}${currency} ${Math.abs(t.amount).toLocaleString()}`,
+      amountStyle: `font-size:13px;font-weight:700;color:${t.amount<0?'#dc2626':'#059669'};`,
+      onDelete: () => this.setState({ transactions: this.state.transactions.filter(x => x.id !== t.id) })
+    }));
+
+    const aiScripts = AI_SCRIPTS.map(s => ({ ...s, voice: s.voice.replace(/Warm|Professional|Energetic/, aiVoiceStyle), statusStyle: statusStyle(s.status) }));
+
+    const contactRows = this.state.contacts.map(c => ({ ...c, onDelete: () => this.setState({ contacts: this.state.contacts.filter(x => x.id !== c.id) }) }));
+    const addContactList = () => this.setState({ contacts: [...this.state.contacts, { id: Date.now(), name:'New Contact List', count:'0', tags:'—', uploaded:'Today' }] });
+
+    const teamStatusStyle = (s) => badge(s, s==='Active'?'#ecfdf5':'#f1f5f9', s==='Active'?'#059669':'#64748b');
+    const teamRows = this.state.team.map(m => ({ ...m, statusStyle: teamStatusStyle(m.status), onDelete: () => this.setState({ team: this.state.team.filter(x => x.id !== m.id) }) }));
+    const addTeamMember = () => this.setState({ team: [...this.state.team, { id: Date.now(), name:'New Member', role:'Agent', campaigns:0, conversion:'0%', status:'Active' }] });
+
+    const orgFields = [
+      {label:'Business Name', value:'Kampala Analytics Ltd'},
+      {label:'Industry', value:'Financial Services'},
+      {label:'Timezone', value:'GMT+3 (Kampala)'},
+      {label:'Contact Email', value:'ops@kampalaanalytics.co'},
+      {label:'Default Currency', value: currency},
+      {label:'Plan', value:'Pro'}
+    ];
+    const toggleStyle = (on) => ({
+      trackStyle: `width:40px;height:22px;border-radius:20px;background:${on?'#0d9488':'#e2e8f0'};position:relative;transition:background .15s;`,
+      knobStyle: `width:18px;height:18px;border-radius:50%;background:#fff;position:absolute;top:2px;left:${on?'20px':'2px'};transition:left .15s;box-shadow:0 1px 2px rgba(0,0,0,.2);`
+    });
+    const prefToggles = [
+      {key:'email', label:'Email Notifications'},
+      {key:'sms', label:'SMS Alerts'},
+      {key:'autoAssign', label:'Auto-assign New Leads'},
+      {key:'weeklyDigest', label:'Weekly Performance Digest'}
+    ].map(p => ({
+      label: p.label,
+      onToggle: () => this.setState({ prefs: { ...this.state.prefs, [p.key]: !this.state.prefs[p.key] } }),
+      ...toggleStyle(this.state.prefs[p.key])
+    }));
+
+    return {
+      navItems,
+      pageTitle: TITLES[active][0],
+      pageSubtitle: TITLES[active][1],
+      isOverview: active === 'overview',
+      isCampaigns: active === 'campaigns',
+      isReports: active === 'reports',
+      isCallHistory: active === 'callhistory',
+      isActionQueue: active === 'actionqueue',
+      isDnd: active === 'dnd',
+      isEscalation: active === 'escalation',
+      isWallet: active === 'wallet',
+      isAi: active === 'ai',
+      isContacts: active === 'contacts',
+      isTeam: active === 'team',
+      isSettings: active === 'settings',
+      isStub: !['overview','campaigns','reports','callhistory','actionqueue','dnd','escalation','wallet','ai','contacts','team','settings'].includes(active),
+      kpis,
+      recentCampaigns: RECENT_CAMPAIGNS.map(c => ({...c, statusStyle: statusStyle(c.status)})),
+      allCampaigns: filteredAll,
+      statusFilters: filters,
+      channelMix,
+      reportFilters, reportKpis, reportCategory: this.state.reportCategory, reportHeaders, reportColumns, reportRows,
+      callHistoryFilters, callHistoryRows,
+      actionQueueFilters, actionQueueRows,
+      dndRows, addDnd: () => this.setState({ dnd: [...this.state.dnd, { id: Date.now(), phone:'+256 700 000 000', reason:'New entry', added:'Today' }] }),
+      escalationRows, addEscalation: () => this.setState({ escalation: [...this.state.escalation, { id: Date.now(), name:'New Person', role:'Team Member', phone:'+256 700 000 000', isDefault:false }] }),
+      walletKpis, txFilters, txRows,
+      aiVoiceStyle, aiScripts,
+      contactRows, addContactList,
+      teamRows, addTeamMember,
+      orgFields, prefToggles,
+      goToCampaigns: () => this.setState({ activeTab: 'campaigns' })
+    };
+  }
+}
+
+</script>
+</body>
+</html>
