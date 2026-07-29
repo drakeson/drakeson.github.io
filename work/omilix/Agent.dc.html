@@ -64,7 +64,7 @@
 
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:20px;">
           <sc-for list="{{ kpis }}" as="kpi" hint-placeholder-count="3">
-            <div style="background:#fff;border:1px solid #e7ebf0;border-radius:16px;padding:20px;box-shadow:0 1px 2px rgba(15,23,42,.04);">
+            <div style="{{ kpi.cardStyle }}">
               <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">
                 <div style="width:38px;height:38px;border-radius:10px;background:{{ kpi.iconBg }};display:flex;align-items:center;justify-content:center;" dangerouslySetInnerHTML="{{ kpi.iconSvg }}"></div>
                 <span style="font-size:12px;font-weight:600;color:#0d9488;background:#f0fdfa;padding:4px 10px;border-radius:20px;">{{ kpi.tag }}</span>
@@ -203,7 +203,7 @@
       <sc-if value="{{ isEarnings }}" hint-placeholder-val="{{ false }}">
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:20px;">
           <sc-for list="{{ earningsKpis }}" as="k" hint-placeholder-count="3">
-            <div style="background:#fff;border:1px solid #e7ebf0;border-radius:16px;padding:20px;">
+            <div style="{{ k.cardStyle }}">
               <div style="font-size:26px;font-weight:700;">{{ k.value }}</div>
               <div style="font-size:13px;color:#64748b;margin-top:4px;">{{ k.label }}</div>
             </div>
@@ -347,6 +347,18 @@ function trainingIconStyle(status) {
   };
   return map[status] || map.Locked;
 }
+const KPI_PALETTE = [
+  {bg:'linear-gradient(135deg,#f5f3ff,#ede9fe)', border:'#ddd6fe', icon:'#7c3aed'},
+  {bg:'linear-gradient(135deg,#fff1f2,#ffe4e6)', border:'#fecdd3', icon:'#e11d48'},
+  {bg:'linear-gradient(135deg,#ecfdf5,#d1fae5)', border:'#a7f3d0', icon:'#059669'},
+  {bg:'linear-gradient(135deg,#eff6ff,#dbeafe)', border:'#bfdbfe', icon:'#2563eb'},
+  {bg:'linear-gradient(135deg,#fffbeb,#fef3c7)', border:'#fde68a', icon:'#b45309'},
+  {bg:'linear-gradient(135deg,#ecfeff,#cffafe)', border:'#a5f3fc', icon:'#0e7490'}
+];
+function pastelKpiStyle(i) {
+  const p = KPI_PALETTE[i % KPI_PALETTE.length];
+  return `background:${p.bg};border:1px solid ${p.border};border-radius:16px;padding:20px;box-shadow:0 1px 2px rgba(15,23,42,.04);`;
+}
 function trainingStatusStyle(status) {
   const s = trainingIconStyle(status);
   return `font-size:12px;font-weight:600;padding:5px 12px;border-radius:20px;background:${s.bg};color:${s.color};`;
@@ -378,10 +390,10 @@ class Component extends DCLogic {
     });
 
     const kpis = [
-      {label:'Total Calls', value:'214', tag:'all time', iconBg:'#f0fdfa', iconSvg:{__html:ICONS.phone.replace(/currentColor/g,'#0d9488')}},
-      {label:'Conversion Rate', value:'31%', tag:'interested + completed', iconBg:'#eff6ff', iconSvg:{__html:ICONS.chart.replace(/currentColor/g,'#2563eb')}},
-      {label:'Wallet Balance', value:`${currency} 186,000`, tag:'available', iconBg:'#fff7ed', iconSvg:{__html:ICONS.wallet.replace(/currentColor/g,'#c2410c')}}
-    ];
+      {label:'Total Calls', value:'214', tag:'all time', iconSvg:{__html:ICONS.phone.replace(/currentColor/g,'#fff')}},
+      {label:'Conversion Rate', value:'31%', tag:'interested + completed', iconSvg:{__html:ICONS.chart.replace(/currentColor/g,'#fff')}},
+      {label:'Wallet Balance', value:`${currency} 186,000`, tag:'available', iconSvg:{__html:ICONS.wallet.replace(/currentColor/g,'#fff')}}
+    ].map((k,i) => ({ ...k, cardStyle: pastelKpiStyle(i), iconBg: KPI_PALETTE[i % KPI_PALETTE.length].icon }));
 
     const trainingModules = TRAINING_MODULES.map(m => {
       const s = trainingIconStyle(m.status);
@@ -409,7 +421,7 @@ class Component extends DCLogic {
       {label:'Total Earned (all time)', value:`${currency} 1,240,000`},
       {label:`This ${period === 'Monthly' ? 'Month' : 'Week'}`, value:`${currency} ${periodTotal.toLocaleString()}`},
       {label:'Pending Payout', value:`${currency} 64,500`}
-    ];
+    ].map((k,i) => ({ ...k, cardStyle: pastelKpiStyle(i) }));
 
     const payouts = PAYOUTS.map(p => ({...p, amount:`${currency} ${p.amount.toLocaleString()}`}));
 

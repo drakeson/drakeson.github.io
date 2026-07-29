@@ -65,7 +65,7 @@
       <sc-if value="{{ isOverview }}" hint-placeholder-val="{{ true }}">
         <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:18px;">
           <sc-for list="{{ kpis }}" as="kpi" hint-placeholder-count="4">
-            <div style="background:#fff;border:1px solid #e7ebf0;border-radius:16px;padding:20px;box-shadow:0 1px 2px rgba(15,23,42,.04);">
+            <div style="{{ kpi.cardStyle }}">
               <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">
                 <div style="width:38px;height:38px;border-radius:10px;background:{{ kpi.iconBg }};display:flex;align-items:center;justify-content:center;" dangerouslySetInnerHTML="{{ kpi.iconSvg }}"></div>
                 <span style="{{ kpi.deltaStyle }}">{{ kpi.delta }}</span>
@@ -280,7 +280,7 @@
         </div>
         <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:20px;">
           <sc-for list="{{ reportKpis }}" as="k" hint-placeholder-count="4">
-            <div style="background:#fff;border:1px solid #e7ebf0;border-radius:16px;padding:20px;">
+            <div style="{{ k.cardStyle }}">
               <div style="font-size:24px;font-weight:700;">{{ k.value }}</div>
               <div style="font-size:13px;color:#64748b;margin-top:4px;">{{ k.label }}</div>
             </div>
@@ -347,7 +347,7 @@
       <sc-if value="{{ isBilling }}" hint-placeholder-val="{{ false }}">
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:18px;">
           <sc-for list="{{ billingKpis }}" as="k" hint-placeholder-count="6">
-            <div style="background:#fff;border:1px solid #e7ebf0;border-radius:16px;padding:20px;">
+            <div style="{{ k.cardStyle }}">
               <div style="font-size:24px;font-weight:700;">{{ k.value }}</div>
               <div style="font-size:13px;color:#64748b;margin-top:4px;">{{ k.label }}</div>
             </div>
@@ -418,7 +418,7 @@
         </div>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:18px;">
           <sc-for list="{{ aiKpis }}" as="k" hint-placeholder-count="3">
-            <div style="background:#fff;border:1px solid #e7ebf0;border-radius:16px;padding:20px;">
+            <div style="{{ k.cardStyle }}">
               <div style="font-size:24px;font-weight:700;">{{ k.value }}</div>
               <div style="font-size:13px;color:#64748b;margin-top:4px;">{{ k.label }}</div>
             </div>
@@ -455,7 +455,7 @@
         </div>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:18px;">
           <sc-for list="{{ roboKpis }}" as="k" hint-placeholder-count="3">
-            <div style="background:#fff;border:1px solid #e7ebf0;border-radius:16px;padding:20px;">
+            <div style="{{ k.cardStyle }}">
               <div style="font-size:24px;font-weight:700;">{{ k.value }}</div>
               <div style="font-size:13px;color:#64748b;margin-top:4px;">{{ k.label }}</div>
             </div>
@@ -492,7 +492,7 @@
         </div>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:18px;">
           <sc-for list="{{ smsKpis }}" as="k" hint-placeholder-count="3">
-            <div style="background:#fff;border:1px solid #e7ebf0;border-radius:16px;padding:20px;">
+            <div style="{{ k.cardStyle }}">
               <div style="font-size:24px;font-weight:700;">{{ k.value }}</div>
               <div style="font-size:13px;color:#64748b;margin-top:4px;">{{ k.label }}</div>
             </div>
@@ -771,6 +771,19 @@ function pill(label, active, onClick) {
   return { label, onClick, style: `font-size:13px;font-weight:600;padding:9px 16px;border-radius:9px;cursor:pointer;background:${active?'#0d9488':'#f6f8fa'};color:${active?'#fff':'#475569'};` };
 }
 
+const KPI_PALETTE = [
+  {bg:'linear-gradient(135deg,#f5f3ff,#ede9fe)', border:'#ddd6fe', icon:'#7c3aed'},
+  {bg:'linear-gradient(135deg,#fff1f2,#ffe4e6)', border:'#fecdd3', icon:'#e11d48'},
+  {bg:'linear-gradient(135deg,#ecfdf5,#d1fae5)', border:'#a7f3d0', icon:'#059669'},
+  {bg:'linear-gradient(135deg,#eff6ff,#dbeafe)', border:'#bfdbfe', icon:'#2563eb'},
+  {bg:'linear-gradient(135deg,#fffbeb,#fef3c7)', border:'#fde68a', icon:'#b45309'},
+  {bg:'linear-gradient(135deg,#ecfeff,#cffafe)', border:'#a5f3fc', icon:'#0e7490'}
+];
+function pastelKpiStyle(i) {
+  const p = KPI_PALETTE[i % KPI_PALETTE.length];
+  return `background:${p.bg};border:1px solid ${p.border};border-radius:16px;padding:20px;box-shadow:0 1px 2px rgba(15,23,42,.04);`;
+}
+
 class Component extends DCLogic {
   state = {
     activeTab: 'overview', planFilter: 'All',
@@ -806,11 +819,11 @@ class Component extends DCLogic {
     });
 
     const kpis = [
-      {label:'Total Businesses', value:'128', delta:'+6 this month', iconBg:'#f0fdfa', iconSvg:{__html:ICONS.building.replace(/currentColor/g,'#0d9488')}, deltaStyle:'font-size:12px;font-weight:600;color:#059669;background:#ecfdf5;padding:4px 8px;border-radius:20px;'},
-      {label:'Active Agents (AI+Human)', value:'2,340', delta:'+120', iconBg:'#eff6ff', iconSvg:{__html:ICONS.headset.replace(/currentColor/g,'#2563eb')}, deltaStyle:'font-size:12px;font-weight:600;color:#059669;background:#ecfdf5;padding:4px 8px;border-radius:20px;'},
-      {label:'Calls Today (Platform)', value:'184,920', delta:'+9.2%', iconBg:'#fdf4ff', iconSvg:{__html:ICONS.pulse.replace(/currentColor/g,'#a21caf')}, deltaStyle:'font-size:12px;font-weight:600;color:#059669;background:#ecfdf5;padding:4px 8px;border-radius:20px;'},
-      {label:'Revenue MTD', value:`${currency} 182.4M`, delta:'+14%', iconBg:'#fff7ed', iconSvg:{__html:ICONS.wallet.replace(/currentColor/g,'#c2410c')}, deltaStyle:'font-size:12px;font-weight:600;color:#059669;background:#ecfdf5;padding:4px 8px;border-radius:20px;'}
-    ];
+      {label:'Total Businesses', value:'128', delta:'+6 this month', iconSvg:{__html:ICONS.building.replace(/currentColor/g,'#fff')}, deltaStyle:'font-size:12px;font-weight:700;color:#059669;background:rgba(255,255,255,.6);padding:4px 8px;border-radius:20px;'},
+      {label:'Active Agents (AI+Human)', value:'2,340', delta:'+120', iconSvg:{__html:ICONS.headset.replace(/currentColor/g,'#fff')}, deltaStyle:'font-size:12px;font-weight:700;color:#e11d48;background:rgba(255,255,255,.6);padding:4px 8px;border-radius:20px;'},
+      {label:'Calls Today (Platform)', value:'184,920', delta:'+9.2%', iconSvg:{__html:ICONS.pulse.replace(/currentColor/g,'#fff')}, deltaStyle:'font-size:12px;font-weight:700;color:#059669;background:rgba(255,255,255,.6);padding:4px 8px;border-radius:20px;'},
+      {label:'Revenue MTD', value:`${currency} 182.4M`, delta:'+14%', iconSvg:{__html:ICONS.wallet.replace(/currentColor/g,'#fff')}, deltaStyle:'font-size:12px;font-weight:700;color:#2563eb;background:rgba(255,255,255,.6);padding:4px 8px;border-radius:20px;'}
+    ].map((k,i) => ({ ...k, cardStyle: pastelKpiStyle(i), iconBg: KPI_PALETTE[i % KPI_PALETTE.length].icon }));
 
     const systemHealth = [
       {name:'Voice Gateway', status:'Operational', dotStyle:'width:10px;height:10px;border-radius:50%;background:#10b981;'},
@@ -870,7 +883,7 @@ class Component extends DCLogic {
     const billingKpis = [
       {label:'Portfolio', value:`${currency} 640M`}, {label:'Profits', value:`${currency} 96.2M`}, {label:'Deposits (MTD)', value:`${currency} 214M`},
       {label:'Agent Payouts (MTD)', value:`${currency} 38.6M`}, {label:'Expenses', value:`${currency} 51.4M`}, {label:'Unused Balance', value:`${currency} 44.8M`}
-    ];
+    ].map((k,i) => ({ ...k, cardStyle: pastelKpiStyle(i) }));
     const deposits = [
       {business:'Nairobi Fintech Co', date:'Jul 21', amount:`${currency} 12,000,000`},
       {business:'Kampala Analytics Ltd', date:'Jul 19', amount:`${currency} 4,500,000`},
@@ -886,9 +899,9 @@ class Component extends DCLogic {
 
     const agentRows = this.state.agents.map(a => ({ ...a, onDelete: () => this.setState({ agents: this.state.agents.filter(x => x.id !== a.id) }) }));
 
-    const aiKpis = [ {label:'AI Calls (MTD)', value:'22,540'}, {label:'Avg Handle Time', value:'1m 42s'}, {label:'AI Conversion', value:'31%'} ];
-    const roboKpis = [ {label:'Robo Calls Placed', value:'45,000'}, {label:'Answer Rate', value:'42%'}, {label:'Active Campaigns', value:'5'} ];
-    const smsKpis = [ {label:'SMS Sent (MTD)', value:'63,600'}, {label:'Delivery Rate', value:'95.7%'}, {label:'Cost per SMS', value:`${currency} ${smsRate}`} ];
+    const aiKpis = [ {label:'AI Calls (MTD)', value:'22,540'}, {label:'Avg Handle Time', value:'1m 42s'}, {label:'AI Conversion', value:'31%'} ].map((k,i) => ({ ...k, cardStyle: pastelKpiStyle(i) }));
+    const roboKpis = [ {label:'Robo Calls Placed', value:'45,000'}, {label:'Answer Rate', value:'42%'}, {label:'Active Campaigns', value:'5'} ].map((k,i) => ({ ...k, cardStyle: pastelKpiStyle(i) }));
+    const smsKpis = [ {label:'SMS Sent (MTD)', value:'63,600'}, {label:'Delivery Rate', value:'95.7%'}, {label:'Cost per SMS', value:`${currency} ${smsRate}`} ].map((k,i) => ({ ...k, cardStyle: pastelKpiStyle(i) }));
     const roboRows = ROBO_ROWS.map(r => ({ ...r, statusStyle: statusStyle(r.status) }));
 
     const scopeStyle = (s) => `font-size:12px;font-weight:600;padding:5px 10px;border-radius:20px;display:inline-block;width:fit-content;background:${s==='Global'?'#fef2f2':'#eff6ff'};color:${s==='Global'?'#dc2626':'#2563eb'};`;
@@ -924,7 +937,7 @@ class Component extends DCLogic {
       userFilters, userRows, addUser: () => this.setState({ users: [...this.state.users, { id: Date.now(), name:'New User', email:'new.user@example.com', role:'Agent', business:'Unassigned', status:'Approved' }] }),
       courseRows, addCourse: () => this.setState({ courses: [...this.state.courses, { id: Date.now(), title:'New Course', category:'General', assessments:1, progress:0 }] }),
       campaignMgmtRows, addCampaign: () => this.setState({ campaignsMgmt: [...this.state.campaignsMgmt, { id: Date.now(), name:'New Campaign', business:'Unassigned', channel:'Voice + SMS', reach:'0', status:'Draft' }] }),
-      reportFilters, reportKpis: rd.kpis, reportBars, reportCategory: this.state.reportCategory,
+      reportFilters, reportKpis: rd.kpis.map((k,i) => ({ ...k, cardStyle: pastelKpiStyle(i) })), reportBars, reportCategory: this.state.reportCategory,
       callHistoryFilters, callHistoryRows,
       qaRows,
       billingKpis, deposits, agentPayouts,

@@ -69,7 +69,7 @@
       <sc-if value="{{ isOverview }}" hint-placeholder-val="{{ true }}">
         <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:24px;">
           <sc-for list="{{ kpis }}" as="kpi" hint-placeholder-count="4">
-            <div style="background:#fff;border:1px solid #e7ebf0;border-radius:16px;padding:20px;box-shadow:0 1px 2px rgba(15,23,42,.04);">
+            <div style="{{ kpi.cardStyle }}">
               <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;">
                 <div style="width:38px;height:38px;border-radius:10px;background:{{ kpi.iconBg }};display:flex;align-items:center;justify-content:center;" dangerouslySetInnerHTML="{{ kpi.iconSvg }}"></div>
                 <span style="{{ kpi.deltaStyle }}">{{ kpi.delta }}</span>
@@ -186,7 +186,7 @@
         </div>
         <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:20px;">
           <sc-for list="{{ reportKpis }}" as="k" hint-placeholder-count="4">
-            <div style="background:#fff;border:1px solid #e7ebf0;border-radius:16px;padding:20px;">
+            <div style="{{ k.cardStyle }}">
               <div style="font-size:24px;font-weight:700;">{{ k.value }}</div>
               <div style="font-size:13px;color:#64748b;margin-top:4px;">{{ k.label }}</div>
             </div>
@@ -318,7 +318,7 @@
       <sc-if value="{{ isWallet }}" hint-placeholder-val="{{ false }}">
         <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:20px;">
           <sc-for list="{{ walletKpis }}" as="k" hint-placeholder-count="4">
-            <div style="background:#fff;border:1px solid #e7ebf0;border-radius:16px;padding:20px;">
+            <div style="{{ k.cardStyle }}">
               <div style="font-size:24px;font-weight:700;">{{ k.value }}</div>
               <div style="font-size:13px;color:#64748b;margin-top:4px;">{{ k.label }}</div>
             </div>
@@ -589,6 +589,19 @@ function badge(text, bg, color) {
   return `font-size:12px;font-weight:600;padding:5px 10px;border-radius:20px;background:${bg};color:${color};display:inline-block;width:fit-content;`;
 }
 
+const KPI_PALETTE = [
+  {bg:'linear-gradient(135deg,#f5f3ff,#ede9fe)', border:'#ddd6fe', icon:'#7c3aed'},
+  {bg:'linear-gradient(135deg,#fff1f2,#ffe4e6)', border:'#fecdd3', icon:'#e11d48'},
+  {bg:'linear-gradient(135deg,#ecfdf5,#d1fae5)', border:'#a7f3d0', icon:'#059669'},
+  {bg:'linear-gradient(135deg,#eff6ff,#dbeafe)', border:'#bfdbfe', icon:'#2563eb'},
+  {bg:'linear-gradient(135deg,#fffbeb,#fef3c7)', border:'#fde68a', icon:'#b45309'},
+  {bg:'linear-gradient(135deg,#ecfeff,#cffafe)', border:'#a5f3fc', icon:'#0e7490'}
+];
+function pastelKpiStyle(i) {
+  const p = KPI_PALETTE[i % KPI_PALETTE.length];
+  return `background:${p.bg};border:1px solid ${p.border};border-radius:16px;padding:20px;box-shadow:0 1px 2px rgba(15,23,42,.04);`;
+}
+
 class Component extends DCLogic {
   state = {
     activeTab: 'overview', statusFilter: 'All',
@@ -631,11 +644,11 @@ class Component extends DCLogic {
     });
 
     const kpis = [
-      {label:'Active Campaigns', value:'6', delta:'+2 this week', iconBg:'#f0fdfa', iconSvg:{__html:ICONS.megaphone.replace(/currentColor/g,'#0d9488')}, deltaStyle:'font-size:12px;font-weight:600;color:#059669;background:#ecfdf5;padding:4px 8px;border-radius:20px;'},
-      {label:'Contacts Reached', value:'49,320', delta:'+18%', iconBg:'#eff6ff', iconSvg:{__html:ICONS.contacts.replace(/currentColor/g,'#2563eb')}, deltaStyle:'font-size:12px;font-weight:600;color:#059669;background:#ecfdf5;padding:4px 8px;border-radius:20px;'},
-      {label:'Conversion Rate', value:'27%', delta:'+3.4%', iconBg:'#fdf4ff', iconSvg:{__html:ICONS.chart.replace(/currentColor/g,'#a21caf')}, deltaStyle:'font-size:12px;font-weight:600;color:#059669;background:#ecfdf5;padding:4px 8px;border-radius:20px;'},
-      {label:'Wallet Balance', value:'UGX 4.82M', delta:'available', iconBg:'#fff7ed', iconSvg:{__html:ICONS.wallet.replace(/currentColor/g,'#c2410c')}, deltaStyle:'font-size:12px;font-weight:600;color:#64748b;background:#f1f5f9;padding:4px 8px;border-radius:20px;'}
-    ];
+      {label:'Active Campaigns', value:'6', delta:'+2 this week', iconSvg:{__html:ICONS.megaphone.replace(/currentColor/g,'#fff')}, deltaStyle:'font-size:12px;font-weight:700;color:#059669;background:rgba(255,255,255,.6);padding:4px 8px;border-radius:20px;'},
+      {label:'Contacts Reached', value:'49,320', delta:'+18%', iconSvg:{__html:ICONS.contacts.replace(/currentColor/g,'#fff')}, deltaStyle:'font-size:12px;font-weight:700;color:#e11d48;background:rgba(255,255,255,.6);padding:4px 8px;border-radius:20px;'},
+      {label:'Conversion Rate', value:'27%', delta:'+3.4%', iconSvg:{__html:ICONS.chart.replace(/currentColor/g,'#fff')}, deltaStyle:'font-size:12px;font-weight:700;color:#059669;background:rgba(255,255,255,.6);padding:4px 8px;border-radius:20px;'},
+      {label:'Wallet Balance', value:`${currency} 4.82M`, delta:'available', iconSvg:{__html:ICONS.wallet.replace(/currentColor/g,'#fff')}, deltaStyle:'font-size:12px;font-weight:700;color:#2563eb;background:rgba(255,255,255,.6);padding:4px 8px;border-radius:20px;'}
+    ].map((k,i) => ({ ...k, cardStyle: pastelKpiStyle(i), iconBg: KPI_PALETTE[i % KPI_PALETTE.length].icon }));
 
     const channelMix = [
       {name:'AI Voice', pct:48, barStyle:'height:100%;width:48%;background:#14b8a6;border-radius:5px;'},
@@ -653,9 +666,9 @@ class Component extends DCLogic {
       .map(c => ({...c, statusStyle: statusStyle(c.status)}));
 
     const reportFilters = ['Campaign Performance','Call Performance'].map(f => pill(f, this.state.reportCategory===f, () => this.setState({reportCategory:f})));
-    let reportKpis, reportHeaders, reportColumns, reportRows;
+    let reportKpisRaw, reportHeaders, reportColumns, reportRows;
     if (this.state.reportCategory === 'Campaign Performance') {
-      reportKpis = [
+      reportKpisRaw = [
         {label:'Active Campaigns', value:'6'},
         {label:'Total Cost (MTD)', value:`${currency} 2.1M`},
         {label:'Total Revenue (MTD)', value:`${currency} 9.8M`},
@@ -671,7 +684,7 @@ class Component extends DCLogic {
         {cells:['Payment Collection - July','15,800',`${currency} 290,000`,`${currency} 1.2M`,'76%']}
       ];
     } else {
-      reportKpis = [
+      reportKpisRaw = [
         {label:'Call Volume (MTD)', value:'61,920'},
         {label:'Success Rate', value:'29%'},
         {label:'Avg Duration', value:'1m 58s'},
@@ -727,7 +740,7 @@ class Component extends DCLogic {
       {label:'Profits (MTD)', value:`${currency} 420,000`},
       {label:'Deposits (MTD)', value:`${currency} 5.5M`},
       {label:'Withdrawals (MTD)', value:`${currency} 1.2M`}
-    ];
+    ].map((k,i) => ({ ...k, cardStyle: pastelKpiStyle(i) }));
     const txFilters = ['All','Deposit','Withdrawal','Payout','Profit'].map(f => pill(f, this.state.txFilter===f, () => this.setState({txFilter:f})));
     const typeStyle = (t) => badge(t, t==='Deposit'?'#ecfdf5':t==='Profit'?'#f0fdfa':t==='Payout'?'#eff6ff':'#fef2f2', t==='Deposit'?'#059669':t==='Profit'?'#0d9488':t==='Payout'?'#2563eb':'#dc2626');
     const txRows = this.state.transactions.filter(t => this.state.txFilter==='All' || t.type===this.state.txFilter).map(t => ({
@@ -791,7 +804,7 @@ class Component extends DCLogic {
       allCampaigns: filteredAll,
       statusFilters: filters,
       channelMix,
-      reportFilters, reportKpis, reportCategory: this.state.reportCategory, reportHeaders, reportColumns, reportRows,
+      reportFilters, reportKpis: reportKpisRaw.map((k,i) => ({ ...k, cardStyle: pastelKpiStyle(i) })), reportCategory: this.state.reportCategory, reportHeaders, reportColumns, reportRows,
       callHistoryFilters, callHistoryRows,
       actionQueueFilters, actionQueueRows,
       dndRows, addDnd: () => this.setState({ dnd: [...this.state.dnd, { id: Date.now(), phone:'+256 700 000 000', reason:'New entry', added:'Today' }] }),
