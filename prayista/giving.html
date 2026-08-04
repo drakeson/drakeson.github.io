@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/colors.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/typography.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/motion.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/styles.css">
+<script src="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/_ds_bundle.js"></script>
+<meta name="design_doc_mode" content="canvas">
+<style>body{margin:0}.pf{width:375px;min-height:812px;border-radius:36px;overflow:hidden;box-shadow:var(--shadow-3);border:1px solid var(--divider);position:relative;display:flex;flex-direction:column;background:var(--color-bg)}.lbl{font:600 13px var(--font-body);color:var(--text-tertiary)}.chip{padding:12px 18px;border-radius:var(--radius-pill);border:1px solid var(--glass-border);background:var(--glass-fill);font-family:var(--font-heading);font-weight:700;font-size:14px;color:var(--text-primary)}.chipActive{padding:12px 18px;border-radius:var(--radius-pill);background:var(--color-primary);font-family:var(--font-heading);font-weight:700;font-size:14px;color:var(--text-on-primary)}</style>
+</helmet>
+<div data-theme="{{ theme }}" style="min-height:100vh;background:var(--color-bg);padding:48px;transition:background .3s">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;max-width:1900px;margin:0 auto 40px">
+    <div><div style="font-family:var(--font-heading);font-weight:800;font-size:28px;color:var(--text-primary)">User App — Give Out</div><div style="font-family:var(--font-body);font-size:14px;color:var(--text-secondary);margin-top:6px">Type → church → amount → payment → confirm → receipt → badges</div></div>
+    <button onClick="{{ toggleTheme }}" style="display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:var(--radius-pill);border:1px solid var(--glass-border);background:var(--glass-fill);backdrop-filter:blur(var(--blur-glass));cursor:pointer;font-family:var(--font-body);font-weight:700;font-size:13px;color:var(--text-primary)">{{ themeLabel }}</button>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:44px;max-width:1900px;margin:0 auto">
+
+    <div style="display:flex;flex-direction:column;gap:12px"><div class="lbl">1. Give Out entry — select type</div><div class="pf">
+      <div style="padding:52px 20px 4px;font-family:var(--font-heading);font-weight:700;font-size:22px;color:var(--text-primary)">Give Out</div>
+      <div style="padding:4px 20px 0;font-family:var(--font-body);font-size:13px;color:var(--text-secondary)">What would you like to give?</div>
+      <div style="display:flex;flex-direction:column;gap:12px;padding:20px 20px 0">
+        <div style="border-radius:var(--radius-lg);background:var(--color-surface);border:2px solid var(--color-primary);padding:16px;display:flex;align-items:center;gap:14px"><span style="font-size:22px">✝</span><div><div style="font-family:var(--font-heading);font-weight:700;font-size:15px;color:var(--text-primary)">Tithe</div><div style="font-family:var(--font-body);font-size:12px;color:var(--text-secondary)">Regular giving to your church</div></div></div>
+        <div style="border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--divider);padding:16px;display:flex;align-items:center;gap:14px"><span style="font-size:22px">🕊</span><div><div style="font-family:var(--font-heading);font-weight:700;font-size:15px;color:var(--text-primary)">Offertory</div><div style="font-family:var(--font-body);font-size:12px;color:var(--text-secondary)">Sunday service offering</div></div></div>
+        <div style="border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--divider);padding:16px;display:flex;align-items:center;gap:14px"><span style="font-size:22px">💝</span><div><div style="font-family:var(--font-heading);font-weight:700;font-size:15px;color:var(--text-primary)">Donate</div><div style="font-family:var(--font-body);font-size:12px;color:var(--text-secondary)">A specific cause or campaign</div></div></div>
+        <div style="border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--divider);padding:16px;display:flex;align-items:center;gap:14px"><span style="font-size:22px">🙏</span><div><div style="font-family:var(--font-heading);font-weight:700;font-size:15px;color:var(--text-primary)">Give to Us</div><div style="font-family:var(--font-body);font-size:12px;color:var(--text-secondary)">Support the Prayista platform</div></div></div>
+      </div>
+    </div></div>
+
+    <div style="display:flex;flex-direction:column;gap:12px"><div class="lbl">2. Select church</div><div class="pf">
+      <div style="padding:52px 20px 0;font-family:var(--font-body);font-size:15px;color:var(--color-primary);font-weight:600">‹ Tithe</div>
+      <div style="padding:16px 20px 0;font-family:var(--font-heading);font-weight:700;font-size:19px;color:var(--text-primary)">Select church</div>
+      <div style="display:flex;flex-direction:column;gap:10px;padding:16px 20px 0">
+        <div style="display:flex;align-items:center;gap:12px;padding:12px;border-radius:var(--radius-lg);border:2px solid var(--color-primary);background:var(--color-primary-soft)"><x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Avatar" initials="GC" size="40" hint-size="40px,40px"></x-import><div style="flex:1"><div style="font-family:var(--font-heading);font-weight:700;font-size:14px;color:var(--text-primary)">Grace Community</div></div><span style="color:var(--color-primary)">✓</span></div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px;border-radius:var(--radius-lg);border:1px solid var(--divider)"><x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Avatar" initials="RH" size="40" hint-size="40px,40px"></x-import><div style="flex:1"><div style="font-family:var(--font-heading);font-weight:700;font-size:14px;color:var(--text-primary)">Riverside House</div></div></div>
+      </div>
+    </div></div>
+
+    <div style="display:flex;flex-direction:column;gap:12px"><div class="lbl">3. Amount selection</div><div class="pf">
+      <div style="padding:52px 20px 0;font-family:var(--font-body);font-size:15px;color:var(--color-primary);font-weight:600">‹ Grace Community</div>
+      <div style="padding:24px 24px 0;text-align:center"><div style="font-family:var(--font-body);font-size:13px;color:var(--text-secondary)">Tithe amount</div><div style="margin-top:8px;font-family:var(--font-heading);font-weight:800;font-size:44px;color:var(--text-primary)">$100</div></div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;padding:24px 20px 0">
+        <div class="chip">$25</div><div class="chip">$50</div><div class="chipActive">$100</div><div class="chip">$250</div>
+      </div>
+      <div style="flex:1"></div>
+      <div style="padding:0 20px 40px"><x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="primary" size="lg" hint-size="100%,56px">Continue</x-import></div>
+    </div></div>
+
+    <div style="display:flex;flex-direction:column;gap:12px"><div class="lbl">4. Payment method</div><div class="pf">
+      <div style="padding:52px 20px 0;font-family:var(--font-heading);font-weight:700;font-size:19px;color:var(--text-primary)">Payment method</div>
+      <div style="display:flex;flex-direction:column;gap:10px;padding:20px 20px 0">
+        <div style="display:flex;align-items:center;gap:12px;padding:14px;border-radius:var(--radius-lg);border:2px solid var(--color-primary);background:var(--color-primary-soft)"><span style="font-size:18px">💳</span><div style="flex:1;font-family:var(--font-body);font-size:14px;font-weight:600;color:var(--text-primary)">Visa •••• 4021</div><span style="color:var(--color-primary)">✓</span></div>
+        <div style="display:flex;align-items:center;gap:12px;padding:14px;border-radius:var(--radius-lg);border:1px solid var(--divider)"><span style="font-size:18px">🏦</span><div style="flex:1;font-family:var(--font-body);font-size:14px;font-weight:600;color:var(--text-primary)">Bank transfer</div></div>
+        <div style="display:flex;align-items:center;gap:12px;padding:14px;border-radius:var(--radius-lg);border:1px solid var(--divider)"><span style="font-size:18px">＋</span><div style="flex:1;font-family:var(--font-body);font-size:14px;font-weight:600;color:var(--text-primary)">Add new method</div></div>
+      </div>
+      <div style="flex:1"></div>
+      <div style="padding:0 20px 40px"><x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="primary" size="lg" hint-size="100%,56px">Continue</x-import></div>
+    </div></div>
+
+    <div style="display:flex;flex-direction:column;gap:12px"><div class="lbl">5. Confirm & review</div><div class="pf">
+      <div style="padding:52px 20px 0;font-family:var(--font-heading);font-weight:700;font-size:19px;color:var(--text-primary)">Review your gift</div>
+      <div style="margin:20px 20px 0;border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--divider);padding:18px;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;justify-content:space-between;font-family:var(--font-body);font-size:13px"><span style="color:var(--text-secondary)">Type</span><span style="color:var(--text-primary);font-weight:600">Tithe</span></div>
+        <div style="display:flex;justify-content:space-between;font-family:var(--font-body);font-size:13px"><span style="color:var(--text-secondary)">Church</span><span style="color:var(--text-primary);font-weight:600">Grace Community</span></div>
+        <div style="display:flex;justify-content:space-between;font-family:var(--font-body);font-size:13px"><span style="color:var(--text-secondary)">Payment</span><span style="color:var(--text-primary);font-weight:600">Visa •••• 4021</span></div>
+        <div style="border-top:1px solid var(--divider);margin-top:4px;padding-top:10px;display:flex;justify-content:space-between"><span style="font-family:var(--font-heading);font-weight:700;color:var(--text-primary)">Total</span><span style="font-family:var(--font-heading);font-weight:800;font-size:18px;color:var(--color-primary)">$100.00</span></div>
+      </div>
+      <div style="flex:1"></div>
+      <div style="padding:0 20px 40px"><x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="primary" size="lg" hint-size="100%,56px">Give $100</x-import></div>
+    </div></div>
+
+    <div style="display:flex;flex-direction:column;gap:12px"><div class="lbl">6. Processing</div><div class="pf">
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px">
+        <div style="width:56px;height:56px;border-radius:50%;border:4px solid var(--divider);border-top-color:var(--color-primary)"></div>
+        <div style="font-family:var(--font-body);font-size:14px;color:var(--text-secondary)">Processing your gift…</div>
+      </div>
+    </div></div>
+
+    <div style="display:flex;flex-direction:column;gap:12px"><div class="lbl">7. Success receipt</div><div class="pf">
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:36px;text-align:center">
+        <div style="width:76px;height:76px;border-radius:50%;background:var(--color-success-soft);display:flex;align-items:center;justify-content:center;color:var(--color-success);font-size:30px">✓</div>
+        <div style="font-family:var(--font-heading);font-weight:700;font-size:19px;color:var(--text-primary)">Thank you for giving</div>
+        <div style="font-family:var(--font-heading);font-weight:800;font-size:30px;color:var(--text-primary)">$100.00</div>
+        <div style="font-family:var(--font-body);font-size:13px;color:var(--text-secondary)">Tithe to Grace Community · Receipt #GT-8842</div>
+        <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="secondary" size="md" hint-size="180px,44px">Download receipt</x-import>
+      </div>
+    </div></div>
+
+    <div style="display:flex;flex-direction:column;gap:12px"><div class="lbl">8. Gratitude badges earned</div><div class="pf">
+      <div style="padding:52px 20px 0;font-family:var(--font-heading);font-weight:700;font-size:19px;color:var(--text-primary)">Gratitude Badges</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:24px 20px 0">
+        <div style="border-radius:var(--radius-lg);background:var(--color-secondary-soft);padding:18px;display:flex;flex-direction:column;align-items:center;gap:8px"><span style="font-size:26px">🌟</span><span style="font-family:var(--font-heading);font-weight:700;font-size:13px;color:var(--text-primary);text-align:center">First Gift</span></div>
+        <div style="border-radius:var(--radius-lg);background:var(--color-secondary-soft);padding:18px;display:flex;flex-direction:column;align-items:center;gap:8px"><span style="font-size:26px">🕊</span><span style="font-family:var(--font-heading);font-weight:700;font-size:13px;color:var(--text-primary);text-align:center">Faithful Giver</span></div>
+        <div style="border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--divider);padding:18px;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:.4"><span style="font-size:26px">👑</span><span style="font-family:var(--font-heading);font-weight:700;font-size:13px;color:var(--text-primary);text-align:center">Cheerful Heart</span></div>
+      </div>
+    </div></div>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { theme: 'light' };
+  renderVals() {
+    return { theme: this.state.theme, themeLabel: this.state.theme === 'light' ? '☾ View dark' : '☀ View light', toggleTheme: () => this.setState(s => ({ theme: s.theme === 'light' ? 'dark' : 'light' })) };
+  }
+}
+</script>
+</body>
+</html>

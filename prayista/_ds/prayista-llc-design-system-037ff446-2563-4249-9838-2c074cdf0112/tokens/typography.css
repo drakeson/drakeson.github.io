@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
+:root{
+--font-heading:'Sora',-apple-system,'SF Pro Display','Segoe UI',Roboto,sans-serif;
+--font-body:'Manrope',-apple-system,'SF Pro Text','Segoe UI',Roboto,sans-serif;
+--font-sacred:'Newsreader','Iowan Old Style','Noto Serif',Georgia,serif;
+--text-display-size:40px;--text-display-weight:700;--text-display-line:48px;
+--text-title1-size:32px;--text-title1-weight:700;--text-title1-line:40px;
+--text-title2-size:24px;--text-title2-weight:600;--text-title2-line:32px;
+--text-title3-size:20px;--text-title3-weight:600;--text-title3-line:28px;
+--text-body-size:17px;--text-body-weight:400;--text-body-line:26px;
+--text-caption-size:14px;--text-caption-weight:500;--text-caption-line:20px;
+--text-small-size:12px;--text-small-weight:500;--text-small-line:16px;
+--text-sacred-size:19px;--text-sacred-weight:400;--text-sacred-line:30px;
+}

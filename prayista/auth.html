@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/colors.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/typography.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/motion.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/styles.css">
+<script src="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/_ds_bundle.js"></script>
+<meta name="design_doc_mode" content="canvas">
+<style>body{margin:0}</style>
+</helmet>
+<div data-theme="{{ theme }}" style="min-height:100vh;background:var(--color-bg);padding:48px;transition:background .3s">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;max-width:1700px;margin:0 auto 40px">
+    <div>
+      <div style="font-family:var(--font-heading);font-weight:800;font-size:28px;color:var(--text-primary)">User App — Authentication</div>
+      <div style="font-family:var(--font-body);font-size:14px;color:var(--text-secondary);margin-top:6px">Splash → onboarding → follow churches → returning-user login → logout</div>
+    </div>
+    <button onClick="{{ toggleTheme }}" style="display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:var(--radius-pill);border:1px solid var(--glass-border);background:var(--glass-fill);backdrop-filter:blur(var(--blur-glass));cursor:pointer;font-family:var(--font-body);font-weight:700;font-size:13px;color:var(--text-primary)">{{ themeLabel }}</button>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;gap:44px;max-width:1700px;margin:0 auto">
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="font:600 13px var(--font-body);color:var(--text-tertiary)">1. Splash</div>
+      <div style="width:375px;min-height:812px;border-radius:36px;overflow:hidden;box-shadow:var(--shadow-3);border:1px solid var(--divider);position:relative;display:flex;flex-direction:column">
+        <div style="flex:1;background:linear-gradient(160deg,var(--color-primary),var(--color-primary-strong) 75%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px">
+          <div style="width:84px;height:84px;border-radius:22px;background:rgba(255,255,255,0.16);display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-weight:800;font-size:32px;color:#fff">P</div>
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:23px;color:var(--text-on-primary);letter-spacing:.02em">Prayista</div>
+          <div style="font-family:var(--font-body);font-size:13px;color:rgba(255,246,242,0.75)">Faith, together.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="font:600 13px var(--font-body);color:var(--text-tertiary)">2. Welcome / intro carousel</div>
+      <div style="width:375px;min-height:812px;border-radius:36px;overflow:hidden;box-shadow:var(--shadow-3);border:1px solid var(--divider);position:relative;display:flex;flex-direction:column;background:var(--color-bg)">
+        <div style="flex:1;display:flex;align-items:center;justify-content:center;padding:36px 32px 0">
+          <div style="width:100%;aspect-ratio:1/1;border-radius:var(--radius-xl);background:var(--color-primary-soft);display:flex;align-items:center;justify-content:center;color:var(--color-primary-strong);font-family:var(--font-heading);font-size:14px;font-weight:600">Illustration</div>
+        </div>
+        <div style="padding:28px 28px 44px;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center">
+          <div style="font-family:var(--font-heading);font-weight:700;font-size:23px;color:var(--text-primary)">Grow in faith, every day</div>
+          <div style="font-family:var(--font-body);font-size:14px;color:var(--text-secondary);line-height:1.5">Daily quotes, live sermons and prayer — all in one place.</div>
+          <div style="display:flex;gap:6px;margin:4px 0 8px">
+            <div style="width:20px;height:6px;border-radius:3px;background:var(--color-primary)"></div>
+            <div style="width:6px;height:6px;border-radius:3px;background:var(--divider-strong)"></div>
+            <div style="width:6px;height:6px;border-radius:3px;background:var(--divider-strong)"></div>
+          </div>
+          <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="primary" size="lg" hint-size="220px,52px">Next</x-import>
+          <span style="font-family:var(--font-body);font-size:13px;font-weight:600;color:var(--text-tertiary);margin-top:2px">Skip</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="font:600 13px var(--font-body);color:var(--text-tertiary)">3. Phone number entry</div>
+      <div style="width:375px;min-height:812px;border-radius:36px;overflow:hidden;box-shadow:var(--shadow-3);border:1px solid var(--divider);position:relative;display:flex;flex-direction:column;background:var(--color-bg)">
+        <div style="flex:1;display:flex;flex-direction:column;padding:64px 28px 40px">
+          <div style="font-family:var(--font-heading);font-weight:700;font-size:26px;color:var(--text-primary)">What's your number?</div>
+          <div style="margin-top:8px;font-family:var(--font-body);font-size:14px;color:var(--text-secondary);line-height:1.5">We'll text you a one-time code to verify it's you.</div>
+          <div style="margin-top:32px">
+            <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Input" label="Phone number" placeholder="+1 (555) 000-0000" hint-size="100%,72px"></x-import>
+          </div>
+          <div style="flex:1"></div>
+          <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="primary" size="lg" hint-size="100%,56px">Continue</x-import>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="font:600 13px var(--font-body);color:var(--text-tertiary)">4. OTP verification</div>
+      <div style="width:375px;min-height:812px;border-radius:36px;overflow:hidden;box-shadow:var(--shadow-3);border:1px solid var(--divider);position:relative;display:flex;flex-direction:column;background:var(--color-bg)">
+        <div style="flex:1;display:flex;flex-direction:column;padding:64px 28px 40px">
+          <div style="font-family:var(--font-heading);font-weight:700;font-size:24px;color:var(--text-primary)">Enter the code</div>
+          <div style="margin-top:8px;font-family:var(--font-body);font-size:14px;color:var(--text-secondary);line-height:1.5">Sent to +1 (555) 000-0000</div>
+          <div style="display:flex;gap:10px;margin-top:32px">
+            <div style="flex:1;aspect-ratio:1/1.15;border-radius:var(--radius-md);border:2px solid var(--color-primary);background:var(--color-surface);display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-weight:700;font-size:22px;color:var(--text-primary)">4</div>
+            <div style="flex:1;aspect-ratio:1/1.15;border-radius:var(--radius-md);border:2px solid var(--color-primary);background:var(--color-surface);display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-weight:700;font-size:22px;color:var(--text-primary)">8</div>
+            <div style="flex:1;aspect-ratio:1/1.15;border-radius:var(--radius-md);border:1px solid var(--divider-strong);background:var(--color-surface)"></div>
+            <div style="flex:1;aspect-ratio:1/1.15;border-radius:var(--radius-md);border:1px solid var(--divider-strong);background:var(--color-surface)"></div>
+            <div style="flex:1;aspect-ratio:1/1.15;border-radius:var(--radius-md);border:1px solid var(--divider-strong);background:var(--color-surface)"></div>
+            <div style="flex:1;aspect-ratio:1/1.15;border-radius:var(--radius-md);border:1px solid var(--divider-strong);background:var(--color-surface)"></div>
+          </div>
+          <div style="margin-top:20px;font-family:var(--font-body);font-size:13px;color:var(--text-tertiary)">Didn't get a code? Resend in 0:28</div>
+          <div style="flex:1"></div>
+          <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="secondary" size="lg" disabled="true" hint-size="100%,56px">Continue</x-import>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="font:600 13px var(--font-body);color:var(--text-tertiary)">5. Profile setup</div>
+      <div style="width:375px;min-height:812px;border-radius:36px;overflow:hidden;box-shadow:var(--shadow-3);border:1px solid var(--divider);position:relative;display:flex;flex-direction:column;background:var(--color-bg)">
+        <div style="flex:1;display:flex;flex-direction:column;padding:56px 28px 40px">
+          <div style="font-family:var(--font-heading);font-weight:700;font-size:24px;color:var(--text-primary)">Set up your profile</div>
+          <div style="display:flex;justify-content:center;margin:28px 0 8px;position:relative;width:96px;margin-left:auto;margin-right:auto">
+            <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Avatar" initials="JD" size="96" hint-size="96px,96px"></x-import>
+            <div style="position:absolute;right:-4px;bottom:-4px;width:32px;height:32px;border-radius:50%;background:var(--color-primary);border:3px solid var(--color-surface);display:flex;align-items:center;justify-content:center;color:var(--text-on-primary);font-size:14px">＋</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:16px;margin-top:20px">
+            <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Input" label="Username" placeholder="janedoe" hint-size="100%,72px"></x-import>
+            <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Input" label="Email (optional)" placeholder="jane@email.com" hint-size="100%,72px"></x-import>
+            <sc-if value="{{ showFavouriteQuoteField }}"><x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Input" label="Favourite Bible quote" placeholder="Philippians 4:13" hint-size="100%,72px"></x-import></sc-if>
+          </div>
+          <div style="flex:1"></div>
+          <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="primary" size="lg" hint-size="100%,56px">Continue</x-import>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="font:600 13px var(--font-body);color:var(--text-tertiary)">6. Follow churches</div>
+      <div style="width:375px;min-height:812px;border-radius:36px;overflow:hidden;box-shadow:var(--shadow-3);border:1px solid var(--divider);position:relative;display:flex;flex-direction:column;background:var(--color-bg)">
+        <div style="flex:1;display:flex;flex-direction:column;padding:56px 24px 32px">
+          <div style="font-family:var(--font-heading);font-weight:700;font-size:22px;color:var(--text-primary)">Follow your churches</div>
+          <div style="margin-top:6px;font-family:var(--font-body);font-size:13px;color:var(--text-secondary)">Choose 1–2 to personalize your feed</div>
+          <div style="margin-top:20px">
+            <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Input" placeholder="Search churches" hint-size="100%,56px"></x-import>
+          </div>
+          <div style="{{ churchListHeightStyle }};overflow-y:auto;margin-top:16px;padding:0 2px 6px 0;min-height:0">
+          <div style="display:{{ churchGridDisplay }};grid-template-columns:1fr 1fr;gap:16px 14px">
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="position:relative;aspect-ratio:1;border-radius:var(--radius-lg);background:var(--color-primary-soft)"><div style="position:absolute;top:8px;right:8px;width:24px;height:24px;border-radius:50%;background:var(--color-primary);color:var(--text-on-primary);display:flex;align-items:center;justify-content:center;font-size:12px;box-shadow:var(--shadow-1)">✓</div></div>
+              <div><div style="font-family:var(--font-heading);font-weight:700;font-size:14px;color:var(--text-primary)">Grace Community</div><div style="font-family:var(--font-body);font-size:12px;color:var(--text-secondary)">Austin, TX</div></div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="position:relative;aspect-ratio:1;border-radius:var(--radius-lg);background:var(--color-secondary-soft)"><div style="position:absolute;top:8px;right:8px;width:24px;height:24px;border-radius:50%;background:var(--color-primary);color:var(--text-on-primary);display:flex;align-items:center;justify-content:center;font-size:12px;box-shadow:var(--shadow-1)">✓</div></div>
+              <div><div style="font-family:var(--font-heading);font-weight:700;font-size:14px;color:var(--text-primary)">Riverside House</div><div style="font-family:var(--font-body);font-size:12px;color:var(--text-secondary)">Dallas, TX</div></div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="position:relative;aspect-ratio:1;border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--divider)"><div style="position:absolute;top:8px;right:8px;width:24px;height:24px;border-radius:50%;border:1.5px solid var(--divider-strong);background:var(--color-surface)"></div></div>
+              <div><div style="font-family:var(--font-heading);font-weight:700;font-size:14px;color:var(--text-primary)">New Life Chapel</div><div style="font-family:var(--font-body);font-size:12px;color:var(--text-secondary)">Houston, TX</div></div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="position:relative;aspect-ratio:1;border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--divider)"><div style="position:absolute;top:8px;right:8px;width:24px;height:24px;border-radius:50%;border:1.5px solid var(--divider-strong);background:var(--color-surface)"></div></div>
+              <div><div style="font-family:var(--font-heading);font-weight:700;font-size:14px;color:var(--text-primary)">Harvest Refuge</div><div style="font-family:var(--font-body);font-size:12px;color:var(--text-secondary)">San Antonio, TX</div></div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="position:relative;aspect-ratio:1;border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--divider)"><div style="position:absolute;top:8px;right:8px;width:24px;height:24px;border-radius:50%;border:1.5px solid var(--divider-strong);background:var(--color-surface)"></div></div>
+              <div><div style="font-family:var(--font-heading);font-weight:700;font-size:14px;color:var(--text-primary)">Cornerstone Valley</div><div style="font-family:var(--font-body);font-size:12px;color:var(--text-secondary)">Waco, TX</div></div>
+            </div>
+          </div>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin:14px 0 12px">
+            <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Badge" tone="info">2 of 2 selected</x-import>
+          </div>
+          <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="primary" size="lg" hint-size="100%,56px">Continue</x-import>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="font:600 13px var(--font-body);color:var(--text-tertiary)">7. Success / enter app</div>
+      <div style="width:375px;min-height:812px;border-radius:36px;overflow:hidden;box-shadow:var(--shadow-3);border:1px solid var(--divider);position:relative;display:flex;flex-direction:column;background:var(--color-bg)">
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:40px">
+          <div style="width:88px;height:88px;border-radius:50%;background:var(--color-success-soft);display:flex;align-items:center;justify-content:center;color:var(--color-success);font-size:40px">✓</div>
+          <div style="font-family:var(--font-heading);font-weight:700;font-size:24px;color:var(--text-primary);text-align:center">You're all set!</div>
+          <div style="font-family:var(--font-body);font-size:14px;color:var(--text-secondary);text-align:center;line-height:1.5">Your feed is personalized for Grace Community and Riverside House.</div>
+          <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="primary" size="lg" hint-size="240px,56px">Enter Prayista</x-import>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="font:600 13px var(--font-body);color:var(--text-tertiary)">8. Login (returning user)</div>
+      <div style="width:375px;min-height:812px;border-radius:36px;overflow:hidden;box-shadow:var(--shadow-3);border:1px solid var(--divider);position:relative;display:flex;flex-direction:column;background:var(--color-bg)">
+        <div style="flex:1;display:flex;flex-direction:column;padding:64px 28px 40px">
+          <div style="font-family:var(--font-heading);font-weight:700;font-size:26px;color:var(--text-primary)">Welcome back</div>
+          <div style="margin-top:8px;font-family:var(--font-body);font-size:14px;color:var(--text-secondary)">Log in with your phone number</div>
+          <div style="margin-top:32px">
+            <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Input" label="Phone number" placeholder="+1 (555) 000-0000" hint-size="100%,72px"></x-import>
+          </div>
+          <div style="flex:1"></div>
+          <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="primary" size="lg" hint-size="100%,56px">Continue</x-import>
+          <div style="margin-top:16px;text-align:center;font-family:var(--font-body);font-size:13px;color:var(--text-secondary)">New here? <span style="color:var(--color-primary);font-weight:700">Create an account</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="font:600 13px var(--font-body);color:var(--text-tertiary)">9. Logout confirmation</div>
+      <div style="width:375px;min-height:812px;border-radius:36px;overflow:hidden;box-shadow:var(--shadow-3);border:1px solid var(--divider);position:relative;display:flex;flex-direction:column;background:var(--color-bg)">
+        <div style="flex:1;display:flex;flex-direction:column;padding:24px;filter:blur(2px);opacity:.6">
+          <div style="display:flex;align-items:center;gap:12px"><x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Avatar" initials="JD" size="56" hint-size="56px,56px"></x-import><div style="font-family:var(--font-heading);font-weight:700;font-size:18px;color:var(--text-primary)">Jane Doe</div></div>
+        </div>
+        <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Modal" open="true" title="Log out of Prayista?" hint-size="100%,240px">
+          <div style="font-family:var(--font-body);font-size:14px;color:var(--text-secondary);line-height:1.5;margin-bottom:20px">You can always log back in with your phone number.</div>
+          <div style="display:flex;gap:12px">
+            <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="secondary" size="md" hint-size="auto,44px" style="flex:1">Cancel</x-import>
+            <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="primary" size="md" hint-size="auto,44px" style="flex:1;background:var(--color-error)">Log out</x-import>
+          </div>
+        </x-import>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="max-width:1700px;margin:56px auto 0">
+    <div style="font-family:var(--font-heading);font-weight:700;font-size:18px;color:var(--text-primary);margin-bottom:16px">Dark mode spot-check</div>
+    <div style="display:flex;flex-wrap:wrap;gap:44px">
+      <div data-theme="dark" style="display:flex;flex-direction:column;gap:12px">
+        <div style="font:600 13px var(--font-body);color:var(--text-tertiary)">1. Splash — dark</div>
+        <div style="width:375px;min-height:812px;border-radius:36px;overflow:hidden;box-shadow:var(--shadow-3);border:1px solid var(--divider);position:relative;display:flex;flex-direction:column">
+          <div style="flex:1;background:linear-gradient(160deg,var(--color-primary-strong),#14090D 80%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px">
+            <div style="width:84px;height:84px;border-radius:22px;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-weight:800;font-size:32px;color:#fff">P</div>
+            <div style="font-family:var(--font-heading);font-weight:800;font-size:23px;color:var(--text-primary);letter-spacing:.02em">Prayista</div>
+            <div style="font-family:var(--font-body);font-size:13px;color:var(--text-secondary)">Faith, together.</div>
+          </div>
+        </div>
+      </div>
+      <div data-theme="dark" style="display:flex;flex-direction:column;gap:12px">
+        <div style="font:600 13px var(--font-body);color:var(--text-tertiary)">6. Follow churches — dark</div>
+        <div style="width:375px;min-height:812px;border-radius:36px;overflow:hidden;box-shadow:var(--shadow-3);border:1px solid var(--divider);position:relative;display:flex;flex-direction:column;background:var(--color-bg)">
+          <div style="flex:1;display:flex;flex-direction:column;padding:56px 24px 32px">
+            <div style="font-family:var(--font-heading);font-weight:700;font-size:22px;color:var(--text-primary)">Follow your churches</div>
+            <div style="margin-top:6px;font-family:var(--font-body);font-size:13px;color:var(--text-secondary)">Choose 1–2 to personalize your feed</div>
+            <div style="margin-top:20px">
+              <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Input" placeholder="Search churches" hint-size="100%,56px"></x-import>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:10px;margin-top:16px">
+              <div style="display:flex;align-items:center;gap:12px;padding:12px;border-radius:var(--radius-lg);border:2px solid var(--color-primary);background:var(--color-primary-soft)">
+                <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Avatar" initials="GC" size="44" hint-size="44px,44px"></x-import>
+                <div style="flex:1"><div style="font-family:var(--font-heading);font-weight:700;font-size:15px;color:var(--text-primary)">Grace Community</div><div style="font-family:var(--font-body);font-size:12px;color:var(--text-secondary)">Austin, TX</div></div>
+                <div style="width:22px;height:22px;border-radius:50%;background:var(--color-primary);color:var(--text-on-primary);display:flex;align-items:center;justify-content:center;font-size:12px">✓</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;padding:12px;border-radius:var(--radius-lg);border:1px solid var(--divider)">
+                <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Avatar" initials="NL" size="44" hint-size="44px,44px"></x-import>
+                <div style="flex:1"><div style="font-family:var(--font-heading);font-weight:700;font-size:15px;color:var(--text-primary)">New Life Chapel</div><div style="font-family:var(--font-body);font-size:12px;color:var(--text-secondary)">Houston, TX</div></div>
+                <div style="width:22px;height:22px;border-radius:50%;border:1px solid var(--divider-strong)"></div>
+              </div>
+            </div>
+            <div style="flex:1"></div>
+            <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Badge" tone="info">1 of 2 selected</x-import>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showFavouriteQuoteField&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Profile setup&quot;},&quot;churchListLayout&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;grid&quot;,&quot;options&quot;:[&quot;grid&quot;,&quot;list&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Follow churches&quot;},&quot;churchListMaxHeight&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0,&quot;min&quot;:0,&quot;max&quot;:500,&quot;step&quot;:10,&quot;unit&quot;:&quot;px (0 = fill space)&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Follow churches&quot;}}">
+class Component extends DCLogic {
+  state = { theme: 'light' };
+  renderVals() {
+    return {
+      theme: this.state.theme,
+      themeLabel: this.state.theme === 'light' ? '☾ View dark' : '☀ View light',
+      toggleTheme: () => this.setState(s => ({ theme: s.theme === 'light' ? 'dark' : 'light' })),
+      showFavouriteQuoteField: this.props.showFavouriteQuoteField ?? true,
+      churchGridDisplay: (this.props.churchListLayout ?? 'grid') === 'grid' ? 'grid' : 'flex',
+      churchListHeightStyle: (this.props.churchListMaxHeight ?? 0) > 0 ? ('max-height:' + this.props.churchListMaxHeight + 'px') : 'flex:1'
+    };
+  }
+}
+</script>
+</body>
+</html>

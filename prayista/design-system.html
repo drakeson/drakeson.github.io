@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/colors.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/typography.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/motion.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/styles.css">
+<script src="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/_ds_bundle.js"></script>
+<meta name="design_doc_mode" content="canvas">
+<style>body{margin:0}
+.sw{width:100%;aspect-ratio:1;border-radius:var(--radius-md);border:1px solid rgba(0,0,0,0.08)}
+.sec{max-width:1500px;margin:0 auto 64px}
+.h2{font-family:var(--font-heading);font-weight:800;font-size:22px;color:var(--text-primary);margin-bottom:6px}
+.sub{font-family:var(--font-body);font-size:13px;color:var(--text-secondary);margin-bottom:24px}
+.panel{border-radius:var(--radius-lg);border:1px solid var(--divider);padding:24px}
+</style>
+</helmet>
+<div style="min-height:100vh;background:var(--color-bg);padding:56px 48px;font-family:var(--font-body)">
+
+  <div class="sec" style="margin-bottom:48px">
+    <div style="font-family:var(--font-heading);font-weight:800;font-size:32px;color:var(--text-primary)">Prayista — Design System Reference</div>
+    <div style="margin-top:8px;font-family:var(--font-body);font-size:15px;color:var(--text-secondary)">Colors, type, buttons, gradients, sizing and iOS/Android platform notes for both apps.</div>
+  </div>
+
+  <div class="sec">
+    <div class="h2">Colors — Light & Dark</div>
+    <div class="sub">Semantic tokens; every screen reads these variables directly, never hard-coded hex.</div>
+    <div style="display:flex;gap:24px;flex-wrap:wrap">
+      <div data-theme="light" style="flex:1;min-width:420px;background:var(--color-bg);border-radius:var(--radius-lg);border:1px solid var(--divider);padding:24px">
+        <div style="font-family:var(--font-heading);font-weight:700;font-size:14px;color:var(--text-primary);margin-bottom:14px">☀ Light</div>
+        <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px">
+          <div><div class="sw" style="background:var(--color-primary)"></div><div style="margin-top:4px;font-size:10px;color:var(--text-tertiary)">primary</div></div>
+          <div><div class="sw" style="background:var(--color-primary-strong)"></div><div style="margin-top:4px;font-size:10px;color:var(--text-tertiary)">primary-strong</div></div>
+          <div><div class="sw" style="background:var(--color-secondary)"></div><div style="margin-top:4px;font-size:10px;color:var(--text-tertiary)">secondary</div></div>
+          <div><div class="sw" style="background:var(--color-bg)"></div><div style="margin-top:4px;font-size:10px;color:var(--text-tertiary)">bg</div></div>
+          <div><div class="sw" style="background:var(--color-surface)"></div><div style="margin-top:4px;font-size:10px;color:var(--text-tertiary)">surface</div></div>
+          <div><div class="sw" style="background:var(--text-primary)"></div><div style="margin-top:4px;font-size:10px;color:var(--text-tertiary)">text-primary</div></div>
+          <div><div class="sw" style="background:var(--color-success)"></div><div style="margin-top:4px;font-size:10px;color:var(--text-tertiary)">success</div></div>
+          <div><div class="sw" style="background:var(--color-warning)"></div><div style="margin-top:4px;font-size:10px;color:var(--text-tertiary)">warning</div></div>
+          <div><div class="sw" style="background:var(--color-error)"></div><div style="margin-top:4px;font-size:10px;color:var(--text-tertiary)">error</div></div>
+          <div><div class="sw" style="background:var(--color-info)"></div><div style="margin-top:4px;font-size:10px;color:var(--text-tertiary)">info</div></div>
+          <div><div class="sw" style="background:var(--glass-fill);border:1px solid var(--glass-border)"></div><div style="margin-top:4px;font-size:10px;color:var(--text-tertiary)">glass-fill</div></div>
+          <div><div class="sw" style="background:var(--vale-accent-a)"></div><div style="margin-top:4px;font-size:10px;color:var(--text-tertiary)">vale-a</div></div>
+        </div>
+      </div>
+      <div data-theme="dark" style="flex:1;min-width:420px;background:var(--color-bg);border-radius:var(--radius-lg);border:1px solid var(--divider);padding:24px">
+        <div style="font-family:var(--font-heading);font-weight:700;font-size:14px;color:var(--text-primary);margin-bottom:14px">☾ Dark</div>
+        <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px">
+          <div><div class="sw" style="background:var(--color-primary)"></div><div style="margin-top:4px;font-size:10px;color:var(--text-tertiary)">primary</div></div>
+          <div><div class="sw" style="background:var(--color-primary-strong)"></div><div style="margin-top:4px;font-size:10px;color:var(--text-tertiary)">primary-strong</div></div>
+          <div><div class="sw" style="background:var(--color-secondary)"></div><div style="margin-top:4px;font-size:10px;color:var(--text-tertiary)">secondary</div></div>
+          <div><div class="sw" style="background:var(--color-bg)"></div><div style="margin-top:4px;font-size:10px;color:var(--text-tertiary)">bg</div></div>
+          <div><div class="sw" style="background:var(--color-surface)"></div><div style="margin-top:4px;font-size:10px;color:var(--text-tertiary)">surface</div></div>
+          <div><div class="sw" style="background:var(--text-primary)"></div><div style="margin-top:4px;font-size:10px;color:var(--text-tertiary)">text-primary</div></div>
+          <div><div class="sw" style="background:var(--color-success)"></div><div style="margin-top:4px;font-size:10px;color:var(--text-tertiary)">success</div></div>
+          <div><div class="sw" style="background:var(--color-warning)"></div><div style="margin-top:4px;font-size:10px;color:var(--text-tertiary)">warning</div></div>
+          <div><div class="sw" style="background:var(--color-error)"></div><div style="margin-top:4px;font-size:10px;color:var(--text-tertiary)">error</div></div>
+          <div><div class="sw" style="background:var(--color-info)"></div><div style="margin-top:4px;font-size:10px;color:var(--text-tertiary)">info</div></div>
+          <div><div class="sw" style="background:var(--glass-fill);border:1px solid var(--glass-border)"></div><div style="margin-top:4px;font-size:10px;color:var(--text-tertiary)">glass-fill</div></div>
+          <div><div class="sw" style="background:var(--vale-accent-a)"></div><div style="margin-top:4px;font-size:10px;color:var(--text-tertiary)">vale-a</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="h2">Typography</div>
+    <div class="sub">Sora (headings) · Manrope (body/UI) · Newsreader (sacred/scripture text). System fallbacks cover both iOS (SF Pro) and Android (Roboto) automatically.</div>
+    <div class="panel" style="background:var(--color-surface);display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;align-items:baseline;gap:16px"><div style="font-family:var(--font-heading);font-weight:700;font-size:40px;color:var(--text-primary)">Display</div><div style="font-family:var(--font-body);font-size:12px;color:var(--text-tertiary)">Sora 700 · 40/48</div></div>
+      <div style="display:flex;align-items:baseline;gap:16px"><div style="font-family:var(--font-heading);font-weight:700;font-size:32px;color:var(--text-primary)">Title 1</div><div style="font-family:var(--font-body);font-size:12px;color:var(--text-tertiary)">Sora 700 · 32/40</div></div>
+      <div style="display:flex;align-items:baseline;gap:16px"><div style="font-family:var(--font-heading);font-weight:600;font-size:24px;color:var(--text-primary)">Title 2</div><div style="font-family:var(--font-body);font-size:12px;color:var(--text-tertiary)">Sora 600 · 24/32</div></div>
+      <div style="display:flex;align-items:baseline;gap:16px"><div style="font-family:var(--font-heading);font-weight:600;font-size:20px;color:var(--text-primary)">Title 3</div><div style="font-family:var(--font-body);font-size:12px;color:var(--text-tertiary)">Sora 600 · 20/28</div></div>
+      <div style="display:flex;align-items:baseline;gap:16px"><div style="font-family:var(--font-body);font-weight:400;font-size:17px;color:var(--text-primary)">Body text for reading</div><div style="font-family:var(--font-body);font-size:12px;color:var(--text-tertiary)">Manrope 400 · 17/26</div></div>
+      <div style="display:flex;align-items:baseline;gap:16px"><div style="font-family:var(--font-body);font-weight:500;font-size:14px;color:var(--text-secondary)">Caption text</div><div style="font-family:var(--font-body);font-size:12px;color:var(--text-tertiary)">Manrope 500 · 14/20</div></div>
+      <div style="display:flex;align-items:baseline;gap:16px"><div style="font-family:var(--font-body);font-weight:500;font-size:12px;color:var(--text-tertiary)">Small / meta</div><div style="font-family:var(--font-body);font-size:12px;color:var(--text-tertiary)">Manrope 500 · 12/16</div></div>
+      <div style="display:flex;align-items:baseline;gap:16px"><div style="font-family:var(--font-sacred);font-style:italic;font-size:19px;color:var(--text-primary)">"Be still, and know that I am God."</div><div style="font-family:var(--font-body);font-size:12px;color:var(--text-tertiary)">Newsreader 400 italic · 19/30</div></div>
+    </div>
+    <div style="margin-top:12px;font-family:var(--font-body);font-size:12px;color:var(--text-tertiary)">Minimum body size 15px on both platforms; never below 11px anywhere, even captions.</div>
+  </div>
+
+  <div class="sec">
+    <div class="h2">Buttons</div>
+    <div class="sub">Pill shape, 3 variants, 3 sizes. Min tap target 44×44pt on iOS and 48×48dp on Android — our sm/md/lg paddings clear both.</div>
+    <div class="panel" style="background:var(--color-surface);display:flex;flex-direction:column;gap:20px">
+      <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+        <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="primary" size="lg" hint-size="auto,52px">Primary Large</x-import>
+        <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="primary" size="md" hint-size="auto,44px">Primary Medium</x-import>
+        <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="primary" size="sm" hint-size="auto,36px">Primary Small</x-import>
+      </div>
+      <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+        <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="secondary" size="lg" hint-size="auto,52px">Secondary</x-import>
+        <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="ghost" size="lg" hint-size="auto,52px">Ghost</x-import>
+        <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="primary" size="lg" disabled="true" hint-size="auto,52px">Disabled</x-import>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="h2">Gradients</div>
+    <div class="sub">Two brand gradients — primary for CTAs/live badges, Vale aurora exclusively for the AI assistant.</div>
+    <div style="display:flex;gap:20px;flex-wrap:wrap">
+      <div style="flex:1;min-width:260px;height:120px;border-radius:var(--radius-lg);background:linear-gradient(135deg,var(--color-primary),var(--color-primary-strong));display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-weight:700;color:#fff">Primary gradient</div>
+      <div style="flex:1;min-width:260px;height:120px;border-radius:var(--radius-lg);background:var(--vale-gradient);box-shadow:0 0 40px var(--vale-glow);display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-weight:700;color:#fff">Vale gradient</div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="h2">Spacing, radius & sizing</div>
+    <div style="display:flex;gap:32px;flex-wrap:wrap">
+      <div class="panel" style="background:var(--color-surface);flex:1;min-width:280px">
+        <div style="font-family:var(--font-heading);font-weight:700;font-size:14px;color:var(--text-primary);margin-bottom:12px">Spacing scale</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;align-items:center;gap:10px"><div style="width:4px;height:12px;background:var(--color-primary)"></div><span style="font-size:12px;color:var(--text-secondary)">space-1 · 4px</span></div>
+          <div style="display:flex;align-items:center;gap:10px"><div style="width:16px;height:12px;background:var(--color-primary)"></div><span style="font-size:12px;color:var(--text-secondary)">space-4 · 16px</span></div>
+          <div style="display:flex;align-items:center;gap:10px"><div style="width:32px;height:12px;background:var(--color-primary)"></div><span style="font-size:12px;color:var(--text-secondary)">space-7 · 32px</span></div>
+          <div style="display:flex;align-items:center;gap:10px"><div style="width:72px;height:12px;background:var(--color-primary)"></div><span style="font-size:12px;color:var(--text-secondary)">space-10 · 72px</span></div>
+        </div>
+      </div>
+      <div class="panel" style="background:var(--color-surface);flex:1;min-width:280px">
+        <div style="font-family:var(--font-heading);font-weight:700;font-size:14px;color:var(--text-primary);margin-bottom:12px">Radius scale</div>
+        <div style="display:flex;gap:12px;align-items:center">
+          <div style="width:44px;height:44px;background:var(--color-primary-soft);border-radius:var(--radius-sm)"></div>
+          <div style="width:44px;height:44px;background:var(--color-primary-soft);border-radius:var(--radius-md)"></div>
+          <div style="width:44px;height:44px;background:var(--color-primary-soft);border-radius:var(--radius-lg)"></div>
+          <div style="width:44px;height:44px;background:var(--color-primary-soft);border-radius:var(--radius-xl)"></div>
+          <div style="width:44px;height:44px;background:var(--color-primary-soft);border-radius:var(--radius-pill)"></div>
+        </div>
+      </div>
+      <div class="panel" style="background:var(--color-surface);flex:1;min-width:280px">
+        <div style="font-family:var(--font-heading);font-weight:700;font-size:14px;color:var(--text-primary);margin-bottom:12px">Icon sizes</div>
+        <div style="display:flex;gap:16px;align-items:center;font-family:var(--font-body);color:var(--text-secondary);font-size:11px">
+          <div style="text-align:center"><div style="width:16px;height:16px;background:var(--text-tertiary);border-radius:4px;margin:0 auto"></div>xs·16</div>
+          <div style="text-align:center"><div style="width:20px;height:20px;background:var(--text-tertiary);border-radius:4px;margin:0 auto"></div>sm·20</div>
+          <div style="text-align:center"><div style="width:24px;height:24px;background:var(--text-tertiary);border-radius:4px;margin:0 auto"></div>md·24</div>
+          <div style="text-align:center"><div style="width:28px;height:28px;background:var(--text-tertiary);border-radius:4px;margin:0 auto"></div>lg·28</div>
+          <div style="text-align:center"><div style="width:32px;height:32px;background:var(--text-tertiary);border-radius:4px;margin:0 auto"></div>xl·32</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="h2">Image & artwork sizes</div>
+    <div style="display:flex;gap:20px;flex-wrap:wrap">
+      <div style="text-align:center"><div style="width:44px;height:44px;border-radius:50%;background:var(--color-primary-soft)"></div><div style="margin-top:6px;font-size:11px;color:var(--text-tertiary)">Avatar sm · 44</div></div>
+      <div style="text-align:center"><div style="width:88px;height:88px;border-radius:50%;background:var(--color-primary-soft)"></div><div style="margin-top:6px;font-size:11px;color:var(--text-tertiary)">Avatar lg · 88</div></div>
+      <div style="text-align:center"><div style="width:56px;height:56px;border-radius:var(--radius-md);background:var(--color-secondary-soft)"></div><div style="margin-top:6px;font-size:11px;color:var(--text-tertiary)">Thumbnail · 56</div></div>
+      <div style="text-align:center"><div style="width:150px;height:84px;border-radius:var(--radius-lg);background:var(--color-secondary-soft)"></div><div style="margin-top:6px;font-size:11px;color:var(--text-tertiary)">Event card · 150×84 (16:9-ish)</div></div>
+      <div style="text-align:center"><div style="width:150px;height:150px;border-radius:var(--radius-lg);background:var(--color-primary-soft)"></div><div style="margin-top:6px;font-size:11px;color:var(--text-tertiary)">Shop / album art · 1:1</div></div>
+      <div style="text-align:center"><div style="width:220px;height:124px;border-radius:var(--radius-lg);background:var(--color-secondary-soft)"></div><div style="margin-top:6px;font-size:11px;color:var(--text-tertiary)">Hero banner · 16:9</div></div>
+    </div>
+    <div style="margin-top:12px;font-family:var(--font-body);font-size:12px;color:var(--text-tertiary)">Export raster art at @1x/@2x/@3x for iOS and mdpi–xxxhdpi for Android; ship SVG for icons where possible.</div>
+  </div>
+
+  <div class="sec" style="margin-bottom:0">
+    <div class="h2">iOS & Android platform notes</div>
+    <div class="panel" style="background:var(--color-surface);display:flex;flex-direction:column;gap:12px;font-family:var(--font-body);font-size:14px;color:var(--text-secondary);line-height:1.6">
+      <div>• <strong style="color:var(--text-primary)">Hit targets:</strong> every tappable control ≥44×44pt (iOS HIG) / 48×48dp (Material) — our sm button (36px) is icon-only/inline use, never a lone primary CTA.</div>
+      <div>• <strong style="color:var(--text-primary)">Safe areas:</strong> screens reserve top inset for the notch/Dynamic Island and status bar (~52px used in these mocks) and bottom inset for the home indicator (~22px extra padding baked into the curved BottomNav).</div>
+      <div>• <strong style="color:var(--text-primary)">Fonts:</strong> Sora/Manrope load via web font on both; system fallback stacks (SF Pro on iOS, Roboto on Android) keep text legible before the custom font loads.</div>
+      <div>• <strong style="color:var(--text-primary)">Back navigation:</strong> iOS uses the in-header ‹ chevron shown throughout; Android additionally honors the hardware/gesture back button — no extra UI needed, just don't trap navigation in a modal without a close affordance.</div>
+      <div>• <strong style="color:var(--text-primary)">Blur/glass:</strong> backdrop-filter blur renders natively on both platforms' modern WebViews; always pair with the semi-opaque glass-fill color as a fallback backdrop.</div>
+      <div>• <strong style="color:var(--text-primary)">Haptics/motion:</strong> use the motion tokens (var(--duration-fast), var(--ease-spring)) for press/selection feedback consistently on both platforms.</div>
+    </div>
+  </div>
+
+</div>
+
+</x-dc>
+</body>
+</html>

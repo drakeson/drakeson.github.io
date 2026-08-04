@@ -1,0 +1,9 @@
+:root{
+--blur-glass:28px;--blur-glass-strong:40px;
+--shadow-0:none;
+--shadow-1:0 1px 2px rgba(var(--shadow-color),0.08),0 1px 1px rgba(var(--shadow-color),0.05);
+--shadow-2:0 4px 12px rgba(var(--shadow-color),0.10),0 1px 3px rgba(var(--shadow-color),0.08);
+--shadow-3:0 12px 32px rgba(var(--shadow-color),0.16),0 2px 8px rgba(var(--shadow-color),0.10);
+--shadow-4:0 24px 56px rgba(var(--shadow-color),0.22),0 6px 16px rgba(var(--shadow-color),0.12);
+--shadow-glass-inset:inset 0 1px 0 var(--glass-highlight);
+}

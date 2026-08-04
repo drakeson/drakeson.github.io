@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/colors.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/typography.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/motion.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/styles.css">
+<script src="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/_ds_bundle.js"></script>
+<meta name="design_doc_mode" content="canvas">
+<style>body{margin:0}
+.pf{width:375px;min-height:812px;border-radius:36px;overflow:hidden;box-shadow:var(--shadow-3);border:1px solid var(--divider);position:relative;display:flex;flex-direction:column;background:var(--color-bg)}
+.lbl{font:600 13px var(--font-body);color:var(--text-tertiary)}
+</style>
+</helmet>
+<div data-theme="{{ theme }}" style="min-height:100vh;background:var(--color-bg);padding:48px;transition:background .3s">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;max-width:1900px;margin:0 auto 40px">
+    <div>
+      <div style="font-family:var(--font-heading);font-weight:800;font-size:28px;color:var(--text-primary)">User App — Media</div>
+      <div style="font-family:var(--font-body);font-size:14px;color:var(--text-secondary);margin-top:6px">Sermons + playlists → player → downloads</div>
+    </div>
+    <button onClick="{{ toggleTheme }}" style="display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:var(--radius-pill);border:1px solid var(--glass-border);background:var(--glass-fill);backdrop-filter:blur(var(--blur-glass));cursor:pointer;font-family:var(--font-body);font-weight:700;font-size:13px;color:var(--text-primary)">{{ themeLabel }}</button>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;gap:44px;max-width:1900px;margin:0 auto">
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="lbl">1. Media hub (Sermons | Playlists)</div>
+      <div class="pf">
+        <div style="padding:52px 20px 12px;font-family:var(--font-heading);font-weight:700;font-size:22px;color:var(--text-primary)">Media</div>
+        <div style="display:flex;gap:8px;padding:0 20px 16px">
+          <div style="padding:8px 18px;border-radius:var(--radius-pill);background:var(--color-primary);color:var(--text-on-primary);font-family:var(--font-body);font-size:13px;font-weight:700">Sermons</div>
+          <div style="padding:8px 18px;border-radius:var(--radius-pill);background:var(--glass-fill);border:1px solid var(--glass-border);color:var(--text-primary);font-family:var(--font-body);font-size:13px;font-weight:700">Playlists</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;padding:0 20px">
+          <div style="display:flex;gap:12px;align-items:center;padding:10px;border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--divider)"><div style="width:56px;height:56px;border-radius:var(--radius-md);background:var(--color-primary-soft)"></div><div style="flex:1"><div style="font-family:var(--font-heading);font-weight:700;font-size:14px;color:var(--text-primary)">Faith Over Fear</div><div style="font-family:var(--font-body);font-size:12px;color:var(--text-secondary);margin-top:2px">Pastor Lee · 38 min</div></div><span style="color:var(--color-primary)">▶</span></div>
+          <div style="display:flex;gap:12px;align-items:center;padding:10px;border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--divider)"><div style="width:56px;height:56px;border-radius:var(--radius-md);background:var(--color-secondary-soft)"></div><div style="flex:1"><div style="font-family:var(--font-heading);font-weight:700;font-size:14px;color:var(--text-primary)">Rooted in Grace</div><div style="font-family:var(--font-body);font-size:12px;color:var(--text-secondary);margin-top:2px">Pastor Amara · 41 min</div></div><span style="color:var(--color-primary)">▶</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="lbl">2. Sermon detail</div>
+      <div class="pf">
+        <div style="height:220px;background:linear-gradient(135deg,var(--color-primary),var(--color-secondary))"></div>
+        <div style="padding:20px 24px 0">
+          <div style="font-family:var(--font-heading);font-weight:700;font-size:20px;color:var(--text-primary)">Faith Over Fear</div>
+          <div style="margin-top:6px;font-family:var(--font-body);font-size:13px;color:var(--text-secondary)">Pastor Lee · Grace Community · Jul 14</div>
+          <div style="margin-top:16px;display:flex;gap:10px">
+            <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="primary" size="md" hint-size="auto,44px">▶ Play</x-import>
+            <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="secondary" size="md" hint-size="auto,44px">⬇ Download</x-import>
+          </div>
+          <div style="margin-top:20px;font-family:var(--font-body);font-size:14px;color:var(--text-secondary);line-height:1.6">Fear tells us to shrink back. Faith tells us to step forward, trusting that God has already gone ahead of us.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="lbl">3. Now-playing audio player</div>
+      <div class="pf">
+        <div style="padding:52px 20px 0;text-align:center;font-family:var(--font-body);font-size:12px;font-weight:700;color:var(--text-tertiary);letter-spacing:.04em">NOW PLAYING</div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 32px;gap:24px">
+          <div style="width:220px;height:220px;border-radius:var(--radius-xl);background:linear-gradient(135deg,var(--color-primary),var(--color-secondary));box-shadow:var(--shadow-3)"></div>
+          <div style="text-align:center"><div style="font-family:var(--font-heading);font-weight:700;font-size:19px;color:var(--text-primary)">Faith Over Fear</div><div style="margin-top:4px;font-family:var(--font-body);font-size:13px;color:var(--text-secondary)">Pastor Lee</div></div>
+          <div style="width:100%">
+            <div style="height:4px;border-radius:2px;background:var(--divider-strong)"><div style="width:38%;height:100%;border-radius:2px;background:var(--color-primary)"></div></div>
+            <div style="display:flex;justify-content:space-between;margin-top:6px;font-family:var(--font-body);font-size:11px;color:var(--text-tertiary)"><span>14:02</span><span>38:00</span></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:28px"><span style="font-size:18px;color:var(--text-secondary)">⏮</span><div style="width:56px;height:56px;border-radius:50%;background:var(--color-primary);color:var(--text-on-primary);display:flex;align-items:center;justify-content:center;font-size:22px">❚❚</div><span style="font-size:18px;color:var(--text-secondary)">⏭</span></div>
+          <div style="padding:8px 16px;border-radius:var(--radius-pill);background:var(--glass-fill);border:1px solid var(--glass-border);font-family:var(--font-body);font-size:12px;font-weight:700;color:var(--text-primary)">1.0x speed</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="lbl">4. Mini-player docked state</div>
+      <div class="pf">
+        <div style="padding:52px 20px 16px;font-family:var(--font-heading);font-weight:700;font-size:20px;color:var(--text-primary)">Sermons</div>
+        <div style="flex:1;padding:0 20px;display:flex;flex-direction:column;gap:12px">
+          <div style="height:70px;border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--divider)"></div>
+          <div style="height:70px;border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--divider)"></div>
+        </div>
+        <div style="margin:12px 12px 0;padding:10px 14px;border-radius:var(--radius-lg);background:var(--glass-fill-strong);backdrop-filter:blur(var(--blur-glass-strong));border:1px solid var(--glass-border);display:flex;align-items:center;gap:10px;box-shadow:var(--shadow-2)">
+          <div style="width:36px;height:36px;border-radius:var(--radius-sm);background:linear-gradient(135deg,var(--color-primary),var(--color-secondary))"></div>
+          <div style="flex:1"><div style="font-family:var(--font-heading);font-weight:700;font-size:13px;color:var(--text-primary)">Faith Over Fear</div><div style="font-family:var(--font-body);font-size:11px;color:var(--text-secondary)">Pastor Lee</div></div>
+          <span style="color:var(--color-primary);font-size:16px">❚❚</span>
+        </div>
+        <div style="padding:10px 12px 22px;border-radius:var(--radius-nav) var(--radius-nav) 0 0;background:var(--glass-fill-strong);backdrop-filter:blur(var(--blur-glass-strong));display:flex;justify-content:space-around;color:var(--text-tertiary);font-size:14px"><span style="color:var(--color-primary)">▶</span><span>🙏</span><span>📖</span><span>☺</span></div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="lbl">5. Playlists list</div>
+      <div class="pf">
+        <div style="padding:52px 20px 16px;font-family:var(--font-heading);font-weight:700;font-size:20px;color:var(--text-primary)">Playlists</div>
+        <div style="display:flex;flex-direction:column;gap:12px;padding:0 20px">
+          <div style="display:flex;gap:12px;align-items:center;padding:10px;border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--divider)"><div style="width:56px;height:56px;border-radius:var(--radius-md);background:var(--color-primary-soft)"></div><div style="flex:1"><div style="font-family:var(--font-heading);font-weight:700;font-size:14px;color:var(--text-primary)">Sunday Worship</div><div style="font-family:var(--font-body);font-size:12px;color:var(--text-secondary);margin-top:2px">14 songs</div></div></div>
+          <div style="display:flex;gap:12px;align-items:center;padding:10px;border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--divider)"><div style="width:56px;height:56px;border-radius:var(--radius-md);background:var(--color-secondary-soft)"></div><div style="flex:1"><div style="font-family:var(--font-heading);font-weight:700;font-size:14px;color:var(--text-primary)">Quiet Time</div><div style="font-family:var(--font-body);font-size:12px;color:var(--text-secondary);margin-top:2px">9 songs</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="lbl">6. Playlist detail (song list)</div>
+      <div class="pf">
+        <div style="height:180px;background:linear-gradient(135deg,var(--color-primary-soft),var(--color-secondary-soft));display:flex;align-items:flex-end;padding:20px"><div style="font-family:var(--font-heading);font-weight:700;font-size:22px;color:var(--text-primary)">Sunday Worship</div></div>
+        <div style="display:flex;flex-direction:column;padding:12px 20px">
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--divider)"><span style="color:var(--color-primary)">▶</span><div style="flex:1"><div style="font-family:var(--font-body);font-size:14px;font-weight:600;color:var(--text-primary)">Way Maker</div><div style="font-family:var(--font-body);font-size:12px;color:var(--text-tertiary)">Sinach</div></div><span style="font-family:var(--font-body);font-size:12px;color:var(--text-tertiary)">4:32</span></div>
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--divider)"><span style="color:var(--text-tertiary)">▶</span><div style="flex:1"><div style="font-family:var(--font-body);font-size:14px;font-weight:600;color:var(--text-primary)">Goodness of God</div><div style="font-family:var(--font-body);font-size:12px;color:var(--text-tertiary)">Bethel Music</div></div><span style="font-family:var(--font-body);font-size:12px;color:var(--text-tertiary)">5:12</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="lbl">7. Song preview player (30s)</div>
+      <div class="pf">
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:32px">
+          <div style="width:180px;height:180px;border-radius:var(--radius-lg);background:linear-gradient(135deg,var(--color-secondary),var(--color-primary))"></div>
+          <div style="text-align:center"><div style="font-family:var(--font-heading);font-weight:700;font-size:17px;color:var(--text-primary)">Way Maker</div><div style="margin-top:4px;font-family:var(--font-body);font-size:13px;color:var(--text-secondary)">Sinach · 30s preview</div></div>
+          <div style="width:100%"><div style="height:4px;border-radius:2px;background:var(--divider-strong)"><div style="width:60%;height:100%;border-radius:2px;background:var(--color-primary)"></div></div></div>
+          <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="primary" size="lg" hint-size="220px,52px">{{ fullSongCta }}</x-import>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="lbl">8. Downloads / offline media</div>
+      <div class="pf">
+        <div style="padding:52px 20px 16px;font-family:var(--font-heading);font-weight:700;font-size:20px;color:var(--text-primary)">Downloads</div>
+        <div style="display:flex;flex-direction:column;gap:12px;padding:0 20px">
+          <div style="display:flex;gap:12px;align-items:center;padding:10px;border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--divider)"><div style="width:48px;height:48px;border-radius:var(--radius-md);background:var(--color-primary-soft)"></div><div style="flex:1"><div style="font-family:var(--font-heading);font-weight:700;font-size:13px;color:var(--text-primary)">Faith Over Fear</div><div style="font-family:var(--font-body);font-size:11px;color:var(--text-secondary)">42 MB · Downloaded</div></div><span style="color:var(--color-success)">✓</span></div>
+        </div>
+        <div style="padding:16px 20px;font-family:var(--font-body);font-size:12px;color:var(--text-tertiary)">Storage used: 210 MB of 2 GB</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="max-width:1900px;margin:56px auto 0">
+    <div style="font-family:var(--font-heading);font-weight:700;font-size:18px;color:var(--text-primary);margin-bottom:16px">Dark mode spot-check</div>
+    <div style="display:flex;flex-wrap:wrap;gap:44px">
+      <div data-theme="dark" style="display:flex;flex-direction:column;gap:12px">
+        <div class="lbl">3. Now-playing — dark</div>
+        <div class="pf">
+          <div style="padding:52px 20px 0;text-align:center;font-family:var(--font-body);font-size:12px;font-weight:700;color:var(--text-tertiary);letter-spacing:.04em">NOW PLAYING</div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 32px;gap:24px">
+            <div style="width:220px;height:220px;border-radius:var(--radius-xl);background:linear-gradient(135deg,var(--color-primary),var(--color-secondary));box-shadow:var(--shadow-3)"></div>
+            <div style="text-align:center"><div style="font-family:var(--font-heading);font-weight:700;font-size:19px;color:var(--text-primary)">Faith Over Fear</div><div style="margin-top:4px;font-family:var(--font-body);font-size:13px;color:var(--text-secondary)">Pastor Lee</div></div>
+            <div style="display:flex;align-items:center;gap:28px"><span style="font-size:18px;color:var(--text-secondary)">⏮</span><div style="width:56px;height:56px;border-radius:50%;background:var(--color-primary);color:var(--text-on-primary);display:flex;align-items:center;justify-content:center;font-size:22px">❚❚</div><span style="font-size:18px;color:var(--text-secondary)">⏭</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div data-theme="light" style="padding:0 48px 48px;background:var(--color-bg)">
+  <div style="max-width:1900px;margin:0 auto"><div class="lbl">9. Downloads — empty</div>
+    <div class="pf">
+      <div style="padding:52px 20px 0;font-family:var(--font-heading);font-weight:700;font-size:20px;color:var(--text-primary)">Downloads</div>
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:36px;text-align:center">
+        <div style="width:64px;height:64px;border-radius:50%;background:var(--color-primary-soft);display:flex;align-items:center;justify-content:center;font-size:26px">⬇</div>
+        <div style="font-family:var(--font-heading);font-weight:700;font-size:16px;color:var(--text-primary)">No downloads yet</div>
+        <div style="font-family:var(--font-body);font-size:13px;color:var(--text-secondary);line-height:1.5">Download sermons to listen offline, anywhere.</div>
+      </div>
+    </div>
+  </div>
+</div></x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;fullSongCta&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Listen to full song&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Song preview player&quot;}}">
+class Component extends DCLogic {
+  state = { theme: 'light' };
+  renderVals() {
+    return {
+      theme: this.state.theme,
+      themeLabel: this.state.theme === 'light' ? '☾ View dark' : '☀ View light',
+      toggleTheme: () => this.setState(s => ({ theme: s.theme === 'light' ? 'dark' : 'light' })),
+      fullSongCta: this.props.fullSongCta ?? 'Listen to full song'
+    };
+  }
+}
+</script>
+</body>
+</html>

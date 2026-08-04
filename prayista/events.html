@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/colors.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/typography.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/motion.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/styles.css">
+<script src="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/_ds_bundle.js"></script>
+<meta name="design_doc_mode" content="canvas">
+<style>body{margin:0}
+.pf{width:375px;min-height:812px;border-radius:36px;overflow:hidden;box-shadow:var(--shadow-3);border:1px solid var(--divider);position:relative;display:flex;flex-direction:column;background:var(--color-bg)}
+.lbl{font:600 13px var(--font-body);color:var(--text-tertiary)}
+</style>
+</helmet>
+<div data-theme="{{ theme }}" style="min-height:100vh;background:var(--color-bg);padding:48px;transition:background .3s">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;max-width:1700px;margin:0 auto 40px">
+    <div>
+      <div style="font-family:var(--font-heading);font-weight:800;font-size:28px;color:var(--text-primary)">User App — Events & Livestream</div>
+      <div style="font-family:var(--font-body);font-size:14px;color:var(--text-secondary);margin-top:6px">Events list → detail → live → offline</div>
+    </div>
+    <button onClick="{{ toggleTheme }}" style="display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:var(--radius-pill);border:1px solid var(--glass-border);background:var(--glass-fill);backdrop-filter:blur(var(--blur-glass));cursor:pointer;font-family:var(--font-body);font-weight:700;font-size:13px;color:var(--text-primary)">{{ themeLabel }}</button>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;gap:44px;max-width:1700px;margin:0 auto">
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="lbl">1. Events list</div>
+      <div class="pf">
+        <div style="padding:52px 20px 12px;font-family:var(--font-heading);font-weight:700;font-size:22px;color:var(--text-primary)">Events</div>
+        <div style="display:flex;flex-direction:column;gap:14px;padding:0 20px">
+          <div style="border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--divider);overflow:hidden">
+            <div style="height:110px;background:var(--color-secondary-soft)"></div>
+            <div style="padding:14px"><div style="font-family:var(--font-body);font-size:11px;font-weight:700;color:var(--color-primary)">AUG 3 · 6:00 PM</div><div style="margin-top:4px;font-family:var(--font-heading);font-weight:700;font-size:15px;color:var(--text-primary)">Youth Night</div><div style="margin-top:2px;font-family:var(--font-body);font-size:12px;color:var(--text-secondary)">Grace Community · Main Hall</div></div>
+          </div>
+          <div style="border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--divider);overflow:hidden">
+            <div style="height:110px;background:var(--color-primary-soft)"></div>
+            <div style="padding:14px"><div style="font-family:var(--font-body);font-size:11px;font-weight:700;color:var(--color-primary)">AUG 9 · 7:30 PM</div><div style="margin-top:4px;font-family:var(--font-heading);font-weight:700;font-size:15px;color:var(--text-primary)">Worship Night</div><div style="margin-top:2px;font-family:var(--font-body);font-size:12px;color:var(--text-secondary)">Riverside House</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="lbl">2. Event detail</div>
+      <div class="pf">
+        <div style="height:220px;background:var(--color-secondary-soft)"></div>
+        <div style="padding:20px 24px">
+          <div style="font-family:var(--font-heading);font-weight:700;font-size:21px;color:var(--text-primary)">Youth Night</div>
+          <div style="margin-top:14px;display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;gap:10px;align-items:center;font-family:var(--font-body);font-size:13px;color:var(--text-secondary)"><span>📅</span>Aug 3, 2026 · 6:00 PM</div>
+            <div style="display:flex;gap:10px;align-items:center;font-family:var(--font-body);font-size:13px;color:var(--text-secondary)"><span>📍</span>Grace Community · Main Hall</div>
+          </div>
+          <div style="margin-top:16px;font-family:var(--font-body);font-size:14px;color:var(--text-secondary);line-height:1.6">A night of games, worship, and testimony for teens and young adults.</div>
+        </div>
+        <div style="flex:1"></div>
+        <div style="padding:0 24px 40px"><x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="primary" size="lg" hint-size="100%,56px">＋ Add to calendar</x-import></div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="lbl">3. Livestream (live)</div>
+      <div class="pf" style="background:#0B0B0F">
+        <div style="height:220px;background:#000;position:relative;display:flex;align-items:center;justify-content:center"><span style="color:rgba(255,255,255,0.3);font-family:var(--font-body);font-size:12px">YouTube embed</span>
+          <div style="position:absolute;top:12px;left:12px;background:var(--color-error);color:#fff;padding:5px 10px;border-radius:var(--radius-pill);font-family:var(--font-body);font-size:11px;font-weight:700;display:flex;align-items:center;gap:6px"><div style="width:6px;height:6px;border-radius:50%;background:#fff"></div>LIVE</div>
+        </div>
+        <div style="padding:18px 20px"><div style="font-family:var(--font-heading);font-weight:700;font-size:17px;color:#fff">Sunday Service</div><div style="margin-top:4px;font-family:var(--font-body);font-size:13px;color:rgba(255,255,255,0.6)">Grace Community · 1,204 watching</div></div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="lbl">4. Livestream offline state</div>
+      <div class="pf" style="background:#0B0B0F">
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:32px;text-align:center">
+          <div style="width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;font-size:26px">📺</div>
+          <div style="font-family:var(--font-heading);font-weight:700;font-size:17px;color:#fff">No stream right now</div>
+          <div style="font-family:var(--font-body);font-size:13px;color:rgba(255,255,255,0.55);line-height:1.5">Grace Community's next service starts Sunday at 9:00 AM.</div>
+          <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="secondary" size="md" hint-size="200px,44px">Remind me</x-import>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div data-theme="light" style="padding:0 48px 48px;background:var(--color-bg)">
+  <div style="max-width:1700px;margin:0 auto"><div class="lbl">5. Events list — empty</div>
+    <div class="pf">
+      <div style="padding:52px 20px 0;font-family:var(--font-heading);font-weight:700;font-size:22px;color:var(--text-primary)">Events</div>
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:36px;text-align:center">
+        <div style="width:64px;height:64px;border-radius:50%;background:var(--color-secondary-soft);display:flex;align-items:center;justify-content:center;font-size:26px">📅</div>
+        <div style="font-family:var(--font-heading);font-weight:700;font-size:16px;color:var(--text-primary)">No upcoming events</div>
+        <div style="font-family:var(--font-body);font-size:13px;color:var(--text-secondary);line-height:1.5">Your followed churches haven't posted events yet.</div>
+      </div>
+    </div>
+  </div>
+</div></x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { theme: 'light' };
+  renderVals() {
+    return {
+      theme: this.state.theme,
+      themeLabel: this.state.theme === 'light' ? '☾ View dark' : '☀ View light',
+      toggleTheme: () => this.setState(s => ({ theme: s.theme === 'light' ? 'dark' : 'light' }))
+    };
+  }
+}
+</script>
+</body>
+</html>

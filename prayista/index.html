@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prayista — Design Index</title>
+<style>
+  :root{
+    --bg:#faf6ef; --surface:#ffffff; --border:#e8e0d4;
+    --text:#231418; --text-2:#6b5f5a; --text-3:#a89a92;
+    --accent:#7a1f34; --accent-soft:#f3e0e4;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--text)}
+  header{padding:48px 48px 24px;max-width:1200px;margin:0 auto}
+  h1{font-size:28px;font-weight:800;margin:0}
+  header p{color:var(--text-2);font-size:14px;margin:8px 0 0}
+  main{max-width:1200px;margin:0 auto;padding:0 48px 64px}
+  .group-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--text-3);margin:36px 0 12px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:10px;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+  .card .name{font-weight:700;font-size:15px}
+  .card .flow{font-size:12px;color:var(--text-2);line-height:1.4;min-height:16px}
+  .links{display:flex;gap:8px;margin-top:auto}
+  .btn{flex:1;text-align:center;text-decoration:none;font-size:13px;font-weight:600;padding:8px 10px;border-radius:8px;border:1px solid var(--border);color:var(--text)}
+  .btn.html{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .btn.md{background:var(--accent-soft);color:var(--accent);border-color:var(--accent-soft)}
+  .btn.disabled{opacity:.4;pointer-events:none}
+  .badge{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--text-3);border:1px solid var(--border);border-radius:999px;padding:2px 8px;width:fit-content}
+</style>
+</head>
+<body>
+<header>
+  <h1>Prayista — Screen Index</h1>
+  <p>Every screen file (interactive canvas) paired with its written spec (.md), in one place.</p>
+</header>
+<main>
+
+  <div class="group-title">User App Screens</div>
+  <div class="grid">
+
+    <div class="card">
+      <span class="badge">Screen</span>
+      <div class="name">Home</div>
+      <div class="flow">Home → Notifications list → Notification detail → Search</div>
+      <div class="links">
+        <a class="btn html" href="home.html">Open .html</a>
+        <a class="btn md" href="md-files/01-Home.md">Spec .md</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="badge">Screen</span>
+      <div class="name">Cells</div>
+      <div class="flow">Map → detail → add → my cells → joined</div>
+      <div class="links">
+        <a class="btn html" href="cell.html">Open .html</a>
+        <a class="btn md" href="md-files/02-Cells.md">Spec .md</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="badge">Screen</span>
+      <div class="name">Vale (AI Voice Prayer Assistant)</div>
+      <div class="flow">Idle → listening → thinking → speaking → prayer mode → settings</div>
+      <div class="links">
+        <a class="btn html" href="vale.html">Open .html</a>
+        <a class="btn md" href="md-files/03-Vale.md">Spec .md</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="badge">Screen</span>
+      <div class="name">Profile</div>
+      <div class="flow">Profile → edit → churches → orders → sessions → giving → about</div>
+      <div class="links">
+        <a class="btn html" href="profile.html">Open .html</a>
+        <a class="btn md" href="md-files/04-Profile.md">Spec .md</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="badge">Screen</span>
+      <div class="name">Pray &amp; Testify</div>
+      <div class="flow">Feed → detail → write → success → report</div>
+      <div class="links">
+        <a class="btn html" href="pray.html">Open .html</a>
+        <a class="btn md" href="md-files/05-PrayAndTestify.md">Spec .md</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="badge">Screen</span>
+      <div class="name">Media</div>
+      <div class="flow">Sermons/playlists → player → downloads</div>
+      <div class="links">
+        <a class="btn html" href="media.html">Open .html</a>
+        <a class="btn md" href="md-files/06-Media.md">Spec .md</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="badge">Screen</span>
+      <div class="name">Give Out</div>
+      <div class="flow">Type → church → amount → payment → confirm → badges</div>
+      <div class="links">
+        <a class="btn html" href="giving.html">Open .html</a>
+        <a class="btn md" href="md-files/07-GiveOut.md">Spec .md</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="badge">Screen</span>
+      <div class="name">Book a Session</div>
+      <div class="flow">Browse pastors → book → my sessions → empty</div>
+      <div class="links">
+        <a class="btn html" href="book.html">Open .html</a>
+        <a class="btn md" href="md-files/08-BookASession.md">Spec .md</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="badge">Screen</span>
+      <div class="name">Events &amp; Livestream</div>
+      <div class="flow">List → detail → live → offline</div>
+      <div class="links">
+        <a class="btn html" href="events.html">Open .html</a>
+        <a class="btn md" href="md-files/09-EventsLivestream.md">Spec .md</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="badge">Screen</span>
+      <div class="name">Daily Quotes</div>
+      <div class="flow">List → detail → saved → share card</div>
+      <div class="links">
+        <a class="btn html" href="daily.html">Open .html</a>
+        <a class="btn md" href="md-files/10-DailyQuotes.md">Spec .md</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="badge">Screen</span>
+      <div class="name">Shop</div>
+      <div class="flow">Grid → item → cart → checkout → tracking</div>
+      <div class="links">
+        <a class="btn html" href="shop.html">Open .html</a>
+        <a class="btn md" href="md-files/11-Shop.md">Spec .md</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="badge">Screen</span>
+      <div class="name">Bible (offline)</div>
+      <div class="flow">Books → chapters → reader → bookmarks → search</div>
+      <div class="links">
+        <a class="btn html" href="bible.html">Open .html</a>
+        <a class="btn md" href="md-files/12-Bible.md">Spec .md</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="group-title">Not yet in an .md spec</div>
+  <div class="grid">
+
+    <div class="card">
+      <span class="badge">Screen</span>
+      <div class="name">Auth</div>
+      <div class="flow">No spec drafted yet</div>
+      <div class="links">
+        <a class="btn html" href="auth.html">Open .html</a>
+        <a class="btn md disabled" href="#">Spec .md</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="badge">Reference</span>
+      <div class="name">Design System</div>
+      <div class="flow">Tokens: colors, typography, spacing, elevation, motion</div>
+      <div class="links">
+        <a class="btn html" href="design-system.html">Open .html</a>
+        <a class="btn md disabled" href="#">Spec .md</a>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+</body>
+</html>

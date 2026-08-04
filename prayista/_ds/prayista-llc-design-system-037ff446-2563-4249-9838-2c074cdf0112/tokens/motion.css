@@ -1,0 +1,11 @@
+:root{
+--duration-fast:120ms;/* @kind other */
+--duration-base:200ms;/* @kind other */
+--duration-slow:320ms;/* @kind other */
+--duration-slower:480ms;/* @kind other */
+--ease-standard:cubic-bezier(.4,0,.2,1);/* @kind other */
+--ease-decelerate:cubic-bezier(0,0,.2,1);/* @kind other */
+--ease-accelerate:cubic-bezier(.4,0,1,1);/* @kind other */
+--ease-spring:cubic-bezier(.34,1.56,.64,1);/* @kind other */
+}
+@media (prefers-reduced-motion:reduce){:root{--duration-fast:1ms;--duration-base:1ms;--duration-slow:1ms;--duration-slower:1ms}}

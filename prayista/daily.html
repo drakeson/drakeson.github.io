@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/colors.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/typography.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/motion.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/styles.css">
+<script src="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/_ds_bundle.js"></script>
+<meta name="design_doc_mode" content="canvas">
+<style>body{margin:0}
+.pf{width:375px;min-height:812px;border-radius:36px;overflow:hidden;box-shadow:var(--shadow-3);border:1px solid var(--divider);position:relative;display:flex;flex-direction:column;background:var(--color-bg)}
+.lbl{font:600 13px var(--font-body);color:var(--text-tertiary)}
+</style>
+</helmet>
+<div data-theme="{{ theme }}" style="min-height:100vh;background:var(--color-bg);padding:48px;transition:background .3s">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;max-width:1700px;margin:0 auto 40px">
+    <div>
+      <div style="font-family:var(--font-heading);font-weight:800;font-size:28px;color:var(--text-primary)">User App — Daily Quotes</div>
+      <div style="font-family:var(--font-body);font-size:14px;color:var(--text-secondary);margin-top:6px">Quotes list → detail → saved → share card</div>
+    </div>
+    <button onClick="{{ toggleTheme }}" style="display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:var(--radius-pill);border:1px solid var(--glass-border);background:var(--glass-fill);backdrop-filter:blur(var(--blur-glass));cursor:pointer;font-family:var(--font-body);font-weight:700;font-size:13px;color:var(--text-primary)">{{ themeLabel }}</button>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;gap:44px;max-width:1700px;margin:0 auto">
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="lbl">1. Quotes list / carousel</div>
+      <div class="pf">
+        <div style="padding:52px 20px 12px;font-family:var(--font-heading);font-weight:700;font-size:22px;color:var(--text-primary)">Daily Quotes</div>
+        <div style="display:flex;flex-direction:column;gap:16px;padding:8px 20px">
+          <div style="border-radius:var(--radius-lg);background:linear-gradient(135deg,var(--color-primary-soft),var(--color-secondary-soft));padding:22px;position:relative">
+            <div style="font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--color-primary-strong)">TODAY</div>
+            <div style="margin-top:10px;font-family:var(--font-sacred);font-style:italic;font-size:18px;color:var(--text-primary);line-height:1.5">"Be still, and know that I am God."</div>
+            <div style="margin-top:10px;font-family:var(--font-body);font-size:12px;font-weight:600;color:var(--text-secondary)">Psalm 46:10</div>
+          </div>
+          <div style="border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--divider);padding:20px">
+            <div style="font-family:var(--font-body);font-size:11px;font-weight:600;color:var(--text-tertiary)">YESTERDAY</div>
+            <div style="margin-top:8px;font-family:var(--font-sacred);font-style:italic;font-size:16px;color:var(--text-primary);line-height:1.5">"The Lord is my shepherd; I shall not want."</div>
+            <div style="margin-top:8px;font-family:var(--font-body);font-size:12px;font-weight:600;color:var(--text-tertiary)">Psalm 23:1</div>
+          </div>
+          <div style="border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--divider);padding:20px;opacity:.75">
+            <div style="font-family:var(--font-body);font-size:11px;font-weight:600;color:var(--text-tertiary)">2 DAYS AGO</div>
+            <div style="margin-top:8px;font-family:var(--font-sacred);font-style:italic;font-size:16px;color:var(--text-primary);line-height:1.5">"I can do all things through Christ."</div>
+            <div style="margin-top:8px;font-family:var(--font-body);font-size:12px;font-weight:600;color:var(--text-tertiary)">Philippians 4:13</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="lbl">2. Quote detail</div>
+      <div class="pf">
+        <div style="padding:52px 20px 0;display:flex;align-items:center;justify-content:space-between"><span style="font-family:var(--font-body);font-size:15px;color:var(--color-primary);font-weight:600">‹ Back</span><span style="font-size:16px">↗</span></div>
+        <div style="padding:24px 24px 0;text-align:center">
+          <div style="font-family:var(--font-sacred);font-style:italic;font-size:22px;color:var(--text-primary);line-height:1.5">"Be still, and know that I am God."</div>
+          <div style="margin-top:12px;font-family:var(--font-body);font-size:13px;font-weight:700;color:var(--color-primary)">Psalm 46:10</div>
+        </div>
+        <div style="padding:28px 24px 0;display:flex;flex-direction:column;gap:18px">
+          <div><div style="font-family:var(--font-heading);font-weight:700;font-size:14px;color:var(--text-primary);margin-bottom:6px">Application in life</div><div style="font-family:var(--font-body);font-size:14px;color:var(--text-secondary);line-height:1.6">In the noise of daily life, pause and trust that God is in control — even when circumstances feel chaotic.</div></div>
+          <div><div style="font-family:var(--font-heading);font-weight:700;font-size:14px;color:var(--text-primary);margin-bottom:6px">Life lesson</div><div style="font-family:var(--font-body);font-size:14px;color:var(--text-secondary);line-height:1.6">Stillness isn't passivity — it's an act of faith that God is already at work.</div></div>
+        </div>
+        <div style="flex:1"></div>
+        <div style="padding:20px 24px 40px;display:flex;gap:12px">
+          <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="secondary" size="lg" hint-size="auto,52px" style="flex:1">♡ Save</x-import>
+          <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="primary" size="lg" hint-size="auto,52px" style="flex:1">Share</x-import>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="lbl">3. Saved Quotes</div>
+      <div class="pf">
+        <div style="padding:52px 20px 16px;font-family:var(--font-heading);font-weight:700;font-size:20px;color:var(--text-primary)">Saved Quotes</div>
+        <div style="display:flex;flex-direction:column;gap:12px;padding:0 20px">
+          <div style="border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--divider);padding:16px;display:flex;justify-content:space-between;align-items:flex-start"><div><div style="font-family:var(--font-sacred);font-style:italic;font-size:14px;color:var(--text-primary);line-height:1.5">"Be still, and know that I am God."</div><div style="margin-top:6px;font-family:var(--font-body);font-size:11px;font-weight:700;color:var(--text-tertiary)">Psalm 46:10</div></div><span style="color:var(--color-primary)">♥</span></div>
+          <div style="border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--divider);padding:16px;display:flex;justify-content:space-between;align-items:flex-start"><div><div style="font-family:var(--font-sacred);font-style:italic;font-size:14px;color:var(--text-primary);line-height:1.5">"I can do all things through Christ."</div><div style="margin-top:6px;font-family:var(--font-body);font-size:11px;font-weight:700;color:var(--text-tertiary)">Philippians 4:13</div></div><span style="color:var(--color-primary)">♥</span></div>
+        </div>
+        <div style="flex:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;padding:40px;opacity:.5"><div style="font-family:var(--font-body);font-size:12px;color:var(--text-tertiary)">Save quotes to see them here</div></div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="lbl">4. Quote of the day — share card</div>
+      <div class="pf">
+        <div style="flex:1;background:linear-gradient(160deg,var(--color-primary),var(--color-primary-strong) 80%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px;text-align:center;gap:20px">
+          <div style="font-family:var(--font-sacred);font-style:italic;font-size:26px;color:var(--text-on-primary);line-height:1.5">"Be still, and know that I am God."</div>
+          <div style="font-family:var(--font-body);font-size:14px;font-weight:700;color:rgba(255,246,242,0.85)">Psalm 46:10</div>
+          <div style="margin-top:24px;font-family:var(--font-heading);font-weight:700;font-size:13px;color:rgba(255,246,242,0.7);letter-spacing:.05em">PRAYISTA</div>
+        </div>
+        <div style="padding:20px 24px 40px;display:flex;gap:12px;background:var(--color-bg)">
+          <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="secondary" size="lg" hint-size="auto,52px" style="flex:1">Save image</x-import>
+          <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="primary" size="lg" hint-size="auto,52px" style="flex:1">Share</x-import>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="max-width:1700px;margin:56px auto 0">
+    <div style="font-family:var(--font-heading);font-weight:700;font-size:18px;color:var(--text-primary);margin-bottom:16px">Dark mode spot-check</div>
+    <div style="display:flex;flex-wrap:wrap;gap:44px">
+      <div data-theme="dark" style="display:flex;flex-direction:column;gap:12px">
+        <div class="lbl">2. Quote detail — dark</div>
+        <div class="pf">
+          <div style="padding:52px 20px 0;display:flex;align-items:center;justify-content:space-between"><span style="font-family:var(--font-body);font-size:15px;color:var(--color-primary);font-weight:600">‹ Back</span><span style="font-size:16px">↗</span></div>
+          <div style="padding:24px 24px 0;text-align:center">
+            <div style="font-family:var(--font-sacred);font-style:italic;font-size:22px;color:var(--text-primary);line-height:1.5">"Be still, and know that I am God."</div>
+            <div style="margin-top:12px;font-family:var(--font-body);font-size:13px;font-weight:700;color:var(--color-primary)">Psalm 46:10</div>
+          </div>
+          <div style="padding:28px 24px 0;display:flex;flex-direction:column;gap:18px">
+            <div><div style="font-family:var(--font-heading);font-weight:700;font-size:14px;color:var(--text-primary);margin-bottom:6px">Application in life</div><div style="font-family:var(--font-body);font-size:14px;color:var(--text-secondary);line-height:1.6">In the noise of daily life, pause and trust that God is in control.</div></div>
+          </div>
+          <div style="flex:1"></div>
+          <div style="padding:20px 24px 40px;display:flex;gap:12px">
+            <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="secondary" size="lg" hint-size="auto,52px" style="flex:1">♡ Save</x-import>
+            <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="primary" size="lg" hint-size="auto,52px" style="flex:1">Share</x-import>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { theme: 'light' };
+  renderVals() {
+    return {
+      theme: this.state.theme,
+      themeLabel: this.state.theme === 'light' ? '☾ View dark' : '☀ View light',
+      toggleTheme: () => this.setState(s => ({ theme: s.theme === 'light' ? 'dark' : 'light' }))
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/colors.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/typography.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/motion.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/styles.css">
+<script src="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/_ds_bundle.js"></script>
+<meta name="design_doc_mode" content="canvas">
+<style>body{margin:0}.pf{width:375px;min-height:812px;border-radius:36px;overflow:hidden;box-shadow:var(--shadow-3);border:1px solid var(--divider);position:relative;display:flex;flex-direction:column;background:var(--color-bg)}.pfn{width:375px;min-height:812px;border-radius:36px;overflow:hidden;box-shadow:var(--shadow-3);border:1px solid var(--divider);position:relative;display:flex;flex-direction:column;background:#141018}.lbl{font:600 13px var(--font-body);color:var(--text-tertiary)}.empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:36px;text-align:center}</style>
+</helmet>
+<div data-theme="{{ theme }}" style="min-height:100vh;background:var(--color-bg);padding:48px;transition:background .3s">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;max-width:1900px;margin:0 auto 40px">
+    <div><div style="font-family:var(--font-heading);font-weight:800;font-size:28px;color:var(--text-primary)">User App — Bible</div><div style="font-family:var(--font-body);font-size:14px;color:var(--text-secondary);margin-top:6px">Offline Bible home → books → chapters → reader → bookmarks → search → download</div></div>
+    <button onClick="{{ toggleTheme }}" style="display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:var(--radius-pill);border:1px solid var(--glass-border);background:var(--glass-fill);backdrop-filter:blur(var(--blur-glass));cursor:pointer;font-family:var(--font-body);font-weight:700;font-size:13px;color:var(--text-primary)">{{ themeLabel }}</button>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:44px;max-width:1900px;margin:0 auto">
+
+    <div style="display:flex;flex-direction:column;gap:12px"><div class="lbl">1. Offline Bible home</div><div class="pf">
+      <div style="padding:52px 20px 12px;display:flex;justify-content:space-between;align-items:center"><div style="font-family:var(--font-heading);font-weight:700;font-size:22px;color:var(--text-primary)">Bible</div><div style="padding:5px 10px;border-radius:var(--radius-pill);background:var(--color-success-soft);color:var(--color-success);font-family:var(--font-body);font-size:11px;font-weight:700;display:flex;align-items:center;gap:5px"><sc-if value="{{ worksOffline }}">📶 Always available offline</sc-if></div></div>
+      <div style="padding:8px 20px 0">
+        <div style="border-radius:var(--radius-lg);background:linear-gradient(135deg,var(--color-primary-soft),var(--color-secondary-soft));padding:18px">
+          <div style="font-family:var(--font-body);font-size:11px;font-weight:700;color:var(--color-primary-strong)">CONTINUE READING</div>
+          <div style="margin-top:6px;font-family:var(--font-heading);font-weight:700;font-size:17px;color:var(--text-primary)">Psalms 46</div>
+          <div style="margin-top:10px;height:4px;border-radius:2px;background:rgba(0,0,0,0.1)"><div style="width:40%;height:100%;border-radius:2px;background:var(--color-primary)"></div></div>
+        </div>
+      </div>
+      <div style="padding:20px 20px 0;display:flex;justify-content:space-between;align-items:center"><div style="font-family:var(--font-heading);font-weight:700;font-size:14px;color:var(--text-primary)">Books</div><sc-if value="{{ showBooksLink }}"><div style="font-family:var(--font-body);font-size:12px;font-weight:700;color:var(--color-primary)">See all ›</div></sc-if></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px 20px 0">
+        <div style="border-radius:var(--radius-md);background:var(--color-surface);border:1px solid var(--divider);padding:14px;font-family:var(--font-body);font-size:13px;font-weight:600;color:var(--text-primary)">Genesis</div>
+        <div style="border-radius:var(--radius-md);background:var(--color-surface);border:2px solid var(--color-primary);padding:14px;font-family:var(--font-body);font-size:13px;font-weight:600;color:var(--text-primary);position:relative">Psalms<span style="position:absolute;right:10px;top:14px;color:var(--color-primary);font-size:12px">›</span></div>
+        <div style="border-radius:var(--radius-md);background:var(--color-surface);border:1px solid var(--divider);padding:14px;font-family:var(--font-body);font-size:13px;font-weight:600;color:var(--text-primary)">Matthew</div>
+        <div style="border-radius:var(--radius-md);background:var(--color-surface);border:1px solid var(--divider);padding:14px;font-family:var(--font-body);font-size:13px;font-weight:600;color:var(--text-primary)">John</div>
+      </div>
+      <div style="padding:8px 20px 0;font-family:var(--font-body);font-size:11px;color:var(--text-tertiary)">Tap any book above to open its chapters (→ screen 2)</div>
+      <div style="flex:1"></div>
+      <div style="padding:14px 12px 22px;border-radius:var(--radius-nav) var(--radius-nav) 0 0;background:var(--glass-fill-strong);backdrop-filter:blur(var(--blur-glass-strong));border-top:1px solid var(--glass-border);display:flex;justify-content:space-around;color:var(--text-tertiary);font-size:14px"><span>⌂</span><span>▶</span><span>🙏</span><span style="color:var(--color-primary)">📖</span><span>☺</span></div>
+    </div></div>
+
+    <div style="display:flex;flex-direction:column;gap:12px"><div class="lbl">2. Book selector</div><div class="pf">
+      <div style="padding:52px 20px 0;font-family:var(--font-heading);font-weight:700;font-size:20px;color:var(--text-primary)">Books</div>
+      <div style="display:flex;gap:8px;padding:16px 20px 0"><div style="padding:8px 16px;border-radius:var(--radius-pill);background:var(--color-primary);color:#fff;font-family:var(--font-body);font-size:12px;font-weight:700">Old Testament</div><div style="padding:8px 16px;border-radius:var(--radius-pill);background:var(--glass-fill);border:1px solid var(--glass-border);font-family:var(--font-body);font-size:12px;font-weight:700;color:var(--text-primary)">New Testament</div></div>
+      <div style="display:flex;flex-direction:column;padding:12px 20px 0">
+        <div style="padding:12px 0;border-bottom:1px solid var(--divider);font-family:var(--font-body);font-size:15px;font-weight:600;color:var(--text-primary)">Genesis</div>
+        <div style="padding:12px 0;border-bottom:1px solid var(--divider);font-family:var(--font-body);font-size:15px;font-weight:600;color:var(--text-primary)">Exodus</div>
+        <div style="padding:12px 0;border-bottom:1px solid var(--divider);font-family:var(--font-body);font-size:15px;font-weight:700;color:var(--color-primary)">Psalms</div>
+        <div style="padding:12px 0;font-family:var(--font-body);font-size:15px;font-weight:600;color:var(--text-primary)">Proverbs</div>
+      </div>
+    </div></div>
+
+    <div style="display:flex;flex-direction:column;gap:12px"><div class="lbl">3. Chapter selector</div><div class="pf">
+      <div style="padding:52px 20px 0;font-family:var(--font-heading);font-weight:700;font-size:20px;color:var(--text-primary)">Psalms — chapters</div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;padding:20px 20px 0">
+        <div style="aspect-ratio:1;border-radius:var(--radius-md);background:var(--color-surface);border:1px solid var(--divider);display:flex;align-items:center;justify-content:center;font-family:var(--font-body);font-size:14px;color:var(--text-primary)">44</div>
+        <div style="aspect-ratio:1;border-radius:var(--radius-md);background:var(--color-surface);border:1px solid var(--divider);display:flex;align-items:center;justify-content:center;font-family:var(--font-body);font-size:14px;color:var(--text-primary)">45</div>
+        <div style="aspect-ratio:1;border-radius:var(--radius-md);background:var(--color-primary);display:flex;align-items:center;justify-content:center;font-family:var(--font-body);font-size:14px;font-weight:700;color:#fff">46</div>
+        <div style="aspect-ratio:1;border-radius:var(--radius-md);background:var(--color-surface);border:1px solid var(--divider);display:flex;align-items:center;justify-content:center;font-family:var(--font-body);font-size:14px;color:var(--text-primary)">47</div>
+        <div style="aspect-ratio:1;border-radius:var(--radius-md);background:var(--color-surface);border:1px solid var(--divider);display:flex;align-items:center;justify-content:center;font-family:var(--font-body);font-size:14px;color:var(--text-primary)">48</div>
+      </div>
+    </div></div>
+
+    <div style="display:flex;flex-direction:column;gap:12px"><div class="lbl">4. Reader (adjustable text)</div><div class="pf">
+      <div style="padding:52px 20px 0;display:flex;justify-content:space-between;align-items:center"><span style="font-family:var(--font-body);font-size:15px;color:var(--color-primary);font-weight:600">‹ Psalms 46</span><div style="display:flex;gap:12px;font-size:15px;color:var(--text-secondary)"><span>Aa</span><span>☾</span></div></div>
+      <div style="padding:24px 24px 0;flex:1">
+        <div style="font-family:var(--font-sacred);font-size:19px;line-height:1.9;color:var(--text-primary)"><sup style="font-size:11px;color:var(--text-tertiary)">1</sup> God is our refuge and strength, a very present help in trouble. <sup style="font-size:11px;color:var(--text-tertiary)">2</sup> Therefore we will not fear, though the earth gives way… <span style="background:var(--color-secondary-soft)"><sup style="font-size:11px;color:var(--text-tertiary)">10</sup> Be still, and know that I am God.</span></div>
+      </div>
+    </div></div>
+
+    <div style="display:flex;flex-direction:column;gap:12px"><div class="lbl">5. Verse actions</div><div class="pf">
+      <div style="padding:52px 24px 0;font-family:var(--font-sacred);font-size:18px;line-height:1.8;color:var(--text-primary)"><span style="background:var(--color-primary-soft);border-radius:4px">Be still, and know that I am God.</span></div>
+      <div style="flex:1"></div>
+      <div style="margin:0 20px 40px;border-radius:var(--radius-lg);background:var(--glass-fill-strong);backdrop-filter:blur(var(--blur-glass-strong));border:1px solid var(--glass-border);box-shadow:var(--shadow-3);display:flex;justify-content:space-around;padding:16px">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;font-family:var(--font-body);font-size:11px;color:var(--text-primary)"><span style="font-size:18px">🖍</span>Highlight</div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;font-family:var(--font-body);font-size:11px;color:var(--text-primary)"><span style="font-size:18px">🔖</span>Bookmark</div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;font-family:var(--font-body);font-size:11px;color:var(--text-primary)"><span style="font-size:18px">↗</span>Share</div>
+      </div>
+    </div></div>
+
+    <div style="display:flex;flex-direction:column;gap:12px"><div class="lbl">6. Bookmarks</div><div class="pf">
+      <div style="padding:52px 20px 16px;font-family:var(--font-heading);font-weight:700;font-size:20px;color:var(--text-primary)">Bookmarks</div>
+      <div style="display:flex;flex-direction:column;gap:10px;padding:0 20px">
+        <div style="border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--divider);padding:14px"><div style="font-family:var(--font-body);font-size:11px;font-weight:700;color:var(--color-primary)">PSALMS 46:10</div><div style="margin-top:4px;font-family:var(--font-sacred);font-style:italic;font-size:14px;color:var(--text-primary)">"Be still, and know that I am God."</div></div>
+        <div style="border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--divider);padding:14px"><div style="font-family:var(--font-body);font-size:11px;font-weight:700;color:var(--color-primary)">PHILIPPIANS 4:13</div><div style="margin-top:4px;font-family:var(--font-sacred);font-style:italic;font-size:14px;color:var(--text-primary)">"I can do all things through Christ."</div></div>
+      </div>
+    </div></div>
+
+    <div style="display:flex;flex-direction:column;gap:12px"><div class="lbl">6b. Bookmarks — empty</div><div class="pf">
+      <div style="padding:52px 20px 0;font-family:var(--font-heading);font-weight:700;font-size:20px;color:var(--text-primary)">Bookmarks</div>
+      <div class="empty"><div style="width:64px;height:64px;border-radius:50%;background:var(--color-primary-soft);display:flex;align-items:center;justify-content:center;font-size:26px">🔖</div><div style="font-family:var(--font-heading);font-weight:700;font-size:16px;color:var(--text-primary)">No bookmarks yet</div><div style="font-family:var(--font-body);font-size:13px;color:var(--text-secondary);line-height:1.5">Tap the bookmark icon on any verse to save it here.</div></div>
+    </div></div>
+
+    <div style="display:flex;flex-direction:column;gap:12px"><div class="lbl">7. Search (results)</div><div class="pf">
+      <div style="padding:52px 20px 0"><x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Input" placeholder="Search the Bible" value="peace" hint-size="100%,56px"></x-import></div>
+      <div style="padding:16px 20px 0;font-family:var(--font-body);font-size:12px;font-weight:700;color:var(--text-tertiary)">14 RESULTS FOR "PEACE"</div>
+      <div style="display:flex;flex-direction:column;gap:2px;padding:8px 20px 0">
+        <div style="padding:12px 0;border-bottom:1px solid var(--divider)"><div style="font-family:var(--font-body);font-size:11px;font-weight:700;color:var(--color-primary)">JOHN 14:27</div><div style="margin-top:4px;font-family:var(--font-body);font-size:13px;color:var(--text-secondary);line-height:1.5">Peace I leave with you; my peace I give to you…</div></div>
+        <div style="padding:12px 0"><div style="font-family:var(--font-body);font-size:11px;font-weight:700;color:var(--color-primary)">PHILIPPIANS 4:7</div><div style="margin-top:4px;font-family:var(--font-body);font-size:13px;color:var(--text-secondary);line-height:1.5">And the peace of God, which surpasses all understanding…</div></div>
+      </div>
+    </div></div>
+
+    <div style="display:flex;flex-direction:column;gap:12px"><div class="lbl">7b. Search — empty (no results)</div><div class="pf">
+      <div style="padding:52px 20px 0"><x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Input" placeholder="Search the Bible" value="xyzzy" hint-size="100%,56px"></x-import></div>
+      <div class="empty"><div style="width:64px;height:64px;border-radius:50%;background:var(--color-surface);border:1px solid var(--divider);display:flex;align-items:center;justify-content:center;font-size:26px">🔍</div><div style="font-family:var(--font-heading);font-weight:700;font-size:16px;color:var(--text-primary)">No matches found</div><div style="font-family:var(--font-body);font-size:13px;color:var(--text-secondary);line-height:1.5">Try a different word or check your spelling.</div></div>
+    </div></div>
+
+    <div style="display:flex;flex-direction:column;gap:12px"><div class="lbl">8. Offline indicator</div><div class="pfn">
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:36px;text-align:center">
+        <div style="width:76px;height:76px;border-radius:50%;background:var(--color-success-soft);display:flex;align-items:center;justify-content:center;color:var(--color-success);font-size:30px">✓</div>
+        <div style="font-family:var(--font-heading);font-weight:700;font-size:19px;color:#fff">Full Bible built in</div>
+        <div style="font-family:var(--font-body);font-size:14px;color:rgba(255,255,255,0.6);line-height:1.5">The complete text ships with Prayista — no download needed, even with no connection.</div>
+        <div style="margin-top:4px;padding:6px 12px;border-radius:var(--radius-pill);background:rgba(255,161,66,0.15);color:var(--color-warning);font-family:var(--font-body);font-size:11px;font-weight:700">⚠ You're offline right now — reading works as normal</div>
+      </div>
+    </div></div>
+
+    <div style="display:flex;flex-direction:column;gap:12px"><div class="lbl">8b. Text update available</div><div class="pfn">
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:36px;text-align:center">
+        <div style="width:56px;height:56px;border-radius:50%;border:4px solid rgba(255,255,255,0.15);border-top-color:var(--color-primary)"></div>
+        <div style="font-family:var(--font-heading);font-weight:700;font-size:17px;color:#fff">Updating translation data… 64%</div>
+        <div style="width:200px;height:6px;border-radius:3px;background:rgba(255,255,255,0.15)"><div style="width:64%;height:100%;border-radius:3px;background:var(--color-primary)"></div></div>
+      </div>
+    </div></div>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;worksOffline&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Offline Bible home&quot;},&quot;showBooksLink&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Offline Bible home&quot;}}">
+class Component extends DCLogic {
+  state = { theme: 'light' };
+  renderVals() {
+    return {
+      theme: this.state.theme, themeLabel: this.state.theme === 'light' ? '☾ View dark' : '☀ View light',
+      toggleTheme: () => this.setState(s => ({ theme: s.theme === 'light' ? 'dark' : 'light' })),
+      worksOffline: this.props.worksOffline ?? true,
+      showBooksLink: this.props.showBooksLink ?? true
+    };
+  }
+}
+</script>
+</body>
+</html>

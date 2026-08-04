@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/colors.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/typography.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/motion.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/styles.css">
+<script src="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/_ds_bundle.js"></script>
+<meta name="design_doc_mode" content="canvas">
+<style>body{margin:0}.pf{width:375px;min-height:812px;border-radius:36px;overflow:hidden;box-shadow:var(--shadow-3);border:1px solid var(--divider);position:relative;display:flex;flex-direction:column;background:var(--color-bg)}.lbl{font:600 13px var(--font-body);color:var(--text-tertiary)}.dcell{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-body);font-size:13px;color:var(--text-primary)}</style>
+</helmet>
+<div data-theme="{{ theme }}" style="min-height:100vh;background:var(--color-bg);padding:48px;transition:background .3s">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;max-width:1900px;margin:0 auto 40px">
+    <div><div style="font-family:var(--font-heading);font-weight:800;font-size:28px;color:var(--text-primary)">User App — Book a Session</div><div style="font-family:var(--font-body);font-size:14px;color:var(--text-secondary);margin-top:6px">Browse pastors → book → my sessions → empty</div></div>
+    <button onClick="{{ toggleTheme }}" style="display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:var(--radius-pill);border:1px solid var(--glass-border);background:var(--glass-fill);backdrop-filter:blur(var(--blur-glass));cursor:pointer;font-family:var(--font-body);font-weight:700;font-size:13px;color:var(--text-primary)">{{ themeLabel }}</button>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:44px;max-width:1900px;margin:0 auto">
+
+    <div style="display:flex;flex-direction:column;gap:12px"><div class="lbl">1. Browse pastors</div><div class="pf">
+      <div style="padding:52px 20px 16px;font-family:var(--font-heading);font-weight:700;font-size:22px;color:var(--text-primary)">Book a Session</div>
+      <div style="display:flex;flex-direction:column;gap:12px;padding:0 20px">
+        <div style="display:flex;gap:12px;align-items:center;padding:12px;border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--divider)"><x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Avatar" initials="PL" size="52" hint-size="52px,52px"></x-import><div style="flex:1"><div style="font-family:var(--font-heading);font-weight:700;font-size:14px;color:var(--text-primary)">Pastor Lee</div><div style="font-family:var(--font-body);font-size:12px;color:var(--text-secondary)">Grace Community</div><div style="margin-top:4px;display:flex;gap:6px"><x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Chip">Grief</x-import><x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Chip">Marriage</x-import></div></div><div style="font-family:var(--font-heading);font-weight:700;font-size:13px;color:var(--text-primary)">$25</div></div>
+        <div style="display:flex;gap:12px;align-items:center;padding:12px;border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--divider)"><x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Avatar" initials="PA" size="52" hint-size="52px,52px"></x-import><div style="flex:1"><div style="font-family:var(--font-heading);font-weight:700;font-size:14px;color:var(--text-primary)">Pastor Amara</div><div style="font-family:var(--font-body);font-size:12px;color:var(--text-secondary)">Riverside House</div><div style="margin-top:4px;display:flex;gap:6px"><x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Chip">Career</x-import></div></div><div style="font-family:var(--font-heading);font-weight:700;font-size:13px;color:var(--text-primary)">$30</div></div>
+      </div>
+    </div></div>
+
+    <div style="display:flex;flex-direction:column;gap:12px"><div class="lbl">2. Pastor detail (bio, availability)</div><div class="pf">
+      <div style="padding:52px 20px 0;display:flex;flex-direction:column;align-items:center;gap:8px"><x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Avatar" initials="PL" size="80" hint-size="80px,80px"></x-import><div style="font-family:var(--font-heading);font-weight:700;font-size:18px;color:var(--text-primary)">Pastor Lee</div><div style="font-family:var(--font-body);font-size:12px;color:var(--text-secondary)">Grace Community</div></div>
+      <div style="padding:16px 24px 0;font-family:var(--font-body);font-size:14px;color:var(--text-secondary);line-height:1.6">15 years pastoring, focused on grief counseling and marriage restoration.</div>
+      <div style="padding:14px 24px 0;font-family:var(--font-heading);font-weight:700;font-size:13px;color:var(--text-primary)">Available this week</div>
+      <div style="display:flex;gap:8px;padding:10px 24px 0"><div style="padding:8px 14px;border-radius:var(--radius-pill);background:var(--color-primary);color:#fff;font-family:var(--font-body);font-size:12px;font-weight:700">Wed</div><div style="padding:8px 14px;border-radius:var(--radius-pill);background:var(--glass-fill);border:1px solid var(--glass-border);font-family:var(--font-body);font-size:12px;font-weight:700;color:var(--text-primary)">Thu</div><div style="padding:8px 14px;border-radius:var(--radius-pill);background:var(--glass-fill);border:1px solid var(--glass-border);font-family:var(--font-body);font-size:12px;font-weight:700;color:var(--text-primary)">Fri</div></div>
+      <div style="flex:1"></div>
+      <div style="padding:0 24px 40px"><x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="primary" size="lg" hint-size="100%,56px">Book · $25</x-import></div>
+    </div></div>
+
+    <div style="display:flex;flex-direction:column;gap:12px"><div class="lbl">3. Select date & time slot</div><div class="pf">
+      <div style="padding:52px 20px 0;font-family:var(--font-heading);font-weight:700;font-size:18px;color:var(--text-primary)">Select date & time</div>
+      <div style="display:flex;gap:8px;padding:16px 20px 0">
+        <div class="dcell" style="background:var(--color-primary);color:#fff;font-weight:700">21</div><div class="dcell">22</div><div class="dcell" style="border:2px solid var(--color-primary);font-weight:700">23</div><div class="dcell">24</div><div class="dcell">25</div>
+      </div>
+      <div style="padding:20px 20px 0;font-family:var(--font-heading);font-weight:700;font-size:13px;color:var(--text-primary)">Available times</div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;padding:10px 20px 0">
+        <div style="padding:10px 16px;border-radius:var(--radius-md);border:1px solid var(--divider);font-family:var(--font-body);font-size:13px;color:var(--text-primary)">9:00 AM</div>
+        <div style="padding:10px 16px;border-radius:var(--radius-md);background:var(--color-primary);color:#fff;font-family:var(--font-body);font-size:13px;font-weight:700">2:00 PM</div>
+        <div style="padding:10px 16px;border-radius:var(--radius-md);border:1px solid var(--divider);font-family:var(--font-body);font-size:13px;color:var(--text-primary)">4:30 PM</div>
+      </div>
+      <div style="flex:1"></div>
+      <div style="padding:0 20px 40px"><x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="primary" size="lg" hint-size="100%,56px">Continue</x-import></div>
+    </div></div>
+
+    <div style="display:flex;flex-direction:column;gap:12px"><div class="lbl">4. Session type / topic & review & fee</div><div class="pf">
+      <div style="padding:52px 20px 0;font-family:var(--font-heading);font-weight:700;font-size:18px;color:var(--text-primary)">Session topic</div>
+      <div style="padding:16px 20px 0"><x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Input" placeholder="e.g. Marriage counseling" hint-size="100%,72px"></x-import></div>
+      <div style="margin:20px 20px 0;border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--divider);padding:16px;display:flex;flex-direction:column;gap:8px">
+        <div style="display:flex;justify-content:space-between;font-family:var(--font-body);font-size:13px"><span style="color:var(--text-secondary)">Pastor Lee</span><span style="color:var(--text-primary);font-weight:600">Wed, Jul 23 · 2:00 PM</span></div>
+        <div style="border-top:1px solid var(--divider);margin-top:4px;padding-top:8px;display:flex;justify-content:space-between"><span style="font-family:var(--font-heading);font-weight:700;color:var(--text-primary)">Fee</span><span style="font-family:var(--font-heading);font-weight:800;color:var(--color-primary)">$25.00</span></div>
+      </div>
+      <div style="flex:1"></div>
+      <div style="padding:0 20px 40px"><x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="primary" size="lg" hint-size="100%,56px">Continue to payment</x-import></div>
+    </div></div>
+
+    <div style="display:flex;flex-direction:column;gap:12px"><div class="lbl">5. Booking confirmation</div><div class="pf">
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:36px;text-align:center">
+        <div style="width:76px;height:76px;border-radius:50%;background:var(--color-success-soft);display:flex;align-items:center;justify-content:center;color:var(--color-success);font-size:30px">✓</div>
+        <div style="font-family:var(--font-heading);font-weight:700;font-size:19px;color:var(--text-primary)">Session booked</div>
+        <div style="font-family:var(--font-body);font-size:13px;color:var(--text-secondary)">Pastor Lee · Wed, Jul 23 · 2:00 PM</div>
+        <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="primary" size="lg" hint-size="200px,52px">View my sessions</x-import>
+      </div>
+    </div></div>
+
+    <div style="display:flex;flex-direction:column;gap:12px"><div class="lbl">6. My Sessions (upcoming | past)</div><div class="pf">
+      <div style="padding:52px 20px 12px;font-family:var(--font-heading);font-weight:700;font-size:20px;color:var(--text-primary)">My Sessions</div>
+      <div style="display:flex;gap:8px;padding:0 20px 14px"><div style="padding:8px 16px;border-radius:var(--radius-pill);background:var(--color-primary);color:#fff;font-family:var(--font-body);font-size:12px;font-weight:700">Upcoming</div><div style="padding:8px 16px;border-radius:var(--radius-pill);background:var(--glass-fill);border:1px solid var(--glass-border);font-family:var(--font-body);font-size:12px;font-weight:700;color:var(--text-primary)">Past</div></div>
+      <div style="display:flex;flex-direction:column;gap:10px;padding:0 20px">
+        <div style="border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--divider);padding:14px"><div style="font-family:var(--font-heading);font-weight:700;font-size:14px;color:var(--text-primary)">Pastor Lee</div><div style="margin-top:4px;font-family:var(--font-body);font-size:12px;color:var(--text-secondary)">Wed, Jul 23 · 2:00 PM · Video call</div></div>
+      </div>
+    </div></div>
+
+    <div style="display:flex;flex-direction:column;gap:12px"><div class="lbl">7. Empty state (no sessions)</div><div class="pf">
+      <div style="padding:52px 20px 12px;font-family:var(--font-heading);font-weight:700;font-size:20px;color:var(--text-primary)">My Sessions</div>
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:36px;text-align:center">
+        <div style="width:64px;height:64px;border-radius:50%;background:var(--color-primary-soft);display:flex;align-items:center;justify-content:center;font-size:26px">📅</div>
+        <div style="font-family:var(--font-heading);font-weight:700;font-size:16px;color:var(--text-primary)">No sessions yet</div>
+        <div style="font-family:var(--font-body);font-size:13px;color:var(--text-secondary);line-height:1.5">Book a prayer session with a pastor from your followed churches.</div>
+        <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="primary" size="md" hint-size="200px,44px">Browse pastors</x-import>
+      </div>
+    </div></div>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { theme: 'light' };
+  renderVals() {
+    return { theme: this.state.theme, themeLabel: this.state.theme === 'light' ? '☾ View dark' : '☀ View light', toggleTheme: () => this.setState(s => ({ theme: s.theme === 'light' ? 'dark' : 'light' })) };
+  }
+}
+</script>
+</body>
+</html>

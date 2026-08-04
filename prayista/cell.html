@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/colors.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/typography.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/tokens/motion.css">
+<link rel="stylesheet" href="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/styles.css">
+<script src="_ds/prayista-llc-design-system-037ff446-2563-4249-9838-2c074cdf0112/_ds_bundle.js"></script>
+<meta name="design_doc_mode" content="canvas">
+<style>body{margin:0}.pf{width:375px;min-height:812px;border-radius:36px;overflow:hidden;box-shadow:var(--shadow-3);border:1px solid var(--divider);position:relative;display:flex;flex-direction:column;background:var(--color-bg)}.lbl{font:600 13px var(--font-body);color:var(--text-tertiary)}</style>
+</helmet>
+<div data-theme="{{ theme }}" style="min-height:100vh;background:var(--color-bg);padding:48px;transition:background .3s">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;max-width:1700px;margin:0 auto 40px">
+    <div><div style="font-family:var(--font-heading);font-weight:800;font-size:28px;color:var(--text-primary)">User App — Cells</div><div style="font-family:var(--font-body);font-size:14px;color:var(--text-secondary);margin-top:6px">Small groups: list → detail → add → my cells → joined</div></div>
+    <button onClick="{{ toggleTheme }}" style="display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:var(--radius-pill);border:1px solid var(--glass-border);background:var(--glass-fill);backdrop-filter:blur(var(--blur-glass));cursor:pointer;font-family:var(--font-body);font-weight:700;font-size:13px;color:var(--text-primary)">{{ themeLabel }}</button>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:44px;max-width:1700px;margin:0 auto">
+
+    <div style="display:flex;flex-direction:column;gap:12px"><div class="lbl">1. Cells map</div><div class="pf">
+      <div style="flex:1;position:relative;overflow:hidden;background:{{ mapBg }}">
+        <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,var(--divider) 0,var(--divider) 1px,transparent 1px,transparent 64px),repeating-linear-gradient(90deg,var(--divider) 0,var(--divider) 1px,transparent 1px,transparent 64px)"></div>
+        <sc-if value="{{ showUserLocation }}"><div style="position:absolute;left:48%;top:46%;width:16px;height:16px;border-radius:50%;background:var(--color-info);border:3px solid var(--color-surface);box-shadow:0 0 0 8px rgba(59,111,194,0.2)"></div></sc-if>
+        <div style="position:absolute;left:30%;top:28%;width:34px;height:34px;border-radius:50% 50% 50% 4px;background:var(--color-primary);transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-2)"><span style="transform:rotate(45deg);font-size:14px">👥</span></div>
+        <div style="position:absolute;left:64%;top:60%;width:34px;height:34px;border-radius:50% 50% 50% 4px;background:var(--color-secondary);transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-2)"><span style="transform:rotate(45deg);font-size:14px">👥</span></div>
+        <div style="position:absolute;left:20%;top:66%;width:34px;height:34px;border-radius:50% 50% 50% 4px;background:var(--color-primary);transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-2)"><span style="transform:rotate(45deg);font-size:14px">👥</span></div>
+        <div style="position:absolute;top:52px;left:20px;right:20px;padding:12px 16px;border-radius:var(--radius-pill);background:var(--glass-fill-strong);backdrop-filter:blur(var(--blur-glass-strong));border:1px solid var(--glass-border);display:flex;align-items:center;gap:8px;box-shadow:var(--shadow-2)"><span>🔍</span><span style="font-family:var(--font-body);font-size:13px;color:var(--text-tertiary)">Search cells near {{ searchRadius }} km</span></div>
+      </div>
+      <div style="padding:16px 0 20px;border-radius:var(--radius-nav) var(--radius-nav) 0 0;background:var(--glass-fill-strong);backdrop-filter:blur(var(--blur-glass-strong));border-top:1px solid var(--glass-border);box-shadow:var(--shadow-4)">
+        <div style="padding:0 20px 12px;font-family:var(--font-heading);font-weight:700;font-size:15px;color:var(--text-primary)">3 cells near you</div>
+        <div style="display:flex;gap:12px;overflow-x:auto;padding:0 20px">
+          <div style="min-width:200px;border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--divider);overflow:hidden"><div style="height:80px;background:var(--color-primary-soft)"></div><div style="padding:12px"><div style="font-family:var(--font-heading);font-weight:700;font-size:14px;color:var(--text-primary)">Young Adults Downtown</div><div style="margin-top:2px;font-family:var(--font-body);font-size:11px;color:var(--text-secondary)">0.4 mi · Tuesdays 7 PM</div></div></div>
+          <div style="min-width:200px;border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--divider);overflow:hidden"><div style="height:80px;background:var(--color-secondary-soft)"></div><div style="padding:12px"><div style="font-family:var(--font-heading);font-weight:700;font-size:14px;color:var(--text-primary)">Moms in Prayer</div><div style="margin-top:2px;font-family:var(--font-body);font-size:11px;color:var(--text-secondary)">1.1 mi · Thursdays 10 AM</div></div></div>
+          <div style="min-width:200px;border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--divider);overflow:hidden"><div style="height:80px;background:var(--color-primary-soft)"></div><div style="padding:12px"><div style="font-family:var(--font-heading);font-weight:700;font-size:14px;color:var(--text-primary)">Men's Bible Study</div><div style="margin-top:2px;font-family:var(--font-body);font-size:11px;color:var(--text-secondary)">2.0 mi · Saturdays 8 AM</div></div></div>
+        </div>
+      </div>
+    </div></div>
+
+    <div style="display:flex;flex-direction:column;gap:12px"><div class="lbl">2. Cell detail</div><div class="pf">
+      <div style="height:200px;background:var(--color-primary-soft)"></div>
+      <div style="padding:20px 24px">
+        <div style="font-family:var(--font-heading);font-weight:700;font-size:20px;color:var(--text-primary)">Young Adults Downtown</div>
+        <div style="margin-top:12px;display:flex;align-items:center;gap:10px"><x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Avatar" initials="MJ" size="36" hint-size="36px,36px"></x-import><div><div style="font-family:var(--font-body);font-size:13px;font-weight:700;color:var(--text-primary)">Marcus J.</div><div style="font-family:var(--font-body);font-size:11px;color:var(--text-tertiary)">(512) 555-0134</div></div></div>
+        <div style="margin-top:14px;display:flex;gap:8px;align-items:center;font-family:var(--font-body);font-size:13px;color:var(--text-secondary)"><span>📍</span>221 6th St, Austin, TX</div>
+        <div style="margin-top:14px;font-family:var(--font-body);font-size:14px;color:var(--text-secondary);line-height:1.6">A weekly gathering for young adults to study scripture and build community over dinner.</div>
+      </div>
+      <div style="flex:1"></div>
+      <div style="padding:0 24px 40px"><x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="primary" size="lg" hint-size="100%,56px">Attend Cell</x-import></div>
+    </div></div>
+
+    <div style="display:flex;flex-direction:column;gap:12px"><div class="lbl">3. Add Cell form</div><div class="pf">
+      <div style="padding:52px 20px 0;font-family:var(--font-heading);font-weight:700;font-size:20px;color:var(--text-primary)">Add a Cell</div>
+      <div style="padding:20px 20px 0;display:flex;flex-direction:column;gap:16px">
+        <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Input" label="Cell name" placeholder="Young Adults Downtown" hint-size="100%,72px"></x-import>
+        <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Input" label="Location" placeholder="221 6th St, Austin, TX" hint-size="100%,72px"></x-import>
+        <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Input" label="Phone" placeholder="(512) 555-0134" hint-size="100%,72px"></x-import>
+        <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Input" label="Church" placeholder="Grace Community" hint-size="100%,72px"></x-import>
+        <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Input" label="Description" placeholder="What's this cell about?" hint-size="100%,72px"></x-import>
+      </div>
+      <div style="flex:1"></div>
+      <div style="padding:0 20px 40px"><x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="primary" size="lg" hint-size="100%,56px">Create Cell</x-import></div>
+    </div></div>
+
+    <div style="display:flex;flex-direction:column;gap:12px"><div class="lbl">4. My Cells</div><div class="pf">
+      <div style="padding:52px 20px 16px;font-family:var(--font-heading);font-weight:700;font-size:20px;color:var(--text-primary)">My Cells</div>
+      <div style="display:flex;flex-direction:column;gap:12px;padding:0 20px">
+        <div style="display:flex;gap:12px;align-items:center;padding:12px;border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--divider)"><div style="width:52px;height:52px;border-radius:var(--radius-md);background:var(--color-primary-soft)"></div><div style="flex:1"><div style="font-family:var(--font-heading);font-weight:700;font-size:14px;color:var(--text-primary)">Young Adults Downtown</div><div style="font-family:var(--font-body);font-size:12px;color:var(--text-secondary)">Attending since Jun 2026</div></div></div>
+      </div>
+      <div style="flex:1;display:flex;align-items:center;justify-content:center;opacity:.5;padding:20px"><div style="font-family:var(--font-body);font-size:12px;color:var(--text-tertiary)">Join more cells to see them here</div></div>
+    </div></div>
+
+    <div style="display:flex;flex-direction:column;gap:12px"><div class="lbl">5. Cell joined confirmation</div><div class="pf">
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:36px;text-align:center">
+        <div style="width:76px;height:76px;border-radius:50%;background:var(--color-success-soft);display:flex;align-items:center;justify-content:center;color:var(--color-success);font-size:30px">✓</div>
+        <div style="font-family:var(--font-heading);font-weight:700;font-size:19px;color:var(--text-primary)">You're in!</div>
+        <div style="font-family:var(--font-body);font-size:14px;color:var(--text-secondary);line-height:1.5">Marcus will reach out with the next meeting details.</div>
+        <x-import component-from-global-scope="PrayistaDesignSystem_037ff4.Button" variant="primary" size="lg" hint-size="200px,52px">Go to My Cells</x-import>
+      </div>
+    </div></div>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showUserLocation&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Cells map&quot;},&quot;searchRadius&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:5,&quot;min&quot;:1,&quot;max&quot;:25,&quot;step&quot;:1,&quot;unit&quot;:&quot;km&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Cells map&quot;},&quot;mapStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;standard&quot;,&quot;options&quot;:[&quot;standard&quot;,&quot;satellite&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Cells map&quot;}}">
+class Component extends DCLogic {
+  state = { theme: 'light' };
+  renderVals() {
+    return {
+      theme: this.state.theme, themeLabel: this.state.theme === 'light' ? '☾ View dark' : '☀ View light',
+      toggleTheme: () => this.setState(s => ({ theme: s.theme === 'light' ? 'dark' : 'light' })),
+      showUserLocation: this.props.showUserLocation ?? true,
+      searchRadius: this.props.searchRadius ?? 5,
+      mapBg: this.props.mapStyle === 'satellite' ? '#2b3a2e' : 'var(--color-surface-raised)'
+    };
+  }
+}
+</script>
+</body>
+</html>
