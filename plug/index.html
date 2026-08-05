@@ -3,853 +3,336 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Plug Uganda | Everything In One App</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-
+<title>Plug — Everything Uganda, One App</title>
+<meta name="description" content="Plug is Uganda's all-in-one app: pay bills, buy airtime, book travel, access health, education, finance and more.">
 <style>
-
-:root{
+  :root{
+    --black:#0a0a0a;
+    --panel:#141414;
     --yellow:#FFD400;
-    --black:#070707;
-    --card:#111111;
-    --text:#ffffff;
-    --muted:#a8a8a8;
-}
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Inter',sans-serif;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    background:var(--black);
-    color:white;
-    overflow-x:hidden;
-}
-
-
-/* NAV */
-
-nav{
-
-position:fixed;
-top:0;
-left:0;
-width:100%;
-padding:20px 8%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-background:rgba(0,0,0,.65);
-backdrop-filter:blur(20px);
-z-index:1000;
-
-}
-
-
-.logo{
-
-font-size:32px;
-font-weight:900;
-color:var(--yellow);
-
-}
-
-.logo span{
-color:white;
-}
-
-
-nav a{
-
-color:white;
-text-decoration:none;
-margin-left:30px;
-font-size:15px;
-
-}
-
-
-nav a:hover{
-
-color:var(--yellow);
-
-}
-
-
-
-/* HERO */
-
-
-.hero{
-
-min-height:100vh;
-padding:160px 8% 80px;
-
-display:grid;
-grid-template-columns:1fr 420px;
-
-align-items:center;
-gap:70px;
-
-position:relative;
-
-}
-
-
-.background{
-
-position:absolute;
-width:600px;
-height:600px;
-background:var(--yellow);
-opacity:.15;
-filter:blur(180px);
-top:100px;
-left:-200px;
-
-animation:pulse 5s infinite;
-
-}
-
-
-@keyframes pulse{
-
-50%{
-transform:scale(1.3);
-}
-
-}
-
-
-
-h1{
-
-font-size:70px;
-line-height:1.05;
-font-weight:900;
-
-}
-
-
-h1 span{
-
-color:var(--yellow);
-
-}
-
-
-.hero p{
-
-font-size:20px;
-color:var(--muted);
-max-width:650px;
-margin:30px 0;
-
-}
-
-
-.btn{
-
-display:inline-block;
-padding:16px 35px;
-border-radius:50px;
-background:var(--yellow);
-color:#000;
-font-weight:700;
-text-decoration:none;
-margin-right:15px;
-
-transition:.3s;
-
-}
-
-
-.btn:hover{
-
-transform:translateY(-5px);
-box-shadow:0 15px 40px rgba(255,212,0,.4);
-
-}
-
-
-.outline{
-
-background:none;
-border:2px solid var(--yellow);
-color:var(--yellow);
-
-}
-
-
-
-/* GLASS CARD */
-
-
-.hero-card{
-
-background:rgba(255,255,255,.06);
-border:1px solid rgba(255,255,255,.1);
-
-padding:40px;
-border-radius:30px;
-
-backdrop-filter:blur(20px);
-
-animation:float 4s infinite;
-
-}
-
-
-@keyframes float{
-
-50%{
-transform:translateY(-15px);
-}
-
-}
-
-
-.hero-card h3{
-
-color:var(--yellow);
-font-size:25px;
-margin-bottom:25px;
-
-}
-
-
-.hero-card p{
-
-margin:12px 0;
-font-size:16px;
-
-}
-
-
-
-/* STATS */
-
-
-.stats{
-
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:20px;
-padding:50px 8%;
-
-}
-
-
-.stat{
-
-text-align:center;
-padding:30px;
-background:#111;
-border-radius:20px;
-
-}
-
-
-.stat h2{
-
-font-size:45px;
-color:var(--yellow);
-
-}
-
-
-.stat p{
-
-color:#aaa;
-
-}
-
-
-
-/* SECTIONS */
-
-
-section{
-
-padding:100px 8%;
-
-}
-
-
-.title{
-
-text-align:center;
-font-size:45px;
-margin-bottom:60px;
-
-}
-
-
-.title span{
-
-color:var(--yellow);
-
-}
-
-
-
-/* SERVICES */
-
-
-.services{
-
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:25px;
-
-}
-
-
-.card{
-
-background:linear-gradient(
-145deg,
-#151515,
-#0d0d0d
-);
-
-padding:35px;
-
-border-radius:25px;
-
-border:1px solid rgba(255,255,255,.05);
-
-transition:.4s;
-
-}
-
-
-.card:hover{
-
-transform:translateY(-12px);
-
-border-color:var(--yellow);
-
-box-shadow:0 20px 50px rgba(0,0,0,.5);
-
-}
-
-
-.icon{
-
-font-size:35px;
-
-}
-
-
-.card h3{
-
-margin:20px 0;
-color:var(--yellow);
-
-}
-
-
-.card p{
-
-color:#aaa;
-
-}
-
-
-
-/* FEATURES */
-
-
-.features{
-
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:25px;
-
-}
-
-
-.feature{
-
-background:#111;
-padding:30px;
-border-radius:20px;
-
-}
-
-
-
-.feature h3{
-
-color:var(--yellow);
-
-}
-
-
-
-
-/* FAQ */
-
-
-.faq{
-
-max-width:800px;
-margin:auto;
-
-}
-
-
-.question{
-
-background:#111;
-padding:25px;
-margin:15px 0;
-border-radius:15px;
-cursor:pointer;
-
-}
-
-
-.answer{
-
-display:none;
-color:#aaa;
-padding-top:15px;
-
-}
-
-
-
-/* CTA */
-
-
-.cta{
-
-text-align:center;
-background:var(--yellow);
-color:#000;
-
-}
-
-
-.cta h2{
-
-font-size:50px;
-
-}
-
-
-.cta .btn{
-
-background:#000;
-color:var(--yellow);
-
-}
-
-
-
-/* FOOTER */
-
-
-footer{
-
-padding:40px;
-text-align:center;
-background:#050505;
-color:#777;
-
-}
-
-
-
-/* MOBILE */
-
-
-@media(max-width:900px){
-
-.hero{
-
-grid-template-columns:1fr;
-
-}
-
-
-h1{
-
-font-size:45px;
-
-}
-
-
-.stats,
-.features{
-
-grid-template-columns:1fr;
-
-}
-
-
-nav .links{
-
-display:none;
-
-}
-
-}
-
-
+    --yellow-dim:#c9a600;
+    --text:#f2f2f2;
+    --muted:#9a9a9a;
+    --line:#242424;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--black);color:var(--text);line-height:1.6;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(10,10,10,.9);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{font-weight:800;font-size:24px;letter-spacing:-.5px}
+  .logo span{color:var(--yellow)}
+  .nav-links{display:flex;gap:28px;font-size:15px;color:var(--muted)}
+  .nav-links a:hover{color:var(--yellow)}
+  .btn{
+    display:inline-block;background:var(--yellow);color:#000;font-weight:700;
+    padding:11px 22px;border-radius:8px;font-size:15px;transition:.2s;
+  }
+  .btn:hover{background:#fff}
+  .btn-ghost{background:transparent;color:var(--yellow);border:1px solid var(--yellow)}
+  .btn-ghost:hover{background:var(--yellow);color:#000}
+  @media(max-width:720px){.nav-links{display:none}}
+
+  /* Hero */
+  .hero{padding:90px 0 70px;text-align:center;border-bottom:1px solid var(--line)}
+  .tag{
+    display:inline-block;background:var(--panel);border:1px solid var(--line);
+    color:var(--yellow);font-size:13px;font-weight:600;padding:6px 14px;
+    border-radius:100px;margin-bottom:26px;letter-spacing:.3px;
+  }
+  .hero h1{font-size:clamp(34px,6vw,60px);font-weight:800;line-height:1.1;letter-spacing:-1px}
+  .hero h1 span{color:var(--yellow)}
+  .hero p{max-width:640px;margin:22px auto 34px;color:var(--muted);font-size:18px}
+  .hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+  /* Section */
+  section{padding:72px 0}
+  .head{text-align:center;max-width:640px;margin:0 auto 48px}
+  .head h2{font-size:clamp(26px,4vw,38px);font-weight:800;letter-spacing:-.5px}
+  .head h2 span{color:var(--yellow)}
+  .head p{color:var(--muted);margin-top:12px;font-size:16px}
+
+  /* Auth */
+  .auth-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .auth-card{
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:28px;
+  }
+  .auth-card .n{color:var(--yellow);font-weight:800;font-size:14px;letter-spacing:1px}
+  .auth-card h3{margin:10px 0 8px;font-size:19px}
+  .auth-card p{color:var(--muted);font-size:15px}
+  @media(max-width:820px){.auth-grid{grid-template-columns:1fr}}
+
+  /* Services */
+  .services{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:600px){.grid{grid-template-columns:1fr}}
+  .card{
+    background:var(--black);border:1px solid var(--line);border-radius:14px;padding:26px;
+    transition:.2s;
+  }
+  .card:hover{border-color:var(--yellow);transform:translateY(-3px)}
+  .card .ico{
+    width:48px;height:48px;border-radius:11px;background:var(--yellow);
+    display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px;
+  }
+  .card h3{font-size:19px;margin-bottom:8px}
+  .card ul{list-style:none;display:flex;flex-wrap:wrap;gap:7px}
+  .card li{
+    font-size:13px;color:var(--muted);background:var(--panel);
+    border:1px solid var(--line);padding:4px 10px;border-radius:6px;
+  }
+
+  /* Highlight strip */
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+  .strip .item h3{color:var(--yellow);font-size:32px;font-weight:800}
+  .strip .item p{color:var(--muted);font-size:14px;margin-top:4px}
+  @media(max-width:700px){.strip{grid-template-columns:repeat(2,1fr)}}
+
+  /* CTA */
+  .cta{text-align:center}
+  .cta .box{
+    background:var(--yellow);color:#000;border-radius:20px;padding:56px 30px;
+  }
+  .cta h2{font-size:clamp(26px,4vw,40px);font-weight:800;letter-spacing:-.5px}
+  .cta p{margin:14px auto 28px;max-width:520px;font-size:17px;color:#1a1a1a}
+  .cta .btn{background:#000;color:var(--yellow)}
+  .cta .btn:hover{background:#141414}
+
+  /* Footer */
+  footer{border-top:1px solid var(--line);padding:44px 0;color:var(--muted);font-size:14px}
+  .foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+  .foot .logo{font-size:20px}
+  .foot a:hover{color:var(--yellow)}
 </style>
-
 </head>
-
-
 <body>
 
+<header>
+  <div class="wrap nav">
+    <div class="logo">Plug<span>.</span></div>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#auth">Account</a>
+      <a href="#finance">Finance</a>
+      <a href="#get">Get Started</a>
+    </nav>
+    <a href="#get" class="btn">Get the App</a>
+  </div>
+</header>
 
-<nav>
-
-<div class="logo">
-Plug<span>.ug</span>
-</div>
-
-<div class="links">
-
-<a href="#services">Services</a>
-<a href="#why">Why Plug</a>
-<a href="#faq">FAQ</a>
-
-</div>
-
-</nav>
-
-
-
+<!-- HERO -->
 <section class="hero">
-
-<div class="background"></div>
-
-
-<div>
-
-<h1>
-Everything Uganda Needs.
-<br>
-<span>One Smart App.</span>
-</h1>
-
-
-<p>
-
-Plug connects payments, services, businesses,
-government solutions and opportunities into one powerful platform.
-
-</p>
-
-
-<a class="btn">
-Get Started
-</a>
-
-
-<a class="btn outline">
-Explore
-</a>
-
-
-</div>
-
-
-
-<div class="hero-card">
-
-<h3>
-Plug Connects
-</h3>
-
-<p>✓ Bills & Payments</p>
-<p>✓ Transport Services</p>
-<p>✓ Housing</p>
-<p>✓ Health</p>
-<p>✓ Education</p>
-<p>✓ Finance</p>
-<p>✓ Travel & Events</p>
-
-</div>
-
-
+  <div class="wrap">
+    <span class="tag">🇺🇬 Built for Uganda</span>
+    <h1>Everything you need,<br><span>plugged into one app.</span></h1>
+    <p>Pay bills, buy airtime, handle permits, book travel, access health and education, get loans and give back — Plug brings all your daily essentials into a single place.</p>
+    <div class="hero-actions">
+      <a href="#get" class="btn">Get Started</a>
+      <a href="#services" class="btn btn-ghost">Explore Services</a>
+    </div>
+  </div>
 </section>
 
-
-
-
-<div class="stats">
-
-
-<div class="stat">
-<h2>14+</h2>
-<p>Services</p>
-</div>
-
-
-<div class="stat">
-<h2>24/7</h2>
-<p>Access</p>
-</div>
-
-
-<div class="stat">
-<h2>1</h2>
-<p>Super App</p>
-</div>
-
-
-<div class="stat">
-<h2>100%</h2>
-<p>Connected</p>
-</div>
-
-
-</div>
-
-
-
-
-
-<section id="services">
-
-<h2 class="title">
-Everything In <span>One Place</span>
-</h2>
-
-
-<div class="services">
-
-
-<div class="card">
-<div class="icon">💡</div>
-<h3>Bills</h3>
-<p>Pay water, Yaka, TV subscriptions and loans.</p>
-</div>
-
-
-<div class="card">
-<div class="icon">📱</div>
-<h3>Mobile</h3>
-<p>Airtime, data bundles and mobile loans.</p>
-</div>
-
-
-<div class="card">
-<div class="icon">🚗</div>
-<h3>Driving</h3>
-<p>Permits, fuel, parking and drivers.</p>
-</div>
-
-
-<div class="card">
-<div class="icon">🏠</div>
-<h3>Housing</h3>
-<p>Find apartments, maids and cleaners.</p>
-</div>
-
-
-<div class="card">
-<div class="icon">🏥</div>
-<h3>Health</h3>
-<p>Hospitals and emergency assistance.</p>
-</div>
-
-
-<div class="card">
-<div class="icon">🎓</div>
-<h3>Education</h3>
-<p>Fees payments and education loans.</p>
-</div>
-
-
-<div class="card">
-<div class="icon">✈</div>
-<h3>Travel</h3>
-<p>Discover destinations and bookings.</p>
-</div>
-
-
-<div class="card">
-<div class="icon">🎉</div>
-<h3>Events</h3>
-<p>Find and pay for events.</p>
-</div>
-
-
-<div class="card">
-<div class="icon">🍽</div>
-<h3>Dining</h3>
-<p>Restaurants and reservations.</p>
-</div>
-
-
-<div class="card">
-<div class="icon">❤️</div>
-<h3>Donations</h3>
-<p>Support causes and communities.</p>
-</div>
-
-
-<div class="card">
-<div class="icon">💰</div>
-<h3>Finance</h3>
-<p>Loans and crowdfunding.</p>
-</div>
-
-
-</div>
-
+<!-- AUTH -->
+<section id="auth">
+  <div class="wrap">
+    <div class="head">
+      <h2>Your account in <span>seconds</span></h2>
+      <p>Secure sign-up and login powered by Firebase Authentication.</p>
+    </div>
+    <div class="auth-grid">
+      <div class="auth-card">
+        <div class="n">STEP 01</div>
+        <h3>Sign Up</h3>
+        <p>Create an account with your username, email and phone number.</p>
+      </div>
+      <div class="auth-card">
+        <div class="n">STEP 02</div>
+        <h3>Login</h3>
+        <p>Sign back in instantly using just your phone number.</p>
+      </div>
+      <div class="auth-card">
+        <div class="n">STEP 03</div>
+        <h3>Secured</h3>
+        <p>Firebase Authentication keeps your identity and data protected.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- SERVICES -->
+<section id="services" class="services">
+  <div class="wrap">
+    <div class="head">
+      <h2>One app. <span>Fourteen services.</span></h2>
+      <p>From daily bills to donations — handle it all without leaving Plug.</p>
+    </div>
+    <div class="grid">
 
+      <div class="card">
+        <div class="ico">💡</div>
+        <h3>Bills</h3>
+        <ul><li>Water</li><li>Yaka</li><li>TV</li><li>Loans</li></ul>
+      </div>
 
+      <div class="card">
+        <div class="ico">📱</div>
+        <h3>Mobile</h3>
+        <ul><li>Airtime</li><li>Data</li><li>Loans</li></ul>
+      </div>
 
+      <div class="card">
+        <div class="ico">🚗</div>
+        <h3>Driving</h3>
+        <ul><li>Permits</li><li>3rd Party</li><li>Fuel</li><li>Drivers & Riders</li><li>Parking fees</li></ul>
+      </div>
 
-<section id="why">
+      <div class="card">
+        <div class="ico">🏠</div>
+        <h3>Housing</h3>
+        <ul><li>Maids listing</li><li>Cleaning services</li><li>Listings</li></ul>
+      </div>
 
-<h2 class="title">
-Why Choose <span>Plug?</span>
-</h2>
+      <div class="card">
+        <div class="ico">🏙️</div>
+        <h3>Residency</h3>
+        <ul><li>KCCA Permits</li><li>Tax payments</li><li>Apartments listing</li></ul>
+      </div>
 
+      <div class="card">
+        <div class="ico">🚑</div>
+        <h3>Health</h3>
+        <ul><li>SOS / Ambulance</li><li>Nearest hospitals</li></ul>
+      </div>
 
-<div class="features">
+      <div class="card">
+        <div class="ico">🎓</div>
+        <h3>Education</h3>
+        <ul><li>Fees payments</li><li>Loan applications</li></ul>
+      </div>
 
+      <div class="card">
+        <div class="ico">👮</div>
+        <h3>Police</h3>
+        <ul><li>Fine payments</li><li>Nearest police</li></ul>
+      </div>
 
-<div class="feature">
-<h3>🔒 Secure</h3>
-<p>Firebase authentication keeps accounts protected.</p>
-</div>
+      <div class="card">
+        <div class="ico">✈️</div>
+        <h3>Travel</h3>
+        <ul><li>Tour destinations</li><li>Bookings & listings</li></ul>
+      </div>
 
+      <div class="card">
+        <div class="ico">🎫</div>
+        <h3>Events</h3>
+        <ul><li>Event listings</li><li>Ticket payments</li></ul>
+      </div>
 
-<div class="feature">
-<h3>⚡ Fast</h3>
-<p>Complete daily tasks quickly.</p>
-</div>
+      <div class="card">
+        <div class="ico">🍽️</div>
+        <h3>Fine Dining</h3>
+        <ul><li>Restaurant listings</li><li>Table booking</li></ul>
+      </div>
 
+      <div class="card">
+        <div class="ico">❤️</div>
+        <h3>Donations</h3>
+        <ul><li>Causes listing</li><li>Register a cause</li></ul>
+      </div>
 
-<div class="feature">
-<h3>🇺🇬 Local</h3>
-<p>Built around Ugandan needs.</p>
-</div>
+      <div class="card">
+        <div class="ico">💰</div>
+        <h3>Finance</h3>
+        <ul><li>Loans</li><li>Crowdfunding</li></ul>
+      </div>
 
+      <div class="card">
+        <div class="ico">📢</div>
+        <h3>Promotions</h3>
+        <ul><li>Ad sliders</li><li>Links to partners</li></ul>
+      </div>
 
-<div class="feature">
-<h3>🤝 Connected</h3>
-<p>Businesses, services and people together.</p>
-</div>
-
-
-</div>
-
+    </div>
+  </div>
 </section>
 
-
-
-
-<section id="faq">
-
-
-<h2 class="title">
-Questions
-</h2>
-
-
-<div class="faq">
-
-
-<div class="question">
-How do I use Plug?
-<div class="answer">
-Create an account and access available services.
-</div>
-</div>
-
-
-<div class="question">
-Is Plug secure?
-<div class="answer">
-Yes. Authentication is powered by Firebase.
-</div>
-</div>
-
-
-<div class="question">
-What services are available?
-<div class="answer">
-Payments, travel, housing, finance, health and more.
-</div>
-</div>
-
-
-</div>
-
+<!-- STRIP -->
+<section>
+  <div class="wrap strip">
+    <div class="item"><h3>14</h3><p>Service categories</p></div>
+    <div class="item"><h3>1</h3><p>App for everything</p></div>
+    <div class="item"><h3>24/7</h3><p>Payments & access</p></div>
+    <div class="item"><h3>🇺🇬</h3><p>Made for Uganda</p></div>
+  </div>
 </section>
 
-
-
-
-<section class="cta">
-
-<h2>
-Ready To Simplify Life?
-</h2>
-
-<br>
-
-<a class="btn">
-Launching Soon
-</a>
-
+<!-- FINANCE FEATURE -->
+<section id="finance" class="services">
+  <div class="wrap">
+    <div class="head">
+      <h2>Money, <span>made simple</span></h2>
+      <p>Access loans across bills, mobile, education and driving — or raise funds for what matters through crowdfunding and donations.</p>
+    </div>
+    <div class="auth-grid">
+      <div class="auth-card">
+        <div class="n">LOANS</div>
+        <h3>Borrow when you need</h3>
+        <p>Quick loan applications tied to your bills, airtime, driving and education needs.</p>
+      </div>
+      <div class="auth-card">
+        <div class="n">CROWDFUNDING</div>
+        <h3>Raise together</h3>
+        <p>Register a cause and let your community fund it directly in the app.</p>
+      </div>
+      <div class="auth-card">
+        <div class="n">DONATIONS</div>
+        <h3>Give back</h3>
+        <p>Browse listed causes and donate securely with a few taps.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- CTA -->
+<section id="get" class="cta">
+  <div class="wrap">
+    <div class="box">
+      <h2>Get plugged in.</h2>
+      <p>Sign up in seconds and start handling your bills, permits, travel and more — all in one app.</p>
+      <a href="#" class="btn">Download Plug</a>
+    </div>
+  </div>
+</section>
 
-
-
+<!-- FOOTER -->
 <footer>
-
-Plug Uganda © 2026
-<br>
-plug.ug
-
+  <div class="wrap foot">
+    <div>
+      <div class="logo">Plug<span style="color:var(--yellow)">.</span></div>
+      <p style="margin-top:6px">Everything Uganda, one app.</p>
+    </div>
+    <div style="display:flex;gap:22px">
+      <a href="#services">Services</a>
+      <a href="#auth">Account</a>
+      <a href="#finance">Finance</a>
+      <a href="https://plug.ug">plug.ug</a>
+    </div>
+    <div>© 2026 Plug · plug.ug</div>
+  </div>
 </footer>
-
-
-
-<script>
-
-document.querySelectorAll(".question").forEach(q=>{
-
-q.onclick=()=>{
-
-let answer=q.querySelector(".answer");
-
-answer.style.display=
-answer.style.display==="block"
-?"none"
-:"block";
-
-}
-
-});
-
-
-</script>
-
 
 </body>
 </html>
