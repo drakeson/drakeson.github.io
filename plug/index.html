@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Plug Uganda | Everything In One App</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --yellow:#FFD400;
+    --black:#070707;
+    --card:#111111;
+    --text:#ffffff;
+    --muted:#a8a8a8;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--black);
+    color:white;
+    overflow-x:hidden;
+}
+
+
+/* NAV */
+
+nav{
+
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:20px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(0,0,0,.65);
+backdrop-filter:blur(20px);
+z-index:1000;
+
+}
+
+
+.logo{
+
+font-size:32px;
+font-weight:900;
+color:var(--yellow);
+
+}
+
+.logo span{
+color:white;
+}
+
+
+nav a{
+
+color:white;
+text-decoration:none;
+margin-left:30px;
+font-size:15px;
+
+}
+
+
+nav a:hover{
+
+color:var(--yellow);
+
+}
+
+
+
+/* HERO */
+
+
+.hero{
+
+min-height:100vh;
+padding:160px 8% 80px;
+
+display:grid;
+grid-template-columns:1fr 420px;
+
+align-items:center;
+gap:70px;
+
+position:relative;
+
+}
+
+
+.background{
+
+position:absolute;
+width:600px;
+height:600px;
+background:var(--yellow);
+opacity:.15;
+filter:blur(180px);
+top:100px;
+left:-200px;
+
+animation:pulse 5s infinite;
+
+}
+
+
+@keyframes pulse{
+
+50%{
+transform:scale(1.3);
+}
+
+}
+
+
+
+h1{
+
+font-size:70px;
+line-height:1.05;
+font-weight:900;
+
+}
+
+
+h1 span{
+
+color:var(--yellow);
+
+}
+
+
+.hero p{
+
+font-size:20px;
+color:var(--muted);
+max-width:650px;
+margin:30px 0;
+
+}
+
+
+.btn{
+
+display:inline-block;
+padding:16px 35px;
+border-radius:50px;
+background:var(--yellow);
+color:#000;
+font-weight:700;
+text-decoration:none;
+margin-right:15px;
+
+transition:.3s;
+
+}
+
+
+.btn:hover{
+
+transform:translateY(-5px);
+box-shadow:0 15px 40px rgba(255,212,0,.4);
+
+}
+
+
+.outline{
+
+background:none;
+border:2px solid var(--yellow);
+color:var(--yellow);
+
+}
+
+
+
+/* GLASS CARD */
+
+
+.hero-card{
+
+background:rgba(255,255,255,.06);
+border:1px solid rgba(255,255,255,.1);
+
+padding:40px;
+border-radius:30px;
+
+backdrop-filter:blur(20px);
+
+animation:float 4s infinite;
+
+}
+
+
+@keyframes float{
+
+50%{
+transform:translateY(-15px);
+}
+
+}
+
+
+.hero-card h3{
+
+color:var(--yellow);
+font-size:25px;
+margin-bottom:25px;
+
+}
+
+
+.hero-card p{
+
+margin:12px 0;
+font-size:16px;
+
+}
+
+
+
+/* STATS */
+
+
+.stats{
+
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+padding:50px 8%;
+
+}
+
+
+.stat{
+
+text-align:center;
+padding:30px;
+background:#111;
+border-radius:20px;
+
+}
+
+
+.stat h2{
+
+font-size:45px;
+color:var(--yellow);
+
+}
+
+
+.stat p{
+
+color:#aaa;
+
+}
+
+
+
+/* SECTIONS */
+
+
+section{
+
+padding:100px 8%;
+
+}
+
+
+.title{
+
+text-align:center;
+font-size:45px;
+margin-bottom:60px;
+
+}
+
+
+.title span{
+
+color:var(--yellow);
+
+}
+
+
+
+/* SERVICES */
+
+
+.services{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+
+}
+
+
+.card{
+
+background:linear-gradient(
+145deg,
+#151515,
+#0d0d0d
+);
+
+padding:35px;
+
+border-radius:25px;
+
+border:1px solid rgba(255,255,255,.05);
+
+transition:.4s;
+
+}
+
+
+.card:hover{
+
+transform:translateY(-12px);
+
+border-color:var(--yellow);
+
+box-shadow:0 20px 50px rgba(0,0,0,.5);
+
+}
+
+
+.icon{
+
+font-size:35px;
+
+}
+
+
+.card h3{
+
+margin:20px 0;
+color:var(--yellow);
+
+}
+
+
+.card p{
+
+color:#aaa;
+
+}
+
+
+
+/* FEATURES */
+
+
+.features{
+
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+
+}
+
+
+.feature{
+
+background:#111;
+padding:30px;
+border-radius:20px;
+
+}
+
+
+
+.feature h3{
+
+color:var(--yellow);
+
+}
+
+
+
+
+/* FAQ */
+
+
+.faq{
+
+max-width:800px;
+margin:auto;
+
+}
+
+
+.question{
+
+background:#111;
+padding:25px;
+margin:15px 0;
+border-radius:15px;
+cursor:pointer;
+
+}
+
+
+.answer{
+
+display:none;
+color:#aaa;
+padding-top:15px;
+
+}
+
+
+
+/* CTA */
+
+
+.cta{
+
+text-align:center;
+background:var(--yellow);
+color:#000;
+
+}
+
+
+.cta h2{
+
+font-size:50px;
+
+}
+
+
+.cta .btn{
+
+background:#000;
+color:var(--yellow);
+
+}
+
+
+
+/* FOOTER */
+
+
+footer{
+
+padding:40px;
+text-align:center;
+background:#050505;
+color:#777;
+
+}
+
+
+
+/* MOBILE */
+
+
+@media(max-width:900px){
+
+.hero{
+
+grid-template-columns:1fr;
+
+}
+
+
+h1{
+
+font-size:45px;
+
+}
+
+
+.stats,
+.features{
+
+grid-template-columns:1fr;
+
+}
+
+
+nav .links{
+
+display:none;
+
+}
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<nav>
+
+<div class="logo">
+Plug<span>.ug</span>
+</div>
+
+<div class="links">
+
+<a href="#services">Services</a>
+<a href="#why">Why Plug</a>
+<a href="#faq">FAQ</a>
+
+</div>
+
+</nav>
+
+
+
+<section class="hero">
+
+<div class="background"></div>
+
+
+<div>
+
+<h1>
+Everything Uganda Needs.
+<br>
+<span>One Smart App.</span>
+</h1>
+
+
+<p>
+
+Plug connects payments, services, businesses,
+government solutions and opportunities into one powerful platform.
+
+</p>
+
+
+<a class="btn">
+Get Started
+</a>
+
+
+<a class="btn outline">
+Explore
+</a>
+
+
+</div>
+
+
+
+<div class="hero-card">
+
+<h3>
+Plug Connects
+</h3>
+
+<p>✓ Bills & Payments</p>
+<p>✓ Transport Services</p>
+<p>✓ Housing</p>
+<p>✓ Health</p>
+<p>✓ Education</p>
+<p>✓ Finance</p>
+<p>✓ Travel & Events</p>
+
+</div>
+
+
+</section>
+
+
+
+
+<div class="stats">
+
+
+<div class="stat">
+<h2>14+</h2>
+<p>Services</p>
+</div>
+
+
+<div class="stat">
+<h2>24/7</h2>
+<p>Access</p>
+</div>
+
+
+<div class="stat">
+<h2>1</h2>
+<p>Super App</p>
+</div>
+
+
+<div class="stat">
+<h2>100%</h2>
+<p>Connected</p>
+</div>
+
+
+</div>
+
+
+
+
+
+<section id="services">
+
+<h2 class="title">
+Everything In <span>One Place</span>
+</h2>
+
+
+<div class="services">
+
+
+<div class="card">
+<div class="icon">💡</div>
+<h3>Bills</h3>
+<p>Pay water, Yaka, TV subscriptions and loans.</p>
+</div>
+
+
+<div class="card">
+<div class="icon">📱</div>
+<h3>Mobile</h3>
+<p>Airtime, data bundles and mobile loans.</p>
+</div>
+
+
+<div class="card">
+<div class="icon">🚗</div>
+<h3>Driving</h3>
+<p>Permits, fuel, parking and drivers.</p>
+</div>
+
+
+<div class="card">
+<div class="icon">🏠</div>
+<h3>Housing</h3>
+<p>Find apartments, maids and cleaners.</p>
+</div>
+
+
+<div class="card">
+<div class="icon">🏥</div>
+<h3>Health</h3>
+<p>Hospitals and emergency assistance.</p>
+</div>
+
+
+<div class="card">
+<div class="icon">🎓</div>
+<h3>Education</h3>
+<p>Fees payments and education loans.</p>
+</div>
+
+
+<div class="card">
+<div class="icon">✈</div>
+<h3>Travel</h3>
+<p>Discover destinations and bookings.</p>
+</div>
+
+
+<div class="card">
+<div class="icon">🎉</div>
+<h3>Events</h3>
+<p>Find and pay for events.</p>
+</div>
+
+
+<div class="card">
+<div class="icon">🍽</div>
+<h3>Dining</h3>
+<p>Restaurants and reservations.</p>
+</div>
+
+
+<div class="card">
+<div class="icon">❤️</div>
+<h3>Donations</h3>
+<p>Support causes and communities.</p>
+</div>
+
+
+<div class="card">
+<div class="icon">💰</div>
+<h3>Finance</h3>
+<p>Loans and crowdfunding.</p>
+</div>
+
+
+</div>
+
+</section>
+
+
+
+
+
+<section id="why">
+
+<h2 class="title">
+Why Choose <span>Plug?</span>
+</h2>
+
+
+<div class="features">
+
+
+<div class="feature">
+<h3>🔒 Secure</h3>
+<p>Firebase authentication keeps accounts protected.</p>
+</div>
+
+
+<div class="feature">
+<h3>⚡ Fast</h3>
+<p>Complete daily tasks quickly.</p>
+</div>
+
+
+<div class="feature">
+<h3>🇺🇬 Local</h3>
+<p>Built around Ugandan needs.</p>
+</div>
+
+
+<div class="feature">
+<h3>🤝 Connected</h3>
+<p>Businesses, services and people together.</p>
+</div>
+
+
+</div>
+
+</section>
+
+
+
+
+<section id="faq">
+
+
+<h2 class="title">
+Questions
+</h2>
+
+
+<div class="faq">
+
+
+<div class="question">
+How do I use Plug?
+<div class="answer">
+Create an account and access available services.
+</div>
+</div>
+
+
+<div class="question">
+Is Plug secure?
+<div class="answer">
+Yes. Authentication is powered by Firebase.
+</div>
+</div>
+
+
+<div class="question">
+What services are available?
+<div class="answer">
+Payments, travel, housing, finance, health and more.
+</div>
+</div>
+
+
+</div>
+
+</section>
+
+
+
+
+<section class="cta">
+
+<h2>
+Ready To Simplify Life?
+</h2>
+
+<br>
+
+<a class="btn">
+Launching Soon
+</a>
+
+</section>
+
+
+
+
+<footer>
+
+Plug Uganda © 2026
+<br>
+plug.ug
+
+</footer>
+
+
+
+<script>
+
+document.querySelectorAll(".question").forEach(q=>{
+
+q.onclick=()=>{
+
+let answer=q.querySelector(".answer");
+
+answer.style.display=
+answer.style.display==="block"
+?"none"
+:"block";
+
+}
+
+});
+
+
+</script>
+
+
+</body>
+</html>
