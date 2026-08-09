@@ -1,0 +1,13 @@
+:root{
+--blur-glass:20px;
+--blur-glass-heavy:42px;
+--shadow-card-light:0 8px 32px rgba(0,0,0,0.1);
+--shadow-card-dark:0 8px 32px rgba(0,0,0,0.3);
+--shadow-drop:0px 4px 4px 0px rgba(0,0,0,0.25);
+--shadow-inner-sheen:inset -5px -5px 250px 0px rgba(255,255,255,0.02);
+--shadow-fab-ring:inset 0 0 0 1px rgb(243,48,9),0px 4px 4px 0px rgba(0,0,0,0.25);
+--ease-standard:cubic-bezier(0.4,0,0.2,1); /* @kind other */
+--duration-fast:150ms; /* @kind other */
+--duration-standard:250ms; /* @kind other */
+--curve-header-path:M 0 0 L 430.5 0 L 430.5 78.5 C 430.5 78.5 312.5 112 216 112 C 119.5 112 0 78.5 0 78.5 L 0 0 Z; /* @kind other */
+}

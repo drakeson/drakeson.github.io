@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&family=Roboto:wght@400;500;700&family=Inter:wght@400;600;700&family=Poppins:wght@400;500;600&family=Noto+Serif:wght@400;600&display=swap');
+:root{
+--font-display:"Helvetica Neue",-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,Arial,sans-serif;
+--font-body:"Lato","Roboto",-apple-system,"Segoe UI",Arial,sans-serif;
+--font-sacred:Georgia,"Noto Serif",serif;
+--font-mono:"SF Mono",Menlo,Consolas,monospace;
+--text-display:32px;--weight-display:700;
+--text-title1:28px;--weight-title1:600;
+--text-title2:22px;--weight-title2:600;
+--text-title3:20px;--weight-title3:500;
+--text-body:16px;--weight-body:400;
+--text-caption:14px;--weight-caption:400;
+--text-small:12px;--weight-small:400;
+--line-tight:100%;
+--line-relaxed:135%;
+}

@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital@1&display=swap" rel="stylesheet">
+<style>
+  body{margin:0;background:#FBF6F1;}
+  ::placeholder{color:#B79AA3;}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .om-spin{animation:spin 1s linear infinite;}
+</style>
+</helmet>
+<div style="min-height:100vh;background:#FBF6F1;font-family:'Manrope',sans-serif;padding:40px 32px 140px;box-sizing:border-box;">
+  <div style="max-width:1480px;margin:0 auto;">
+    <div style="margin-bottom:40px;">
+      <h1 style="font-family:'Sora',sans-serif;font-size:26px;font-weight:800;color:#2B1620;margin:0 0 6px;">Prayista Church Admin — Screen Catalogue</h1>
+      <p style="font-family:'Manrope',sans-serif;font-size:14px;color:#8A7680;margin:0;max-width:720px;">All screens, flat (no device frames), 393px mobile canvas each. Events is fully interactive — click a card to prefill the form, use the ⋮ menu to edit/delete.</p>
+    </div>
+
+    <div style="margin-bottom:56px;">
+      <h2 style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:#A6123A;margin:0 0 20px;padding-bottom:10px;border-bottom:1px solid #EFDCE1;">Onboarding</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start;">
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;">01 — Welcome</span>
+          <div style="width:393px;min-height:760px;background:#7D0E2C;border-radius:28px;box-shadow:0 16px 44px rgba(125,14,44,0.28);overflow:hidden;position:relative;display:flex;flex-direction:column;">
+            <div style="position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 0%, rgba(184,144,31,0.35), transparent 60%);"></div>
+            <div style="position:relative;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 36px;text-align:center;gap:18px;">
+              <div style="width:76px;height:76px;border-radius:22px;background:rgba(255,255,255,0.14);display:flex;align-items:center;justify-content:center;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.25);">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="#F3E6C4"><path fill-rule="evenodd" d="M5 21V9l7-5 7 5v12h-5v-6h-4v6Z"></path></svg>
+              </div>
+              <span style="font-family:'Sora',sans-serif;font-weight:800;font-size:26px;color:#fff;">Prayista <span style="color:#F3E6C4;">Church Admin</span></span>
+              <p style="font-family:'Manrope',sans-serif;font-size:14.5px;color:rgba(255,255,255,0.82);line-height:1.6;margin:0;max-width:300px;">Manage events, cells, sermons, giving and your shop — everything your congregation sees, from one dashboard.</p>
+            </div>
+            <div style="position:relative;padding:0 28px 40px;display:flex;flex-direction:column;gap:14px;">
+              <button style="font-family:'Sora',sans-serif;font-weight:700;font-size:15px;color:#7D0E2C;background:#fff;border:none;border-radius:999px;padding:16px;box-shadow:0 10px 24px rgba(0,0,0,0.18);cursor:pointer;">Login Now</button>
+              <div style="display:flex;align-items:center;justify-content:center;gap:8px;padding:8px;">
+                <span style="font-family:'Manrope',sans-serif;font-size:13px;color:rgba(255,255,255,0.85);">Not a member? <span style="text-decoration:underline;font-weight:700;color:#fff;">Register here</span></span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(255,255,255,0.85)"><path fill-rule="evenodd" d="M6 4h6v2H8v10h10v-4h2v6H6Z M14 4h6v6h-2V7.4l-6.3 6.3-1.4-1.4L16.6 6H14Z"></path></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;">02 — Login (first-time)</span>
+          <div style="width:393px;min-height:760px;background:#FFFFFF;border-radius:28px;box-shadow:0 12px 40px rgba(166,18,58,0.10);overflow:hidden;position:relative;padding:44px 28px;box-sizing:border-box;display:flex;flex-direction:column;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#2B1620" style="margin-bottom:20px;"><path fill-rule="evenodd" d="M15 4 7 12 15 20 16.4 18.6 9.8 12 16.4 5.4Z"></path></svg>
+            <span style="font-family:'Sora',sans-serif;font-weight:800;font-size:24px;color:#2B1620;margin-bottom:6px;">Welcome back</span>
+            <span style="font-family:'Manrope',sans-serif;font-size:14px;color:#8A7680;margin-bottom:32px;">Login to manage your church.</span>
+            <label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;">Email</label>
+            <input type="email" placeholder="admin@yourchurch.org" style="font-family:'Manrope',sans-serif;font-size:14px;background:#FBF6F1;border:1px solid #EFDCE1;border-radius:14px;padding:15px 16px;margin-bottom:18px;color:#2B1620;box-sizing:border-box;">
+            <label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;">Password</label>
+            <input type="password" placeholder="••••••••" style="font-family:'Manrope',sans-serif;font-size:14px;background:#FBF6F1;border:1px solid #EFDCE1;border-radius:14px;padding:15px 16px;margin-bottom:10px;color:#2B1620;box-sizing:border-box;">
+            <span style="font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;color:#A6123A;align-self:flex-end;margin-bottom:28px;">Forgot Password?</span>
+            <button style="font-family:'Sora',sans-serif;font-weight:700;font-size:15px;color:#fff;background:#A6123A;border:none;border-radius:999px;padding:16px;box-shadow:0 10px 24px rgba(166,18,58,0.28);cursor:pointer;">Login</button>
+            <span style="font-family:'Manrope',sans-serif;font-size:12px;color:#B79AA3;text-align:center;margin-top:18px;">First-time login — biometric sign-in unlocks after your first successful login.</span>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;">03 — Login (returning, biometric)</span>
+          <div style="width:393px;min-height:760px;background:#FFFFFF;border-radius:28px;box-shadow:0 12px 40px rgba(166,18,58,0.10);overflow:hidden;position:relative;padding:44px 28px;box-sizing:border-box;display:flex;flex-direction:column;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#2B1620" style="margin-bottom:20px;"><path fill-rule="evenodd" d="M15 4 7 12 15 20 16.4 18.6 9.8 12 16.4 5.4Z"></path></svg>
+            <span style="font-family:'Sora',sans-serif;font-weight:800;font-size:24px;color:#2B1620;margin-bottom:6px;">Welcome back</span>
+            <span style="font-family:'Manrope',sans-serif;font-size:14px;color:#8A7680;margin-bottom:28px;">Login to manage your church.</span>
+            <label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;">Email</label>
+            <input type="email" value="grace@lighthouse.church" style="font-family:'Manrope',sans-serif;font-size:14px;background:#FBF6F1;border:1px solid #EFDCE1;border-radius:14px;padding:15px 16px;margin-bottom:18px;color:#2B1620;box-sizing:border-box;">
+            <label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;">Password</label>
+            <input type="password" placeholder="••••••••" style="font-family:'Manrope',sans-serif;font-size:14px;background:#FBF6F1;border:1px solid #EFDCE1;border-radius:14px;padding:15px 16px;margin-bottom:10px;color:#2B1620;box-sizing:border-box;">
+            <span style="font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;color:#A6123A;align-self:flex-end;margin-bottom:22px;">Forgot Password?</span>
+            <button style="font-family:'Sora',sans-serif;font-weight:700;font-size:15px;color:#fff;background:#A6123A;border:none;border-radius:999px;padding:16px;box-shadow:0 10px 24px rgba(166,18,58,0.28);cursor:pointer;margin-bottom:16px;">Login</button>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;">
+              <div style="flex:1;height:1px;background:#EFDCE1;"></div>
+              <span style="font-family:'Manrope',sans-serif;font-size:12px;color:#B79AA3;">or</span>
+              <div style="flex:1;height:1px;background:#EFDCE1;"></div>
+            </div>
+            <button style="display:flex;align-items:center;justify-content:center;gap:10px;font-family:'Sora',sans-serif;font-weight:700;font-size:14px;color:#A6123A;background:#F5DCE2;border:none;border-radius:999px;padding:15px;cursor:pointer;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#A6123A"><path fill-rule="evenodd" d="M12 2a8 8 0 0 0-8 8v3a1 1 0 0 0 2 0v-3a6 6 0 0 1 12 0v4c0 2-1 3.5-3 3.5s-3-1.5-3-3.5v-2a1 1 0 1 0-2 0v2c0 3 2 5.5 5 5.5s5-2.5 5-5.5v-4a8 8 0 0 0-8-8Z"></path></svg>
+              Login with Face ID
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="margin-bottom:56px;">
+      <h2 style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:#A6123A;margin:0 0 20px;padding-bottom:10px;border-bottom:1px solid #EFDCE1;">Dashboard &amp; Navigation</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start;">
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;">04 — Home / Dashboard</span>
+          <div style="width:393px;min-height:900px;background:#FBF6F1;border-radius:28px;box-shadow:0 12px 40px rgba(166,18,58,0.10);overflow:hidden;position:relative;display:flex;flex-direction:column;">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:20px 20px 0;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#2B1620"><path fill-rule="evenodd" d="M3 5h18v2H3Z M3 11h18v2H3Z M3 17h18v2H3Z"></path></svg>
+              <span style="font-family:'Sora',sans-serif;font-weight:800;font-size:16px;color:#A6123A;">Prayista</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#2B1620"><path fill-rule="evenodd" d="M12 2a2 2 0 0 1 2 2v1.1a6 6 0 0 1 4 5.6V15l2 3H4l2-3v-4.3a6 6 0 0 1 4-5.6V4a2 2 0 0 1 2-2Z M10 20a2 2 0 0 0 4 0Z"></path></svg>
+            </div>
+            <div style="display:flex;align-items:center;gap:14px;padding:20px;">
+              <div style="width:56px;height:56px;border-radius:50%;background:#F5DCE2;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 2px #A6123A;">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="#A6123A"><path fill-rule="evenodd" d="M5 21V9l7-5 7 5v12h-5v-6h-4v6Z"></path></svg>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:4px;">
+                <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:18px;color:#2B1620;">Hi, Lighthouse Church</span>
+                <span style="font-family:'Manrope',sans-serif;font-size:12.5px;color:#A6123A;font-weight:600;">You have 4 pending orders</span>
+              </div>
+            </div>
+            <div style="margin:4px 20px 24px;background:linear-gradient(135deg,#7D0E2C,#A6123A);border-radius:20px;padding:22px 22px;box-shadow:0 12px 28px rgba(166,18,58,0.28);display:flex;flex-direction:column;gap:16px;">
+              <div>
+                <span style="font-family:'Manrope',sans-serif;font-size:12px;color:rgba(255,255,255,0.7);letter-spacing:0.03em;">Balance</span>
+                <div style="font-family:'Sora',sans-serif;font-weight:800;font-size:30px;color:#fff;">UGX 4,230,000</div>
+              </div>
+              <div style="display:flex;gap:28px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.18);">
+                <div style="display:flex;flex-direction:column;gap:4px;">
+                  <span style="font-family:'Manrope',sans-serif;font-size:11.5px;color:rgba(255,255,255,0.7);">Received</span>
+                  <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:16px;color:#F3E6C4;">UGX 5.1M</span>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:4px;">
+                  <span style="font-family:'Manrope',sans-serif;font-size:11.5px;color:rgba(255,255,255,0.7);">Withdrawn</span>
+                  <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:16px;color:#F3E6C4;">UGX 870K</span>
+                </div>
+              </div>
+            </div>
+            <div style="padding:0 20px 20px;flex:1;">
+              <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:15px;color:#2B1620;display:block;margin-bottom:14px;">My Metrics</span>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+                <sc-for list="{{ metrics }}" as="m" hint-placeholder-count="10">
+                  <div style="background:#fff;border:1px solid #F5DCE2;border-radius:16px;padding:12px 10px;display:flex;flex-direction:column;gap:8px;">
+                    <div style="width:28px;height:28px;border-radius:9px;background:#F5DCE2;display:flex;align-items:center;justify-content:center;">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="#A6123A"><path fill-rule="evenodd" d="{{ m.d }}"></path></svg>
+                    </div>
+                    <span style="font-family:'Sora',sans-serif;font-weight:800;font-size:17px;color:#2B1620;">{{ m.value }}</span>
+                    <span style="font-family:'Manrope',sans-serif;font-size:10.5px;color:#8A7680;line-height:1.3;">{{ m.label }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;">05 — Dashboard (setup in progress)</span>
+          <div style="width:393px;min-height:900px;background:#FBF6F1;border-radius:28px;box-shadow:0 12px 40px rgba(166,18,58,0.10);overflow:hidden;position:relative;display:flex;flex-direction:column;">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:20px 20px 0;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#2B1620"><path fill-rule="evenodd" d="M3 5h18v2H3Z M3 11h18v2H3Z M3 17h18v2H3Z"></path></svg>
+              <span style="font-family:'Sora',sans-serif;font-weight:800;font-size:16px;color:#A6123A;">Prayista</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#2B1620"><path fill-rule="evenodd" d="M12 2a2 2 0 0 1 2 2v1.1a6 6 0 0 1 4 5.6V15l2 3H4l2-3v-4.3a6 6 0 0 1 4-5.6V4a2 2 0 0 1 2-2Z M10 20a2 2 0 0 0 4 0Z"></path></svg>
+            </div>
+            <div style="display:flex;align-items:center;gap:14px;padding:20px 20px 16px;">
+              <div style="width:56px;height:56px;border-radius:50%;background:#F5DCE2;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 2px #A6123A;">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="#A6123A"><path fill-rule="evenodd" d="M5 21V9l7-5 7 5v12h-5v-6h-4v6Z"></path></svg>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:4px;">
+                <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:18px;color:#2B1620;">Hi, New Hope Chapel</span>
+                <span style="font-family:'Manrope',sans-serif;font-size:12.5px;color:#8A7680;">Approved — let's finish your setup</span>
+              </div>
+            </div>
+            <div style="margin:0 20px 20px;background:#F3E6C4;border:1px solid #B8901F;border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:12px;">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#7D5E10"><path fill-rule="evenodd" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z M11 6h2v6l4 2-1 2-5-3Z"></path></svg>
+                <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:14.5px;color:#5B4508;">Finish setting up your church</span>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <span style="font-family:'Manrope',sans-serif;font-size:13px;color:#6B5410;">✓ Church profile added</span>
+                <span style="font-family:'Manrope',sans-serif;font-size:13px;color:#6B5410;">○ Invite your admin team</span>
+                <span style="font-family:'Manrope',sans-serif;font-size:13px;color:#6B5410;">○ Add your first event</span>
+              </div>
+              <button style="align-self:flex-start;font-family:'Sora',sans-serif;font-weight:700;font-size:13px;color:#fff;background:#B8901F;border:none;border-radius:999px;padding:11px 20px;cursor:pointer;">Complete Setup</button>
+            </div>
+            <div style="margin:0 20px 24px;background:#fff;border:1px solid #F5DCE2;border-radius:20px;padding:22px;opacity:0.55;">
+              <span style="font-family:'Manrope',sans-serif;font-size:12px;color:#8A7680;">Balance breakdown unlocks once your first collection is received.</span>
+            </div>
+            <div style="padding:0 20px;flex:1;">
+              <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:15px;color:#2B1620;opacity:0.4;display:block;margin-bottom:14px;">My Metrics</span>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;opacity:0.4;">
+                <sc-for list="{{ metrics }}" as="m2" hint-placeholder-count="6">
+                  <div style="background:#fff;border:1px solid #F5DCE2;border-radius:16px;padding:12px 10px;display:flex;flex-direction:column;gap:8px;">
+                    <div style="width:28px;height:28px;border-radius:9px;background:#F5DCE2;"></div>
+                    <span style="font-family:'Sora',sans-serif;font-weight:800;font-size:17px;color:#2B1620;">0</span>
+                    <span style="font-family:'Manrope',sans-serif;font-size:10.5px;color:#8A7680;">{{ m2.label }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;">06 — Nav drawer menu</span>
+          <div style="width:393px;min-height:900px;background:#2B1620;border-radius:28px;box-shadow:0 12px 40px rgba(166,18,58,0.10);overflow:hidden;position:relative;">
+            <div style="position:absolute;inset:0 25% 0 0;background:#FBF6F1;box-shadow:8px 0 30px rgba(0,0,0,0.2);overflow-y:auto;padding:28px 0;">
+              <div style="display:flex;align-items:center;gap:12px;padding:0 24px 24px;border-bottom:1px solid #EFDCE1;margin-bottom:16px;">
+                <div style="width:44px;height:44px;border-radius:12px;background:#F5DCE2;display:flex;align-items:center;justify-content:center;">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="#A6123A"><path fill-rule="evenodd" d="M5 21V9l7-5 7 5v12h-5v-6h-4v6Z"></path></svg>
+                </div>
+                <div style="display:flex;flex-direction:column;">
+                  <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:14px;color:#2B1620;">Lighthouse Church</span>
+                  <span style="font-family:'Manrope',sans-serif;font-size:11.5px;color:#8A7680;">grace@lighthouse.church</span>
+                </div>
+              </div>
+              <sc-for list="{{ navGroups }}" as="grp" hint-placeholder-count="5">
+                <div style="padding:0 24px;margin-bottom:6px;">
+                  <sc-if value="{{ grp.label }}" hint-placeholder-val="{{ true }}">
+                    <span style="font-family:'Sora',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#B79AA3;display:block;margin:14px 0 6px;">{{ grp.label }}</span>
+                  </sc-if>
+                  <sc-for list="{{ grp.items }}" as="it" hint-placeholder-count="3">
+                    <div style="display:flex;align-items:center;gap:14px;padding:10px 8px;border-radius:12px;">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="#A6123A"><path fill-rule="evenodd" d="{{ it.d }}"></path></svg>
+                      <span style="font-family:'Manrope',sans-serif;font-size:14px;font-weight:600;color:#2B1620;">{{ it.label }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="margin-bottom:56px;">
+      <h2 style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:#A6123A;margin:0 0 6px;padding-bottom:10px;border-bottom:1px solid #EFDCE1;">Content Management — list + form pattern</h2>
+      <p style="font-family:'Manrope',sans-serif;font-size:13px;color:#8A7680;margin:0 0 20px;max-width:640px;">Scroll the top row, tap a card to prefill the form below it (a badge marks the item being edited), or use its ⋮ menu for Edit/Delete directly.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start;">
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;">07 — Events</span>
+          <div style="width:393px;min-height:1100px;background:#FBF6F1;border-radius:28px;box-shadow:0 12px 40px rgba(166,18,58,0.10);overflow:hidden;display:flex;flex-direction:column;">
+            <div style="display:flex;align-items:center;gap:12px;padding:22px 20px 4px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="#2B1620"><path fill-rule="evenodd" d="M3 5h18v2H3Z M3 11h18v2H3Z M3 17h18v2H3Z"></path></svg><span style="font-family:'Sora',sans-serif;font-weight:800;font-size:19px;color:#2B1620;">Events</span></div>
+            <div style="padding:14px 20px 6px;"><span style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#8A7680;text-transform:uppercase;letter-spacing:0.05em;">Existing Events</span></div>
+            <div style="display:flex;gap:14px;overflow-x:auto;padding:8px 20px 18px;">
+              <sc-for list="{{ events.items }}" as="ev" hint-placeholder-count="2">
+                <div style="position:relative;flex:0 0 220px;">
+                  <div onClick="{{ () => selectEvent(ev) }}" style="background:#fff;border:1.5px solid #F5DCE2;border-radius:16px;overflow:hidden;cursor:pointer;">
+                    <div style="height:96px;background:#F5DCE2;display:flex;align-items:center;justify-content:center;">
+                      <svg width="30" height="30" viewBox="0 0 24 24" fill="#A6123A"><path fill-rule="evenodd" d="M4 6h16v14H4Z M7 2h2v5H7Z M15 2h2v5H15Z M4 10h16v1H4Z"></path></svg>
+                    </div>
+                    <div style="padding:12px;display:flex;flex-direction:column;gap:4px;">
+                      <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:13px;color:#2B1620;">{{ ev.name }}</span>
+                      <span style="font-family:'Manrope',sans-serif;font-size:11.5px;color:#8A7680;">{{ ev.date }} · {{ ev.time }}</span>
+                      <span style="font-family:'Manrope',sans-serif;font-size:11.5px;color:#8A7680;">{{ ev.location }}</span>
+                    </div>
+                  </div>
+                  <button onClick="{{ () => toggleEventMenu(ev.id) }}" style="position:absolute;top:8px;right:8px;width:26px;height:26px;border-radius:8px;background:rgba(255,255,255,0.92);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="#2B1620"><path fill-rule="evenodd" d="M12 4.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z M12 10a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z M12 15.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z"></path></svg>
+                  </button>
+                  <sc-if value="{{ ev.menuOpen }}" hint-placeholder-val="{{ false }}">
+                    <div style="position:absolute;top:38px;right:8px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.15);overflow:hidden;z-index:5;min-width:100px;">
+                      <div onClick="{{ () => selectEvent(ev) }}" style="padding:10px 14px;font-family:'Manrope',sans-serif;font-size:13px;color:#2B1620;cursor:pointer;">Edit</div>
+                      <div onClick="{{ () => deleteEvent(ev.id) }}" style="padding:10px 14px;font-family:'Manrope',sans-serif;font-size:13px;color:#A6123A;cursor:pointer;border-top:1px solid #F5DCE2;">Delete</div>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ ev.selected }}" hint-placeholder-val="{{ false }}">
+                    <div style="position:absolute;top:8px;left:8px;background:#A6123A;color:#fff;font-family:'Sora',sans-serif;font-size:9px;font-weight:700;padding:3px 8px;border-radius:999px;">EDITING</div>
+                  </sc-if>
+                </div>
+              </sc-for>
+            </div>
+            <div style="padding:6px 20px 26px;display:flex;flex-direction:column;gap:14px;">
+              <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:15px;color:#2B1620;">{{ events.submitLabel }} Event</span>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Name</label><input value="{{ events.form.name }}" onChange="{{ (e) => setEventField('name', e.target.value) }}" placeholder="Colour Conference" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Location</label><input value="{{ events.form.location }}" onChange="{{ (e) => setEventField('location', e.target.value) }}" placeholder="Main Auditorium" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+              <div style="display:flex;gap:12px;">
+                <div style="flex:1;"><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Date</label><input type="date" value="{{ events.form.date }}" onChange="{{ (e) => setEventField('date', e.target.value) }}" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+                <div style="flex:1;"><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Time</label><input type="time" value="{{ events.form.time }}" onChange="{{ (e) => setEventField('time', e.target.value) }}" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+              </div>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Hashtags</label><input value="{{ events.form.hashtags }}" onChange="{{ (e) => setEventField('hashtags', e.target.value) }}" placeholder="#worship #conference" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Description</label><textarea value="{{ events.form.description }}" onChange="{{ (e) => setEventField('description', e.target.value) }}" placeholder="What is this event about?" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;min-height:76px;resize:vertical;"></textarea></div>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Poster</label>
+                <div style="border:1.5px dashed #D8B7C0;border-radius:14px;padding:20px;display:flex;flex-direction:column;align-items:center;gap:8px;color:#A6123A;background:#fff;">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="#A6123A"><path fill-rule="evenodd" d="M11 4h2v9h-2Z M8 8l4-4 4 4-1.4 1.4L13 6.8V13h-2V6.8l-1.6 2.6Z M4 18h16v2H4Z"></path></svg>
+                  <span style="font-family:'Manrope',sans-serif;font-size:12.5px;font-weight:600;">Upload event poster</span>
+                </div>
+              </div>
+              <div style="display:flex;gap:12px;padding-top:4px;">
+                <sc-if value="{{ events.isEditing }}" hint-placeholder-val="{{ false }}">
+                  <button onClick="{{ cancelEvent }}" style="font-family:'Sora',sans-serif;font-weight:700;font-size:14px;color:#A6123A;background:#F5DCE2;border:none;border-radius:999px;padding:14px 20px;cursor:pointer;">Cancel</button>
+                </sc-if>
+                <button onClick="{{ submitEvent }}" style="font-family:'Sora',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#A6123A;border:none;border-radius:999px;padding:14px;cursor:pointer;flex:1;box-shadow:0 10px 22px rgba(166,18,58,0.25);">{{ events.submitLabel }} Event</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;">08 — Cells</span>
+          <div style="width:393px;min-height:1050px;background:#FBF6F1;border-radius:28px;box-shadow:0 12px 40px rgba(166,18,58,0.10);overflow:hidden;display:flex;flex-direction:column;">
+            <div style="display:flex;align-items:center;gap:12px;padding:22px 20px 4px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="#2B1620"><path fill-rule="evenodd" d="M3 5h18v2H3Z M3 11h18v2H3Z M3 17h18v2H3Z"></path></svg><span style="font-family:'Sora',sans-serif;font-weight:800;font-size:19px;color:#2B1620;">Cells</span></div>
+            <div style="padding:14px 20px 6px;"><span style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#8A7680;text-transform:uppercase;letter-spacing:0.05em;">Existing Cells</span></div>
+            <div style="display:flex;gap:14px;overflow-x:auto;padding:8px 20px 18px;">
+              <sc-for list="{{ cells.items }}" as="c" hint-placeholder-count="2">
+                <div style="position:relative;flex:0 0 210px;">
+                  <div onClick="{{ () => selectCell(c) }}" style="background:#fff;border:1.5px solid #F5DCE2;border-radius:16px;overflow:hidden;cursor:pointer;padding:14px;display:flex;flex-direction:column;gap:6px;">
+                    <div style="width:38px;height:38px;border-radius:12px;background:#F5DCE2;display:flex;align-items:center;justify-content:center;margin-bottom:4px;">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="#A6123A"><path fill-rule="evenodd" d="M8 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z M2 20c0-3 3-5 6-5s6 2 6 5H2Z M17 12a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z M14.5 15c2.6.4 4.5 2 4.5 5h-3"></path></svg>
+                    </div>
+                    <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:13px;color:#2B1620;">{{ c.name }}</span>
+                    <span style="font-family:'Manrope',sans-serif;font-size:11.5px;color:#8A7680;">Led by {{ c.leader }}</span>
+                    <span style="font-family:'Manrope',sans-serif;font-size:11.5px;color:#8A7680;">{{ c.location }}</span>
+                  </div>
+                  <button onClick="{{ () => toggleCellMenu(c.id) }}" style="position:absolute;top:8px;right:8px;width:26px;height:26px;border-radius:8px;background:rgba(255,255,255,0.92);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="#2B1620"><path fill-rule="evenodd" d="M12 4.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z M12 10a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z M12 15.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z"></path></svg>
+                  </button>
+                  <sc-if value="{{ c.menuOpen }}" hint-placeholder-val="{{ false }}">
+                    <div style="position:absolute;top:38px;right:8px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.15);overflow:hidden;z-index:5;min-width:100px;">
+                      <div onClick="{{ () => selectCell(c) }}" style="padding:10px 14px;font-family:'Manrope',sans-serif;font-size:13px;color:#2B1620;cursor:pointer;">Edit</div>
+                      <div onClick="{{ () => deleteCell(c.id) }}" style="padding:10px 14px;font-family:'Manrope',sans-serif;font-size:13px;color:#A6123A;cursor:pointer;border-top:1px solid #F5DCE2;">Delete</div>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ c.selected }}" hint-placeholder-val="{{ false }}">
+                    <div style="position:absolute;top:8px;left:8px;background:#A6123A;color:#fff;font-family:'Sora',sans-serif;font-size:9px;font-weight:700;padding:3px 8px;border-radius:999px;">EDITING</div>
+                  </sc-if>
+                </div>
+              </sc-for>
+            </div>
+            <div style="padding:6px 20px 26px;display:flex;flex-direction:column;gap:14px;">
+              <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:15px;color:#2B1620;">{{ cells.submitLabel }} Cell</span>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Name</label><input value="{{ cells.form.name }}" onChange="{{ (e) => setCellField('name', e.target.value) }}" placeholder="Grace Cell" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+              <div style="display:flex;gap:12px;">
+                <div style="flex:1;"><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Leader Name</label><input value="{{ cells.form.leader }}" onChange="{{ (e) => setCellField('leader', e.target.value) }}" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+                <div style="flex:1;"><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Leader Phone</label><input value="{{ cells.form.phone }}" onChange="{{ (e) => setCellField('phone', e.target.value) }}" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+              </div>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Location</label><input value="{{ cells.form.location }}" onChange="{{ (e) => setCellField('location', e.target.value) }}" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Description</label><textarea value="{{ cells.form.description }}" onChange="{{ (e) => setCellField('description', e.target.value) }}" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;min-height:70px;resize:vertical;"></textarea></div>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Banner</label>
+                <div style="border:1.5px dashed #D8B7C0;border-radius:14px;padding:20px;display:flex;flex-direction:column;align-items:center;gap:8px;color:#A6123A;background:#fff;">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="#A6123A"><path fill-rule="evenodd" d="M11 4h2v9h-2Z M8 8l4-4 4 4-1.4 1.4L13 6.8V13h-2V6.8l-1.6 2.6Z M4 18h16v2H4Z"></path></svg>
+                  <span style="font-family:'Manrope',sans-serif;font-size:12.5px;font-weight:600;">Upload cell banner</span>
+                </div>
+              </div>
+              <div style="display:flex;gap:12px;padding-top:4px;">
+                <sc-if value="{{ cells.isEditing }}" hint-placeholder-val="{{ false }}">
+                  <button onClick="{{ cancelCell }}" style="font-family:'Sora',sans-serif;font-weight:700;font-size:14px;color:#A6123A;background:#F5DCE2;border:none;border-radius:999px;padding:14px 20px;cursor:pointer;">Cancel</button>
+                </sc-if>
+                <button onClick="{{ submitCell }}" style="font-family:'Sora',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#A6123A;border:none;border-radius:999px;padding:14px;cursor:pointer;flex:1;box-shadow:0 10px 22px rgba(166,18,58,0.25);">{{ cells.submitLabel }} Cell</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;">09 — Playlists <span style="font-weight:500;color:#B8901F;">(pattern flag — see note below)</span></span>
+          <div style="width:393px;min-height:1150px;background:#FBF6F1;border-radius:28px;box-shadow:0 12px 40px rgba(166,18,58,0.10);overflow:hidden;display:flex;flex-direction:column;">
+            <div style="display:flex;align-items:center;gap:12px;padding:22px 20px 4px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="#2B1620"><path fill-rule="evenodd" d="M3 5h18v2H3Z M3 11h18v2H3Z M3 17h18v2H3Z"></path></svg><span style="font-family:'Sora',sans-serif;font-weight:800;font-size:19px;color:#2B1620;">Playlists</span></div>
+            <div style="padding:14px 20px 6px;"><span style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#8A7680;text-transform:uppercase;letter-spacing:0.05em;">By Service Date</span></div>
+            <div style="display:flex;gap:14px;overflow-x:auto;padding:8px 20px 18px;">
+              <sc-for list="{{ playlists.items }}" as="pl" hint-placeholder-count="2">
+                <div style="position:relative;flex:0 0 190px;">
+                  <div onClick="{{ () => selectPlaylist(pl) }}" style="background:#fff;border:1.5px solid #F5DCE2;border-radius:16px;overflow:hidden;cursor:pointer;padding:14px;display:flex;flex-direction:column;gap:6px;">
+                    <div style="width:38px;height:38px;border-radius:12px;background:#F3E6C4;display:flex;align-items:center;justify-content:center;margin-bottom:4px;">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="#B8901F"><path fill-rule="evenodd" d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"></path></svg>
+                    </div>
+                    <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:13px;color:#2B1620;">{{ pl.serviceDate }}</span>
+                    <span style="font-family:'Manrope',sans-serif;font-size:11.5px;color:#8A7680;">{{ pl.songs.length }} songs</span>
+                  </div>
+                  <button onClick="{{ () => togglePlaylistMenu(pl.id) }}" style="position:absolute;top:8px;right:8px;width:26px;height:26px;border-radius:8px;background:rgba(255,255,255,0.92);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="#2B1620"><path fill-rule="evenodd" d="M12 4.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z M12 10a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z M12 15.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z"></path></svg>
+                  </button>
+                  <sc-if value="{{ pl.menuOpen }}" hint-placeholder-val="{{ false }}">
+                    <div style="position:absolute;top:38px;right:8px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.15);overflow:hidden;z-index:5;min-width:100px;">
+                      <div onClick="{{ () => selectPlaylist(pl) }}" style="padding:10px 14px;font-family:'Manrope',sans-serif;font-size:13px;color:#2B1620;cursor:pointer;">Edit</div>
+                      <div onClick="{{ () => deletePlaylist(pl.id) }}" style="padding:10px 14px;font-family:'Manrope',sans-serif;font-size:13px;color:#A6123A;cursor:pointer;border-top:1px solid #F5DCE2;">Delete</div>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ pl.selected }}" hint-placeholder-val="{{ false }}">
+                    <div style="position:absolute;top:8px;left:8px;background:#A6123A;color:#fff;font-family:'Sora',sans-serif;font-size:9px;font-weight:700;padding:3px 8px;border-radius:999px;">EDITING</div>
+                  </sc-if>
+                </div>
+              </sc-for>
+            </div>
+            <div style="padding:6px 20px 26px;display:flex;flex-direction:column;gap:14px;">
+              <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:15px;color:#2B1620;">{{ playlists.submitLabel }} Playlist</span>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Service Date</label><input type="date" value="{{ playlists.form.serviceDate }}" onChange="{{ (e) => setPlaylistField('serviceDate', e.target.value) }}" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+              <label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;">Songs</label>
+              <sc-for list="{{ playlists.form.songs }}" as="song" hint-placeholder-count="2">
+                <div style="display:flex;gap:8px;align-items:center;">
+                  <input value="{{ song.name }}" onChange="{{ (e) => setSongField($index, 'name', e.target.value) }}" placeholder="Song title" style="font-family:'Manrope',sans-serif;font-size:13.5px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:12px 13px;color:#2B1620;box-sizing:border-box;flex:1;">
+                  <input value="{{ song.artist }}" onChange="{{ (e) => setSongField($index, 'artist', e.target.value) }}" placeholder="Artist" style="font-family:'Manrope',sans-serif;font-size:13.5px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:12px 13px;color:#2B1620;box-sizing:border-box;flex:1;">
+                  <button onClick="{{ () => removeSongRow($index) }}" style="width:34px;height:34px;flex:0 0 auto;border-radius:10px;background:#F5DCE2;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="#A6123A"><path fill-rule="evenodd" d="M9 3h6l1 2h4v2H4V5h4Z M6 9h12l-1 12H7Z"></path></svg>
+                  </button>
+                </div>
+              </sc-for>
+              <button onClick="{{ addSongRow }}" style="display:flex;align-items:center;justify-content:center;gap:8px;font-family:'Sora',sans-serif;font-weight:700;font-size:13px;color:#A6123A;background:#F5DCE2;border:none;border-radius:12px;padding:12px;cursor:pointer;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="#A6123A"><path fill-rule="evenodd" d="M11 4h2v7h7v2h-7v7h-2v-7H4v-2h7Z"></path></svg>
+                Add another song
+              </button>
+              <div style="display:flex;gap:12px;padding-top:4px;">
+                <sc-if value="{{ playlists.isEditing }}" hint-placeholder-val="{{ false }}">
+                  <button onClick="{{ cancelPlaylist }}" style="font-family:'Sora',sans-serif;font-weight:700;font-size:14px;color:#A6123A;background:#F5DCE2;border:none;border-radius:999px;padding:14px 20px;cursor:pointer;">Cancel</button>
+                </sc-if>
+                <button onClick="{{ submitPlaylist }}" style="font-family:'Sora',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#A6123A;border:none;border-radius:999px;padding:14px;cursor:pointer;flex:1;box-shadow:0 10px 22px rgba(166,18,58,0.25);">{{ playlists.submitLabel }} Playlist</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;">10 — Sermons</span>
+          <div style="width:393px;min-height:1150px;background:#FBF6F1;border-radius:28px;box-shadow:0 12px 40px rgba(166,18,58,0.10);overflow:hidden;display:flex;flex-direction:column;">
+            <div style="display:flex;align-items:center;gap:12px;padding:22px 20px 4px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="#2B1620"><path fill-rule="evenodd" d="M3 5h18v2H3Z M3 11h18v2H3Z M3 17h18v2H3Z"></path></svg><span style="font-family:'Sora',sans-serif;font-weight:800;font-size:19px;color:#2B1620;">Sermons</span></div>
+            <div style="padding:14px 20px 6px;"><span style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#8A7680;text-transform:uppercase;letter-spacing:0.05em;">Existing Sermons</span></div>
+            <div style="display:flex;gap:14px;overflow-x:auto;padding:8px 20px 18px;">
+              <sc-for list="{{ sermons.items }}" as="s" hint-placeholder-count="2">
+                <div style="position:relative;flex:0 0 200px;">
+                  <div onClick="{{ () => selectSermon(s) }}" style="background:#fff;border:1.5px solid #F5DCE2;border-radius:16px;overflow:hidden;cursor:pointer;">
+                    <div style="height:90px;background:#F5DCE2;display:flex;align-items:center;justify-content:center;">
+                      <svg width="26" height="26" viewBox="0 0 24 24" fill="#A6123A"><path fill-rule="evenodd" d="M12 2a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3Z M6 11a6 6 0 0 0 12 0h-2a4 4 0 0 1-8 0Z M11 19h2v3h-2Z"></path></svg>
+                    </div>
+                    <div style="padding:12px;display:flex;flex-direction:column;gap:4px;">
+                      <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:13px;color:#2B1620;">{{ s.title }}</span>
+                      <span style="font-family:'Manrope',sans-serif;font-size:11.5px;color:#8A7680;">{{ s.date }}</span>
+                    </div>
+                  </div>
+                  <button onClick="{{ () => toggleSermonMenu(s.id) }}" style="position:absolute;top:8px;right:8px;width:26px;height:26px;border-radius:8px;background:rgba(255,255,255,0.92);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="#2B1620"><path fill-rule="evenodd" d="M12 4.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z M12 10a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z M12 15.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z"></path></svg>
+                  </button>
+                  <sc-if value="{{ s.menuOpen }}" hint-placeholder-val="{{ false }}">
+                    <div style="position:absolute;top:38px;right:8px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.15);overflow:hidden;z-index:5;min-width:100px;">
+                      <div onClick="{{ () => selectSermon(s) }}" style="padding:10px 14px;font-family:'Manrope',sans-serif;font-size:13px;color:#2B1620;cursor:pointer;">Edit</div>
+                      <div onClick="{{ () => deleteSermon(s.id) }}" style="padding:10px 14px;font-family:'Manrope',sans-serif;font-size:13px;color:#A6123A;cursor:pointer;border-top:1px solid #F5DCE2;">Delete</div>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ s.selected }}" hint-placeholder-val="{{ false }}">
+                    <div style="position:absolute;top:8px;left:8px;background:#A6123A;color:#fff;font-family:'Sora',sans-serif;font-size:9px;font-weight:700;padding:3px 8px;border-radius:999px;">EDITING</div>
+                  </sc-if>
+                </div>
+              </sc-for>
+            </div>
+            <div style="padding:6px 20px 26px;display:flex;flex-direction:column;gap:14px;">
+              <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:15px;color:#2B1620;">{{ sermons.submitLabel }} Sermon</span>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Title</label><input value="{{ sermons.form.title }}" onChange="{{ (e) => setSermonField('title', e.target.value) }}" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Description</label><textarea value="{{ sermons.form.description }}" onChange="{{ (e) => setSermonField('description', e.target.value) }}" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;min-height:70px;resize:vertical;"></textarea></div>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Hashtags</label><input value="{{ sermons.form.hashtags }}" onChange="{{ (e) => setSermonField('hashtags', e.target.value) }}" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Date</label><input type="date" value="{{ sermons.form.date }}" onChange="{{ (e) => setSermonField('date', e.target.value) }}" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+              <div style="display:flex;gap:12px;">
+                <div style="flex:1;"><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Audio file</label>
+                  <div style="border:1.5px dashed #D8B7C0;border-radius:14px;padding:16px;display:flex;flex-direction:column;align-items:center;gap:6px;color:#A6123A;background:#fff;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="#A6123A"><path fill-rule="evenodd" d="M12 2a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3Z M6 11a6 6 0 0 0 12 0h-2a4 4 0 0 1-8 0Z"></path></svg>
+                    <span style="font-family:'Manrope',sans-serif;font-size:11.5px;font-weight:600;">Upload audio</span>
+                  </div>
+                </div>
+                <div style="flex:1;"><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Image</label>
+                  <div style="border:1.5px dashed #D8B7C0;border-radius:14px;padding:16px;display:flex;flex-direction:column;align-items:center;gap:6px;color:#A6123A;background:#fff;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="#A6123A"><path fill-rule="evenodd" d="M11 4h2v9h-2Z M8 8l4-4 4 4-1.4 1.4L13 6.8V13h-2V6.8l-1.6 2.6Z M4 18h16v2H4Z"></path></svg>
+                    <span style="font-family:'Manrope',sans-serif;font-size:11.5px;font-weight:600;">Upload image</span>
+                  </div>
+                </div>
+              </div>
+              <div style="display:flex;gap:12px;padding-top:4px;">
+                <sc-if value="{{ sermons.isEditing }}" hint-placeholder-val="{{ false }}">
+                  <button onClick="{{ cancelSermon }}" style="font-family:'Sora',sans-serif;font-weight:700;font-size:14px;color:#A6123A;background:#F5DCE2;border:none;border-radius:999px;padding:14px 20px;cursor:pointer;">Cancel</button>
+                </sc-if>
+                <button onClick="{{ submitSermon }}" style="font-family:'Sora',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#A6123A;border:none;border-radius:999px;padding:14px;cursor:pointer;flex:1;box-shadow:0 10px 22px rgba(166,18,58,0.25);">{{ sermons.submitLabel }} Sermon</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;">11 — Daily Quotes</span>
+          <div style="width:393px;min-height:1150px;background:#FBF6F1;border-radius:28px;box-shadow:0 12px 40px rgba(166,18,58,0.10);overflow:hidden;display:flex;flex-direction:column;">
+            <div style="display:flex;align-items:center;gap:12px;padding:22px 20px 4px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="#2B1620"><path fill-rule="evenodd" d="M3 5h18v2H3Z M3 11h18v2H3Z M3 17h18v2H3Z"></path></svg><span style="font-family:'Sora',sans-serif;font-weight:800;font-size:19px;color:#2B1620;">Daily Quotes</span></div>
+            <div style="padding:14px 20px 6px;"><span style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#8A7680;text-transform:uppercase;letter-spacing:0.05em;">Existing Quotes</span></div>
+            <div style="display:flex;gap:14px;overflow-x:auto;padding:8px 20px 18px;">
+              <sc-for list="{{ quotes.items }}" as="q" hint-placeholder-count="2">
+                <div style="position:relative;flex:0 0 230px;">
+                  <div onClick="{{ () => selectQuote(q) }}" style="background:#fff;border:1.5px solid #F5DCE2;border-radius:16px;overflow:hidden;cursor:pointer;padding:16px;display:flex;flex-direction:column;gap:8px;">
+                    <span style="font-family:'Newsreader',serif;font-style:italic;font-size:14px;color:#2B1620;line-height:1.4;">"{{ q.quote }}"</span>
+                    <span style="font-family:'Manrope',sans-serif;font-size:11px;font-weight:700;color:#A6123A;">{{ q.verse }}</span>
+                    <span style="font-family:'Manrope',sans-serif;font-size:10.5px;color:#8A7680;">{{ q.date }}</span>
+                  </div>
+                  <button onClick="{{ () => toggleQuoteMenu(q.id) }}" style="position:absolute;top:8px;right:8px;width:26px;height:26px;border-radius:8px;background:rgba(255,255,255,0.92);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="#2B1620"><path fill-rule="evenodd" d="M12 4.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z M12 10a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z M12 15.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z"></path></svg>
+                  </button>
+                  <sc-if value="{{ q.menuOpen }}" hint-placeholder-val="{{ false }}">
+                    <div style="position:absolute;top:38px;right:8px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.15);overflow:hidden;z-index:5;min-width:100px;">
+                      <div onClick="{{ () => selectQuote(q) }}" style="padding:10px 14px;font-family:'Manrope',sans-serif;font-size:13px;color:#2B1620;cursor:pointer;">Edit</div>
+                      <div onClick="{{ () => deleteQuote(q.id) }}" style="padding:10px 14px;font-family:'Manrope',sans-serif;font-size:13px;color:#A6123A;cursor:pointer;border-top:1px solid #F5DCE2;">Delete</div>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ q.selected }}" hint-placeholder-val="{{ false }}">
+                    <div style="position:absolute;top:8px;left:8px;background:#A6123A;color:#fff;font-family:'Sora',sans-serif;font-size:9px;font-weight:700;padding:3px 8px;border-radius:999px;">EDITING</div>
+                  </sc-if>
+                </div>
+              </sc-for>
+            </div>
+            <div style="padding:6px 20px 26px;display:flex;flex-direction:column;gap:14px;">
+              <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:15px;color:#2B1620;">{{ quotes.submitLabel }} Quote</span>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Quote text</label><textarea value="{{ quotes.form.quote }}" onChange="{{ (e) => setQuoteField('quote', e.target.value) }}" style="font-family:'Newsreader',serif;font-style:italic;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;min-height:60px;resize:vertical;"></textarea></div>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Verse reference</label><input value="{{ quotes.form.verse }}" onChange="{{ (e) => setQuoteField('verse', e.target.value) }}" placeholder="Psalm 46:10" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Application in life</label><textarea value="{{ quotes.form.application }}" onChange="{{ (e) => setQuoteField('application', e.target.value) }}" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;min-height:56px;resize:vertical;"></textarea></div>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Life lesson</label><textarea value="{{ quotes.form.lesson }}" onChange="{{ (e) => setQuoteField('lesson', e.target.value) }}" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;min-height:56px;resize:vertical;"></textarea></div>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Date</label><input type="date" value="{{ quotes.form.date }}" onChange="{{ (e) => setQuoteField('date', e.target.value) }}" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+              <div style="display:flex;gap:12px;padding-top:4px;">
+                <sc-if value="{{ quotes.isEditing }}" hint-placeholder-val="{{ false }}">
+                  <button onClick="{{ cancelQuote }}" style="font-family:'Sora',sans-serif;font-weight:700;font-size:14px;color:#A6123A;background:#F5DCE2;border:none;border-radius:999px;padding:14px 20px;cursor:pointer;">Cancel</button>
+                </sc-if>
+                <button onClick="{{ submitQuote }}" style="font-family:'Sora',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#A6123A;border:none;border-radius:999px;padding:14px;cursor:pointer;flex:1;box-shadow:0 10px 22px rgba(166,18,58,0.25);">{{ quotes.submitLabel }} Quote</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;">12 — Shop Items</span>
+          <div style="width:393px;min-height:1000px;background:#FBF6F1;border-radius:28px;box-shadow:0 12px 40px rgba(166,18,58,0.10);overflow:hidden;display:flex;flex-direction:column;">
+            <div style="display:flex;align-items:center;gap:12px;padding:22px 20px 4px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="#2B1620"><path fill-rule="evenodd" d="M3 5h18v2H3Z M3 11h18v2H3Z M3 17h18v2H3Z"></path></svg><span style="font-family:'Sora',sans-serif;font-weight:800;font-size:19px;color:#2B1620;">Shop Items</span></div>
+            <div style="padding:14px 20px 6px;"><span style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#8A7680;text-transform:uppercase;letter-spacing:0.05em;">Existing Items</span></div>
+            <div style="display:flex;gap:14px;overflow-x:auto;padding:8px 20px 18px;">
+              <sc-for list="{{ shop.items }}" as="p" hint-placeholder-count="2">
+                <div style="position:relative;flex:0 0 190px;">
+                  <div onClick="{{ () => selectShop(p) }}" style="background:#fff;border:1.5px solid #F5DCE2;border-radius:16px;overflow:hidden;cursor:pointer;">
+                    <div style="height:90px;background:#F3E6C4;display:flex;align-items:center;justify-content:center;">
+                      <svg width="26" height="26" viewBox="0 0 24 24" fill="#B8901F"><path fill-rule="evenodd" d="M7 8V6a5 5 0 0 1 10 0v2h2l-1 12H6L5 8Z M9 8V6a3 3 0 0 1 6 0v2Z"></path></svg>
+                    </div>
+                    <div style="padding:12px;display:flex;flex-direction:column;gap:4px;">
+                      <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:12.5px;color:#2B1620;">{{ p.name }}</span>
+                      <span style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#A6123A;">UGX {{ p.price }}</span>
+                    </div>
+                  </div>
+                  <button onClick="{{ () => toggleShopMenu(p.id) }}" style="position:absolute;top:8px;right:8px;width:26px;height:26px;border-radius:8px;background:rgba(255,255,255,0.92);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="#2B1620"><path fill-rule="evenodd" d="M12 4.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z M12 10a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z M12 15.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z"></path></svg>
+                  </button>
+                  <sc-if value="{{ p.menuOpen }}" hint-placeholder-val="{{ false }}">
+                    <div style="position:absolute;top:38px;right:8px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.15);overflow:hidden;z-index:5;min-width:100px;">
+                      <div onClick="{{ () => selectShop(p) }}" style="padding:10px 14px;font-family:'Manrope',sans-serif;font-size:13px;color:#2B1620;cursor:pointer;">Edit</div>
+                      <div onClick="{{ () => deleteShop(p.id) }}" style="padding:10px 14px;font-family:'Manrope',sans-serif;font-size:13px;color:#A6123A;cursor:pointer;border-top:1px solid #F5DCE2;">Delete</div>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ p.selected }}" hint-placeholder-val="{{ false }}">
+                    <div style="position:absolute;top:8px;left:8px;background:#A6123A;color:#fff;font-family:'Sora',sans-serif;font-size:9px;font-weight:700;padding:3px 8px;border-radius:999px;">EDITING</div>
+                  </sc-if>
+                </div>
+              </sc-for>
+            </div>
+            <div style="padding:6px 20px 26px;display:flex;flex-direction:column;gap:14px;">
+              <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:15px;color:#2B1620;">{{ shop.submitLabel }} Item</span>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Name</label><input value="{{ shop.form.name }}" onChange="{{ (e) => setShopField('name', e.target.value) }}" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Price (UGX)</label><input value="{{ shop.form.price }}" onChange="{{ (e) => setShopField('price', e.target.value) }}" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Description</label><textarea value="{{ shop.form.description }}" onChange="{{ (e) => setShopField('description', e.target.value) }}" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;min-height:70px;resize:vertical;"></textarea></div>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Image</label>
+                <div style="border:1.5px dashed #D8B7C0;border-radius:14px;padding:20px;display:flex;flex-direction:column;align-items:center;gap:8px;color:#A6123A;background:#fff;">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="#A6123A"><path fill-rule="evenodd" d="M11 4h2v9h-2Z M8 8l4-4 4 4-1.4 1.4L13 6.8V13h-2V6.8l-1.6 2.6Z M4 18h16v2H4Z"></path></svg>
+                  <span style="font-family:'Manrope',sans-serif;font-size:12.5px;font-weight:600;">Upload item image</span>
+                </div>
+              </div>
+              <div style="display:flex;gap:12px;padding-top:4px;">
+                <sc-if value="{{ shop.isEditing }}" hint-placeholder-val="{{ false }}">
+                  <button onClick="{{ cancelShop }}" style="font-family:'Sora',sans-serif;font-weight:700;font-size:14px;color:#A6123A;background:#F5DCE2;border:none;border-radius:999px;padding:14px 20px;cursor:pointer;">Cancel</button>
+                </sc-if>
+                <button onClick="{{ submitShop }}" style="font-family:'Sora',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#A6123A;border:none;border-radius:999px;padding:14px;cursor:pointer;flex:1;box-shadow:0 10px 22px rgba(166,18,58,0.25);">{{ shop.submitLabel }} Item</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="margin-bottom:56px;">
+      <h2 style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:#A6123A;margin:0 0 20px;padding-bottom:10px;border-bottom:1px solid #EFDCE1;">Read-only / Status Screens</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start;">
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;">13 — Orders (list + detail)</span>
+          <div style="width:393px;min-height:900px;background:#FBF6F1;border-radius:28px;box-shadow:0 12px 40px rgba(166,18,58,0.10);overflow:hidden;display:flex;flex-direction:column;">
+            <div style="display:flex;align-items:center;gap:12px;padding:22px 20px 4px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="#2B1620"><path fill-rule="evenodd" d="M3 5h18v2H3Z M3 11h18v2H3Z M3 17h18v2H3Z"></path></svg><span style="font-family:'Sora',sans-serif;font-weight:800;font-size:19px;color:#2B1620;">Orders</span></div>
+            <div style="display:flex;flex-direction:column;gap:10px;padding:16px 20px;">
+              <sc-for list="{{ orders }}" as="o" hint-placeholder-count="3">
+                <div onClick="{{ () => selectOrder(o.id) }}" style="background:#fff;border:1.5px solid #F5DCE2;border-radius:16px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;">
+                  <div style="display:flex;flex-direction:column;gap:4px;">
+                    <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:13.5px;color:#2B1620;">{{ o.buyer }}</span>
+                    <span style="font-family:'Manrope',sans-serif;font-size:11.5px;color:#8A7680;">UGX {{ o.total }} · {{ o.date }}</span>
+                  </div>
+                  <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:10.5px;padding:5px 11px;border-radius:999px;background:#F5DCE2;color:#A6123A;">{{ o.status }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <div style="margin:8px 20px 24px;background:#fff;border:1.5px solid #A6123A;border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:14px;">
+              <span style="font-family:'Manrope',sans-serif;font-size:11px;font-weight:700;color:#A6123A;text-transform:uppercase;letter-spacing:0.06em;">Order Detail</span>
+              <div style="display:flex;justify-content:space-between;"><span style="font-family:'Manrope',sans-serif;font-size:13px;color:#8A7680;">Buyer</span><span style="font-family:'Sora',sans-serif;font-weight:700;font-size:13px;color:#2B1620;">{{ selectedOrder.buyer }}</span></div>
+              <div style="display:flex;justify-content:space-between;"><span style="font-family:'Manrope',sans-serif;font-size:13px;color:#8A7680;">Status</span><span style="font-family:'Sora',sans-serif;font-weight:700;font-size:13px;color:#A6123A;">{{ selectedOrder.status }}</span></div>
+              <div style="display:flex;justify-content:space-between;"><span style="font-family:'Manrope',sans-serif;font-size:13px;color:#8A7680;">Address</span><span style="font-family:'Manrope',sans-serif;font-size:13px;color:#2B1620;text-align:right;max-width:190px;">{{ selectedOrder.address }}</span></div>
+              <div style="height:1px;background:#F5DCE2;"></div>
+              <sc-for list="{{ selectedOrder.items }}" as="it2" hint-placeholder-count="2">
+                <div style="display:flex;justify-content:space-between;"><span style="font-family:'Manrope',sans-serif;font-size:13px;color:#2B1620;">{{ it2.name }} × {{ it2.qty }}</span><span style="font-family:'Manrope',sans-serif;font-size:13px;color:#2B1620;">UGX {{ it2.price }}</span></div>
+              </sc-for>
+              <div style="height:1px;background:#F5DCE2;"></div>
+              <div style="display:flex;justify-content:space-between;"><span style="font-family:'Sora',sans-serif;font-weight:700;font-size:14px;color:#2B1620;">Total</span><span style="font-family:'Sora',sans-serif;font-weight:800;font-size:14px;color:#A6123A;">UGX {{ selectedOrder.total }}</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;">14 — Collections / Giving</span>
+          <div style="width:393px;min-height:780px;background:#FBF6F1;border-radius:28px;box-shadow:0 12px 40px rgba(166,18,58,0.10);overflow:hidden;display:flex;flex-direction:column;">
+            <div style="display:flex;align-items:center;gap:12px;padding:22px 20px 4px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="#2B1620"><path fill-rule="evenodd" d="M3 5h18v2H3Z M3 11h18v2H3Z M3 17h18v2H3Z"></path></svg><span style="font-family:'Sora',sans-serif;font-weight:800;font-size:19px;color:#2B1620;">Collections</span></div>
+            <div style="display:flex;flex-direction:column;gap:10px;padding:16px 20px;">
+              <sc-for list="{{ collections }}" as="g" hint-placeholder-count="4">
+                <div style="background:#fff;border:1.5px solid #F5DCE2;border-radius:16px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;">
+                  <div style="display:flex;align-items:center;gap:12px;">
+                    <div style="width:36px;height:36px;border-radius:10px;background:#F3E6C4;display:flex;align-items:center;justify-content:center;">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="#B8901F"><path fill-rule="evenodd" d="M4 9h16v3H4Z M5 12h14v9H5Z M11 9v12h2V9Z"></path></svg>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:3px;">
+                      <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:13px;color:#2B1620;">{{ g.type }}</span>
+                      <span style="font-family:'Manrope',sans-serif;font-size:11px;color:#8A7680;">{{ g.giver }} · {{ g.date }}</span>
+                    </div>
+                  </div>
+                  <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:13.5px;color:#A6123A;">UGX {{ g.amount }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;">15 — Cashout / Withdraw</span>
+          <div style="width:393px;min-height:1000px;background:#FBF6F1;border-radius:28px;box-shadow:0 12px 40px rgba(166,18,58,0.10);overflow:hidden;display:flex;flex-direction:column;">
+            <div style="display:flex;align-items:center;gap:12px;padding:22px 20px 4px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="#2B1620"><path fill-rule="evenodd" d="M3 5h18v2H3Z M3 11h18v2H3Z M3 17h18v2H3Z"></path></svg><span style="font-family:'Sora',sans-serif;font-weight:800;font-size:19px;color:#2B1620;">Cashout</span></div>
+            <div style="margin:16px 20px 20px;background:linear-gradient(135deg,#7D0E2C,#A6123A);border-radius:20px;padding:22px;box-shadow:0 12px 28px rgba(166,18,58,0.28);display:flex;flex-direction:column;gap:6px;">
+              <span style="font-family:'Manrope',sans-serif;font-size:12px;color:rgba(255,255,255,0.7);">Withdrawable Balance</span>
+              <span style="font-family:'Sora',sans-serif;font-weight:800;font-size:28px;color:#fff;">UGX 4,230,000</span>
+            </div>
+            <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:14px;">
+              <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:15px;color:#2B1620;">Request Withdrawal</span>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Amount (UGX)</label><input placeholder="500,000" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Method</label>
+                <div style="display:flex;gap:10px;">
+                  <div style="flex:1;text-align:center;padding:12px;border-radius:12px;background:#A6123A;color:#fff;font-family:'Sora',sans-serif;font-weight:700;font-size:13px;">Bank</div>
+                  <div style="flex:1;text-align:center;padding:12px;border-radius:12px;background:#fff;border:1px solid #EFDCE1;color:#8A7680;font-family:'Sora',sans-serif;font-weight:700;font-size:13px;">Mobile Money</div>
+                </div>
+              </div>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Account details</label><input placeholder="Account number / mobile number" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+              <button style="font-family:'Sora',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#A6123A;border:none;border-radius:999px;padding:14px;cursor:pointer;box-shadow:0 10px 22px rgba(166,18,58,0.25);">Request Withdrawal</button>
+            </div>
+            <div style="padding:0 20px 24px;display:flex;flex-direction:column;gap:10px;">
+              <span style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#8A7680;text-transform:uppercase;letter-spacing:0.05em;">Past Requests</span>
+              <sc-for list="{{ cashoutHistory }}" as="ch" hint-placeholder-count="2">
+                <div style="background:#fff;border:1.5px solid #F5DCE2;border-radius:16px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;">
+                  <div style="display:flex;flex-direction:column;gap:3px;">
+                    <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:13px;color:#2B1620;">UGX {{ ch.amount }}</span>
+                    <span style="font-family:'Manrope',sans-serif;font-size:11px;color:#8A7680;">{{ ch.method }} · {{ ch.date }}</span>
+                  </div>
+                  <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:10.5px;padding:5px 11px;border-radius:999px;background:#F5DCE2;color:#A6123A;">{{ ch.status }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;">16 — Session Bookings</span>
+          <div style="width:393px;min-height:700px;background:#FBF6F1;border-radius:28px;box-shadow:0 12px 40px rgba(166,18,58,0.10);overflow:hidden;display:flex;flex-direction:column;">
+            <div style="display:flex;align-items:center;gap:12px;padding:22px 20px 4px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="#2B1620"><path fill-rule="evenodd" d="M3 5h18v2H3Z M3 11h18v2H3Z M3 17h18v2H3Z"></path></svg><span style="font-family:'Sora',sans-serif;font-weight:800;font-size:19px;color:#2B1620;">Session Bookings</span></div>
+            <div style="display:flex;flex-direction:column;gap:10px;padding:16px 20px;">
+              <sc-for list="{{ bookings }}" as="b" hint-placeholder-count="3">
+                <div style="background:#fff;border:1.5px solid #F5DCE2;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;">
+                  <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+                    <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:13.5px;color:#2B1620;max-width:220px;">{{ b.topic }}</span>
+                    <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:10px;padding:5px 10px;border-radius:999px;background:#F5DCE2;color:#A6123A;white-space:nowrap;">{{ b.status }}</span>
+                  </div>
+                  <span style="font-family:'Manrope',sans-serif;font-size:11.5px;color:#8A7680;">{{ b.requester }} · {{ b.date }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;">17 — Cell Reports</span>
+          <div style="width:393px;min-height:600px;background:#FBF6F1;border-radius:28px;box-shadow:0 12px 40px rgba(166,18,58,0.10);overflow:hidden;display:flex;flex-direction:column;">
+            <div style="display:flex;align-items:center;gap:12px;padding:22px 20px 4px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="#2B1620"><path fill-rule="evenodd" d="M3 5h18v2H3Z M3 11h18v2H3Z M3 17h18v2H3Z"></path></svg><span style="font-family:'Sora',sans-serif;font-weight:800;font-size:19px;color:#2B1620;">Cell Reports</span></div>
+            <div style="display:flex;flex-direction:column;gap:10px;padding:16px 20px;">
+              <sc-for list="{{ cellReports }}" as="r" hint-placeholder-count="2">
+                <div style="background:#fff;border:1.5px solid #F5DCE2;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;">
+                  <div style="display:flex;justify-content:space-between;">
+                    <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:13.5px;color:#2B1620;">{{ r.cell }}</span>
+                    <span style="font-family:'Manrope',sans-serif;font-size:11px;color:#8A7680;">{{ r.date }}</span>
+                  </div>
+                  <span style="font-family:'Manrope',sans-serif;font-size:12.5px;color:#5B4448;line-height:1.5;">{{ r.summary }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="margin-bottom:56px;">
+      <h2 style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:#A6123A;margin:0 0 20px;padding-bottom:10px;border-bottom:1px solid #EFDCE1;">Session Setup (pastor / counselor side)</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start;">
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;">18 — My Session Profile</span>
+          <div style="width:393px;min-height:820px;background:#FBF6F1;border-radius:28px;box-shadow:0 12px 40px rgba(166,18,58,0.10);overflow:hidden;display:flex;flex-direction:column;">
+            <div style="display:flex;align-items:center;gap:12px;padding:22px 20px 4px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="#2B1620"><path fill-rule="evenodd" d="M3 5h18v2H3Z M3 11h18v2H3Z M3 17h18v2H3Z"></path></svg><span style="font-family:'Sora',sans-serif;font-weight:800;font-size:19px;color:#2B1620;">My Session Profile</span></div>
+            <div style="padding:16px 20px 24px;display:flex;flex-direction:column;gap:16px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;background:#fff;border:1.5px solid #F5DCE2;border-radius:16px;padding:16px 18px;">
+                <div style="display:flex;flex-direction:column;gap:2px;">
+                  <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:14px;color:#2B1620;">Accepting bookings</span>
+                  <span style="font-family:'Manrope',sans-serif;font-size:11.5px;color:#8A7680;">Members can request sessions with you</span>
+                </div>
+                <div onClick="{{ toggleAccepting }}" style="width:46px;height:26px;border-radius:999px;position:relative;cursor:pointer;background:{{ sessionAccepting ? '#A6123A' : '#EFDCE1' }};flex:0 0 auto;">
+                </div>
+              </div>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Bio</label><textarea placeholder="Tell members what you can help with..." style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;min-height:90px;resize:vertical;">Pastor Grace has 12 years of pastoral counselling experience, focused on marriage, family and grief support.</textarea></div>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Specialty tags</label><input value="Marriage, Grief support, Career guidance" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+              <div style="display:flex;gap:12px;">
+                <div style="flex:1;"><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Fee</label><input value="50,000" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+                <div style="flex:1;"><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Currency</label><input value="UGX" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+              </div>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Session duration</label><input value="45 minutes" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+              <button style="font-family:'Sora',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#A6123A;border:none;border-radius:999px;padding:14px;cursor:pointer;box-shadow:0 10px 22px rgba(166,18,58,0.25);">Save Profile</button>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;">19 — Availability</span>
+          <div style="width:393px;min-height:820px;background:#FBF6F1;border-radius:28px;box-shadow:0 12px 40px rgba(166,18,58,0.10);overflow:hidden;display:flex;flex-direction:column;">
+            <div style="display:flex;align-items:center;gap:12px;padding:22px 20px 4px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="#2B1620"><path fill-rule="evenodd" d="M3 5h18v2H3Z M3 11h18v2H3Z M3 17h18v2H3Z"></path></svg><span style="font-family:'Sora',sans-serif;font-weight:800;font-size:19px;color:#2B1620;">Availability</span></div>
+            <div style="padding:14px 20px 6px;"><span style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#8A7680;text-transform:uppercase;letter-spacing:0.05em;">Weekly Schedule</span></div>
+            <div style="display:flex;gap:14px;overflow-x:auto;padding:8px 20px 18px;">
+              <sc-for list="{{ availability.items }}" as="a" hint-placeholder-count="2">
+                <div style="position:relative;flex:0 0 150px;">
+                  <div onClick="{{ () => selectAvail(a) }}" style="background:#fff;border:1.5px solid #F5DCE2;border-radius:16px;padding:14px;cursor:pointer;display:flex;flex-direction:column;gap:4px;">
+                    <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:13px;color:#2B1620;">{{ a.day }}</span>
+                    <span style="font-family:'Manrope',sans-serif;font-size:11.5px;color:#8A7680;">{{ a.start }} – {{ a.end }}</span>
+                  </div>
+                  <button onClick="{{ () => toggleAvailMenu(a.id) }}" style="position:absolute;top:8px;right:8px;width:24px;height:24px;border-radius:8px;background:rgba(255,255,255,0.92);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="#2B1620"><path fill-rule="evenodd" d="M12 4.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z M12 10a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z M12 15.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z"></path></svg>
+                  </button>
+                  <sc-if value="{{ a.menuOpen }}" hint-placeholder-val="{{ false }}">
+                    <div style="position:absolute;top:36px;right:6px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.15);overflow:hidden;z-index:5;min-width:100px;">
+                      <div onClick="{{ () => selectAvail(a) }}" style="padding:10px 14px;font-family:'Manrope',sans-serif;font-size:13px;color:#2B1620;cursor:pointer;">Edit</div>
+                      <div onClick="{{ () => deleteAvail(a.id) }}" style="padding:10px 14px;font-family:'Manrope',sans-serif;font-size:13px;color:#A6123A;cursor:pointer;border-top:1px solid #F5DCE2;">Delete</div>
+                    </div>
+                  </sc-if>
+                </div>
+              </sc-for>
+            </div>
+            <div style="padding:6px 20px 26px;display:flex;flex-direction:column;gap:14px;">
+              <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:15px;color:#2B1620;">{{ availability.submitLabel }} Slot</span>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Day of week</label><input value="{{ availability.form.day }}" onChange="{{ (e) => setAvailField('day', e.target.value) }}" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+              <div style="display:flex;gap:12px;">
+                <div style="flex:1;"><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Start time</label><input type="time" value="{{ availability.form.start }}" onChange="{{ (e) => setAvailField('start', e.target.value) }}" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+                <div style="flex:1;"><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">End time</label><input type="time" value="{{ availability.form.end }}" onChange="{{ (e) => setAvailField('end', e.target.value) }}" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+              </div>
+              <div style="display:flex;gap:12px;padding-top:4px;">
+                <sc-if value="{{ availability.isEditing }}" hint-placeholder-val="{{ false }}">
+                  <button onClick="{{ cancelAvail }}" style="font-family:'Sora',sans-serif;font-weight:700;font-size:14px;color:#A6123A;background:#F5DCE2;border:none;border-radius:999px;padding:14px 20px;cursor:pointer;">Cancel</button>
+                </sc-if>
+                <button onClick="{{ submitAvail }}" style="font-family:'Sora',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#A6123A;border:none;border-radius:999px;padding:14px;cursor:pointer;flex:1;box-shadow:0 10px 22px rgba(166,18,58,0.25);">{{ availability.submitLabel }} Slot</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;">20 — Blocked Dates</span>
+          <div style="width:393px;min-height:750px;background:#FBF6F1;border-radius:28px;box-shadow:0 12px 40px rgba(166,18,58,0.10);overflow:hidden;display:flex;flex-direction:column;">
+            <div style="display:flex;align-items:center;gap:12px;padding:22px 20px 4px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="#2B1620"><path fill-rule="evenodd" d="M3 5h18v2H3Z M3 11h18v2H3Z M3 17h18v2H3Z"></path></svg><span style="font-family:'Sora',sans-serif;font-weight:800;font-size:19px;color:#2B1620;">Blocked Dates</span></div>
+            <div style="display:flex;gap:14px;overflow-x:auto;padding:16px 20px 18px;">
+              <sc-for list="{{ blocked.items }}" as="bd" hint-placeholder-count="2">
+                <div style="position:relative;flex:0 0 170px;">
+                  <div onClick="{{ () => selectBlocked(bd) }}" style="background:#fff;border:1.5px solid #F5DCE2;border-radius:16px;padding:14px;cursor:pointer;display:flex;flex-direction:column;gap:4px;">
+                    <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:13px;color:#2B1620;">{{ bd.date }}</span>
+                    <span style="font-family:'Manrope',sans-serif;font-size:11.5px;color:#8A7680;">{{ bd.reason }}</span>
+                  </div>
+                  <button onClick="{{ () => toggleBlockedMenu(bd.id) }}" style="position:absolute;top:8px;right:8px;width:24px;height:24px;border-radius:8px;background:rgba(255,255,255,0.92);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="#2B1620"><path fill-rule="evenodd" d="M12 4.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z M12 10a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z M12 15.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z"></path></svg>
+                  </button>
+                  <sc-if value="{{ bd.menuOpen }}" hint-placeholder-val="{{ false }}">
+                    <div style="position:absolute;top:36px;right:6px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.15);overflow:hidden;z-index:5;min-width:100px;">
+                      <div onClick="{{ () => selectBlocked(bd) }}" style="padding:10px 14px;font-family:'Manrope',sans-serif;font-size:13px;color:#2B1620;cursor:pointer;">Edit</div>
+                      <div onClick="{{ () => deleteBlocked(bd.id) }}" style="padding:10px 14px;font-family:'Manrope',sans-serif;font-size:13px;color:#A6123A;cursor:pointer;border-top:1px solid #F5DCE2;">Delete</div>
+                    </div>
+                  </sc-if>
+                </div>
+              </sc-for>
+            </div>
+            <div style="padding:6px 20px 26px;display:flex;flex-direction:column;gap:14px;">
+              <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:15px;color:#2B1620;">{{ blocked.submitLabel }} Blocked Date</span>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Date</label><input type="date" value="{{ blocked.form.date }}" onChange="{{ (e) => setBlockedField('date', e.target.value) }}" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Reason (optional)</label><input value="{{ blocked.form.reason }}" onChange="{{ (e) => setBlockedField('reason', e.target.value) }}" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+              <div style="display:flex;gap:12px;padding-top:4px;">
+                <sc-if value="{{ blocked.isEditing }}" hint-placeholder-val="{{ false }}">
+                  <button onClick="{{ cancelBlocked }}" style="font-family:'Sora',sans-serif;font-weight:700;font-size:14px;color:#A6123A;background:#F5DCE2;border:none;border-radius:999px;padding:14px 20px;cursor:pointer;">Cancel</button>
+                </sc-if>
+                <button onClick="{{ submitBlocked }}" style="font-family:'Sora',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#A6123A;border:none;border-radius:999px;padding:14px;cursor:pointer;flex:1;box-shadow:0 10px 22px rgba(166,18,58,0.25);">{{ blocked.submitLabel }} Date</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="margin-bottom:56px;">
+      <h2 style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:#A6123A;margin:0 0 20px;padding-bottom:10px;border-bottom:1px solid #EFDCE1;">Admin, Notification &amp; Church Profile</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start;">
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;">21 — Manage Admins</span>
+          <div style="width:393px;min-height:780px;background:#FBF6F1;border-radius:28px;box-shadow:0 12px 40px rgba(166,18,58,0.10);overflow:hidden;display:flex;flex-direction:column;">
+            <div style="display:flex;align-items:center;gap:12px;padding:22px 20px 4px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="#2B1620"><path fill-rule="evenodd" d="M3 5h18v2H3Z M3 11h18v2H3Z M3 17h18v2H3Z"></path></svg><span style="font-family:'Sora',sans-serif;font-weight:800;font-size:19px;color:#2B1620;">Manage Admins</span></div>
+            <div style="display:flex;flex-direction:column;gap:10px;padding:16px 20px;">
+              <sc-for list="{{ admins.items }}" as="ad" hint-placeholder-count="3">
+                <div style="position:relative;background:#fff;border:1.5px solid #F5DCE2;border-radius:16px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;">
+                  <div style="display:flex;flex-direction:column;gap:3px;">
+                    <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:13.5px;color:#2B1620;">{{ ad.email }}</span>
+                    <span style="font-family:'Manrope',sans-serif;font-size:11px;color:#8A7680;">{{ ad.role }}</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:8px;">
+                    <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:10px;padding:5px 10px;border-radius:999px;background:#F3E6C4;color:#7D5E10;">{{ ad.status }}</span>
+                    <button onClick="{{ () => toggleAdminMenu(ad.id) }}" style="width:24px;height:24px;border-radius:8px;background:#FBF6F1;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="#2B1620"><path fill-rule="evenodd" d="M12 4.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z M12 10a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z M12 15.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4Z"></path></svg>
+                    </button>
+                  </div>
+                  <sc-if value="{{ ad.menuOpen }}" hint-placeholder-val="{{ false }}">
+                    <div style="position:absolute;top:44px;right:12px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.15);overflow:hidden;z-index:5;min-width:110px;">
+                      <div onClick="{{ () => deleteAdmin(ad.id) }}" style="padding:10px 14px;font-family:'Manrope',sans-serif;font-size:13px;color:#A6123A;cursor:pointer;">Remove access</div>
+                    </div>
+                  </sc-if>
+                </div>
+              </sc-for>
+            </div>
+            <div style="padding:6px 20px 26px;display:flex;flex-direction:column;gap:14px;">
+              <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:15px;color:#2B1620;">Invite Admin</span>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Email address</label><input value="{{ admins.form.email }}" onChange="{{ (e) => setAdminField('email', e.target.value) }}" placeholder="teammate@church.org" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+              <button onClick="{{ submitAdmin }}" style="font-family:'Sora',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#A6123A;border:none;border-radius:999px;padding:14px;cursor:pointer;box-shadow:0 10px 22px rgba(166,18,58,0.25);">Send Invite</button>
+              <span style="font-family:'Manrope',sans-serif;font-size:11.5px;color:#8A7680;">Invited admins appear as "Pending" until they accept.</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;">22 — Send Notification</span>
+          <div style="width:393px;min-height:600px;background:#FBF6F1;border-radius:28px;box-shadow:0 12px 40px rgba(166,18,58,0.10);overflow:hidden;display:flex;flex-direction:column;">
+            <div style="display:flex;align-items:center;gap:12px;padding:22px 20px 4px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="#2B1620"><path fill-rule="evenodd" d="M3 5h18v2H3Z M3 11h18v2H3Z M3 17h18v2H3Z"></path></svg><span style="font-family:'Sora',sans-serif;font-weight:800;font-size:19px;color:#2B1620;">Send Notification</span></div>
+            <div style="padding:16px 20px 26px;display:flex;flex-direction:column;gap:14px;">
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Title</label><input placeholder="Sunday Service starts at 9am" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Body</label><textarea placeholder="Write your message..." style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;min-height:110px;resize:vertical;"></textarea></div>
+              <div style="background:#F3E6C4;border-radius:14px;padding:14px 16px;display:flex;align-items:center;gap:10px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#7D5E10"><path fill-rule="evenodd" d="M12 2a2 2 0 0 1 2 2v1.1a6 6 0 0 1 4 5.6V15l2 3H4l2-3v-4.3a6 6 0 0 1 4-5.6V4a2 2 0 0 1 2-2Z M10 20a2 2 0 0 0 4 0Z"></path></svg>
+                <span style="font-family:'Manrope',sans-serif;font-size:12.5px;color:#5B4508;">This will be sent to all followers of Lighthouse Church.</span>
+              </div>
+              <button style="font-family:'Sora',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#A6123A;border:none;border-radius:999px;padding:14px;cursor:pointer;box-shadow:0 10px 22px rgba(166,18,58,0.25);">Send to All Followers</button>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;">23 — Church Profile</span>
+          <div style="width:393px;min-height:800px;background:#FBF6F1;border-radius:28px;box-shadow:0 12px 40px rgba(166,18,58,0.10);overflow:hidden;display:flex;flex-direction:column;">
+            <div style="display:flex;align-items:center;gap:12px;padding:22px 20px 4px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="#2B1620"><path fill-rule="evenodd" d="M3 5h18v2H3Z M3 11h18v2H3Z M3 17h18v2H3Z"></path></svg><span style="font-family:'Sora',sans-serif;font-weight:800;font-size:19px;color:#2B1620;">Church Profile</span></div>
+            <div style="padding:16px 20px 26px;display:flex;flex-direction:column;gap:14px;">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:8px 0 4px;">
+                <div style="width:84px;height:84px;border-radius:50%;background:#F5DCE2;display:flex;align-items:center;justify-content:center;border:2px dashed #D8B7C0;">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="#A6123A"><path fill-rule="evenodd" d="M11 4h2v9h-2Z M8 8l4-4 4 4-1.4 1.4L13 6.8V13h-2V6.8l-1.6 2.6Z M4 18h16v2H4Z"></path></svg>
+                </div>
+                <span style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:600;color:#A6123A;">Upload logo</span>
+              </div>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Church name</label><input value="Lighthouse Church" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Address</label><input value="Plot 14, Ntinda Road, Kampala" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Phone</label><input value="+256 700 000 000" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;margin-bottom:6px;display:block;">Website</label><input value="www.lighthousechurch.org" style="font-family:'Manrope',sans-serif;font-size:14px;background:#fff;border:1px solid #EFDCE1;border-radius:12px;padding:13px 14px;color:#2B1620;box-sizing:border-box;width:100%;"></div>
+              <button style="font-family:'Sora',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#A6123A;border:none;border-radius:999px;padding:14px;cursor:pointer;box-shadow:0 10px 22px rgba(166,18,58,0.25);">Save Changes</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="margin-bottom:56px;">
+      <h2 style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:#A6123A;margin:0 0 20px;padding-bottom:10px;border-bottom:1px solid #EFDCE1;">Loading / Empty / Error States</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start;">
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;">24 — Empty state (Events)</span>
+          <div style="width:393px;min-height:640px;background:#FBF6F1;border-radius:28px;box-shadow:0 12px 40px rgba(166,18,58,0.10);overflow:hidden;display:flex;flex-direction:column;">
+            <div style="display:flex;align-items:center;gap:12px;padding:22px 20px 4px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="#2B1620"><path fill-rule="evenodd" d="M3 5h18v2H3Z M3 11h18v2H3Z M3 17h18v2H3Z"></path></svg><span style="font-family:'Sora',sans-serif;font-weight:800;font-size:19px;color:#2B1620;">Events</span></div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:40px;">
+              <div style="width:88px;height:88px;border-radius:24px;background:#F5DCE2;display:flex;align-items:center;justify-content:center;">
+                <svg width="38" height="38" viewBox="0 0 24 24" fill="#A6123A"><path fill-rule="evenodd" d="M4 6h16v14H4Z M7 2h2v5H7Z M15 2h2v5H15Z M4 10h16v1H4Z"></path></svg>
+              </div>
+              <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:16px;color:#2B1620;">No events yet</span>
+              <span style="font-family:'Manrope',sans-serif;font-size:13px;color:#8A7680;text-align:center;max-width:240px;">Events you create will appear here for your congregation to see.</span>
+              <button style="margin-top:6px;font-family:'Sora',sans-serif;font-weight:700;font-size:13.5px;color:#fff;background:#A6123A;border:none;border-radius:999px;padding:12px 22px;cursor:pointer;">Add Your First Event</button>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;">25 — Loading state</span>
+          <div style="width:393px;min-height:640px;background:#FBF6F1;border-radius:28px;box-shadow:0 12px 40px rgba(166,18,58,0.10);overflow:hidden;display:flex;flex-direction:column;">
+            <div style="display:flex;align-items:center;gap:12px;padding:22px 20px 4px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="#2B1620"><path fill-rule="evenodd" d="M3 5h18v2H3Z M3 11h18v2H3Z M3 17h18v2H3Z"></path></svg><span style="font-family:'Sora',sans-serif;font-weight:800;font-size:19px;color:#2B1620;">Sermons</span></div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;">
+              <div class="om-spin" style="width:40px;height:40px;border-radius:50%;border:3.5px solid #F5DCE2;border-top-color:#A6123A;"></div>
+              <span style="font-family:'Manrope',sans-serif;font-size:13px;color:#8A7680;">Loading sermons…</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;">26 — Error state</span>
+          <div style="width:393px;min-height:640px;background:#FBF6F1;border-radius:28px;box-shadow:0 12px 40px rgba(166,18,58,0.10);overflow:hidden;display:flex;flex-direction:column;">
+            <div style="display:flex;align-items:center;gap:12px;padding:22px 20px 4px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="#2B1620"><path fill-rule="evenodd" d="M3 5h18v2H3Z M3 11h18v2H3Z M3 17h18v2H3Z"></path></svg><span style="font-family:'Sora',sans-serif;font-weight:800;font-size:19px;color:#2B1620;">Collections</span></div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:40px;">
+              <div style="width:88px;height:88px;border-radius:24px;background:#F5DCE2;display:flex;align-items:center;justify-content:center;">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="#A6123A"><path fill-rule="evenodd" d="M11 3h2l1 11h-4Z M11 17h2v2h-2Z"></path></svg>
+              </div>
+              <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:16px;color:#2B1620;">Couldn't load collections</span>
+              <span style="font-family:'Manrope',sans-serif;font-size:13px;color:#8A7680;text-align:center;max-width:240px;">Check your connection and try again.</span>
+              <button style="margin-top:6px;font-family:'Sora',sans-serif;font-weight:700;font-size:13.5px;color:#A6123A;background:#F5DCE2;border:none;border-radius:999px;padding:12px 22px;cursor:pointer;">Retry</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="margin-bottom:56px;">
+      <h2 style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:#A6123A;margin:0 0 20px;padding-bottom:10px;border-bottom:1px solid #EFDCE1;">Dark Mode Pass</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start;">
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;">27 — Home / Dashboard (dark)</span>
+          <div style="width:393px;min-height:900px;background:#1C1013;border-radius:28px;box-shadow:0 12px 40px rgba(0,0,0,0.4);overflow:hidden;display:flex;flex-direction:column;">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:20px 20px 0;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#F3E6DE"><path fill-rule="evenodd" d="M3 5h18v2H3Z M3 11h18v2H3Z M3 17h18v2H3Z"></path></svg>
+              <span style="font-family:'Sora',sans-serif;font-weight:800;font-size:16px;color:#E8A6B8;">Prayista</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#F3E6DE"><path fill-rule="evenodd" d="M12 2a2 2 0 0 1 2 2v1.1a6 6 0 0 1 4 5.6V15l2 3H4l2-3v-4.3a6 6 0 0 1 4-5.6V4a2 2 0 0 1 2-2Z M10 20a2 2 0 0 0 4 0Z"></path></svg>
+            </div>
+            <div style="display:flex;align-items:center;gap:14px;padding:20px;">
+              <div style="width:56px;height:56px;border-radius:50%;background:#3A2229;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 2px #E8A6B8;">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="#E8A6B8"><path fill-rule="evenodd" d="M5 21V9l7-5 7 5v12h-5v-6h-4v6Z"></path></svg>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:4px;">
+                <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:18px;color:#FBF6F1;">Hi, Lighthouse Church</span>
+                <span style="font-family:'Manrope',sans-serif;font-size:12.5px;color:#E8A6B8;font-weight:600;">You have 4 pending orders</span>
+              </div>
+            </div>
+            <div style="margin:4px 20px 24px;background:linear-gradient(135deg,#5C0F24,#8C1734);border-radius:20px;padding:22px;box-shadow:0 12px 28px rgba(0,0,0,0.4);display:flex;flex-direction:column;gap:16px;">
+              <div>
+                <span style="font-family:'Manrope',sans-serif;font-size:12px;color:rgba(255,255,255,0.65);">Balance</span>
+                <div style="font-family:'Sora',sans-serif;font-weight:800;font-size:30px;color:#fff;">UGX 4,230,000</div>
+              </div>
+              <div style="display:flex;gap:28px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.14);">
+                <div style="display:flex;flex-direction:column;gap:4px;"><span style="font-family:'Manrope',sans-serif;font-size:11.5px;color:rgba(255,255,255,0.65);">Received</span><span style="font-family:'Sora',sans-serif;font-weight:700;font-size:16px;color:#F3E6C4;">UGX 5.1M</span></div>
+                <div style="display:flex;flex-direction:column;gap:4px;"><span style="font-family:'Manrope',sans-serif;font-size:11.5px;color:rgba(255,255,255,0.65);">Withdrawn</span><span style="font-family:'Sora',sans-serif;font-weight:700;font-size:16px;color:#F3E6C4;">UGX 870K</span></div>
+              </div>
+            </div>
+            <div style="padding:0 20px;flex:1;">
+              <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:15px;color:#FBF6F1;display:block;margin-bottom:14px;">My Metrics</span>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+                <sc-for list="{{ metrics }}" as="md" hint-placeholder-count="10">
+                  <div style="background:#291A1F;border:1px solid #3A2229;border-radius:16px;padding:12px 10px;display:flex;flex-direction:column;gap:8px;">
+                    <div style="width:28px;height:28px;border-radius:9px;background:#3A2229;display:flex;align-items:center;justify-content:center;">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="#E8A6B8"><path fill-rule="evenodd" d="{{ md.d }}"></path></svg>
+                    </div>
+                    <span style="font-family:'Sora',sans-serif;font-weight:800;font-size:17px;color:#FBF6F1;">{{ md.value }}</span>
+                    <span style="font-family:'Manrope',sans-serif;font-size:10.5px;color:#B79AA3;">{{ md.label }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:#7A6B70;">28 — Events (dark)</span>
+          <div style="width:393px;min-height:900px;background:#1C1013;border-radius:28px;box-shadow:0 12px 40px rgba(0,0,0,0.4);overflow:hidden;display:flex;flex-direction:column;">
+            <div style="display:flex;align-items:center;gap:12px;padding:22px 20px 4px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FBF6F1"><path fill-rule="evenodd" d="M3 5h18v2H3Z M3 11h18v2H3Z M3 17h18v2H3Z"></path></svg><span style="font-family:'Sora',sans-serif;font-weight:800;font-size:19px;color:#FBF6F1;">Events</span></div>
+            <div style="padding:14px 20px 6px;"><span style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#B79AA3;text-transform:uppercase;letter-spacing:0.05em;">Existing Events</span></div>
+            <div style="display:flex;gap:14px;overflow-x:auto;padding:8px 20px 18px;">
+              <sc-for list="{{ events.items }}" as="evd" hint-placeholder-count="2">
+                <div style="flex:0 0 210px;background:#291A1F;border:1.5px solid #3A2229;border-radius:16px;overflow:hidden;">
+                  <div style="height:90px;background:#3A2229;display:flex;align-items:center;justify-content:center;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="#E8A6B8"><path fill-rule="evenodd" d="M4 6h16v14H4Z M7 2h2v5H7Z M15 2h2v5H15Z M4 10h16v1H4Z"></path></svg>
+                  </div>
+                  <div style="padding:12px;display:flex;flex-direction:column;gap:4px;">
+                    <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:13px;color:#FBF6F1;">{{ evd.name }}</span>
+                    <span style="font-family:'Manrope',sans-serif;font-size:11.5px;color:#B79AA3;">{{ evd.date }} · {{ evd.time }}</span>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="padding:6px 20px 26px;display:flex;flex-direction:column;gap:14px;">
+              <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:15px;color:#FBF6F1;">Add Event</span>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#B79AA3;margin-bottom:6px;display:block;">Name</label><input placeholder="Colour Conference" style="font-family:'Manrope',sans-serif;font-size:14px;background:#291A1F;border:1px solid #3A2229;border-radius:12px;padding:13px 14px;color:#FBF6F1;box-sizing:border-box;width:100%;"></div>
+              <div><label style="font-family:'Manrope',sans-serif;font-size:12px;font-weight:700;color:#B79AA3;margin-bottom:6px;display:block;">Location</label><input placeholder="Main Auditorium" style="font-family:'Manrope',sans-serif;font-size:14px;background:#291A1F;border:1px solid #3A2229;border-radius:12px;padding:13px 14px;color:#FBF6F1;box-sizing:border-box;width:100%;"></div>
+              <button style="font-family:'Sora',sans-serif;font-weight:700;font-size:14px;color:#fff;background:#C4295A;border:none;border-radius:999px;padding:14px;cursor:pointer;box-shadow:0 10px 22px rgba(0,0,0,0.4);">Add Event</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="margin-bottom:20px;background:#F3E6C4;border:1px solid #B8901F;border-radius:20px;padding:24px 28px;max-width:820px;">
+      <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:14.5px;color:#5B4508;display:block;margin-bottom:8px;">⚠ Note on scalability — Playlists</span>
+      <p style="font-family:'Manrope',sans-serif;font-size:13.5px;color:#6B5410;line-height:1.6;margin:0;">The list+form pattern (screen 09) holds up fine for a handful of songs, but breaks down for a church that logs a full setlist history or long worship sets (10+ songs per service): the dynamic add-row form gets tall and scrolly, and the horizontal service-date cards can't preview song content. <strong>Suggested alternative for Playlists specifically:</strong> keep the horizontal service-date list up top, but tapping a card pushes into a dedicated full-screen editor (reorderable song rows, drag-to-sort, bulk-paste a setlist) instead of prefilling an inline form — the one screen in this catalogue where a push transition earns its keep over the shared pattern.</p>
+    </div>
+
+    <!-- SCREENS-END -->
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  emptyForms = {
+    events: {name:'',location:'',date:'',time:'',hashtags:'',description:''},
+    cells: {name:'',leader:'',phone:'',location:'',description:''},
+    playlists: {serviceDate:'',songs:[{name:'',artist:''}]},
+    sermons: {title:'',description:'',hashtags:'',date:''},
+    quotes: {quote:'',verse:'',application:'',lesson:'',date:''},
+    shop: {name:'',price:'',description:''},
+    availability: {day:'Monday',start:'09:00',end:'17:00'},
+    blocked: {date:'',reason:''},
+    admins: {email:''}
+  };
+
+  state = {
+    sections: {
+      events: { items: [
+        {id:1,name:'Colour Conference',location:'Main Auditorium',date:'2026-09-12',time:'10:00',hashtags:'#worship #conference',description:'A day of worship, teaching and community for the whole church family.'},
+        {id:2,name:'Youth Night',location:'Fellowship Hall',date:'2026-08-20',time:'18:30',hashtags:'#youth',description:'Games, worship and word for teens.'}
+      ], form: {name:'',location:'',date:'',time:'',hashtags:'',description:''}, editingId:null, menuId:null },
+      cells: { items:[
+        {id:1,name:'Grace Cell',leader:'Sarah Namono',phone:'+256 700 000 111',location:'Ntinda, Kampala',description:'Weekly fellowship for young professionals.'},
+        {id:2,name:'Faith Cell',leader:'John Okello',phone:'+256 700 222 333',location:'Bugolobi',description:'Family-focused cell group meeting Sunday afternoons.'}
+      ], form:{name:'',leader:'',phone:'',location:'',description:''}, editingId:null, menuId:null },
+      playlists: { items:[
+        {id:1,serviceDate:'2026-08-03',songs:[{name:'Goodness of God',artist:'Bethel Music'},{name:'Way Maker',artist:'Sinach'},{name:'Living Hope',artist:'Phil Wickham'}]},
+        {id:2,serviceDate:'2026-07-27',songs:[{name:'Great Are You Lord',artist:'All Sons & Daughters'}]}
+      ], form:{serviceDate:'',songs:[{name:'',artist:''}]}, editingId:null, menuId:null },
+      sermons: { items:[
+        {id:1,title:'Walking in Faith',date:'2026-07-28',hashtags:'#faith #trust',description:'A message on trusting God through uncertainty.'},
+        {id:2,title:'The Power of Grace',date:'2026-07-14',hashtags:'#grace',description:'Understanding grace in daily living.'}
+      ], form:{title:'',description:'',hashtags:'',date:''}, editingId:null, menuId:null },
+      quotes: { items:[
+        {id:1,quote:'Be still and know that I am God.',verse:'Psalm 46:10',application:'Pause before reacting to stress today.',lesson:"Stillness invites God's presence.",date:'2026-08-08'},
+        {id:2,quote:'I can do all things through Christ.',verse:'Philippians 4:13',application:"Approach today's challenge with confidence in Him.",lesson:'Strength comes from Christ, not self.',date:'2026-08-07'}
+      ], form:{quote:'',verse:'',application:'',lesson:'',date:''}, editingId:null, menuId:null },
+      shop: { items:[
+        {id:1,name:'Prayista Devotional Journal',price:'25,000',description:'120-page guided journal for daily reflection.'},
+        {id:2,name:'Church Branded Tote',price:'15,000',description:'Canvas tote with embroidered church logo.'}
+      ], form:{name:'',price:'',description:''}, editingId:null, menuId:null },
+      availability: { items:[
+        {id:1,day:'Monday',start:'09:00',end:'12:00'},
+        {id:2,day:'Wednesday',start:'14:00',end:'17:00'}
+      ], form:{day:'Monday',start:'09:00',end:'17:00'}, editingId:null, menuId:null },
+      blocked: { items:[
+        {id:1,date:'2026-08-25',reason:'Regional conference travel'},
+        {id:2,date:'2026-09-01',reason:''}
+      ], form:{date:'',reason:''}, editingId:null, menuId:null },
+      admins: { items:[
+        {id:1,name:'Grace Adem',email:'grace@lighthouse.church',role:'Owner',status:'Active'},
+        {id:2,name:'Peter Okwi',email:'peter@lighthouse.church',role:'Editor',status:'Active'},
+        {id:3,name:'',email:'newadmin@lighthouse.church',role:'Editor',status:'Pending'}
+      ], form:{email:''}, editingId:null, menuId:null }
+    },
+    selectedOrderId: 1,
+    sessionAccepting: true
+  };
+
+  setField(key, field, value) {
+    this.setState(prev => ({ sections: { ...prev.sections, [key]: { ...prev.sections[key], form: { ...prev.sections[key].form, [field]: value } } } }));
+  }
+  selectItem(key, item) {
+    this.setState(prev => ({ sections: { ...prev.sections, [key]: { ...prev.sections[key], form: { ...this.emptyForms[key], ...item }, editingId: item.id, menuId: null } } }));
+  }
+  cancelEdit(key) {
+    this.setState(prev => ({ sections: { ...prev.sections, [key]: { ...prev.sections[key], form: { ...this.emptyForms[key] }, editingId: null } } }));
+  }
+  submitForm(key) {
+    this.setState(prev => {
+      const sec = prev.sections[key];
+      let items;
+      if (sec.editingId) items = sec.items.map(it => it.id === sec.editingId ? { ...sec.form, id: sec.editingId } : it);
+      else items = [...sec.items, { ...sec.form, id: Date.now() }];
+      return { sections: { ...prev.sections, [key]: { ...sec, items, form: { ...this.emptyForms[key] }, editingId: null } } };
+    });
+  }
+  deleteItem(key, id) {
+    this.setState(prev => {
+      const sec = prev.sections[key];
+      const items = sec.items.filter(it => it.id !== id);
+      return { sections: { ...prev.sections, [key]: { ...sec, items, menuId: null, form: sec.editingId === id ? { ...this.emptyForms[key] } : sec.form, editingId: sec.editingId === id ? null : sec.editingId } } };
+    });
+  }
+  toggleMenu(key, id) {
+    this.setState(prev => ({ sections: { ...prev.sections, [key]: { ...prev.sections[key], menuId: prev.sections[key].menuId === id ? null : id } } }));
+  }
+  addSongRow() {
+    this.setState(prev => ({ sections: { ...prev.sections, playlists: { ...prev.sections.playlists, form: { ...prev.sections.playlists.form, songs: [...prev.sections.playlists.form.songs, { name: '', artist: '' }] } } } }));
+  }
+  removeSongRow(idx) {
+    this.setState(prev => ({ sections: { ...prev.sections, playlists: { ...prev.sections.playlists, form: { ...prev.sections.playlists.form, songs: prev.sections.playlists.form.songs.filter((_, i) => i !== idx) } } } }));
+  }
+  setSongField(idx, field, value) {
+    this.setState(prev => ({ sections: { ...prev.sections, playlists: { ...prev.sections.playlists, form: { ...prev.sections.playlists.form, songs: prev.sections.playlists.form.songs.map((s, i) => i === idx ? { ...s, [field]: value } : s) } } } }));
+  }
+  selectOrder(id) { this.setState({ selectedOrderId: id }); }
+  toggleAccepting() { this.setState(prev => ({ sessionAccepting: !prev.sessionAccepting })); }
+
+  sectionVM(key) {
+    const sec = this.state.sections[key];
+    const items = sec.items.map(it => ({ ...it, selected: it.id === sec.editingId, menuOpen: it.id === sec.menuId }));
+    return { items, form: sec.form, editingId: sec.editingId, menuId: sec.menuId, isEditing: !!sec.editingId, submitLabel: sec.editingId ? 'Update' : 'Add' };
+  }
+
+  renderVals() {
+    const metrics = [
+      {label:'New Orders', value:'4', d:'M4 5h16v2H4Z M4 11h16v2H4Z M4 17h10v2H4Z'},
+      {label:'Shop Items', value:'18', d:'M7 8V6a5 5 0 0 1 10 0v2h2l-1 12H6L5 8Z M9 8V6a3 3 0 0 1 6 0v2Z'},
+      {label:'Total Orders', value:'142', d:'M4 5h16v2H4Z M4 11h16v2H4Z M4 17h10v2H4Z'},
+      {label:'Upcoming Events', value:'6', d:'M4 6h16v14H4Z M7 2h2v5H7Z M15 2h2v5H15Z M4 10h16v1H4Z'},
+      {label:'Total Events', value:'34', d:'M4 6h16v14H4Z M7 2h2v5H7Z M15 2h2v5H15Z M4 10h16v1H4Z'},
+      {label:'Cell Reports', value:'12', d:'M7 3h10v3H7Z M5 5h14v16H5Z M8 10h8v1H8Z M8 13h8v1H8Z M8 16h5v1H8Z'},
+      {label:'Daily Quotes', value:'58', d:'M6 6h6v6a4 4 0 0 1-4 4H7v-2h1a2 2 0 0 0 2-2H6Z M14 6h6v6a4 4 0 0 1-4 4h-1v-2h1a2 2 0 0 0 2-2h-4Z'},
+      {label:'Uploaded Sermons', value:'96', d:'M12 2a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3Z M6 11a6 6 0 0 0 12 0h-2a4 4 0 0 1-8 0Z M11 19h2v3h-2Z'},
+      {label:'Total Cells', value:'24', d:'M8 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z M2 20c0-3 3-5 6-5s6 2 6 5H2Z M17 12a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z M14.5 15c2.6.4 4.5 2 4.5 5h-3'},
+      {label:'Pending Sessions', value:'3', d:'M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z M11 6h2v6l4 2-1 2-5-3Z'}
+    ];
+    const orders = [
+      {id:1,buyer:'Ruth Adoko',status:'Pending',total:'75,000',items:[{name:'Devotional Journal',qty:1,price:'25,000'},{name:'Church Tote',qty:2,price:'25,000'}],address:'Plot 14, Ntinda Rd, Kampala',date:'2026-08-08'},
+      {id:2,buyer:'Michael Ssemakula',status:'In Transit',total:'15,000',items:[{name:'Church Tote',qty:1,price:'15,000'}],address:'Bugolobi Flats, Block C',date:'2026-08-06'},
+      {id:3,buyer:'Esther Nabatanzi',status:'Delivered',total:'50,000',items:[{name:'Devotional Journal',qty:2,price:'50,000'}],address:'Kireka Trading Centre',date:'2026-08-01'}
+    ];
+    const collections = [
+      {type:'Tithe',amount:'250,000',giver:'Anonymous',date:'2026-08-09'},
+      {type:'Offertory',amount:'980,000',giver:'Sunday Service',date:'2026-08-09'},
+      {type:'Donation',amount:'100,000',giver:'James Mukasa',date:'2026-08-07'},
+      {type:'Tithe',amount:'150,000',giver:'Anonymous',date:'2026-08-02'}
+    ];
+    const cashoutHistory = [
+      {id:1,amount:'500,000',method:'Bank Transfer',status:'Completed',date:'2026-07-30'},
+      {id:2,amount:'200,000',method:'Mobile Money',status:'Processing',date:'2026-08-05'}
+    ];
+    const bookings = [
+      {topic:'Marriage counselling',requester:'David & Grace K.',date:'2026-08-14 · 10:00',status:'Confirmed'},
+      {topic:'Prayer for healing',requester:'Moses Okot',date:'2026-08-15 · 15:00',status:'Pending'},
+      {topic:'Career guidance',requester:'Patricia Namutebi',date:'2026-08-10 · 09:00',status:'Completed'}
+    ];
+    const cellReports = [
+      {cell:'Grace Cell',date:'2026-08-04',summary:'12 members attended; testimony time and prayer for exams season.'},
+      {cell:'Faith Cell',date:'2026-08-04',summary:'8 members; new visitor welcomed, studied Romans 8.'}
+    ];
+    const orders_selected = orders.find(o => o.id === this.state.selectedOrderId);
+    const navGroups = [
+      { label: null, items: [
+        {label:'Home', d:'M12 3 21 10v11h-6v-6H9v6H3V10Z'},
+        {label:'Daily Quotes', d:'M6 6h6v6a4 4 0 0 1-4 4H7v-2h1a2 2 0 0 0 2-2H6Z M14 6h6v6a4 4 0 0 1-4 4h-1v-2h1a2 2 0 0 0 2-2h-4Z'},
+        {label:'Events', d:'M4 6h16v14H4Z M7 2h2v5H7Z M15 2h2v5H15Z M4 10h16v1H4Z'},
+        {label:'Cells', d:'M8 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z M2 20c0-3 3-5 6-5s6 2 6 5H2Z M17 12a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z M14.5 15c2.6.4 4.5 2 4.5 5h-3'},
+        {label:'Playlists', d:'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z'},
+        {label:'Sermons', d:'M12 2a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3Z M6 11a6 6 0 0 0 12 0h-2a4 4 0 0 1-8 0Z M11 19h2v3h-2Z'},
+        {label:'Collections', d:'M4 9h16v3H4Z M5 12h14v9H5Z M11 9v12h2V9Z'},
+        {label:'Session Bookings', d:'M4 4h16v12H8l-4 4Z M7 9h10v1H7Z M7 12h6v1H7Z'},
+        {label:'Send Notification', d:'M12 2a2 2 0 0 1 2 2v1.1a6 6 0 0 1 4 5.6V15l2 3H4l2-3v-4.3a6 6 0 0 1 4-5.6V4a2 2 0 0 1 2-2Z M10 20a2 2 0 0 0 4 0Z'}
+      ]},
+      { label: 'Shop', items: [
+        {label:'Orders', d:'M4 5h16v2H4Z M4 11h16v2H4Z M4 17h10v2H4Z'},
+        {label:'Items', d:'M7 8V6a5 5 0 0 1 10 0v2h2l-1 12H6L5 8Z M9 8V6a3 3 0 0 1 6 0v2Z'}
+      ]},
+      { label: 'Sessions', items: [
+        {label:'My Session Profile', d:'M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z M12 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z M5.5 18c1-3 3.5-4 6.5-4s5.5 1 6.5 4Z'},
+        {label:'Availability', d:'M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z M11 6h2v6l4 2-1 2-5-3Z'},
+        {label:'Blocked Dates', d:'M4 6h16v14H4Z M7 2h2v5H7Z M15 2h2v5H15Z M4 10h16v1H4Z'}
+      ]},
+      { label: 'Admins', items: [
+        {label:'Manage Admins', d:'M12 2 20 5v6c0 5-3.5 9-8 11-4.5-2-8-6-8-11V5Z M12 5 17 7v4c0 3.5-2.5 6.5-5 8-2.5-1.5-5-4.5-5-8V7Z'}
+      ]},
+      { label: 'Profile', items: [
+        {label:'Edit Church Profile', d:'M5 21V9l7-5 7 5v12h-5v-6h-4v6Z'},
+        {label:'Logout', d:'M4 4h9v2H6v12h7v2H4Z M13 8l4 4-4 4v-3H9v-2h4Z'}
+      ]}
+    ];
+    return {
+      navGroups,
+      metrics, orders, selectedOrder: orders_selected, selectOrder: (id) => this.selectOrder(id),
+      collections, cashoutHistory, bookings, cellReports,
+      sessionAccepting: this.state.sessionAccepting, toggleAccepting: () => this.toggleAccepting(),
+
+      events: this.sectionVM('events'), setEventField: (f,v)=>this.setField('events',f,v), selectEvent:(it)=>this.selectItem('events',it), cancelEvent:()=>this.cancelEdit('events'), submitEvent:()=>this.submitForm('events'), deleteEvent:(id)=>this.deleteItem('events',id), toggleEventMenu:(id)=>this.toggleMenu('events',id),
+      cells: this.sectionVM('cells'), setCellField:(f,v)=>this.setField('cells',f,v), selectCell:(it)=>this.selectItem('cells',it), cancelCell:()=>this.cancelEdit('cells'), submitCell:()=>this.submitForm('cells'), deleteCell:(id)=>this.deleteItem('cells',id), toggleCellMenu:(id)=>this.toggleMenu('cells',id),
+      playlists: this.sectionVM('playlists'), setPlaylistField:(f,v)=>this.setField('playlists',f,v), selectPlaylist:(it)=>this.selectItem('playlists',it), cancelPlaylist:()=>this.cancelEdit('playlists'), submitPlaylist:()=>this.submitForm('playlists'), deletePlaylist:(id)=>this.deleteItem('playlists',id), togglePlaylistMenu:(id)=>this.toggleMenu('playlists',id), addSongRow:()=>this.addSongRow(), removeSongRow:(i)=>this.removeSongRow(i), setSongField:(i,f,v)=>this.setSongField(i,f,v),
+      sermons: this.sectionVM('sermons'), setSermonField:(f,v)=>this.setField('sermons',f,v), selectSermon:(it)=>this.selectItem('sermons',it), cancelSermon:()=>this.cancelEdit('sermons'), submitSermon:()=>this.submitForm('sermons'), deleteSermon:(id)=>this.deleteItem('sermons',id), toggleSermonMenu:(id)=>this.toggleMenu('sermons',id),
+      quotes: this.sectionVM('quotes'), setQuoteField:(f,v)=>this.setField('quotes',f,v), selectQuote:(it)=>this.selectItem('quotes',it), cancelQuote:()=>this.cancelEdit('quotes'), submitQuote:()=>this.submitForm('quotes'), deleteQuote:(id)=>this.deleteItem('quotes',id), toggleQuoteMenu:(id)=>this.toggleMenu('quotes',id),
+      shop: this.sectionVM('shop'), setShopField:(f,v)=>this.setField('shop',f,v), selectShop:(it)=>this.selectItem('shop',it), cancelShop:()=>this.cancelEdit('shop'), submitShop:()=>this.submitForm('shop'), deleteShop:(id)=>this.deleteItem('shop',id), toggleShopMenu:(id)=>this.toggleMenu('shop',id),
+      availability: this.sectionVM('availability'), setAvailField:(f,v)=>this.setField('availability',f,v), selectAvail:(it)=>this.selectItem('availability',it), cancelAvail:()=>this.cancelEdit('availability'), submitAvail:()=>this.submitForm('availability'), deleteAvail:(id)=>this.deleteItem('availability',id), toggleAvailMenu:(id)=>this.toggleMenu('availability',id),
+      blocked: this.sectionVM('blocked'), setBlockedField:(f,v)=>this.setField('blocked',f,v), selectBlocked:(it)=>this.selectItem('blocked',it), cancelBlocked:()=>this.cancelEdit('blocked'), submitBlocked:()=>this.submitForm('blocked'), deleteBlocked:(id)=>this.deleteItem('blocked',id), toggleBlockedMenu:(id)=>this.toggleMenu('blocked',id),
+      admins: this.sectionVM('admins'), setAdminField:(f,v)=>this.setField('admins',f,v), submitAdmin:()=>this.submitForm('admins'), deleteAdmin:(id)=>this.deleteItem('admins',id), toggleAdminMenu:(id)=>this.toggleMenu('admins',id)
+    };
+  }
+}
+
+</script>
+</body>
+</html>
