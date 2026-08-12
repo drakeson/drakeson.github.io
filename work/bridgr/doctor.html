@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;}
+  body{background:#FDFDFC;}
+  ::placeholder{color:#9c9a94;}
+  @keyframes pulseDot{0%,100%{opacity:1;}50%{opacity:0.3;}}
+  input:focus,textarea:focus,select:focus{outline:2px solid rgba(255,87,34,0.3);}
+</style>
+</helmet>
+<div style="position:relative;display:flex;height:100vh;background:#FDFDFC;overflow:hidden;">
+  <div style="position:absolute;top:-120px;right:-120px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(255,87,34,0.06),transparent 70%);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:-120px;left:-60px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(255,87,34,0.06),transparent 70%);pointer-events:none;"></div>
+
+  <div style="width:{{ sidebarWidth }};min-width:{{ sidebarWidth }};background:#fff;border-right:1px solid rgba(25,20,0,0.08);display:flex;flex-direction:column;position:relative;z-index:2;transition:width 0.15s;">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:16px;border-bottom:1px solid rgba(25,20,0,0.06);">
+      <sc-if value="{{ !sidebarCollapsed }}" hint-placeholder-val="{{ true }}">
+        <div>
+          <div style="font-weight:700;color:#1b1b18;font-size:14px;">Ark Wellness Hub</div>
+          <div style="color:#706f6c;font-size:12px;">Kampala, Uganda</div>
+        </div>
+      </sc-if>
+      <button onClick="{{ toggleSidebar }}" style="width:24px;height:24px;border-radius:6px;border:1px solid rgba(25,20,0,0.1);background:#fff;color:#706f6c;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:12px;">{{ collapseArrow }}</button>
+    </div>
+    <div style="flex:1;overflow-y:auto;padding-bottom:12px;">
+      <sc-for list="{{ navGroups }}" as="grp" hint-placeholder-count="6">
+        <sc-if value="{{ grp.label }}" hint-placeholder-val="{{ null }}">
+          <sc-if value="{{ !sidebarCollapsed }}" hint-placeholder-val="{{ true }}">
+            <div style="text-transform:uppercase;font-size:11px;color:#706f6c;letter-spacing:0.08em;margin-top:20px;padding:0 16px 6px;">{{ grp.label }}</div>
+          </sc-if>
+        </sc-if>
+        <sc-for list="{{ grp.items }}" as="item" hint-placeholder-count="3">
+          <div onClick="{{ item.onClick }}" style="cursor:pointer;padding:8px 16px;font-size:14px;display:flex;align-items:center;gap:8px;border-radius:6px;margin:1px 8px;background:{{ item.bg }};border-left:{{ item.borderLeft }};color:{{ item.color }};font-weight:{{ item.fw }};">
+            <span style="width:16px;height:16px;border-radius:4px;background:{{ item.iconBg }};flex-shrink:0;"></span>
+            <sc-if value="{{ !sidebarCollapsed }}" hint-placeholder-val="{{ true }}">
+              <span style="flex:1;white-space:nowrap;overflow:hidden;">{{ item.label }}</span>
+              <sc-if value="{{ item.badge }}" hint-placeholder-val="{{ null }}">
+                <span style="background:rgba(255,87,34,0.12);color:#ff5722;font-size:11px;padding:2px 7px;border-radius:10px;margin-left:auto;">{{ item.badge }}</span>
+              </sc-if>
+            </sc-if>
+          </div>
+        </sc-for>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0;position:relative;z-index:2;">
+    <div style="height:60px;min-height:60px;background:#fff;border-bottom:1px solid rgba(25,20,0,0.08);box-shadow:0 1px 3px rgba(0,0,0,0.04);padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:24px;">
+      <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
+        <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#ff5722,#ff784e);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;">+</div>
+        <div style="font-size:16px;"><span style="color:#706f6c;font-weight:400;">Bridgr</span><span style="color:#ff5722;font-weight:700;"> EMR</span></div>
+      </div>
+      <div style="flex:1;display:flex;justify-content:center;">
+        <div style="position:relative;width:320px;max-width:100%;">
+          <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#9c9a94;font-size:13px;">⚲</span>
+          <input placeholder="Search patients, visits, tests..." style="width:100%;background:#f8f7f4;border:1px solid rgba(25,20,0,0.1);border-radius:8px;padding:8px 16px 8px 32px;font-size:13px;color:#1b1b18;"/>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;flex-shrink:0;position:relative;">
+        <button onClick="{{ toggleNotif }}" style="position:relative;background:none;border:none;cursor:pointer;color:#706f6c;font-size:18px;padding:4px;">
+          🔔<span style="position:absolute;top:0;right:0;width:8px;height:8px;border-radius:50%;background:#ef4444;"></span>
+        </button>
+        <sc-if value="{{ notifOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:40px;right:40px;width:360px;background:#fff;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.15);border:1px solid rgba(25,20,0,0.08);z-index:50;">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid rgba(25,20,0,0.06);">
+              <span style="font-weight:700;font-size:14px;color:#1b1b18;">Notifications</span>
+              <span style="color:#ff5722;font-size:12px;font-weight:600;cursor:pointer;">Mark All Read</span>
+            </div>
+            <sc-for list="{{ notifications }}" as="n" hint-placeholder-count="5">
+              <div style="display:flex;gap:10px;padding:12px 16px;border-bottom:1px solid rgba(25,20,0,0.05);">
+                <span style="width:10px;height:10px;border-radius:50%;background:{{ n.color }};margin-top:4px;flex-shrink:0;{{ n.pulse }}"></span>
+                <div style="flex:1;">
+                  <div style="font-weight:600;font-size:13px;color:#1b1b18;">{{ n.title }}</div>
+                  <div style="font-size:12px;color:#706f6c;">{{ n.body }}</div>
+                </div>
+                <div style="font-size:11px;color:#9c9a94;flex-shrink:0;">{{ n.time }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+        <div onClick="{{ toggleAvatar }}" style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+          <div style="width:36px;height:36px;border-radius:50%;background:#ff5722;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:13px;">MN</div>
+          <div>
+            <div style="font-weight:700;font-size:13px;color:#1b1b18;">Dr. Miriam Nakimuli</div>
+            <div style="font-size:12px;color:#ff5722;">Doctor</div>
+          </div>
+        </div>
+        <sc-if value="{{ avatarOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:52px;right:0;width:200px;background:#fff;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.15);border:1px solid rgba(25,20,0,0.08);z-index:50;padding:8px 0;">
+            <div style="padding:10px 16px;border-bottom:1px solid rgba(25,20,0,0.06);">
+              <div style="font-weight:700;font-size:13px;color:#1b1b18;">Dr. Miriam Nakimuli</div>
+              <div style="font-size:12px;color:#ff5722;">Doctor</div>
+            </div>
+            <div style="padding:10px 16px;font-size:13px;color:#1b1b18;cursor:pointer;">My Profile</div>
+            <div style="padding:10px 16px;font-size:13px;color:#1b1b18;cursor:pointer;">Clock In/Out</div>
+            <div style="border-top:1px solid rgba(25,20,0,0.06);margin-top:4px;padding:10px 16px;font-size:13px;color:#dc2626;cursor:pointer;">Sign Out</div>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+
+    <div style="flex:1;overflow-y:auto;padding:24px;">
+
+      <sc-if value="{{ isDashboard }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+          <div style="font-size:20px;font-weight:700;color:#1b1b18;">Dashboard</div>
+          <button style="background:linear-gradient(135deg,#ff5722,#ff784e);color:#fff;border:none;border-radius:8px;padding:10px 20px;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 3px 10px rgba(255,87,34,0.25);">+ Start Consultation</button>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px;">
+          <sc-for list="{{ statCards }}" as="c" hint-placeholder-count="4">
+            <div style="background:#fff;border:1px solid rgba(25,20,0,0.08);border-radius:12px;padding:24px;box-shadow:0 2px 8px rgba(0,0,0,0.04);position:relative;">
+              <div style="width:40px;height:40px;border-radius:50%;background:{{ c.iconBg }};position:absolute;top:20px;right:20px;"></div>
+              <div style="font-size:2.2rem;font-weight:700;color:#1b1b18;">{{ c.value }}</div>
+              <div style="font-size:14px;color:#706f6c;margin-top:4px;">{{ c.label }}</div>
+              <div style="font-size:12px;color:#9c9a94;margin-top:2px;">{{ c.sub }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="background:#fff;border:1px solid rgba(25,20,0,0.08);border-radius:12px;padding:24px;box-shadow:0 2px 8px rgba(0,0,0,0.04);margin-bottom:24px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+            <div style="font-size:16px;font-weight:700;color:#1b1b18;">Active Consultations</div>
+            <input placeholder="Search..." style="background:#f8f7f4;border:1px solid rgba(25,20,0,0.1);border-radius:8px;padding:6px 12px;font-size:13px;width:180px;"/>
+          </div>
+          <div style="overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;">
+            <thead><tr style="background:#f8f7f4;">
+              <sc-for list="{{ consultCols }}" as="col" hint-placeholder-count="7">
+                <th style="text-align:left;color:#706f6c;text-transform:uppercase;font-size:11px;font-weight:600;letter-spacing:0.06em;padding:10px 16px;">{{ col }}</th>
+              </sc-for>
+            </tr></thead>
+            <tbody>
+              <sc-for list="{{ consultations }}" as="row" hint-placeholder-count="5">
+                <tr style="border-bottom:1px solid rgba(25,20,0,0.06);">
+                  <td style="padding:12px 16px;font-size:14px;color:#1b1b18;">{{ row.id }}</td>
+                  <td style="padding:12px 16px;font-size:14px;color:#1b1b18;font-weight:600;">{{ row.patient }}</td>
+                  <td style="padding:12px 16px;font-size:14px;color:#1b1b18;">{{ row.complaint }}</td>
+                  <td style="padding:12px 16px;position:relative;">
+                    <span style="background:{{ row.status.bg }};color:{{ row.status.color }};border-radius:20px;padding:4px 12px;font-size:12px;font-weight:500;">
+                      <sc-if value="{{ row.pulse }}" hint-placeholder-val="{{ false }}"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:{{ row.status.color }};margin-right:6px;animation:pulseDot 1.2s infinite;"></span></sc-if>
+                      {{ row.status.label }}
+                    </span>
+                  </td>
+                  <td style="padding:12px 16px;font-size:14px;color:#1b1b18;">{{ row.dept }}</td>
+                  <td style="padding:12px 16px;font-size:14px;color:#1b1b18;">{{ row.time }}</td>
+                  <td style="padding:12px 16px;white-space:nowrap;position:relative;">
+                    <div style="display:flex;gap:6px;align-items:center;">
+                      <sc-if value="{{ row.showEdit }}" hint-placeholder-val="{{ false }}">
+                        <button style="background:#fff;border:1px solid #2563eb;color:#2563eb;border-radius:6px;padding:6px 10px;font-size:12px;cursor:pointer;">View</button>
+                        <button style="background:#fff;border:1px solid #ff5722;color:#ff5722;border-radius:6px;padding:6px 10px;font-size:12px;cursor:pointer;">Edit</button>
+                        <button onClick="{{ row.onToggleDrop }}" style="background:#f8f7f4;border:1px solid rgba(25,20,0,0.15);color:#1b1b18;border-radius:6px;padding:6px 10px;font-size:12px;cursor:pointer;">Status ▾</button>
+                        <sc-if value="{{ row.dropOpen }}" hint-placeholder-val="{{ false }}">
+                          <div style="position:absolute;top:36px;right:0;background:#fff;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,0.15);border:1px solid rgba(25,20,0,0.08);z-index:20;min-width:140px;">
+                            <sc-for list="{{ row.dropOptions }}" as="opt" hint-placeholder-count="2">
+                              <div onClick="{{ opt.onClick }}" style="padding:8px 12px;font-size:12px;color:#1b1b18;cursor:pointer;white-space:nowrap;">{{ opt.label }}</div>
+                            </sc-for>
+                          </div>
+                        </sc-if>
+                      </sc-if>
+                      <sc-if value="{{ row.showDispense }}" hint-placeholder-val="{{ false }}">
+                        <button onClick="{{ row.onDispense }}" style="background:#22c55e;color:#fff;border:none;border-radius:6px;padding:6px 10px;font-size:12px;font-weight:600;cursor:pointer;">Dispense Meds</button>
+                      </sc-if>
+                      <sc-if value="{{ row.viewOnly }}" hint-placeholder-val="{{ false }}">
+                        <button style="background:#fff;border:1px solid #2563eb;color:#2563eb;border-radius:6px;padding:6px 10px;font-size:12px;cursor:pointer;">View</button>
+                      </sc-if>
+                    </div>
+                  </td>
+                </tr>
+              </sc-for>
+            </tbody>
+          </table>
+          </div>
+        </div>
+
+        <div style="background:#fff;border:1px solid rgba(25,20,0,0.08);border-radius:12px;padding:24px;box-shadow:0 2px 8px rgba(0,0,0,0.04);margin-bottom:24px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+            <div style="font-size:16px;font-weight:700;color:#1b1b18;">Pending Lab Results</div>
+            <input placeholder="Search..." style="background:#f8f7f4;border:1px solid rgba(25,20,0,0.1);border-radius:8px;padding:6px 12px;font-size:13px;width:180px;"/>
+          </div>
+          <div style="overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;">
+            <thead><tr style="background:#f8f7f4;">
+              <sc-for list="{{ labCols }}" as="col" hint-placeholder-count="7">
+                <th style="text-align:left;color:#706f6c;text-transform:uppercase;font-size:11px;font-weight:600;letter-spacing:0.06em;padding:10px 16px;">{{ col }}</th>
+              </sc-for>
+            </tr></thead>
+            <tbody>
+              <sc-for list="{{ pendingLabs }}" as="row" hint-placeholder-count="4">
+                <tr style="border-bottom:1px solid rgba(25,20,0,0.06);">
+                  <td style="padding:12px 16px;font-size:14px;color:#1b1b18;">{{ row.id }}</td>
+                  <td style="padding:12px 16px;font-size:14px;color:#1b1b18;font-weight:600;">{{ row.patient }}</td>
+                  <td style="padding:12px 16px;font-size:14px;color:#1b1b18;">{{ row.type }}</td>
+                  <td style="padding:12px 16px;font-size:14px;color:#1b1b18;">{{ row.ordered }}</td>
+                  <td style="padding:12px 16px;">
+                    <span style="background:{{ row.priority.bg }};color:{{ row.priority.color }};border-radius:20px;padding:4px 12px;font-size:12px;font-weight:{{ row.priority.fw }};">
+                      <sc-if value="{{ row.priority.pulse }}" hint-placeholder-val="{{ false }}"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#dc2626;margin-right:6px;animation:pulseDot 1.2s infinite;"></span></sc-if>
+                      {{ row.priority.label }}
+                    </span>
+                  </td>
+                  <td style="padding:12px 16px;"><span style="background:{{ row.status.bg }};color:{{ row.status.color }};border-radius:20px;padding:4px 12px;font-size:12px;font-weight:500;">{{ row.status.label }}</span></td>
+                  <td style="padding:12px 16px;">
+                    <sc-if value="{{ row.showView }}" hint-placeholder-val="{{ false }}">
+                      <button style="background:#22c55e;color:#fff;border:none;border-radius:6px;padding:6px 10px;font-size:12px;font-weight:600;cursor:pointer;">View Result</button>
+                    </sc-if>
+                  </td>
+                </tr>
+              </sc-for>
+            </tbody>
+          </table>
+          </div>
+        </div>
+
+        <div style="background:#fff;border:1px solid rgba(25,20,0,0.08);border-radius:12px;padding:24px;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+            <div style="font-size:16px;font-weight:700;color:#1b1b18;">Recent Prescriptions</div>
+            <input placeholder="Search..." style="background:#f8f7f4;border:1px solid rgba(25,20,0,0.1);border-radius:8px;padding:6px 12px;font-size:13px;width:180px;"/>
+          </div>
+          <div style="overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;">
+            <thead><tr style="background:#f8f7f4;">
+              <sc-for list="{{ rxCols }}" as="col" hint-placeholder-count="5">
+                <th style="text-align:left;color:#706f6c;text-transform:uppercase;font-size:11px;font-weight:600;letter-spacing:0.06em;padding:10px 16px;">{{ col }}</th>
+              </sc-for>
+            </tr></thead>
+            <tbody>
+              <sc-for list="{{ prescriptions }}" as="row" hint-placeholder-count="3">
+                <tr style="border-bottom:1px solid rgba(25,20,0,0.06);">
+                  <td style="padding:12px 16px;font-size:14px;color:#1b1b18;">{{ row.id }}</td>
+                  <td style="padding:12px 16px;font-size:14px;color:#1b1b18;font-weight:600;">{{ row.patient }}</td>
+                  <td style="padding:12px 16px;font-size:14px;color:#1b1b18;">{{ row.meds }}</td>
+                  <td style="padding:12px 16px;"><span style="background:{{ row.status.bg }};color:{{ row.status.color }};border-radius:20px;padding:4px 12px;font-size:12px;font-weight:500;">{{ row.status.label }}</span></td>
+                  <td style="padding:12px 16px;font-size:14px;color:#1b1b18;">{{ row.date }}</td>
+                  <td style="padding:12px 16px;">
+                    <div style="display:flex;gap:6px;">
+                      <button style="background:#fff;border:1px solid #2563eb;color:#2563eb;border-radius:6px;padding:6px 10px;font-size:12px;cursor:pointer;">View</button>
+                      <sc-if value="{{ row.showDispense }}" hint-placeholder-val="{{ false }}">
+                        <button style="background:#22c55e;color:#fff;border:none;border-radius:6px;padding:6px 10px;font-size:12px;font-weight:600;cursor:pointer;">Dispense</button>
+                      </sc-if>
+                    </div>
+                  </td>
+                </tr>
+              </sc-for>
+            </tbody>
+          </table>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-for list="{{ simpleTables }}" as="pg" hint-placeholder-count="0">
+        <sc-if value="{{ pg.active }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <div style="font-size:20px;font-weight:700;color:#1b1b18;">{{ pg.title }}</div>
+            <sc-if value="{{ pg.createLabel }}" hint-placeholder-val="{{ null }}">
+              <button style="background:linear-gradient(135deg,#ff5722,#ff784e);color:#fff;border:none;border-radius:8px;padding:8px 16px;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 3px 10px rgba(255,87,34,0.25);">{{ pg.createLabel }}</button>
+            </sc-if>
+          </div>
+          <sc-if value="{{ pg.tabs }}" hint-placeholder-val="{{ null }}">
+            <div style="display:flex;gap:8px;margin:16px 0;">
+              <sc-for list="{{ pg.tabs }}" as="t" hint-placeholder-count="4">
+                <div style="padding:6px 14px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;background:{{ t.bg }};color:{{ t.color }};">{{ t.label }}</div>
+              </sc-for>
+            </div>
+          </sc-if>
+          <div style="background:#fff;border:1px solid rgba(25,20,0,0.08);border-radius:12px;padding:24px;box-shadow:0 2px 8px rgba(0,0,0,0.04);margin-top:16px;">
+            <div style="overflow-x:auto;">
+            <table style="width:100%;border-collapse:collapse;">
+              <thead><tr style="background:#f8f7f4;">
+                <sc-for list="{{ pg.cols }}" as="col" hint-placeholder-count="6">
+                  <th style="text-align:left;color:#706f6c;text-transform:uppercase;font-size:11px;font-weight:600;letter-spacing:0.06em;padding:10px 16px;">{{ col }}</th>
+                </sc-for>
+              </tr></thead>
+              <tbody>
+                <sc-for list="{{ pg.rows }}" as="row" hint-placeholder-count="3">
+                  <tr style="border-bottom:1px solid rgba(25,20,0,0.06);">
+                    <sc-for list="{{ row.cells }}" as="cell" hint-placeholder-count="6">
+                      <td style="padding:12px 16px;font-size:14px;color:#1b1b18;">
+                        <sc-if value="{{ cell.badge }}" hint-placeholder-val="{{ null }}">
+                          <span style="background:{{ cell.bg }};color:{{ cell.color }};border-radius:20px;padding:4px 12px;font-size:12px;font-weight:500;">{{ cell.text }}</span>
+                        </sc-if>
+                        <sc-if value="{{ !cell.badge }}" hint-placeholder-val="{{ true }}">{{ cell.text }}</sc-if>
+                      </td>
+                    </sc-for>
+                    <td style="padding:12px 16px;"><button style="background:#fff;border:1px solid #2563eb;color:#2563eb;border-radius:6px;padding:6px 10px;font-size:12px;cursor:pointer;">View</button></td>
+                  </tr>
+                </sc-for>
+              </tbody>
+            </table>
+            </div>
+          </div>
+        </sc-if>
+      </sc-for>
+
+      <sc-if value="{{ isPlaceholder }}" hint-placeholder-val="{{ false }}">
+        <div style="font-size:20px;font-weight:700;color:#1b1b18;margin-bottom:8px;">{{ placeholderTitle }}</div>
+        <div style="background:#fff;border:1px solid rgba(25,20,0,0.08);border-radius:12px;padding:40px;text-align:center;color:#706f6c;font-size:14px;">This section is coming soon.</div>
+      </sc-if>
+
+    </div>
+  </div>
+
+  <sc-if value="{{ dispenseOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeDispense }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:1000;display:flex;align-items:center;justify-content:center;overflow-y:auto;">
+      <div onClick="{{ stopClick }}" style="background:#fff;border-radius:16px;padding:32px;max-width:640px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,0.15);position:relative;margin:24px;">
+        <button onClick="{{ closeDispense }}" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:18px;color:#706f6c;cursor:pointer;">×</button>
+        <div style="font-size:18px;font-weight:700;color:#1b1b18;margin-bottom:4px;">Dispense Medications</div>
+        <div style="font-size:13px;color:#706f6c;margin-bottom:20px;">Nakato Sarah · RX-5501</div>
+        <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;margin-bottom:16px;">
+          <thead><tr style="background:#f8f7f4;">
+            <th style="padding:8px 10px;font-size:11px;color:#706f6c;text-transform:uppercase;"></th>
+            <th style="text-align:left;padding:8px 10px;font-size:11px;color:#706f6c;text-transform:uppercase;">Medication</th>
+            <th style="text-align:left;padding:8px 10px;font-size:11px;color:#706f6c;text-transform:uppercase;">Dosage</th>
+            <th style="text-align:left;padding:8px 10px;font-size:11px;color:#706f6c;text-transform:uppercase;">Frequency</th>
+            <th style="text-align:left;padding:8px 10px;font-size:11px;color:#706f6c;text-transform:uppercase;">Duration</th>
+            <th style="text-align:left;padding:8px 10px;font-size:11px;color:#706f6c;text-transform:uppercase;">Qty</th>
+            <th style="text-align:left;padding:8px 10px;font-size:11px;color:#706f6c;text-transform:uppercase;">Stock</th>
+          </tr></thead>
+          <tbody>
+            <sc-for list="{{ dispenseMeds }}" as="m" hint-placeholder-count="3">
+              <tr style="border-bottom:1px solid rgba(25,20,0,0.06);">
+                <td style="padding:8px 10px;"><input type="checkbox" checked="{{ m.checked }}"/></td>
+                <td style="padding:8px 10px;font-size:13px;color:#1b1b18;font-weight:600;">{{ m.name }}</td>
+                <td style="padding:8px 10px;font-size:13px;color:#1b1b18;">{{ m.dosage }}</td>
+                <td style="padding:8px 10px;font-size:13px;color:#1b1b18;">{{ m.freq }}</td>
+                <td style="padding:8px 10px;font-size:13px;color:#1b1b18;">{{ m.duration }}</td>
+                <td style="padding:8px 10px;font-size:13px;color:#1b1b18;">{{ m.qty }}</td>
+                <td style="padding:8px 10px;font-size:12px;color:{{ m.stockColor }};">{{ m.stockText }}</td>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+        </div>
+        <div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.3);border-radius:8px;padding:10px 14px;font-size:13px;color:#d97706;margin-bottom:16px;">⚠ Some medications have insufficient stock. Uncheck items or proceed with available.</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <label style="font-size:13px;color:#1b1b18;display:flex;align-items:center;gap:6px;"><input type="checkbox"/> Select All</label>
+          <div style="display:flex;gap:10px;">
+            <button onClick="{{ closeDispense }}" style="background:linear-gradient(135deg,#ff5722,#ff784e);color:#fff;border:none;border-radius:8px;padding:10px 18px;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 3px 10px rgba(255,87,34,0.25);">Dispense Selected</button>
+            <button onClick="{{ closeDispense }}" style="background:none;border:none;color:#706f6c;font-size:13px;cursor:pointer;">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    sidebarCollapsed: false,
+    activePage: 'dashboard',
+    notifOpen: false,
+    avatarOpen: false,
+    dispenseOpen: false,
+    consultStatuses: { 'CN-2201': 'With Doctor', 'CN-2198': 'Sent to Lab', 'CN-2195': 'Back to Doctor' },
+    openDrop: null
+  };
+
+  badge(label, bg, color, fw) { return { label, bg, color, fw: fw || '500' }; }
+
+  consultStatusStyle(s) {
+    const map = {
+      'With Doctor': ['rgba(245,158,11,0.1)', '#d97706'],
+      'Sent to Lab': ['rgba(59,130,246,0.1)', '#2563eb'],
+      'Back to Doctor': ['rgba(249,115,22,0.1)', '#ea580c'],
+      'Completed': ['rgba(34,197,94,0.1)', '#16a34a'],
+      'Closed': ['rgba(100,116,139,0.1)', '#475569']
+    };
+    const [bg, color] = map[s] || ['rgba(100,116,139,0.1)', '#475569'];
+    return this.badge(s, bg, color);
+  }
+
+  setPage(p) { this.setState({ activePage: p, notifOpen: false, avatarOpen: false }); }
+  toggleSidebar = () => this.setState(s => ({ sidebarCollapsed: !s.sidebarCollapsed }));
+  toggleNotif = () => this.setState(s => ({ notifOpen: !s.notifOpen, avatarOpen: false }));
+  toggleAvatar = () => this.setState(s => ({ avatarOpen: !s.avatarOpen, notifOpen: false }));
+  openDispense = () => this.setState({ dispenseOpen: true });
+  closeDispense = () => this.setState({ dispenseOpen: false });
+  stopClick = (e) => e.stopPropagation();
+  toggleDrop(id) { this.setState(s => ({ openDrop: s.openDrop === id ? null : id })); }
+  setStatus(id, status) { this.setState(s => ({ consultStatuses: { ...s.consultStatuses, [id]: status }, openDrop: null })); }
+
+  navItem(key, label, iconBg, badge) {
+    const active = this.state.activePage === key;
+    return {
+      label, badge, iconBg,
+      onClick: () => this.setPage(key),
+      bg: active ? 'rgba(255,87,34,0.08)' : 'transparent',
+      borderLeft: active ? '3px solid #ff5722' : '3px solid transparent',
+      color: active ? '#ff5722' : '#706f6c',
+      fw: active ? '600' : '400'
+    };
+  }
+
+  dropOptions(status, id) {
+    const map = {
+      'With Doctor': [{ label: 'Send to Lab', to: 'Sent to Lab' }, { label: 'Close Consultation', to: 'Closed' }],
+      'Sent to Lab': [{ label: 'Back to Doctor', to: 'Back to Doctor' }],
+      'Back to Doctor': [{ label: 'Send to Lab', to: 'Sent to Lab' }, { label: 'Close Consultation', to: 'Closed' }]
+    };
+    return (map[status] || []).map(o => ({ label: o.label, onClick: () => this.setStatus(id, o.to) }));
+  }
+
+  renderVals() {
+    const p = this.state.activePage;
+    const cs = this.state.consultStatuses;
+
+    const consultBase = [
+      { id: 'CN-2201', patient: 'Nakato Sarah', complaint: 'Persistent cough and fever', dept: 'HIV/AIDS Clinic', time: '08:35', kind: 'active' },
+      { id: 'CN-2198', patient: 'Okello David', complaint: 'Routine follow-up, CD4 monitoring', dept: 'HIV/AIDS Clinic', time: '09:05', kind: 'active' },
+      { id: 'CN-2195', patient: 'Namutebi Grace', complaint: 'Antenatal checkup, 28 weeks', dept: 'Antenatal Care', time: '09:20', kind: 'active' },
+      { id: 'CN-2190', patient: 'Achieng Mary', complaint: 'Malaria symptoms', dept: 'General Medicine', time: '08:10', kind: 'completed' },
+      { id: 'CN-2185', patient: 'Kiwanuka Daniel', complaint: 'Tooth extraction follow-up', dept: 'Dental', time: 'Yesterday', kind: 'closed' }
+    ];
+    const consultations = consultBase.map(r => {
+      if (r.kind === 'completed') return { ...r, status: this.consultStatusStyle('Completed'), pulse: false, showEdit: false, showDispense: false, viewOnly: true };
+      if (r.kind === 'closed') return { ...r, status: this.consultStatusStyle('Closed'), pulse: false, showEdit: false, showDispense: false, viewOnly: true };
+      const status = cs[r.id];
+      return {
+        ...r, status: this.consultStatusStyle(status), pulse: status === 'With Doctor', showEdit: true,
+        showDispense: status === 'With Doctor' || status === 'Back to Doctor', viewOnly: false,
+        onDispense: this.openDispense, onToggleDrop: () => this.toggleDrop(r.id),
+        dropOpen: this.state.openDrop === r.id, dropOptions: this.dropOptions(status, r.id)
+      };
+    });
+
+    const priority = (label) => {
+      if (label === 'Urgent') return this.badge('Urgent', 'rgba(245,158,11,0.1)', '#d97706', '600');
+      if (label === 'STAT') return { ...this.badge('STAT', 'rgba(239,68,68,0.1)', '#dc2626', '700'), pulse: true };
+      return { label, bg: 'transparent', color: '#706f6c', fw: '400' };
+    };
+    const labStatus = (label) => {
+      const map = { 'In Progress': ['rgba(59,130,246,0.1)', '#2563eb'], 'Sample Collected': ['rgba(59,130,246,0.1)', '#2563eb'], 'Completed': ['rgba(34,197,94,0.1)', '#16a34a'], 'Ordered': ['rgba(100,116,139,0.1)', '#475569'] };
+      const [bg, color] = map[label];
+      return this.badge(label, bg, color);
+    };
+    const pendingLabs = [
+      { id: 'LT-3301', patient: 'Nakato Sarah', type: 'Viral Load', ordered: '08:40', priority: priority('Urgent'), status: labStatus('In Progress'), showView: false },
+      { id: 'LT-3298', patient: 'Okello David', type: 'CD4 Count', ordered: '09:10', priority: priority('Routine'), status: labStatus('Sample Collected'), showView: false },
+      { id: 'LT-3295', patient: 'Auma Betty', type: 'Malaria RDT', ordered: '07:50', priority: priority('STAT'), status: labStatus('Completed'), showView: true },
+      { id: 'LT-3290', patient: 'Mukasa John', type: 'Full Blood Count', ordered: '07:30', priority: priority('Routine'), status: labStatus('Ordered'), showView: false }
+    ];
+
+    const rxStatus = (label) => label === 'Pending' ? this.badge('Pending', 'rgba(245,158,11,0.1)', '#d97706') : this.badge('Dispensed', 'rgba(34,197,94,0.1)', '#16a34a');
+    const prescriptions = [
+      { id: 'RX-5501', patient: 'Nakato Sarah', meds: '3 medications', status: rxStatus('Pending'), date: '11 Aug 2026', showDispense: true },
+      { id: 'RX-5498', patient: 'Okello David', meds: '2 medications', status: rxStatus('Dispensed'), date: '10 Aug 2026', showDispense: false },
+      { id: 'RX-5492', patient: 'Auma Betty', meds: '1 medication', status: rxStatus('Pending'), date: '09 Aug 2026', showDispense: true }
+    ];
+
+    const cellText = (t) => ({ text: t, badge: false });
+    const cellBadge = (t, bg, color) => ({ text: t, badge: true, bg, color });
+    const consultRows = consultBase.map(r => ({ cells: [cellText(r.id), cellText('11 Aug 2026'), cellText(r.patient), cellText(r.complaint), cellText('—'), cellBadge(cs[r.id] || (r.kind === 'completed' ? 'Completed' : 'Closed'), 'rgba(59,130,246,0.1)', '#2563eb')] }));
+    const rxRows = prescriptions.map(r => ({ cells: [cellText(r.id), cellText(r.date), cellText(r.patient), cellText(r.meds), cellBadge(r.status.label, r.status.bg, r.status.color)] }));
+    const labRows = pendingLabs.map(r => ({ cells: [cellText(r.id), cellText(r.ordered), cellText(r.patient), cellText(r.type), cellText('Dr. Nakimuli'), cellBadge(r.status.label, r.status.bg, r.status.color)] }));
+    const patientRows = [
+      { cells: [cellText('AWHUG-P-0004'), cellText('Sarah Knsdkc'), cellText('700426822'), cellText('15'), cellText('Male'), cellText('Jun 17 2026')] },
+      { cells: [cellText('AWHUG-P-0002'), cellText('Ryan Smith'), cellText('+256700426833'), cellText('27'), cellText('Male'), cellText('Jan 06 2026')] }
+    ];
+
+    const simpleTables = [
+      { key: 'consultations', title: 'Consultations', createLabel: 'Create Consultation', tabs: [{label:'All',bg:'rgba(255,87,34,0.1)',color:'#ff5722'},{label:'In Progress',bg:'transparent',color:'#706f6c'},{label:'Completed',bg:'transparent',color:'#706f6c'},{label:'This Week',bg:'transparent',color:'#706f6c'}], cols: ['CONSULTATION #', 'DATE', 'PATIENT', 'CHIEF COMPLAINT', 'DIAGNOSIS', 'STATUS'], rows: consultRows, active: p === 'consultations' },
+      { key: 'prescriptions', title: 'Prescriptions', createLabel: null, tabs: null, cols: ['PRESCRIPTION #', 'DATE', 'PATIENT', 'MEDICATIONS', 'STATUS'], rows: rxRows, active: p === 'prescriptions' },
+      { key: 'labtests', title: 'Lab Tests', createLabel: null, tabs: [{label:'All Tests',bg:'rgba(255,87,34,0.1)',color:'#ff5722'},{label:'Ordered',bg:'transparent',color:'#706f6c'},{label:'In Progress',bg:'transparent',color:'#706f6c'},{label:'Completed',bg:'transparent',color:'#706f6c'}], cols: ['TEST #', 'ORDERED', 'PATIENT NAME', 'TEST TYPE', 'ORDERED BY', 'STATUS'], rows: labRows, active: p === 'labtests' },
+      { key: 'patients', title: 'Patients', createLabel: null, tabs: null, cols: ['PATIENT ID', 'FULL NAME', 'PHONE', 'AGE', 'GENDER', 'REG. DATE'], rows: patientRows, active: p === 'patients' },
+      { key: 'visits', title: 'Visits', createLabel: null, tabs: null, cols: ['VISIT #', 'PATIENT', 'DATE', 'DEPARTMENT', 'DOCTOR'], rows: [{cells:[cellText('V-1042'),cellText('Nakato Sarah'),cellText('11 Aug 2026'),cellText('HIV/AIDS Clinic'),cellText('Dr. Nakimuli')]}], active: p === 'visits' },
+      { key: 'appointments', title: 'Appointments', createLabel: null, tabs: null, cols: ['APPT #', 'PATIENT', 'DATE', 'TIME', 'DEPARTMENT'], rows: [{cells:[cellText('AP-2201'),cellText('Nakato Sarah'),cellText('12 Aug 2026'),cellText('08:30'),cellText('HIV/AIDS Clinic')]}], active: p === 'appointments' }
+    ];
+
+    const navGroups = [
+      { label: null, items: [this.navItem('dashboard', 'Dashboard', '#ff5722', null)] },
+      { label: 'PATIENT MANAGEMENT', items: [
+        this.navItem('patients', 'Patients', '#3b82f6', 1284),
+        this.navItem('visits', 'Visits', '#22c55e', 96),
+        this.navItem('appointments', 'Appointments', '#d97706', 6)
+      ]},
+      { label: 'CLINICAL', items: [
+        this.navItem('consultations', 'Consultations', '#ff5722', 5),
+        this.navItem('prescriptions', 'Prescriptions', '#ff5722', 2)
+      ]},
+      { label: 'LABORATORY', items: [this.navItem('labtests', 'Lab Tests', '#9333ea', 3)] },
+      { label: 'MY PROFILE', items: [
+        this.navItem('attendance', 'Attendance', '#706f6c', null),
+        this.navItem('leave', 'Leave Requests', '#706f6c', null),
+        this.navItem('reviews', 'Reviews', '#706f6c', null),
+        this.navItem('clockinout', 'Clock In/Out', '#706f6c', null)
+      ]},
+      { label: 'SETTINGS', items: [this.navItem('settings', 'Settings', '#706f6c', null)] }
+    ];
+    const placeholderTitles = { attendance: 'Attendance', leave: 'Leave Requests', reviews: 'Reviews', clockinout: 'Clock In/Out', settings: 'Settings' };
+
+    return {
+      sidebarWidth: this.state.sidebarCollapsed ? '56px' : '220px',
+      sidebarCollapsed: this.state.sidebarCollapsed,
+      collapseArrow: this.state.sidebarCollapsed ? '›' : '‹',
+      toggleSidebar: this.toggleSidebar,
+      navGroups,
+      notifOpen: this.state.notifOpen,
+      avatarOpen: this.state.avatarOpen,
+      toggleNotif: this.toggleNotif,
+      toggleAvatar: this.toggleAvatar,
+      notifications: [
+        { title: 'New Visit Assigned', body: 'Patient: Nakato Sarah', color: '#ff5722', time: '2 min ago', pulse: '' },
+        { title: 'Lab Result Ready', body: 'HIV Rapid Test — Kato Drake Smith', color: '#22c55e', time: '15 min ago', pulse: '' },
+        { title: 'Critical Result', body: 'Auma Betty — Malaria RDT', color: '#ef4444', time: '32 min ago', pulse: 'animation:pulseDot 1.2s infinite;' },
+        { title: 'Consultation Closed', body: 'CN-2190 completed', color: '#706f6c', time: '1 hr ago', pulse: '' },
+        { title: 'Low Stock Alert', body: 'Paracetamol 500mg — 8 units left', color: '#d97706', time: '2 hrs ago', pulse: '' }
+      ],
+      isDashboard: p === 'dashboard',
+      isPlaceholder: !!placeholderTitles[p],
+      placeholderTitle: placeholderTitles[p] || '',
+      statCards: [
+        { value: '5', label: 'My Consultations Today', sub: 'Assigned to you today', iconBg: 'rgba(255,87,34,0.1)' },
+        { value: '3', label: 'Pending Lab Results', sub: 'Awaiting results', iconBg: 'rgba(245,158,11,0.1)' },
+        { value: '6', label: 'Completed Today', sub: 'Consultations closed today', iconBg: 'rgba(34,197,94,0.1)' },
+        { value: '2', label: 'Pending Prescriptions', sub: 'Awaiting dispense', iconBg: 'rgba(59,130,246,0.1)' }
+      ],
+      consultCols: ['CONSULTATION ID', 'PATIENT', 'CHIEF COMPLAINT', 'STATUS', 'DEPARTMENT', 'TIME', 'ACTIONS'],
+      consultations,
+      labCols: ['TEST ID', 'PATIENT', 'TEST TYPE', 'ORDERED AT', 'PRIORITY', 'STATUS', 'ACTIONS'],
+      pendingLabs,
+      rxCols: ['PRESCRIPTION ID', 'PATIENT', 'MEDICATIONS', 'STATUS', 'DATE', 'ACTIONS'],
+      prescriptions,
+      simpleTables,
+      dispenseOpen: this.state.dispenseOpen,
+      closeDispense: this.closeDispense,
+      stopClick: this.stopClick,
+      dispenseMeds: [
+        { name: 'Doxycycline 100mg', dosage: '100mg', freq: 'TDS — Three times a day', duration: '7 days', qty: 21, checked: true, stockColor: '#16a34a', stockText: '✓ In Stock (193 units)' },
+        { name: 'Cotrimoxazole 480mg', dosage: '480mg', freq: 'BD — Twice daily', duration: '14 days', qty: 28, checked: true, stockColor: '#16a34a', stockText: '✓ In Stock (89 units)' },
+        { name: 'Paracetamol 500mg', dosage: '500mg', freq: 'QID — Four times a day', duration: '5 days', qty: 100, checked: true, stockColor: '#dc2626', stockText: '⚠ Insufficient (need 100, have 8)' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

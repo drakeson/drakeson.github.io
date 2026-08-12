@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;}
+  body{background:#FDFDFC;}
+  ::placeholder{color:#9c9a94;}
+  @keyframes pulseDot{0%,100%{opacity:1;}50%{opacity:0.3;}}
+  input:focus,textarea:focus,select:focus{outline:2px solid rgba(255,87,34,0.3);}
+</style>
+</helmet>
+<div style="position:relative;display:flex;height:100vh;background:#FDFDFC;overflow:hidden;">
+  <div style="position:absolute;top:-120px;right:-120px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(255,87,34,0.06),transparent 70%);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:-120px;left:-60px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(255,87,34,0.06),transparent 70%);pointer-events:none;"></div>
+
+  <div style="width:{{ sidebarWidth }};min-width:{{ sidebarWidth }};background:#fff;border-right:1px solid rgba(25,20,0,0.08);display:flex;flex-direction:column;position:relative;z-index:2;transition:width 0.15s;">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:16px;border-bottom:1px solid rgba(25,20,0,0.06);">
+      <sc-if value="{{ !sidebarCollapsed }}" hint-placeholder-val="{{ true }}">
+        <div>
+          <div style="font-weight:700;color:#1b1b18;font-size:14px;">Ark Wellness Hub</div>
+          <div style="color:#706f6c;font-size:12px;">Kampala, Uganda</div>
+        </div>
+      </sc-if>
+      <button onClick="{{ toggleSidebar }}" style="width:24px;height:24px;border-radius:6px;border:1px solid rgba(25,20,0,0.1);background:#fff;color:#706f6c;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:12px;">{{ collapseArrow }}</button>
+    </div>
+    <div style="flex:1;overflow-y:auto;padding-bottom:12px;">
+      <sc-for list="{{ navGroups }}" as="grp" hint-placeholder-count="4">
+        <sc-if value="{{ grp.label }}" hint-placeholder-val="{{ null }}">
+          <sc-if value="{{ !sidebarCollapsed }}" hint-placeholder-val="{{ true }}">
+            <div style="text-transform:uppercase;font-size:11px;color:#706f6c;letter-spacing:0.08em;margin-top:20px;padding:0 16px 6px;">{{ grp.label }}</div>
+          </sc-if>
+        </sc-if>
+        <sc-for list="{{ grp.items }}" as="item" hint-placeholder-count="2">
+          <div onClick="{{ item.onClick }}" style="cursor:pointer;padding:8px 16px;font-size:14px;display:flex;align-items:center;gap:8px;border-radius:6px;margin:1px 8px;background:{{ item.bg }};border-left:{{ item.borderLeft }};color:{{ item.color }};font-weight:{{ item.fw }};">
+            <span style="width:16px;height:16px;border-radius:4px;background:{{ item.iconBg }};flex-shrink:0;"></span>
+            <sc-if value="{{ !sidebarCollapsed }}" hint-placeholder-val="{{ true }}">
+              <span style="flex:1;white-space:nowrap;overflow:hidden;">{{ item.label }}</span>
+              <sc-if value="{{ item.badge }}" hint-placeholder-val="{{ null }}">
+                <span style="background:rgba(255,87,34,0.12);color:#ff5722;font-size:11px;padding:2px 7px;border-radius:10px;margin-left:auto;">{{ item.badge }}</span>
+              </sc-if>
+            </sc-if>
+          </div>
+        </sc-for>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0;position:relative;z-index:2;">
+    <div style="height:60px;min-height:60px;background:#fff;border-bottom:1px solid rgba(25,20,0,0.08);box-shadow:0 1px 3px rgba(0,0,0,0.04);padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:24px;">
+      <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
+        <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#ff5722,#ff784e);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;">+</div>
+        <div style="font-size:16px;"><span style="color:#706f6c;font-weight:400;">Bridgr</span><span style="color:#ff5722;font-weight:700;"> EMR</span></div>
+      </div>
+      <div style="flex:1;display:flex;justify-content:center;">
+        <div style="position:relative;width:320px;max-width:100%;">
+          <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#9c9a94;font-size:13px;">⚲</span>
+          <input placeholder="Search patients, visits, tests..." style="width:100%;background:#f8f7f4;border:1px solid rgba(25,20,0,0.1);border-radius:8px;padding:8px 16px 8px 32px;font-size:13px;color:#1b1b18;"/>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;flex-shrink:0;position:relative;">
+        <button onClick="{{ toggleNotif }}" style="position:relative;background:none;border:none;cursor:pointer;color:#706f6c;font-size:18px;padding:4px;">
+          🔔<span style="position:absolute;top:0;right:0;width:8px;height:8px;border-radius:50%;background:#ef4444;"></span>
+        </button>
+        <sc-if value="{{ notifOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:40px;right:40px;width:360px;background:#fff;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.15);border:1px solid rgba(25,20,0,0.08);z-index:50;">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid rgba(25,20,0,0.06);">
+              <span style="font-weight:700;font-size:14px;color:#1b1b18;">Notifications</span>
+              <span style="color:#ff5722;font-size:12px;font-weight:600;cursor:pointer;">Mark All Read</span>
+            </div>
+            <sc-for list="{{ notifications }}" as="n" hint-placeholder-count="5">
+              <div style="display:flex;gap:10px;padding:12px 16px;border-bottom:1px solid rgba(25,20,0,0.05);">
+                <span style="width:10px;height:10px;border-radius:50%;background:{{ n.color }};margin-top:4px;flex-shrink:0;{{ n.pulse }}"></span>
+                <div style="flex:1;">
+                  <div style="font-weight:600;font-size:13px;color:#1b1b18;">{{ n.title }}</div>
+                  <div style="font-size:12px;color:#706f6c;">{{ n.body }}</div>
+                </div>
+                <div style="font-size:11px;color:#9c9a94;flex-shrink:0;">{{ n.time }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+        <div onClick="{{ toggleAvatar }}" style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+          <div style="width:36px;height:36px;border-radius:50%;background:#ff5722;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:13px;">PS</div>
+          <div>
+            <div style="font-weight:700;font-size:13px;color:#1b1b18;">Peter Ssali</div>
+            <div style="font-size:12px;color:#ff5722;">Lab Technician</div>
+          </div>
+        </div>
+        <sc-if value="{{ avatarOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;top:52px;right:0;width:200px;background:#fff;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.15);border:1px solid rgba(25,20,0,0.08);z-index:50;padding:8px 0;">
+            <div style="padding:10px 16px;border-bottom:1px solid rgba(25,20,0,0.06);">
+              <div style="font-weight:700;font-size:13px;color:#1b1b18;">Peter Ssali</div>
+              <div style="font-size:12px;color:#ff5722;">Lab Technician</div>
+            </div>
+            <div style="padding:10px 16px;font-size:13px;color:#1b1b18;cursor:pointer;">My Profile</div>
+            <div style="padding:10px 16px;font-size:13px;color:#1b1b18;cursor:pointer;">Clock In/Out</div>
+            <div style="border-top:1px solid rgba(25,20,0,0.06);margin-top:4px;padding:10px 16px;font-size:13px;color:#dc2626;cursor:pointer;">Sign Out</div>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+
+    <div style="flex:1;overflow-y:auto;padding:24px;">
+
+      <div style="font-size:20px;font-weight:700;color:#1b1b18;margin-bottom:20px;">{{ pageTitle }}</div>
+
+      <sc-if value="{{ isDashboard }}" hint-placeholder-val="{{ true }}">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px;">
+          <sc-for list="{{ statCards }}" as="c" hint-placeholder-count="4">
+            <div style="background:#fff;border:1px solid rgba(25,20,0,0.08);border-radius:12px;padding:24px;box-shadow:0 2px 8px rgba(0,0,0,0.04);position:relative;">
+              <div style="width:40px;height:40px;border-radius:50%;background:{{ c.iconBg }};position:absolute;top:20px;right:20px;"></div>
+              <div style="font-size:2.2rem;font-weight:700;color:#1b1b18;">{{ c.value }}</div>
+              <div style="font-size:14px;color:#706f6c;margin-top:4px;">{{ c.label }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="background:rgba(239,68,68,0.04);border-left:3px solid #ef4444;border-radius:12px;padding:20px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+          <div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+              <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;animation:pulseDot 1.2s infinite;"></span>
+              <span style="font-weight:700;color:#dc2626;font-size:14px;">Critical Results Alert</span>
+            </div>
+            <div style="font-weight:700;color:#1b1b18;font-size:14px;">Auma Betty — Malaria RDT</div>
+            <div style="color:#706f6c;font-size:13px;">Positive, high parasitemia · Notify Dr. Nakimuli · 07:55</div>
+          </div>
+          <button disabled style="background:rgba(255,87,34,0.15);color:#ff5722;border:none;border-radius:8px;padding:8px 16px;font-size:13px;font-weight:600;cursor:default;">Notified ✓</button>
+        </div>
+      </sc-if>
+
+      <div style="background:#fff;border:1px solid rgba(25,20,0,0.08);border-radius:12px;padding:24px;box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:12px;">
+          <div style="font-size:16px;font-weight:700;color:#1b1b18;">Lab Queue</div>
+          <div style="display:flex;gap:8px;">
+            <input placeholder="Search patient or test..." style="background:#f8f7f4;border:1px solid rgba(25,20,0,0.1);border-radius:8px;padding:6px 12px;font-size:13px;width:200px;"/>
+            <button style="background:#fff;border:1px solid rgba(25,20,0,0.15);color:#1b1b18;border-radius:6px;padding:6px 12px;font-size:12px;font-weight:500;cursor:pointer;">↓ Export</button>
+          </div>
+        </div>
+        <div style="display:flex;gap:20px;border-bottom:1px solid rgba(25,20,0,0.08);margin-bottom:8px;">
+          <sc-for list="{{ filterTabs }}" as="t" hint-placeholder-count="4">
+            <div onClick="{{ t.onClick }}" style="padding:10px 0;font-size:13px;font-weight:600;cursor:pointer;color:{{ t.color }};border-bottom:2px solid {{ t.border }};">{{ t.label }}</div>
+          </sc-for>
+        </div>
+        <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;">
+          <thead><tr style="background:#f8f7f4;">
+            <sc-for list="{{ cols }}" as="col" hint-placeholder-count="10">
+              <th style="text-align:left;color:#706f6c;text-transform:uppercase;font-size:11px;font-weight:600;letter-spacing:0.06em;padding:10px 16px;">{{ col }}</th>
+            </sc-for>
+          </tr></thead>
+          <tbody>
+            <sc-for list="{{ tests }}" as="row" hint-placeholder-count="6">
+              <tr style="border-bottom:1px solid rgba(25,20,0,0.06);">
+                <td style="padding:12px 16px;font-size:14px;color:#1b1b18;">{{ row.id }}</td>
+                <td style="padding:12px 16px;font-size:14px;color:#1b1b18;font-weight:600;">{{ row.patient }}</td>
+                <td style="padding:12px 16px;font-size:14px;color:#1b1b18;">{{ row.phone }}</td>
+                <td style="padding:12px 16px;font-size:14px;color:#1b1b18;">{{ row.type }}</td>
+                <td style="padding:12px 16px;"><span style="background:{{ row.category.bg }};color:{{ row.category.color }};border-radius:20px;padding:4px 12px;font-size:12px;font-weight:500;">{{ row.category.label }}</span></td>
+                <td style="padding:12px 16px;">
+                  <span style="background:{{ row.priority.bg }};color:{{ row.priority.color }};border-radius:20px;padding:4px 12px;font-size:12px;font-weight:{{ row.priority.fw }};">
+                    <sc-if value="{{ row.priority.pulse }}" hint-placeholder-val="{{ false }}"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#dc2626;margin-right:6px;animation:pulseDot 1.2s infinite;"></span></sc-if>
+                    {{ row.priority.label }}
+                  </span>
+                </td>
+                <td style="padding:12px 16px;font-size:14px;color:#1b1b18;">{{ row.orderedBy }}</td>
+                <td style="padding:12px 16px;font-size:14px;color:#1b1b18;">{{ row.orderedAt }}</td>
+                <td style="padding:12px 16px;"><span style="background:{{ row.status.bg }};color:{{ row.status.color }};border-radius:20px;padding:4px 12px;font-size:12px;font-weight:500;">{{ row.status.label }}</span></td>
+                <td style="padding:12px 16px;white-space:nowrap;">
+                  <div style="display:flex;gap:6px;">
+                    <sc-if value="{{ row.stage === 'ordered' }}" hint-placeholder-val="{{ false }}">
+                      <button onClick="{{ row.onCollect }}" style="background:#3b82f6;color:#fff;border:none;border-radius:6px;padding:6px 10px;font-size:12px;font-weight:600;cursor:pointer;">Collect Sample</button>
+                      <button style="background:#fff;border:1px solid #dc2626;color:#dc2626;border-radius:6px;padding:6px 10px;font-size:12px;cursor:pointer;">Cancel</button>
+                    </sc-if>
+                    <sc-if value="{{ row.stage === 'collected' }}" hint-placeholder-val="{{ false }}">
+                      <button onClick="{{ row.onEnterResults }}" style="background:linear-gradient(135deg,#ff5722,#ff784e);color:#fff;border:none;border-radius:6px;padding:6px 10px;font-size:12px;font-weight:600;cursor:pointer;">Enter Results</button>
+                      <button style="background:#fff;border:1px solid #dc2626;color:#dc2626;border-radius:6px;padding:6px 10px;font-size:12px;cursor:pointer;">Cancel</button>
+                    </sc-if>
+                    <sc-if value="{{ row.stage === 'completed' }}" hint-placeholder-val="{{ false }}">
+                      <button onClick="{{ row.onPrint }}" style="background:#fff;border:1px solid rgba(25,20,0,0.15);color:#1b1b18;border-radius:6px;padding:6px 10px;font-size:12px;cursor:pointer;">🖶 Print Result</button>
+                    </sc-if>
+                  </div>
+                </td>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:13px;color:#706f6c;">
+          <span>Showing {{ testCount }} tests</span>
+          <div style="display:flex;gap:8px;">
+            <button disabled style="background:#f8f7f4;border:1px solid rgba(25,20,0,0.1);color:#9c9a94;border-radius:6px;padding:6px 12px;font-size:12px;cursor:not-allowed;">Previous</button>
+            <button disabled style="background:#f8f7f4;border:1px solid rgba(25,20,0,0.1);color:#9c9a94;border-radius:6px;padding:6px 12px;font-size:12px;cursor:not-allowed;">Next</button>
+          </div>
+        </div>
+      </div>
+
+      <sc-if value="{{ isPlaceholder }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#fff;border:1px solid rgba(25,20,0,0.08);border-radius:12px;padding:40px;text-align:center;color:#706f6c;font-size:14px;margin-top:16px;">This section is coming soon.</div>
+      </sc-if>
+
+    </div>
+  </div>
+
+  <sc-if value="{{ resultsOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeResults }}" style="position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:1000;display:flex;align-items:center;justify-content:center;overflow-y:auto;">
+      <div onClick="{{ stopClick }}" style="background:#fff;border-radius:16px;padding:32px;max-width:560px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,0.15);position:relative;margin:24px;">
+        <button onClick="{{ closeResults }}" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:18px;color:#706f6c;cursor:pointer;">×</button>
+        <div style="font-size:18px;font-weight:700;color:#1b1b18;margin-bottom:4px;">Enter Lab Results</div>
+        <div style="font-size:13px;color:#706f6c;margin-bottom:20px;">{{ resultsSubtitle }}</div>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div>
+            <div style="font-size:13px;font-weight:600;color:#1b1b18;margin-bottom:6px;">Test Result</div>
+            <textarea rows="5" placeholder="Enter test result findings..." style="width:100%;border:1px solid rgba(25,20,0,0.15);border-radius:8px;padding:10px 12px;font-size:13px;resize:vertical;"></textarea>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div>
+              <div style="font-size:13px;font-weight:600;color:#1b1b18;margin-bottom:6px;">Reference Range</div>
+              <input placeholder="e.g. 4.5-11.0 x10^9/L" style="width:100%;border:1px solid rgba(25,20,0,0.15);border-radius:8px;padding:8px 12px;font-size:13px;"/>
+            </div>
+            <div>
+              <div style="font-size:13px;font-weight:600;color:#1b1b18;margin-bottom:6px;">Unit</div>
+              <select style="width:100%;border:1px solid rgba(25,20,0,0.15);border-radius:8px;padding:8px 12px;font-size:13px;">
+                <sc-for list="{{ unitOptions }}" as="u" hint-placeholder-count="9"><option>{{ u }}</option></sc-for>
+              </select>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:#1b1b18;margin-bottom:6px;">Clinical Interpretation</div>
+            <textarea rows="3" placeholder="Provide clinical interpretation..." style="width:100%;border:1px solid rgba(25,20,0,0.15);border-radius:8px;padding:10px 12px;font-size:13px;resize:vertical;"></textarea>
+          </div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:#1b1b18;margin-bottom:6px;">Technician Notes</div>
+            <textarea rows="2" placeholder="Any technical notes..." style="width:100%;border:1px solid rgba(25,20,0,0.15);border-radius:8px;padding:10px 12px;font-size:13px;resize:vertical;"></textarea>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div onClick="{{ toggleAbnormal }}" style="cursor:pointer;border-radius:8px;padding:10px 14px;background:{{ abnormalBg }};border:1px solid rgba(25,20,0,0.1);">
+              <div style="font-size:13px;font-weight:600;color:{{ abnormalColor }};">{{ abnormalLabel }}</div>
+            </div>
+            <div onClick="{{ toggleCritical }}" style="cursor:pointer;border-radius:8px;padding:10px 14px;background:{{ criticalBg }};border:1px solid rgba(25,20,0,0.1);{{ criticalPulse }}">
+              <div style="font-size:13px;font-weight:600;color:{{ criticalColor }};">{{ criticalLabel }}</div>
+            </div>
+          </div>
+          <sc-if value="{{ critical }}" hint-placeholder-val="{{ false }}">
+            <div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.3);border-radius:8px;padding:10px 14px;font-size:13px;color:#d97706;">⚠ Enabling critical flag will send an immediate notification to Dr. {{ orderingDoctor }}</div>
+          </sc-if>
+          <div style="border:2px dashed rgba(25,20,0,0.15);border-radius:8px;padding:24px;text-align:center;">
+            <div style="color:#9c9a94;font-size:22px;margin-bottom:6px;">⇧</div>
+            <div style="font-weight:600;color:#1b1b18;font-size:13px;">Upload PDF report or image</div>
+            <div style="color:#9c9a94;font-size:12px;margin-bottom:10px;">(Max 5MB)</div>
+            <button style="background:#fff;border:1px solid #ff5722;color:#ff5722;border-radius:6px;padding:6px 14px;font-size:12px;font-weight:600;cursor:pointer;">Browse Files</button>
+          </div>
+          <button onClick="{{ closeResults }}" style="width:100%;background:linear-gradient(135deg,#ff5722,#ff784e);color:#fff;border:none;border-radius:8px;padding:12px;font-size:14px;font-weight:600;cursor:pointer;box-shadow:0 3px 10px rgba(255,87,34,0.25);">Save Results</button>
+          <button onClick="{{ closeResults }}" style="background:none;border:none;color:#706f6c;font-size:13px;cursor:pointer;text-align:center;">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    sidebarCollapsed: false,
+    activePage: 'dashboard',
+    notifOpen: false,
+    avatarOpen: false,
+    filterTab: 'All Tests',
+    testStages: { 'LT-3301': 'collected', 'LT-3298': 'collected', 'LT-3295': 'completed', 'LT-3290': 'ordered', 'LT-3288': 'ordered', 'LT-3285': 'collected' },
+    resultsOpen: false,
+    resultsSubtitle: '',
+    orderingDoctor: '',
+    abnormal: false,
+    critical: false
+  };
+
+  badge(label, bg, color, fw) { return { label, bg, color, fw: fw || '500' }; }
+
+  categoryBadge(cat) {
+    const map = { Blood: ['rgba(239,68,68,0.1)', '#dc2626'], Urine: ['rgba(234,179,8,0.1)', '#ca8a04'], Swab: ['rgba(168,85,247,0.1)', '#9333ea'], Stool: ['rgba(120,53,15,0.1)', '#92400e'], Other: ['rgba(100,116,139,0.1)', '#475569'] };
+    const [bg, color] = map[cat];
+    return this.badge(cat, bg, color);
+  }
+  priorityBadge(label) {
+    if (label === 'Urgent') return this.badge('Urgent', 'rgba(245,158,11,0.1)', '#d97706', '600');
+    if (label === 'STAT') return { ...this.badge('STAT', 'rgba(239,68,68,0.1)', '#dc2626', '700'), pulse: true };
+    return { label, bg: 'transparent', color: '#706f6c', fw: '400' };
+  }
+  stageStatus(stage) {
+    if (stage === 'ordered') return this.badge('Ordered', 'rgba(100,116,139,0.1)', '#475569');
+    if (stage === 'collected') return this.badge('Sample Collected', 'rgba(59,130,246,0.1)', '#2563eb');
+    return this.badge('Completed', 'rgba(34,197,94,0.1)', '#16a34a');
+  }
+
+  setPage(p) { this.setState({ activePage: p, notifOpen: false, avatarOpen: false }); }
+  toggleSidebar = () => this.setState(s => ({ sidebarCollapsed: !s.sidebarCollapsed }));
+  toggleNotif = () => this.setState(s => ({ notifOpen: !s.notifOpen, avatarOpen: false }));
+  toggleAvatar = () => this.setState(s => ({ avatarOpen: !s.avatarOpen, notifOpen: false }));
+  setFilterTab(t) { this.setState({ filterTab: t }); }
+  collectSample(id) { this.setState(s => ({ testStages: { ...s.testStages, [id]: 'collected' } })); }
+  openResults(id, patient, doctor) { this.setState({ resultsOpen: true, resultsSubtitle: id + ' \u00b7 ' + patient, orderingDoctor: doctor, abnormal: false, critical: false }); }
+  closeResults = () => this.setState({ resultsOpen: false });
+  stopClick = (e) => e.stopPropagation();
+  toggleAbnormal = () => this.setState(s => ({ abnormal: !s.abnormal }));
+  toggleCritical = () => this.setState(s => ({ critical: !s.critical }));
+  printResult() {
+    const w = window.open('', '_blank');
+    const closeTag = '</' + 'script>';
+    const html = [
+      '<html><head><title>Lab Report</title><style>body{font-family:system-ui,sans-serif;padding:40px;color:#1b1b18;}h1{text-align:center;font-size:20px;margin-bottom:2px;}p.sub{text-align:center;color:#706f6c;margin-bottom:20px;}hr{border:none;border-top:1px solid #ccc;margin-bottom:20px;}.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;font-size:13px;}.box{border:1px solid #ccc;border-radius:8px;padding:16px;margin-bottom:16px;}.flags{display:flex;gap:10px;margin-bottom:16px;}.badge{border-radius:20px;padding:4px 12px;font-size:12px;}footer{text-align:center;color:#9c9a94;font-size:11px;margin-top:30px;}</style></head><body>',
+      '<h1>ARK WELLNESS HUB</h1><p class="sub">Plot 17, Cooper Road, Kampala, Uganda</p><h2 style="text-align:center;font-size:15px;margin-bottom:16px;">Laboratory Test Report</h2><hr/>',
+      '<div class="grid"><div><b>Name:</b> Auma Betty</div><div><b>Patient ID:</b> PT-0765</div><div><b>Age:</b> 29</div><div><b>Phone:</b> +256 754 667 802</div><div><b>Gender:</b> Female</div></div>',
+      '<div class="grid"><div><b>Test Type:</b> Malaria RDT</div><div><b>Category:</b> Blood</div><div><b>Priority:</b> STAT</div><div><b>Ordered By:</b> Dr. Nakimuli</div><div><b>Date Ordered:</b> 12 Aug 2026 07:50</div><div><b>Date Completed:</b> 12 Aug 2026 08:05</div></div>',
+      '<div class="box"><p><b>Test Result:</b> Positive, high parasitemia</p><p><b>Reference Range:</b> Negative</p><p><b>Unit:</b> Positive/Negative</p><p><b>Interpretation:</b> Consistent with active malaria infection; clinical correlation advised.</p></div>',
+      '<div class="flags"><span class="badge" style="background:rgba(245,158,11,0.1);color:#d97706;">Abnormal</span><span class="badge" style="background:rgba(239,68,68,0.1);color:#dc2626;">CRITICAL</span></div>',
+      '<div class="grid"><div><b>Verified by:</b> Peter Ssali</div><div><b>Date:</b> 12 Aug 2026</div></div>',
+      '<footer>Computer generated document \u2014 No signature required</footer>',
+      '<' + 'script>window.onload=function(){window.print();window.onfocus=function(){window.close();};}' + closeTag,
+      '</body></html>'
+    ].join('');
+    w.document.write(html);
+    w.document.close();
+  }
+
+  navItem(key, label, iconBg, badge) {
+    const active = this.state.activePage === key;
+    return {
+      label, badge, iconBg,
+      onClick: () => this.setPage(key),
+      bg: active ? 'rgba(255,87,34,0.08)' : 'transparent',
+      borderLeft: active ? '3px solid #ff5722' : '3px solid transparent',
+      color: active ? '#ff5722' : '#706f6c',
+      fw: active ? '600' : '400'
+    };
+  }
+
+  renderVals() {
+    const p = this.state.activePage;
+    const stages = this.state.testStages;
+    const testBase = [
+      { id: 'LT-3301', patient: 'Nakato Sarah', phone: '+256 772 445 981', type: 'Viral Load', category: 'Blood', priority: 'Urgent', orderedBy: 'Dr. Nakimuli', orderedAt: '08:40' },
+      { id: 'LT-3298', patient: 'Okello David', phone: '+256 701 223 456', type: 'CD4 Count', category: 'Blood', priority: 'Routine', orderedBy: 'Dr. Ssemwogerere', orderedAt: '09:10' },
+      { id: 'LT-3295', patient: 'Auma Betty', phone: '+256 754 667 802', type: 'Malaria RDT', category: 'Blood', priority: 'STAT', orderedBy: 'Dr. Nakimuli', orderedAt: '07:50' },
+      { id: 'LT-3290', patient: 'Mukasa John', phone: '+256 782 990 112', type: 'Full Blood Count', category: 'Blood', priority: 'Routine', orderedBy: 'Dr. Ssemwogerere', orderedAt: '07:30' },
+      { id: 'LT-3288', patient: 'Namusoke Joan', phone: '+256 701 223 990', type: 'Urinalysis', category: 'Urine', priority: 'Routine', orderedBy: 'Dr. Tumuslime', orderedAt: '07:15' },
+      { id: 'LT-3285', patient: 'Kato Michael', phone: '+256 772 100 220', type: 'HIV Rapid Test', category: 'Swab', priority: 'Urgent', orderedBy: 'Dr. Okwera', orderedAt: '06:50' }
+    ];
+    const tests = testBase.map(r => {
+      const stage = stages[r.id];
+      return {
+        ...r, category: this.categoryBadge(r.category), priority: this.priorityBadge(r.priority), status: this.stageStatus(stage), stage,
+        onCollect: () => this.collectSample(r.id),
+        onEnterResults: () => this.openResults(r.id, r.patient, r.orderedBy.replace('Dr. ', '')),
+        onPrint: () => this.printResult()
+      };
+    });
+
+    const pendingCount = Object.values(stages).filter(s => s === 'ordered').length;
+
+    const navGroups = [
+      { label: null, items: [this.navItem('dashboard', 'Dashboard', '#ff5722', null)] },
+      { label: 'LABORATORY', items: [this.navItem('labtests', 'Lab Tests', '#9333ea', 6)] },
+      { label: 'MY PROFILE', items: [
+        this.navItem('attendance', 'Attendance', '#706f6c', null),
+        this.navItem('leave', 'Leave Requests', '#706f6c', null),
+        this.navItem('reviews', 'Reviews', '#706f6c', null),
+        this.navItem('clockinout', 'Clock In/Out', '#706f6c', null)
+      ]},
+      { label: 'SETTINGS', items: [this.navItem('settings', 'Settings', '#706f6c', null)] }
+    ];
+    const placeholderTitles = { attendance: 'Attendance', leave: 'Leave Requests', reviews: 'Reviews', clockinout: 'Clock In/Out', settings: 'Settings' };
+
+    const filterTabs = ['All Tests', 'Ordered', 'In Progress', 'Completed'].map(t => ({
+      label: t, onClick: () => this.setFilterTab(t),
+      color: this.state.filterTab === t ? '#ff5722' : '#706f6c',
+      border: this.state.filterTab === t ? '#ff5722' : 'transparent'
+    }));
+
+    return {
+      sidebarWidth: this.state.sidebarCollapsed ? '56px' : '220px',
+      sidebarCollapsed: this.state.sidebarCollapsed,
+      collapseArrow: this.state.sidebarCollapsed ? '\u203a' : '\u2039',
+      toggleSidebar: this.toggleSidebar,
+      navGroups,
+      notifOpen: this.state.notifOpen,
+      avatarOpen: this.state.avatarOpen,
+      toggleNotif: this.toggleNotif,
+      toggleAvatar: this.toggleAvatar,
+      notifications: [
+        { title: 'New Visit Assigned', body: 'Patient: Nakato Sarah', color: '#ff5722', time: '2 min ago', pulse: '' },
+        { title: 'Lab Result Ready', body: 'HIV Rapid Test — Kato Drake Smith', color: '#22c55e', time: '15 min ago', pulse: '' },
+        { title: 'Critical Result', body: 'Auma Betty — Malaria RDT', color: '#ef4444', time: '32 min ago', pulse: 'animation:pulseDot 1.2s infinite;' },
+        { title: 'Consultation Closed', body: 'CN-2190 completed', color: '#706f6c', time: '1 hr ago', pulse: '' },
+        { title: 'Low Stock Alert', body: 'Paracetamol 500mg — 8 units left', color: '#d97706', time: '2 hrs ago', pulse: '' }
+      ],
+      pageTitle: p === 'dashboard' ? 'Dashboard' : (p === 'labtests' ? 'Lab Tests' : (placeholderTitles[p] || '')),
+      isDashboard: p === 'dashboard',
+      isPlaceholder: !!placeholderTitles[p] && p !== 'dashboard' && p !== 'labtests',
+      statCards: [
+        { value: String(pendingCount), label: 'Pending Tests', iconBg: 'rgba(245,158,11,0.1)' },
+        { value: '3', label: 'In Progress', iconBg: 'rgba(59,130,246,0.1)' },
+        { value: '1', label: 'Completed Today', iconBg: 'rgba(34,197,94,0.1)' },
+        { value: '0', label: 'Critical Results', iconBg: 'rgba(239,68,68,0.1)' }
+      ],
+      filterTabs,
+      cols: ['TEST ID', 'PATIENT', 'PHONE', 'TEST TYPE', 'CATEGORY', 'PRIORITY', 'ORDERED BY', 'ORDERED AT', 'STATUS', 'ACTIONS'],
+      tests,
+      testCount: tests.length,
+      resultsOpen: this.state.resultsOpen,
+      resultsSubtitle: this.state.resultsSubtitle,
+      orderingDoctor: this.state.orderingDoctor,
+      closeResults: this.closeResults,
+      stopClick: this.stopClick,
+      unitOptions: ['mg/dL', 'mmol/L', 'g/dL', 'IU/L', 'cells/µL', 'copies/mL', '%', 'Positive/Negative', 'Reactive/Non-reactive', 'Other'],
+      abnormal: this.state.abnormal,
+      toggleAbnormal: this.toggleAbnormal,
+      abnormalBg: this.state.abnormal ? 'rgba(239,68,68,0.08)' : '#f8f7f4',
+      abnormalColor: this.state.abnormal ? '#dc2626' : '#1b1b18',
+      abnormalLabel: this.state.abnormal ? 'Marked as abnormal ⚠' : 'Abnormal Result',
+      critical: this.state.critical,
+      toggleCritical: this.toggleCritical,
+      criticalBg: this.state.critical ? 'rgba(239,68,68,0.08)' : '#f8f7f4',
+      criticalColor: this.state.critical ? '#dc2626' : '#1b1b18',
+      criticalPulse: this.state.critical ? 'animation:pulseDot 1.2s infinite;' : '',
+      criticalLabel: this.state.critical ? 'CRITICAL — notifying doctor' : 'Critical Result'
+    };
+  }
+}
+</script>
+</body>
+</html>
